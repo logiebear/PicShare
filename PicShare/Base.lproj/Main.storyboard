@@ -88,24 +88,25 @@
                                 </constraints>
                             </view>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="Alh-fe-7WA">
-                                <rect key="frame" x="0.0" y="108" width="600" height="435"/>
+                                <rect key="frame" x="0.0" y="100" width="600" height="451"/>
                                 <animations/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="tDj-o1-ESF">
-                                    <size key="itemSize" width="120" height="120"/>
+                                    <size key="itemSize" width="300" height="300"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
                                     <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="9DK-4f-H2O">
-                                        <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                        <rect key="frame" x="150" y="0.0" width="300" height="300"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
-                                            <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="nr5-f3-ZT5">
-                                                    <rect key="frame" x="0.0" y="0.0" width="120" height="120"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                                     <animations/>
                                                 </imageView>
                                             </subviews>
@@ -128,10 +129,11 @@
                             </collectionView>
                         </subviews>
                         <animations/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="8NS-vi-8YT" firstAttribute="top" secondItem="Alh-fe-7WA" secondAttribute="bottom" constant="8" id="4nc-CH-I5q"/>
                             <constraint firstItem="Alh-fe-7WA" firstAttribute="leading" secondItem="8Fs-Md-okF" secondAttribute="leading" id="6R7-NA-Eu0"/>
-                            <constraint firstItem="Alh-fe-7WA" firstAttribute="top" secondItem="vkX-kM-akV" secondAttribute="bottom" constant="8" id="7Nb-hc-T8I"/>
+                            <constraint firstItem="8NS-vi-8YT" firstAttribute="top" secondItem="Alh-fe-7WA" secondAttribute="bottom" id="R1S-IU-pjf"/>
+                            <constraint firstItem="Alh-fe-7WA" firstAttribute="top" secondItem="vkX-kM-akV" secondAttribute="bottom" id="fZ3-cz-nYi"/>
                             <constraint firstAttribute="trailing" secondItem="Alh-fe-7WA" secondAttribute="trailing" id="hES-Nk-BI3"/>
                             <constraint firstItem="vkX-kM-akV" firstAttribute="top" secondItem="8Fs-Md-okF" secondAttribute="top" id="o0m-5E-wAj"/>
                             <constraint firstItem="vkX-kM-akV" firstAttribute="leading" secondItem="8Fs-Md-okF" secondAttribute="leading" id="sS1-cX-YWP"/>

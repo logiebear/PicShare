@@ -26,14 +26,7 @@ class PhotoHomeViewController: UIViewController {
             takePhotoButton.hidden = true
         }
         
-        reload()
-    }
-    
-    // MARK: - Public
-    
-    func reload() {
         queryForAllPhotos()
-        collectionView.reloadData()
     }
     
     // MARK: - Private
@@ -43,6 +36,7 @@ class PhotoHomeViewController: UIViewController {
         query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 self?.photoArray = objects
+                self?.collectionView.reloadData()
                 print("Photo query success. Number photos: \(objects?.count)")
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
@@ -67,7 +61,7 @@ class PhotoHomeViewController: UIViewController {
     }
     
     @IBAction func syncButtonPressed(sender: AnyObject) {
-        reload()
+        queryForAllPhotos()
     }
 }
 
@@ -129,7 +123,7 @@ extension PhotoHomeViewController: UIImagePickerControllerDelegate, UINavigation
             print("Photo saving error")
         }
         dismissViewControllerAnimated(true) { [weak self]() -> Void in
-            self?.reload()
+            self?.queryForAllPhotos()
         }
     }
     
