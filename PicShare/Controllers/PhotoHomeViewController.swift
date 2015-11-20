@@ -10,7 +10,8 @@ import UIKit
 import Parse
 
 let photoClassName = "Photo"
-let photoFileKey = "file"
+let photoFileKey = "fullSizeFile"
+let thumbFileKey = "thumbSizeFile"
 
 class PhotoHomeViewController: UIViewController {
 
@@ -82,11 +83,12 @@ extension PhotoHomeViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
         if let imageView = cell.viewWithTag(1) as? UIImageView,
             photoArray = photoArray,
-            userImageFile = photoArray[indexPath.item][photoFileKey] as? PFFile
+            userImageFile = photoArray[indexPath.item][thumbFileKey] as? PFFile
         {
             userImageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                 if error == nil {
                     if let imageData = imageData, image = UIImage(data: imageData) {
+                        imageView.contentMode = .ScaleAspectFit
                         imageView.image = image
                     }
                 } else {
@@ -103,21 +105,38 @@ extension PhotoHomeViewController: UICollectionViewDataSource {
 
 extension PhotoHomeViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        // TODO: SHOW PHOTO DETAIL
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
+        if let photoArray = photoArray,
+            userImageFile = photoArray[indexPath.item][photoFileKey] as? PFFile
+        {
+            userImageFile.getDataInBackgroundWithBlock { [weak self](imageData: NSData?, error: NSError?) -> Void in
+                if error == nil {
+                    if let imageData = imageData, image = UIImage(data: imageData) {
+                        vc.image = image
+                    }
+                    self?.presentViewController(vc, animated: true, completion: nil)
+                } else {
+                    print("Error: \(error!) \(error!.userInfo)")
+                }
+            }
+        }
     }
 }
 
 // MARK: - UIImagePickerControllerDelegate
 
+    
 extension PhotoHomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        // TODO: SAVE IMAGE
         print("Photo selected")
-        if let imageData = UIImagePNGRepresentation(image) {
-            let imageFile = PFFile(name: "image.png", data: imageData)
+        if let fullImage = image.scaleAndRotateImage(960),
+            thumbImage = image.scaleAndRotateImage(480),
+            fullImageData = UIImagePNGRepresentation(fullImage),
+            thumbImageData = UIImagePNGRepresentation(thumbImage)
+        {
             let userPhoto = PFObject(className: photoClassName)
-            userPhoto["comment"] = "test"
-            userPhoto[photoFileKey] = imageFile
+            userPhoto[photoFileKey] = PFFile(name: "original.png", data: fullImageData)
+            userPhoto[thumbFileKey] = PFFile(name: "thumbnail.png", data: thumbImageData)
             userPhoto.saveInBackground()
         } else {
             print("Photo saving error")

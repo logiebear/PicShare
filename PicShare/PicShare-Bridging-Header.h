@@ -6,3 +6,4 @@
 //  Copyright © 2015 USC. All rights reserved.
 //
 
+#import "UIImage+EXIF.h"
