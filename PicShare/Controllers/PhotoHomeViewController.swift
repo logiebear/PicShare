@@ -137,7 +137,7 @@ extension PhotoHomeViewController: UIImagePickerControllerDelegate, UINavigation
             let userPhoto = PFObject(className: photoClassName)
             userPhoto[photoFileKey] = PFFile(name: "original.png", data: fullImageData)
             userPhoto[thumbFileKey] = PFFile(name: "thumbnail.png", data: thumbImageData)
-            userPhoto.saveInBackground()
+            userPhoto.saveEventually()
         } else {
             print("Photo saving error")
         }

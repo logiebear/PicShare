@@ -26,7 +26,7 @@
             </objects>
             <point key="canvasLocation" x="-632" y="-2162"/>
         </scene>
-        <!--Photos-->
+        <!--Photo Home View Controller-->
         <scene sceneID="gG1-Uw-8io">
             <objects>
                 <viewController id="cas-Z6-giO" customClass="PhotoHomeViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
@@ -140,7 +140,7 @@
                             <constraint firstAttribute="trailing" secondItem="vkX-kM-akV" secondAttribute="trailing" id="xhK-x8-0IV"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Photos" id="aXB-6m-i7K"/>
+                    <tabBarItem key="tabBarItem" id="aXB-6m-i7K"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="collectionView" destination="Alh-fe-7WA" id="oba-y7-8si"/>
@@ -251,26 +251,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="GZn-ya-MsW" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-2331" y="-800"/>
-        </scene>
-        <!--View Controller-->
-        <scene sceneID="1iC-Sr-tgI">
-            <objects>
-                <viewController storyboardIdentifier="loginViewController" id="Wfq-nL-XyX" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="fMT-eb-ckb"/>
-                        <viewControllerLayoutGuide type="bottom" id="EOD-hy-JHx"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="bMh-pM-Nuj">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <animations/>
-                        <color key="backgroundColor" red="0.60392156860000001" green="0.39607843139999999" blue="0.69411764710000001" alpha="1" colorSpace="calibratedRGB"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="y7Z-qR-1vd" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-2337" y="-34"/>
+            <point key="canvasLocation" x="-2337" y="-1080"/>
         </scene>
         <!--Tab Bar View Controller-->
         <scene sceneID="Hgp-fh-ifz">
