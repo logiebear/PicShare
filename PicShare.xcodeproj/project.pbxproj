@@ -27,6 +27,7 @@
 		0AE4D5BF1BF9955600893D03 /* SearchHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */; };
 		0AE4D5C11BF9956900893D03 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5C01BF9956900893D03 /* ProfileViewController.swift */; };
 		CACDB6812DCE9C2FF4BE0671 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986BF3E755B56746A6F724 /* Pods.framework */; };
+		E47253AC1C0A48AA00731901 /* TestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E47253AB1C0A48AA00731901 /* TestViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -77,6 +78,7 @@
 		2A9356C5D67042DB2D842FDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5635425CA4D08CF0D2D043C0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9C986BF3E755B56746A6F724 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E47253AB1C0A48AA00731901 /* TestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TestViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -207,6 +209,7 @@
 				0AE4D5BC1BF994FF00893D03 /* EventHomeViewController.swift */,
 				0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */,
 				0AE4D5C01BF9956900893D03 /* ProfileViewController.swift */,
+				E47253AB1C0A48AA00731901 /* TestViewController.swift */,
 				0ADAE6A71C07E72E00E8BADE /* Account */,
 			);
 			name = Controllers;
@@ -412,6 +415,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E47253AC1C0A48AA00731901 /* TestViewController.swift in Sources */,
 				0ADAE6AD1C09649500E8BADE /* Photo.swift in Sources */,
 				0ADAE6A91C09207E00E8BADE /* SignUpViewController.swift in Sources */,
 				0AE4D5BD1BF994FF00893D03 /* EventHomeViewController.swift in Sources */,
