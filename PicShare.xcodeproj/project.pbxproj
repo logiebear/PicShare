@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		0ABADAE11BF909BB001CB962 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADAE01BF909BB001CB962 /* AppDelegate.swift */; };
 		0ABADAE61BF909BB001CB962 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABADAE41BF909BB001CB962 /* Main.storyboard */; };
-		0ABADAE81BF909BB001CB962 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0ABADAE71BF909BB001CB962 /* Assets.xcassets */; };
 		0ABADAEB1BF909BB001CB962 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABADAE91BF909BB001CB962 /* LaunchScreen.storyboard */; };
 		0ABADAF61BF909BC001CB962 /* PicShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADAF51BF909BC001CB962 /* PicShareTests.swift */; };
 		0ABADB011BF909BC001CB962 /* PicShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADB001BF909BC001CB962 /* PicShareUITests.swift */; };
@@ -51,7 +50,6 @@
 		0ABADADD1BF909BB001CB962 /* PicShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABADAE01BF909BB001CB962 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0ABADAE51BF909BB001CB962 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		0ABADAE71BF909BB001CB962 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0ABADAEA1BF909BB001CB962 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0ABADAEC1BF909BC001CB962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0ABADAF11BF909BC001CB962 /* PicShareTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicShareTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,7 +134,6 @@
 				0ADAE6AA1C09647200E8BADE /* Models */,
 				0AE4D5B51BF9796E00893D03 /* Controllers */,
 				0ADB4BA11BFEBA6E00EA51F2 /* Categories */,
-				0ABADAE71BF909BB001CB962 /* Assets.xcassets */,
 				0ABADAE91BF909BB001CB962 /* LaunchScreen.storyboard */,
 				0ABADAEC1BF909BC001CB962 /* Info.plist */,
 			);
@@ -337,7 +334,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				0ABADAEB1BF909BB001CB962 /* LaunchScreen.storyboard in Resources */,
-				0ABADAE81BF909BB001CB962 /* Assets.xcassets in Resources */,
 				0ADAE6A41C07A5F700E8BADE /* Account.storyboard in Resources */,
 				0ABADAE61BF909BB001CB962 /* Main.storyboard in Resources */,
 			);
