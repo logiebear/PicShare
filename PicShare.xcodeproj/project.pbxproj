@@ -18,6 +18,8 @@
 		0ADAE6A91C09207E00E8BADE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6A81C09207E00E8BADE /* SignUpViewController.swift */; };
 		0ADAE6AD1C09649500E8BADE /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6AC1C09649500E8BADE /* Photo.swift */; };
 		0ADAE6AF1C09764900E8BADE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6AE1C09764900E8BADE /* Event.swift */; };
+		0ADAE6B11C0A697E00E8BADE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6B01C0A697E00E8BADE /* HomeViewController.swift */; };
+		0ADAE6B31C0BB06800E8BADE /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6B21C0BB06800E8BADE /* UploadPhotoViewController.swift */; };
 		0ADB4BA71BFEBDB400EA51F2 /* UIImage+EXIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB4BA61BFEBDB400EA51F2 /* UIImage+EXIF.m */; };
 		0ADB4BAC1BFEBFF800EA51F2 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB4BAB1BFEBFF800EA51F2 /* PhotoDetailViewController.swift */; };
 		0AE4D5B71BF9799700893D03 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5B61BF9799700893D03 /* RootViewController.swift */; };
@@ -65,6 +67,8 @@
 		0ADAE6A81C09207E00E8BADE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Controllers/SignUpViewController.swift; sourceTree = "<group>"; };
 		0ADAE6AC1C09649500E8BADE /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		0ADAE6AE1C09764900E8BADE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		0ADAE6B01C0A697E00E8BADE /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Controllers/HomeViewController.swift; sourceTree = "<group>"; };
+		0ADAE6B21C0BB06800E8BADE /* UploadPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UploadPhotoViewController.swift; path = Controllers/UploadPhotoViewController.swift; sourceTree = "<group>"; };
 		0ADB4BA51BFEBDB400EA51F2 /* UIImage+EXIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+EXIF.h"; path = "Categories/UIImage+EXIF.h"; sourceTree = "<group>"; };
 		0ADB4BA61BFEBDB400EA51F2 /* UIImage+EXIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+EXIF.m"; path = "Categories/UIImage+EXIF.m"; sourceTree = "<group>"; };
 		0ADB4BAB1BFEBFF800EA51F2 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoDetailViewController.swift; path = Controllers/PhotoDetailViewController.swift; sourceTree = "<group>"; };
@@ -203,6 +207,8 @@
 				0AE4D5B61BF9799700893D03 /* RootViewController.swift */,
 				0AE4D5B81BF97B0F00893D03 /* TabBarViewController.swift */,
 				0AE4D5BA1BF994D200893D03 /* PhotoHomeViewController.swift */,
+				0ADAE6B21C0BB06800E8BADE /* UploadPhotoViewController.swift */,
+				0ADAE6B01C0A697E00E8BADE /* HomeViewController.swift */,
 				0ADB4BAB1BFEBFF800EA51F2 /* PhotoDetailViewController.swift */,
 				0AE4D5BC1BF994FF00893D03 /* EventHomeViewController.swift */,
 				0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */,
@@ -416,7 +422,9 @@
 				0ADAE6A91C09207E00E8BADE /* SignUpViewController.swift in Sources */,
 				0AE4D5BD1BF994FF00893D03 /* EventHomeViewController.swift in Sources */,
 				0ADB4BA71BFEBDB400EA51F2 /* UIImage+EXIF.m in Sources */,
+				0ADAE6B31C0BB06800E8BADE /* UploadPhotoViewController.swift in Sources */,
 				0AE4D5B71BF9799700893D03 /* RootViewController.swift in Sources */,
+				0ADAE6B11C0A697E00E8BADE /* HomeViewController.swift in Sources */,
 				0AE4D5BB1BF994D200893D03 /* PhotoHomeViewController.swift in Sources */,
 				0AE4D5B91BF97B0F00893D03 /* TabBarViewController.swift in Sources */,
 				0AE4D5C11BF9956900893D03 /* ProfileViewController.swift in Sources */,

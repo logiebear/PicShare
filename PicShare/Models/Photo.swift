@@ -12,7 +12,8 @@ import Parse
 class Photo: PFObject {
 
     @NSManaged var image: PFFile
-    @NSManaged var owner: PFUser
+    @NSManaged var thumbnail: PFFile
+    @NSManaged var owner: PFUser?
     @NSManaged var event: Event?
     @NSManaged var location: PFGeoPoint?
     @NSManaged var descriptiveText: String?
@@ -24,7 +25,7 @@ class Photo: PFObject {
         }
     }
     
-    init(image: PFFile, owner: PFUser, event: Event?, location: PFGeoPoint?, descriptiveText: String?) {
+    init(image: PFFile, thumbnail: PFFile, owner: PFUser, event: Event?, location: PFGeoPoint?, descriptiveText: String?) {
         super.init()
         
         self.image = image
@@ -32,6 +33,10 @@ class Photo: PFObject {
         self.event = event
         self.location = location
         self.descriptiveText = descriptiveText
+    }
+    
+    override init() {
+        super.init()
     }
 }
 
