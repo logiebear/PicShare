@@ -9,10 +9,6 @@
 import UIKit
 import Parse
 
-let photoClassName = "Photo"
-let photoFileKey = "fullSizeFile"
-let thumbFileKey = "thumbSizeFile"
-
 class PhotoHomeViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!

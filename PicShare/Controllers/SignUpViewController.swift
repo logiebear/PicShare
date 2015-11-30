@@ -11,32 +11,28 @@ import Parse
 
 class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var signUpEmailInput: UITextField!
-    @IBOutlet weak var signUpUserNameInput: UITextField!
-    @IBOutlet weak var signUpPasswordInput: UITextField!
-    @IBOutlet weak var signUpConfirmPasswordInput: UITextField!
-
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordConfirmTextField: UITextField!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
     //MARK: - User Actions
     @IBAction func signUpSubmitButton(sender: UIButton) {
         //Check empty field or inconsistent passwords
-        if signUpEmailInput.text == nil || signUpUserNameInput.text == nil || signUpPasswordInput.text == nil || signUpConfirmPasswordInput.text == nil {
+        if emailTextField.text == nil || userNameTextField.text == nil || passwordTextField.text == nil || passwordConfirmTextField.text == nil {
             let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Please fill out all the fields!"
                 ])
             self.showErrorView(error)
         }
-        else if signUpPasswordInput.text! != signUpConfirmPasswordInput.text! {
+        else if passwordTextField.text! != passwordConfirmTextField.text! {
             let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Two passwords are different!"
                 ])
@@ -44,13 +40,14 @@ class SignUpViewController: UIViewController {
         }
         
         let user = PFUser()
-        user.email = signUpEmailInput.text
-        user.username = signUpUserNameInput.text
-        user.password = signUpPasswordInput.text
+        user.email = emailTextField.text
+        user.username = userNameTextField.text
+        user.password = passwordTextField.text
         user.signUpInBackgroundWithBlock { succeeded, error in
             if (succeeded) {
-                //The registration was successful
-                self.performSegueWithIdentifier("RegistrationSuccessful", sender: nil)
+                self.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    NSNotificationCenter.defaultCenter().postNotificationName(accountStatusChangedNotification, object: nil)
+                })
             } else if let error = error {
                 //Something bad has occurred
                 self.showErrorView(error)
@@ -66,7 +63,4 @@ class SignUpViewController: UIViewController {
         alertView.addAction(OKAction)
         self.presentViewController(alertView, animated: true, completion: nil)
     }
-    
-    
-
 }

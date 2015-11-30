@@ -9,6 +9,8 @@
 import UIKit
 import Parse
 
+let accountStatusChangedNotification = "AccountStatusChangedNotification"
+
 class RootViewController: UIViewController {
     
     @IBOutlet weak var containerView: UIView!
@@ -19,11 +21,18 @@ class RootViewController: UIViewController {
         // Do any additional setup after loading the view.
         displayCorrectHomeViewController()
         
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "displayCorrectHomeViewController", name: accountStatusChangedNotification, object: nil)
     }
     
     func displayCorrectHomeViewController() {
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("tabBarViewController") as! TabBarViewController
-        // TODO: DISPLAY CORRECT HOME SCREEN BASED ON IF USER IS LOGGED IN
+        let vc: UIViewController
+        if let user = PFUser.currentUser() where user.isAuthenticated() {
+            vc = storyboard?.instantiateViewControllerWithIdentifier("tabBarViewController") as! TabBarViewController
+        } else {
+            let accountStoryboard = UIStoryboard(name: "Account", bundle: nil)
+            vc = accountStoryboard.instantiateInitialViewController() as! LoginViewController
+        }
+
         displayViewController(vc)
     }
     

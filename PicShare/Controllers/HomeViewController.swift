@@ -13,7 +13,7 @@ class HomeViewController: UIViewController {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var takePhotoButton: UIButton!
-    var photoArray: [PFObject]?
+    var photoArray: [Photo]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,10 +29,13 @@ class HomeViewController: UIViewController {
     // MARK: - Private
     
     private func queryForAllPhotos() {
-        let query = PFQuery(className: photoClassName)
+        guard let query = Photo.query() else {
+            return
+        }
+        
         query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
-                self?.photoArray = objects
+                self?.photoArray = objects as? [Photo]
                 self?.collectionView.reloadData()
                 print("Photo query success. Number photos: \(objects?.count)")
             } else {
@@ -42,20 +45,6 @@ class HomeViewController: UIViewController {
     }
     
     // MARK: - User Actions
-    
-    @IBAction func cameraRollButtonPressed(sender: AnyObject) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .PhotoLibrary
-        presentViewController(picker, animated: true, completion: nil)
-    }
-    
-    @IBAction func takePhotoButtonPressed(sender: AnyObject) {
-        let picker = UIImagePickerController()
-        picker.delegate = self
-        picker.sourceType = .Camera
-        presentViewController(picker, animated: true, completion: nil)
-    }
     
     @IBAction func syncButtonPressed(sender: AnyObject) {
         queryForAllPhotos()
@@ -78,10 +67,21 @@ extension HomeViewController: UICollectionViewDataSource {
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
         if let imageView = cell.viewWithTag(1) as? UIImageView,
-            photoArray = photoArray,
-            userImageFile = photoArray[indexPath.item][thumbFileKey] as? PFFile
+            userNameLabel = cell.viewWithTag(2) as? UILabel,
+            descriptionLabel = cell.viewWithTag(3) as? UILabel,
+            photoArray = photoArray
         {
-            userImageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+            let photo = photoArray[indexPath.item]
+            let user = photo.owner
+            do {
+                try user?.fetchIfNeeded()
+            } catch let error as NSError {
+                print("error: \(error.localizedDescription)")
+            }
+            
+            userNameLabel.text = user?.username ?? "Unknown"
+            descriptionLabel.text = photo.descriptiveText ?? ""
+            photo.thumbnail.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
                 if error == nil {
                     if let imageData = imageData, image = UIImage(data: imageData) {
                         imageView.contentMode = .ScaleAspectFit
@@ -102,10 +102,9 @@ extension HomeViewController: UICollectionViewDataSource {
 extension HomeViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
-        if let photoArray = photoArray,
-            userImageFile = photoArray[indexPath.item][photoFileKey] as? PFFile
-        {
-            userImageFile.getDataInBackgroundWithBlock { [weak self](imageData: NSData?, error: NSError?) -> Void in
+        if let photoArray = photoArray {
+            let photo = photoArray[indexPath.item]
+            photo.image.getDataInBackgroundWithBlock { [weak self](imageData: NSData?, error: NSError?) -> Void in
                 if error == nil {
                     if let imageData = imageData, image = UIImage(data: imageData) {
                         vc.image = image
@@ -116,33 +115,5 @@ extension HomeViewController: UICollectionViewDelegate {
                 }
             }
         }
-    }
-}
-
-// MARK: - UIImagePickerControllerDelegate
-
-
-extension HomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
-    func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        print("Photo selected")
-        if let fullImage = image.scaleAndRotateImage(960),
-            thumbImage = image.scaleAndRotateImage(480),
-            fullImageData = UIImagePNGRepresentation(fullImage),
-            thumbImageData = UIImagePNGRepresentation(thumbImage)
-        {
-            let userPhoto = PFObject(className: photoClassName)
-            userPhoto[photoFileKey] = PFFile(name: "original.png", data: fullImageData)
-            userPhoto[thumbFileKey] = PFFile(name: "thumbnail.png", data: thumbImageData)
-            userPhoto.saveEventually()
-        } else {
-            print("Photo saving error")
-        }
-        dismissViewControllerAnimated(true) { [weak self]() -> Void in
-            self?.queryForAllPhotos()
-        }
-    }
-    
-    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
-        dismissViewControllerAnimated(true, completion: nil)
     }
 }

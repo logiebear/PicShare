@@ -45,14 +45,14 @@ class LoginViewController: UIViewController {
         
         PFUser.logInWithUsernameInBackground(loginUserNameInput.text!, password: loginPasswordInput.text!) { user, error in
             if user != nil {
-                self.performSegueWithIdentifier("LoginSuccessful", sender: nil)
+                NSNotificationCenter.defaultCenter().postNotificationName(accountStatusChangedNotification, object: nil)
             } else if let error = error {
                 self.showErrorView(error)
             }
         }
     }
     
-    //MARK: - Helper
+    // MARK: - Helper
     func showErrorView(error: NSError) {
         let alertView = UIAlertController(title: "Error",
             message: error.localizedDescription, preferredStyle: .Alert)

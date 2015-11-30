@@ -25,10 +25,18 @@ class Photo: PFObject {
         }
     }
     
+    override class func query() -> PFQuery? {
+        let query = PFQuery(className: Photo.parseClassName())
+        query.includeKey("owner")
+        query.orderByDescending("createdAt")
+        return query
+    }
+    
     init(image: PFFile, thumbnail: PFFile, owner: PFUser, event: Event?, location: PFGeoPoint?, descriptiveText: String?) {
         super.init()
         
         self.image = image
+        self.thumbnail = thumbnail
         self.owner = owner
         self.event = event
         self.location = location
