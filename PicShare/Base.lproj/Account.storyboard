@@ -164,10 +164,24 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jbr-cX-bUE">
+                                        <rect key="frame" x="15" y="15" width="46" height="30"/>
+                                        <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="oe9-iO-NKd"/>
+                                            <constraint firstAttribute="height" constant="30" id="ye3-6T-6Ar"/>
+                                        </constraints>
+                                        <state key="normal" title="Back"/>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="byS-QB-9fT" eventType="touchUpInside" id="lO3-w4-xfi"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <animations/>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.76470588240000004" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
+                                    <constraint firstItem="jbr-cX-bUE" firstAttribute="leading" secondItem="YCR-pv-Lo0" secondAttribute="leading" constant="15" id="5XS-c7-rce"/>
+                                    <constraint firstItem="jbr-cX-bUE" firstAttribute="top" secondItem="YCR-pv-Lo0" secondAttribute="top" constant="15" id="9Hu-Ed-dqQ"/>
                                     <constraint firstAttribute="height" constant="60" id="LTf-2I-zB1"/>
                                     <constraint firstItem="A7q-jF-GqB" firstAttribute="centerY" secondItem="YCR-pv-Lo0" secondAttribute="centerY" id="Ut7-fO-542"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="cMv-AF-kkt"/>

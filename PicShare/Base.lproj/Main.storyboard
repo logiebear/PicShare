@@ -149,9 +149,13 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUU-Su-nqE">
-                                        <rect key="frame" x="17" y="18" width="46" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="YUU-Su-nqE">
+                                        <rect key="frame" x="15" y="15" width="46" height="30"/>
                                         <animations/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="46" id="pWp-Li-KaS"/>
+                                            <constraint firstAttribute="height" constant="30" id="wen-r5-VHn"/>
+                                        </constraints>
                                         <state key="normal" title="Back"/>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="USF-Xn-IwV" eventType="touchUpInside" id="K5X-Iq-XXv"/>
@@ -163,6 +167,8 @@
                                 <constraints>
                                     <constraint firstItem="veS-aL-665" firstAttribute="centerX" secondItem="9aU-cb-lRb" secondAttribute="centerX" id="2rV-EN-ijB"/>
                                     <constraint firstAttribute="height" constant="60" id="JR4-k6-JG6"/>
+                                    <constraint firstItem="YUU-Su-nqE" firstAttribute="top" secondItem="9aU-cb-lRb" secondAttribute="top" constant="15" id="Tec-Zu-nza"/>
+                                    <constraint firstItem="YUU-Su-nqE" firstAttribute="leading" secondItem="9aU-cb-lRb" secondAttribute="leading" constant="15" id="V1z-Uv-BEo"/>
                                     <constraint firstItem="veS-aL-665" firstAttribute="centerY" secondItem="9aU-cb-lRb" secondAttribute="centerY" id="wPt-3D-lSK"/>
                                 </constraints>
                             </view>

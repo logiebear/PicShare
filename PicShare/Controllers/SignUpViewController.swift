@@ -23,7 +23,12 @@ class SignUpViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
 
-    //MARK: - User Actions
+    // MARK: - User Actions
+    
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func signUpSubmitButton(sender: UIButton) {
         //Check empty field or inconsistent passwords
         if emailTextField.text == nil || userNameTextField.text == nil || passwordTextField.text == nil || passwordConfirmTextField.text == nil {
