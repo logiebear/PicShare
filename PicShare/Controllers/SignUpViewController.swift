@@ -43,14 +43,15 @@ class SignUpViewController: UIViewController {
         user.email = emailTextField.text
         user.username = userNameTextField.text
         user.password = passwordTextField.text
-        user.signUpInBackgroundWithBlock { succeeded, error in
-            if (succeeded) {
-                self.dismissViewControllerAnimated(true, completion: { () -> Void in
-                    NSNotificationCenter.defaultCenter().postNotificationName(accountStatusChangedNotification, object: nil)
+        user.signUpInBackgroundWithBlock { [weak self](succeeded, error) in
+            if succeeded {
+                self?.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    let nc = NSNotificationCenter.defaultCenter()
+                    nc.postNotificationName(accountStatusChangedNotification, object: nil)
                 })
             } else if let error = error {
-                //Something bad has occurred
-                self.showErrorView(error)
+                // Something bad has occurred
+                self?.showErrorView(error)
             }
         }
     }

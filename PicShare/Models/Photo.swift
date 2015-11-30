@@ -32,7 +32,8 @@ class Photo: PFObject {
         return query
     }
     
-    init(image: PFFile, thumbnail: PFFile, owner: PFUser, event: Event?, location: PFGeoPoint?, descriptiveText: String?) {
+    init(image: PFFile, thumbnail: PFFile, owner: PFUser,
+        event: Event?, location: PFGeoPoint?, descriptiveText: String?) {
         super.init()
         
         self.image = image
