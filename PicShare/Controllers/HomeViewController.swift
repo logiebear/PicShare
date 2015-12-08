@@ -18,11 +18,6 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        // Do any additional setup after loading the view.
-        if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
-            takePhotoButton.hidden = true
-        }
-        
         queryForAllPhotos()
     }
     
