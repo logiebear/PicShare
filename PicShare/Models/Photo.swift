@@ -12,7 +12,8 @@ import Parse
 class Photo: PFObject {
 
     @NSManaged var image: PFFile
-    @NSManaged var owner: PFUser
+    @NSManaged var thumbnail: PFFile
+    @NSManaged var owner: PFUser?
     @NSManaged var event: Event?
     @NSManaged var location: PFGeoPoint?
     @NSManaged var descriptiveText: String?
@@ -24,14 +25,27 @@ class Photo: PFObject {
         }
     }
     
-    init(image: PFFile, owner: PFUser, event: Event?, location: PFGeoPoint?, descriptiveText: String?) {
+    override class func query() -> PFQuery? {
+        let query = PFQuery(className: Photo.parseClassName())
+        query.includeKey("owner")
+        query.orderByDescending("createdAt")
+        return query
+    }
+    
+    init(image: PFFile, thumbnail: PFFile, owner: PFUser,
+        event: Event?, location: PFGeoPoint?, descriptiveText: String?) {
         super.init()
         
         self.image = image
+        self.thumbnail = thumbnail
         self.owner = owner
         self.event = event
         self.location = location
         self.descriptiveText = descriptiveText
+    }
+    
+    override init() {
+        super.init()
     }
 }
 

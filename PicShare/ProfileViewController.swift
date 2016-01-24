@@ -7,9 +7,10 @@
 //
 
 import UIKit
+import Parse
 
 class ProfileViewController: UIViewController {
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -17,4 +18,9 @@ class ProfileViewController: UIViewController {
       print("Hello")
     }
 
+    @IBAction func logoutButtonPressed(sender: AnyObject) {
+        PFUser.logOut()
+        NSNotificationCenter.defaultCenter().postNotificationName(accountStatusChangedNotification, object: nil)
+    }
+    
 }
