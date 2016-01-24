@@ -68,11 +68,7 @@ extension HomeViewController: UICollectionViewDataSource {
         {
             let photo = photoArray[indexPath.item]
             let user = photo.owner
-            do {
-                try user?.fetchIfNeeded()
-            } catch let error as NSError {
-                print("error: \(error.localizedDescription)")
-            }
+            user?.fetchIfNeededInBackground()
             
             userNameLabel.text = user?.username ?? "Unknown"
             descriptionLabel.text = photo.descriptiveText ?? ""
