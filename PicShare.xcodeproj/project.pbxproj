@@ -26,6 +26,8 @@
 		0AE4D5BF1BF9955600893D03 /* SearchHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */; };
 		0AE4D5C11BF9956900893D03 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5C01BF9956900893D03 /* ProfileViewController.swift */; };
 		CACDB6812DCE9C2FF4BE0671 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986BF3E755B56746A6F724 /* Pods.framework */; };
+		E4B31FF81C5591690098C5F0 /* ProfilePhoto.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B31FF71C5591690098C5F0 /* ProfilePhoto.swift */; };
+		E4B31FFE1C5598790098C5F0 /* ProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4B31FFD1C5598790098C5F0 /* ProfilePhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -75,6 +77,8 @@
 		2A9356C5D67042DB2D842FDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5635425CA4D08CF0D2D043C0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9C986BF3E755B56746A6F724 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E4B31FF71C5591690098C5F0 /* ProfilePhoto.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePhoto.swift; sourceTree = "<group>"; };
+		E4B31FFD1C5598790098C5F0 /* ProfilePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -163,6 +167,7 @@
 			children = (
 				0ADAE6A51C07E72A00E8BADE /* LoginViewController.swift */,
 				0ADAE6A81C09207E00E8BADE /* SignUpViewController.swift */,
+				E4B31FFD1C5598790098C5F0 /* ProfilePhotoViewController.swift */,
 			);
 			name = Account;
 			sourceTree = "<group>";
@@ -172,6 +177,7 @@
 			children = (
 				0ADAE6AC1C09649500E8BADE /* Photo.swift */,
 				0ADAE6AE1C09764900E8BADE /* Event.swift */,
+				E4B31FF71C5591690098C5F0 /* ProfilePhoto.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -408,10 +414,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				E4B31FFE1C5598790098C5F0 /* ProfilePhotoViewController.swift in Sources */,
 				0ADAE6AD1C09649500E8BADE /* Photo.swift in Sources */,
 				0ADAE6A91C09207E00E8BADE /* SignUpViewController.swift in Sources */,
 				0AE4D5BD1BF994FF00893D03 /* EventHomeViewController.swift in Sources */,
 				0ADB4BA71BFEBDB400EA51F2 /* UIImage+EXIF.m in Sources */,
+				E4B31FF81C5591690098C5F0 /* ProfilePhoto.swift in Sources */,
 				0AE4D5B71BF9799700893D03 /* RootViewController.swift in Sources */,
 				0AE4D5BB1BF994D200893D03 /* PhotoHomeViewController.swift in Sources */,
 				0AE4D5B91BF97B0F00893D03 /* TabBarViewController.swift in Sources */,
