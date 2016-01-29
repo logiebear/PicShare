@@ -9,12 +9,15 @@
 import UIKit
 import Parse
 
+
 class SignUpViewController: UIViewController {
 
     @IBOutlet weak var signUpEmailInput: UITextField!
     @IBOutlet weak var signUpUserNameInput: UITextField!
     @IBOutlet weak var signUpPasswordInput: UITextField!
     @IBOutlet weak var signUpConfirmPasswordInput: UITextField!
+    var toPass: UIImage?
+    var profilePhoto: Photo?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,10 +46,27 @@ class SignUpViewController: UIViewController {
             self.showErrorView(error)
         }
         
-        let user = PFUser()
-        user.email = signUpEmailInput.text
-        user.username = signUpUserNameInput.text
-        user.password = signUpPasswordInput.text
+        
+        let user = User(email: signUpEmailInput.text!, username: signUpUserNameInput.text!, password: signUpPasswordInput.text!, profilePhoto: nil)
+        //Add profile photo
+        if toPass != nil {
+            if let fullImage = toPass!.scaleAndRotateImage(960),
+                thumbImage = toPass!.scaleAndRotateImage(480),
+                fullImageData = UIImagePNGRepresentation(fullImage),
+                thumbImageData = UIImagePNGRepresentation(thumbImage)
+            {
+                let userPhoto = PFObject(className: photoClassName)
+                userPhoto[photoFileKey] = PFFile(name: "original.png", data: fullImageData)
+                userPhoto[thumbFileKey] = PFFile(name: "thumbnail.png", data: thumbImageData)
+                userPhoto.saveEventually()
+                profilePhoto = Photo(image: PFFile(name: "original.png", data: fullImageData)!, owner: user, event: nil, location: nil, descriptiveText: nil)
+                profilePhoto!.saveEventually()
+                user.profilePhoto = profilePhoto
+            } else {
+                print("Profile Photo saving error")
+            }
+            
+        }
         user.signUpInBackgroundWithBlock { succeeded, error in
             if (succeeded) {
                 //The registration was successful
