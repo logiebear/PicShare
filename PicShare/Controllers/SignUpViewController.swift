@@ -11,46 +11,46 @@ import Parse
 
 let photoClassName = "Photo"
 let photoFileKey = "fullSizeFile"
-
 let thumbFileKey = "thumbSizeFile"
-class SignUpViewController: UIViewController {
 
-    @IBOutlet weak var signUpEmailInput: UITextField!
-    @IBOutlet weak var signUpUserNameInput: UITextField!
-    @IBOutlet weak var signUpPasswordInput: UITextField!
-    @IBOutlet weak var signUpConfirmPasswordInput: UITextField!
+class SignUpViewController: UIViewController {
+    
+    @IBOutlet weak var emailTextField: UITextField!
+    @IBOutlet weak var userNameTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var passwordConfirmTextField: UITextField!
     var toPass: UIImage?
     var profilePhoto: Photo?
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Do any additional setup after loading the view.
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    
+    // MARK: - User Actions
+    
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
-    //MARK: - User Actions
     @IBAction func signUpSubmitButton(sender: UIButton) {
         //Check empty field or inconsistent passwords
-        if signUpEmailInput.text == nil || signUpUserNameInput.text == nil || signUpPasswordInput.text == nil || signUpConfirmPasswordInput.text == nil {
+        if emailTextField.text == nil || userNameTextField.text == nil || passwordTextField.text == nil || passwordConfirmTextField.text == nil {
             let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Please fill out all the fields!"
                 ])
             self.showErrorView(error)
         }
-        else if signUpPasswordInput.text! != signUpConfirmPasswordInput.text! {
+        else if passwordTextField.text! != passwordConfirmTextField.text! {
             let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Two passwords are different!"
                 ])
             self.showErrorView(error)
         }
         
-        
-        let user = User(email: signUpEmailInput.text!, username: signUpUserNameInput.text!, password: signUpPasswordInput.text!, profilePhoto: nil)
+        let user = User(email: emailTextField.text!, username: userNameTextField.text!, password: passwordTextField.text!, profilePhoto: nil)
         //Add profile photo
         if toPass != nil {
             if let fullImage = toPass!.scaleAndRotateImage(960),
@@ -70,13 +70,16 @@ class SignUpViewController: UIViewController {
             }
             
         }
-        user.signUpInBackgroundWithBlock { succeeded, error in
-            if (succeeded) {
-                //The registration was successful
-                self.performSegueWithIdentifier("RegistrationSuccessful", sender: nil)
+
+        user.signUpInBackgroundWithBlock { [weak self](succeeded, error) in
+            if succeeded {
+                self?.dismissViewControllerAnimated(true, completion: { () -> Void in
+                    let nc = NSNotificationCenter.defaultCenter()
+                    nc.postNotificationName(accountStatusChangedNotification, object: nil)
+                })
             } else if let error = error {
-                //Something bad has occurred
-                self.showErrorView(error)
+                // Something bad has occurred
+                self?.showErrorView(error)
             }
         }
     }
@@ -89,7 +92,4 @@ class SignUpViewController: UIViewController {
         alertView.addAction(OKAction)
         self.presentViewController(alertView, animated: true, completion: nil)
     }
-    
-    
-
 }

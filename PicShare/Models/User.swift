@@ -28,4 +28,8 @@ class User: PFUser {
         self.password = password
         self.profilePhoto = profilePhoto
     }
+    
+    override init() {
+        super.init()
+    }
 }

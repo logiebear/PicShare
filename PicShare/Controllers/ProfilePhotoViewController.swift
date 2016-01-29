@@ -27,6 +27,10 @@ class ProfilePhotoViewController: UIViewController, UINavigationControllerDelega
     }
     
     //MARK: - User Actions
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func selectProfilePhoto(sender: UIButton) {
         let selector = UIImagePickerController()
         selector.delegate = self
@@ -45,12 +49,7 @@ class ProfilePhotoViewController: UIViewController, UINavigationControllerDelega
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let svc = segue.destinationViewController as! SignUpViewController
-        if segue.identifier == "NoProfilePhoto" {
-            svc.toPass = nil
-        }
-        else {
-            svc.toPass = profilePhotoPreview.image
-        }
+        svc.toPass = profilePhotoPreview.image
     }
     
     
