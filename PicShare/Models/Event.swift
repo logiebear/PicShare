@@ -23,6 +23,14 @@ class Event: PFObject {
         }
     }
     
+    override func isEqual(object: AnyObject?) -> Bool {
+        if let object = object as? Event {
+            return hashtag == object.hashtag
+        } else {
+            return false
+        }
+    }
+    
 }
 
 extension Event: PFSubclassing {
