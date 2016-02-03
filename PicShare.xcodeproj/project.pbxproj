@@ -16,7 +16,6 @@
 		0ADAE6A61C07E72A00E8BADE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6A51C07E72A00E8BADE /* LoginViewController.swift */; };
 		0ADAE6A91C09207E00E8BADE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6A81C09207E00E8BADE /* SignUpViewController.swift */; };
 		0ADAE6AD1C09649500E8BADE /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6AC1C09649500E8BADE /* Photo.swift */; };
-		0ADAE6AF1C09764900E8BADE /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6AE1C09764900E8BADE /* Event.swift */; };
 		0ADAE6B11C0A697E00E8BADE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6B01C0A697E00E8BADE /* HomeViewController.swift */; };
 		0ADAE6B31C0BB06800E8BADE /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6B21C0BB06800E8BADE /* UploadPhotoViewController.swift */; };
 		0ADB4BA71BFEBDB400EA51F2 /* UIImage+EXIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB4BA61BFEBDB400EA51F2 /* UIImage+EXIF.m */; };
@@ -27,6 +26,8 @@
 		0AE4D5BD1BF994FF00893D03 /* EventHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BC1BF994FF00893D03 /* EventHomeViewController.swift */; };
 		0AE4D5BF1BF9955600893D03 /* SearchHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */; };
 		0AE4D5C11BF9956900893D03 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5C01BF9956900893D03 /* ProfileViewController.swift */; };
+		6AFDC58F1C5C459E0089598C /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDC58E1C5C459E0089598C /* Event.swift */; };
+		6AFDC5941C5C54350089598C /* CreateEventController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDC5931C5C54350089598C /* CreateEventController.swift */; };
 		CACDB6812DCE9C2FF4BE0671 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986BF3E755B56746A6F724 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -64,7 +65,6 @@
 		0ADAE6A51C07E72A00E8BADE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		0ADAE6A81C09207E00E8BADE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Controllers/SignUpViewController.swift; sourceTree = "<group>"; };
 		0ADAE6AC1C09649500E8BADE /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		0ADAE6AE1C09764900E8BADE /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
 		0ADAE6B01C0A697E00E8BADE /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Controllers/HomeViewController.swift; sourceTree = "<group>"; };
 		0ADAE6B21C0BB06800E8BADE /* UploadPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UploadPhotoViewController.swift; path = Controllers/UploadPhotoViewController.swift; sourceTree = "<group>"; };
 		0ADB4BA51BFEBDB400EA51F2 /* UIImage+EXIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+EXIF.h"; path = "Categories/UIImage+EXIF.h"; sourceTree = "<group>"; };
@@ -78,6 +78,8 @@
 		0AE4D5C01BF9956900893D03 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		2A9356C5D67042DB2D842FDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5635425CA4D08CF0D2D043C0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		6AFDC58E1C5C459E0089598C /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
+		6AFDC5931C5C54350089598C /* CreateEventController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventController.swift; sourceTree = "<group>"; };
 		9C986BF3E755B56746A6F724 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -175,7 +177,7 @@
 			isa = PBXGroup;
 			children = (
 				0ADAE6AC1C09649500E8BADE /* Photo.swift */,
-				0ADAE6AE1C09764900E8BADE /* Event.swift */,
+				6AFDC58E1C5C459E0089598C /* Event.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -201,6 +203,7 @@
 		0AE4D5B51BF9796E00893D03 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				6AFDC5901C5C4A640089598C /* Event */,
 				0AE4D5B61BF9799700893D03 /* RootViewController.swift */,
 				0AE4D5B81BF97B0F00893D03 /* TabBarViewController.swift */,
 				0AE4D5BA1BF994D200893D03 /* PhotoHomeViewController.swift */,
@@ -222,6 +225,14 @@
 				2A9356C5D67042DB2D842FDB /* Pods.release.xcconfig */,
 			);
 			name = Pods;
+			sourceTree = "<group>";
+		};
+		6AFDC5901C5C4A640089598C /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				6AFDC5931C5C54350089598C /* CreateEventController.swift */,
+			);
+			name = Event;
 			sourceTree = "<group>";
 		};
 		E75C50575B26629CAA942EE7 /* Frameworks */ = {
@@ -414,10 +425,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6AFDC5941C5C54350089598C /* CreateEventController.swift in Sources */,
 				0ADAE6AD1C09649500E8BADE /* Photo.swift in Sources */,
 				0ADAE6A91C09207E00E8BADE /* SignUpViewController.swift in Sources */,
 				0AE4D5BD1BF994FF00893D03 /* EventHomeViewController.swift in Sources */,
 				0ADB4BA71BFEBDB400EA51F2 /* UIImage+EXIF.m in Sources */,
+				6AFDC58F1C5C459E0089598C /* Event.swift in Sources */,
 				0ADAE6B31C0BB06800E8BADE /* UploadPhotoViewController.swift in Sources */,
 				0AE4D5B71BF9799700893D03 /* RootViewController.swift in Sources */,
 				0ADAE6B11C0A697E00E8BADE /* HomeViewController.swift in Sources */,
@@ -428,7 +441,6 @@
 				0ADB4BAC1BFEBFF800EA51F2 /* PhotoDetailViewController.swift in Sources */,
 				0ADAE6A61C07E72A00E8BADE /* LoginViewController.swift in Sources */,
 				0AE4D5BF1BF9955600893D03 /* SearchHomeViewController.swift in Sources */,
-				0ADAE6AF1C09764900E8BADE /* Event.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
