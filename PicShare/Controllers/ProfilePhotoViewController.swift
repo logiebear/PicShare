@@ -14,7 +14,6 @@ class ProfilePhotoViewController: UIViewController, UINavigationControllerDelega
     @IBOutlet weak var profilePhotoPreview: UIImageView!
     var profilePhoto: UIImage?
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
