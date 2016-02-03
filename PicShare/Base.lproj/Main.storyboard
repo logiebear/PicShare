@@ -361,22 +361,28 @@
                                     <action selector="closeButtonPressed:" destination="MUh-FL-oeF" eventType="touchUpInside" id="u1y-qy-o2H"/>
                                 </connections>
                             </button>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HbX-y6-D5G">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="HbX-y6-D5G" customClass="PFImageView">
                                 <rect key="frame" x="0.0" y="58" width="600" height="542"/>
                             </imageView>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UM7-zn-lbf">
+                                <rect key="frame" x="290" y="290" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZKD-L2-8rU" firstAttribute="top" secondItem="HbX-y6-D5G" secondAttribute="bottom" id="434-Dc-wWh"/>
                             <constraint firstItem="HbX-y6-D5G" firstAttribute="top" secondItem="lXg-eI-Dh6" secondAttribute="bottom" constant="8" id="8Ln-Wv-JpM"/>
+                            <constraint firstItem="UM7-zn-lbf" firstAttribute="centerX" secondItem="nQE-51-I1k" secondAttribute="centerX" id="KaF-7s-wNt"/>
                             <constraint firstAttribute="trailing" secondItem="HbX-y6-D5G" secondAttribute="trailing" id="OTc-9S-3gu"/>
                             <constraint firstAttribute="trailing" secondItem="lXg-eI-Dh6" secondAttribute="trailing" constant="20" id="Uj7-7r-w60"/>
                             <constraint firstItem="HbX-y6-D5G" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leading" id="Vl4-r6-tfv"/>
+                            <constraint firstItem="UM7-zn-lbf" firstAttribute="centerY" secondItem="nQE-51-I1k" secondAttribute="centerY" id="XVM-Rr-kHt"/>
                             <constraint firstItem="lXg-eI-Dh6" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" id="kXQ-AJ-kZ7"/>
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="imageView" destination="HbX-y6-D5G" id="05K-EM-P7Z"/>
+                        <outlet property="activityIndicator" destination="UM7-zn-lbf" id="fZO-Da-ieZ"/>
+                        <outlet property="pfImageView" destination="HbX-y6-D5G" id="POW-KJ-rxc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0T-2S-sSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -539,7 +545,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="300" height="400"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YQ9-lp-jX6">
+                                                <imageView userInteractionEnabled="NO" tag="1" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="YQ9-lp-jX6" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="300" height="300"/>
                                                 </imageView>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Username" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="80" translatesAutoresizingMaskIntoConstraints="NO" id="x28-OS-k6e">

@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import ParseUI
 
 class HomeViewController: UIViewController {
     
@@ -61,7 +62,7 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-        if let imageView = cell.viewWithTag(1) as? UIImageView,
+        if let pfImageView = cell.viewWithTag(1) as? PFImageView,
             userNameLabel = cell.viewWithTag(2) as? UILabel,
             descriptionLabel = cell.viewWithTag(3) as? UILabel,
             photoArray = photoArray
@@ -72,16 +73,8 @@ extension HomeViewController: UICollectionViewDataSource {
             
             userNameLabel.text = user?.username ?? "Unknown"
             descriptionLabel.text = photo.descriptiveText ?? ""
-            photo.thumbnail.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
-                if error == nil {
-                    if let imageData = imageData, image = UIImage(data: imageData) {
-                        imageView.contentMode = .ScaleAspectFit
-                        imageView.image = image
-                    }
-                } else {
-                    print("Error: \(error!) \(error!.userInfo)")
-                }
-            }
+            pfImageView.file = photo.thumbnail
+            pfImageView.loadInBackground()
         }
         
         return cell
@@ -95,16 +88,8 @@ extension HomeViewController: UICollectionViewDelegate {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
         if let photoArray = photoArray {
             let photo = photoArray[indexPath.item]
-            photo.image.getDataInBackgroundWithBlock { [weak self](imageData: NSData?, error: NSError?) -> Void in
-                if error == nil {
-                    if let imageData = imageData, image = UIImage(data: imageData) {
-                        vc.image = image
-                    }
-                    self?.presentViewController(vc, animated: true, completion: nil)
-                } else {
-                    print("Error: \(error!) \(error!.userInfo)")
-                }
-            }
+            vc.file = photo.image
+            presentViewController(vc, animated: true, completion: nil)
         }
     }
 }
