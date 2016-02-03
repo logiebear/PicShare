@@ -2,6 +2,11 @@
 //  SearchLocationViewController.swift
 //  PicShare
 //
+//  how-to
+//  1. get current location
+//  2. get photo array
+//  3. get photos around current location
+//  4. display them
 //  Created by Yuan on 11/28/15.
 //  Copyright © 2015 USC. All rights reserved.
 //
@@ -13,76 +18,53 @@ import Parse
 let photoClassName = "Photo"
 let photoFileKey = "fullSizeFile"
 let thumbFileKey = "thumbSizeFile"
+let locationManager = CLLocationManager()
+var didRequestLocation = false
+var myPoint: PFGeoPoint?
+var home: Bool = true
+var block: Bool = false
+var city: Bool = false
+
 
 class SearchLocationViewController: UIViewController {
   
     @IBOutlet weak var segmentedControl: UISegmentedControl!
     @IBOutlet weak var locationCollectionView: UICollectionView!
-    var locationPhotoArray: [PFObject]?
-    //var myPoint: PFGeoPoint?
-    let point = PFGeoPoint(latitude:40.0, longitude:-30.0)
-  
+    var locationPhotoArray: [Photo]?
+    var photoArray = [Photo]?()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         locationCollectionView.hidden = false
         //Do any additional setup after loading the view
-//        queryForAllPhotos()
-        //get user's current location
-//        PFGeoPoint.geoPointForCurrentLocationInBackground {
-//            (geoPoint: PFGeoPoint?, error:NSError?) -> Void in
-//            if error == nil {
-//                //do something with the new geoPoint
-//                self.myPoint = geoPoint
-//            }
-//        }
+        let status = CLLocationManager.authorizationStatus()
+        if status == .Denied || status == .Restricted {
+            showAlert("Location Services Disabled", message: "Please go to your device settings to enable location services.")
+        } else {
+            PFGeoPoint.geoPointForCurrentLocationInBackground { (geoPoint: PFGeoPoint?, error: NSError?) -> Void in
+                myPoint = geoPoint
+            }
+        }
+        queryForAllPhotos()
+
     }
   
     private func queryForAllPhotos() {
-        // User's location
-        //let userGeoPoint = point                                  //myPoint
-    
         let query = PFQuery(className: photoClassName)
-        let nearQuery = PFQuery(className: "PlaceObject")
+//        let nearQuery = PFQuery(className: "PlaceObject")
 
-//        query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
-//            if error == nil {
-//                self?.locationPhotoArray = objects
-//                self?.locationPhotoArray![0]["location"] = self!.point
-//                self?.locationPhotoArray![1]["location"] = self!.point
-//                //self?.locationCollectionView.reloadData()
-//                print("Photo query success. Number photos: \(objects?.count)")
-//            } else {
-//                print("Error: \(error!) \(error!.userInfo)")
-//            }
-//            
-//        }
-
-        do {
-            try locationPhotoArray = query.findObjects()
-            print("Photo query success. Number photos: \(locationPhotoArray?.count)")
-        } catch let error as NSError {
-            print("Error: \(error)")
+        query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
+            if error == nil {
+                self?.locationPhotoArray = objects as? [Photo]
+                self?.locationCollectionView.reloadData()
+                print("Photo query success. Number photos: \(objects?.count)")
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
         }
-    
-        locationPhotoArray![0]["location"] = point
-        locationPhotoArray![1]["location"] = point
-    
-        let userGeoPoint = locationPhotoArray![0]["location"] as! PFGeoPoint
 
-        // Interested in locations near user.
-        nearQuery.whereKey("location", nearGeoPoint:userGeoPoint) //"!" for myPoint
-        // Limit what could be a lot of points.
-        nearQuery.limit = 1
-        // Final list of objects
-        do {
-            try locationPhotoArray = nearQuery.findObjects()
-            print("Location Photo query success. Number photos: \(locationPhotoArray?.count)")
-            print("User try to find near photos")
-        } catch let error as NSError {
-            print("Error: \(error)")
-        }
-        locationCollectionView.reloadData()
     }
+
     
     // MARK: - User Actions
   
@@ -90,16 +72,48 @@ class SearchLocationViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
   
-    @IBAction func segmentSwitch(sender: AnyObject) {
+    @IBAction func segmentSwitch(sender: UISegmentedControl) {
+        print("Segment changed: \(sender.selectedSegmentIndex)")
         if segmentedControl.selectedSegmentIndex == 0 {
-            locationCollectionView.hidden = false
+            toHome()
+            queryForAllPhotos()
         } else if segmentedControl.selectedSegmentIndex == 1 {
-            locationCollectionView.hidden = true
+            toBlock()
+            queryForAllPhotos()
         } else {
-            locationCollectionView.hidden = true
+            toCity()
+            queryForAllPhotos()
         }
     }
+    
+    func showAlert(title: String, message: String) {
+        let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertView.addAction(okAction)
+        presentViewController(alertView, animated: true, completion: nil)
+    }
+    
+    func toHome() {
+        home = true
+        block = false
+        city = false
+    }
+    
+    func toBlock() {
+        home = false
+        block = true
+        city = false
+    }
+    
+    func toCity() {
+        home = false
+        block = false
+        city = true
+    }
 }
+
+
+
 
 // MARK: - UICollectionViewDataSource
 
@@ -109,30 +123,68 @@ extension SearchLocationViewController: UICollectionViewDataSource {
     }
   
     func collectionView(locationCollectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        if let photoArray = locationPhotoArray {
-            return photoArray.count
+        if let locationPhotoArray = locationPhotoArray {
+            return locationPhotoArray.count
         }
         return 0
     }
     
     func collectionView(locationCollectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
+        
         let cell = locationCollectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-        if let imageView = cell.viewWithTag(1) as? UIImageView,
-            photoArray = locationPhotoArray,
-            userImageFile = photoArray[indexPath.item][thumbFileKey] as? PFFile
+        if let  locationPhotoArray = locationPhotoArray
         {
-            userImageFile.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
-                if error == nil {
-                    if let imageData = imageData, image = UIImage(data: imageData) {
-                        imageView.contentMode = .ScaleAspectFit
-                        imageView.image = image
+            let photo = locationPhotoArray[indexPath.item]
+            let location = photo.location
+            if ((area() - distance(location!, currentLocation: myPoint!)) > 0) {
+                photoArray?.append(photo)
+                print("the current photo array has \(photoArray?.count)")
+            }
+        }
+
+        if let imageView = cell.viewWithTag(1) as? UIImageView,
+            locationPhotoArray = locationPhotoArray
+        {
+            let photo = locationPhotoArray[indexPath.item]
+            let user = photo.owner
+            let location = photo.location
+            user?.fetchIfNeededInBackground()
+            print("photo's location info \(location)")
+            print("my current location is \(myPoint)")
+            print("setted distance is \(area())")
+            print(distance(location!, currentLocation: myPoint!))
+
+            if ((area() - distance(location!, currentLocation: myPoint!)) > 0) {
+                photo.thumbnail.getDataInBackgroundWithBlock { (imageData: NSData?, error: NSError?) -> Void in
+                    if error == nil {
+                        if let imageData = imageData, image = UIImage(data: imageData) {
+                            imageView.contentMode = .ScaleAspectFit
+                            imageView.image = image
+                        }
+                    } else {
+                        print("Error: \(error!) \(error!.userInfo)")
                     }
-                } else {
-                    print("Error: \(error!) \(error!.userInfo)")
                 }
             }
         }
+        
         return cell
+    }
+    
+    func distance(location: PFGeoPoint, currentLocation: PFGeoPoint) -> Double {
+        var distance: Double
+        distance = sqrt((location.longitude - currentLocation.longitude)*(location.longitude - currentLocation.longitude)+(location.latitude - currentLocation.latitude)*(location.latitude - currentLocation.latitude))
+        return distance
+    }
+    
+    func area() -> Double {
+        if(home){
+            return 0.00001
+        }else if (block){
+            return 0.01
+        }else{
+            return 1000
+        }
     }
 }
 
@@ -141,8 +193,8 @@ extension SearchLocationViewController: UICollectionViewDataSource {
 extension SearchLocationViewController: UICollectionViewDelegate {
     func collectionView(locationCollectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
-        if let photoArray = locationPhotoArray,
-            userImageFile = photoArray[indexPath.item][photoFileKey] as? PFFile
+        if let locationPhotoArray = locationPhotoArray,
+            userImageFile = locationPhotoArray[indexPath.item][photoFileKey] as? PFFile
         {
             userImageFile.getDataInBackgroundWithBlock { [weak self](imageData: NSData?, error: NSError?) -> Void in
                 if error == nil {
@@ -182,5 +234,18 @@ extension SearchLocationViewController: UIImagePickerControllerDelegate, UINavig
   
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+}
+
+// MARK: - CLLocationManagerDelegate
+
+extension SearchLocationViewController: CLLocationManagerDelegate {
+    func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
+        if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
+            manager.startUpdatingLocation()
+            if didRequestLocation {
+                // TODO: Figure out what to do
+            }
+        }
     }
 }
