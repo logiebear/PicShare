@@ -199,7 +199,7 @@ extension SearchLocationViewController: UICollectionViewDelegate {
             userImageFile.getDataInBackgroundWithBlock { [weak self](imageData: NSData?, error: NSError?) -> Void in
                 if error == nil {
                     if let imageData = imageData, image = UIImage(data: imageData) {
-                        vc.image = image
+                        vc.pfImageView.image = image
                     }
                     self?.presentViewController(vc, animated: true, completion: nil)
                 } else {
