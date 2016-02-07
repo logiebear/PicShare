@@ -196,20 +196,6 @@
                                     <constraint firstAttribute="height" constant="182" id="NoG-EZ-rQt"/>
                                 </constraints>
                             </view>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R4F-Ce-DYM">
-                                <rect key="frame" x="273" y="258" width="55" height="30"/>
-                                <state key="normal" title="Sign Up"/>
-                                <connections>
-                                    <action selector="signUpSubmitButton:" destination="byS-QB-9fT" eventType="touchUpInside" id="ZcG-27-sap"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAj-rX-VAR">
-                                <rect key="frame" x="243" y="220" width="115" height="30"/>
-                                <state key="normal" title="Set Profile Photo"/>
-                                <connections>
-                                    <segue destination="7AA-Kh-eOa" kind="show" id="48W-LV-kG7"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YCR-pv-Lo0" userLabel="View - Header">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <subviews>
@@ -246,30 +232,34 @@
                                     <constraint firstItem="A7q-jF-GqB" firstAttribute="centerX" secondItem="YCR-pv-Lo0" secondAttribute="centerX" id="yJg-5b-ZRw"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="IAj-rX-VAR">
+                                <rect key="frame" x="285" y="245" width="30" height="30"/>
+                                <state key="normal" title="Go"/>
+                                <connections>
+                                    <action selector="goButton:" destination="byS-QB-9fT" eventType="touchUpInside" id="FgR-mI-L8i"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="R4F-Ce-DYM" firstAttribute="height" secondItem="P2u-Zy-InM" secondAttribute="height" id="HHb-C2-g89"/>
-                            <constraint firstItem="R4F-Ce-DYM" firstAttribute="centerX" secondItem="P2u-Zy-InM" secondAttribute="centerX" id="ISJ-E9-8UK"/>
                             <constraint firstItem="IAj-rX-VAR" firstAttribute="centerX" secondItem="A7q-jF-GqB" secondAttribute="centerX" id="Ky8-BQ-qLM"/>
                             <constraint firstItem="P2u-Zy-InM" firstAttribute="top" secondItem="YCR-pv-Lo0" secondAttribute="bottom" constant="8" id="PTI-KA-ToH"/>
                             <constraint firstItem="IAj-rX-VAR" firstAttribute="bottom" secondItem="P2u-Zy-InM" secondAttribute="bottom" id="Pwz-pB-aFN"/>
                             <constraint firstAttribute="trailing" secondItem="YCR-pv-Lo0" secondAttribute="trailing" id="RTk-mm-nXg"/>
                             <constraint firstItem="IAj-rX-VAR" firstAttribute="height" secondItem="P2u-Zy-InM" secondAttribute="height" id="ZGe-XP-Cd8"/>
-                            <constraint firstItem="R4F-Ce-DYM" firstAttribute="centerX" secondItem="A7q-jF-GqB" secondAttribute="centerX" id="eX5-Ai-qPT"/>
                             <constraint firstItem="P2u-Zy-InM" firstAttribute="centerX" secondItem="unn-4G-dDL" secondAttribute="centerX" id="gEN-cX-jVa"/>
                             <constraint firstItem="YCR-pv-Lo0" firstAttribute="leading" secondItem="unn-4G-dDL" secondAttribute="leading" id="kbd-f2-bg6"/>
+                            <constraint firstItem="IAj-rX-VAR" firstAttribute="top" secondItem="P2u-Zy-InM" secondAttribute="bottom" constant="-5" id="qom-3B-sp6"/>
                             <constraint firstItem="IAj-rX-VAR" firstAttribute="centerY" secondItem="P2u-Zy-InM" secondAttribute="centerY" id="stw-tc-Amn"/>
                             <constraint firstItem="IAj-rX-VAR" firstAttribute="height" secondItem="P2u-Zy-InM" secondAttribute="height" id="t6o-fp-a0t"/>
                             <constraint firstItem="YCR-pv-Lo0" firstAttribute="top" secondItem="unn-4G-dDL" secondAttribute="top" id="vjJ-DL-jSx"/>
-                            <constraint firstItem="R4F-Ce-DYM" firstAttribute="top" secondItem="IAj-rX-VAR" secondAttribute="bottom" constant="8" id="xyz-s1-djd"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
+                                <exclude reference="Pwz-pB-aFN"/>
                                 <exclude reference="ZGe-XP-Cd8"/>
                                 <exclude reference="stw-tc-Amn"/>
                                 <exclude reference="t6o-fp-a0t"/>
-                                <exclude reference="HHb-C2-g89"/>
                             </mask>
                         </variation>
                     </view>
@@ -278,6 +268,7 @@
                         <outlet property="passwordConfirmTextField" destination="pwD-W8-pLy" id="EVP-g2-Fhd"/>
                         <outlet property="passwordTextField" destination="1My-Wf-O1c" id="6vi-NP-hIy"/>
                         <outlet property="userNameTextField" destination="YYc-Yx-UDQ" id="Zwr-rQ-63z"/>
+                        <segue destination="7AA-Kh-eOa" kind="show" identifier="ShowProfilePhotoScreen" id="xR0-JN-t1o"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGn-dL-gZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -287,7 +278,7 @@
         <!--Profile Photo View Controller-->
         <scene sceneID="8hv-s5-WMi">
             <objects>
-                <viewController id="7AA-Kh-eOa" customClass="ProfilePhotoViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ProfilePhoto" id="7AA-Kh-eOa" customClass="ProfilePhotoViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cva-JK-iCo"/>
                         <viewControllerLayoutGuide type="bottom" id="F1E-Xc-XYs"/>
@@ -318,7 +309,6 @@
                                         <state key="normal" title="Back"/>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="7AA-Kh-eOa" eventType="touchUpInside" id="V6b-Yo-lHa"/>
-                                            <segue destination="byS-QB-9fT" kind="show" id="jh6-dY-x4q"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -354,6 +344,27 @@
                                     <action selector="selectProfilePhoto:" destination="7AA-Kh-eOa" eventType="touchUpInside" id="zH5-qE-DA3"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09H-Dh-Kie">
+                                <rect key="frame" x="262" y="398" width="77" height="30"/>
+                                <state key="normal" title="Take Photo"/>
+                                <connections>
+                                    <action selector="takeProfilePhoto:" destination="7AA-Kh-eOa" eventType="touchUpInside" id="hub-eC-E7B"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ck8-4J-hwy">
+                                <rect key="frame" x="250" y="436" width="100" height="30"/>
+                                <state key="normal" title="Remove Photo"/>
+                                <connections>
+                                    <action selector="removeProfilePhoto:" destination="7AA-Kh-eOa" eventType="touchUpInside" id="EpP-Ku-1wf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roj-sn-DRj">
+                                <rect key="frame" x="248" y="474" width="105" height="30"/>
+                                <state key="normal" title="Use This Photo"/>
+                                <connections>
+                                    <action selector="useProfilePhoto:" destination="7AA-Kh-eOa" eventType="touchUpInside" id="bLJ-Le-9EG"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -361,15 +372,21 @@
                             <constraint firstItem="DVC-hM-nIy" firstAttribute="centerX" secondItem="ncG-97-hUj" secondAttribute="centerX" id="4YC-CJ-rlM"/>
                             <constraint firstItem="6QO-4j-GnO" firstAttribute="centerX" secondItem="qyT-Tv-92B" secondAttribute="centerX" id="6Zw-Q7-znx"/>
                             <constraint firstItem="DVC-hM-nIy" firstAttribute="top" secondItem="909-vf-8mg" secondAttribute="bottom" constant="35" id="Oz0-OG-D4s"/>
+                            <constraint firstItem="Ck8-4J-hwy" firstAttribute="top" secondItem="09H-Dh-Kie" secondAttribute="bottom" constant="8" id="Pd7-pz-b02"/>
                             <constraint firstItem="F1E-Xc-XYs" firstAttribute="top" secondItem="909-vf-8mg" secondAttribute="bottom" constant="540" id="Pgd-Cl-h6a"/>
                             <constraint firstItem="6QO-4j-GnO" firstAttribute="top" secondItem="cva-JK-iCo" secondAttribute="bottom" constant="340" id="Q3R-jc-Jzb"/>
+                            <constraint firstItem="roj-sn-DRj" firstAttribute="centerX" secondItem="Ck8-4J-hwy" secondAttribute="centerX" id="QEC-wk-71J"/>
                             <constraint firstItem="DVC-hM-nIy" firstAttribute="top" secondItem="909-vf-8mg" secondAttribute="top" id="SyI-Z4-5di"/>
                             <constraint firstItem="DVC-hM-nIy" firstAttribute="top" secondItem="cva-JK-iCo" secondAttribute="bottom" constant="75" id="T7L-Cd-Srk"/>
                             <constraint firstItem="F1E-Xc-XYs" firstAttribute="top" secondItem="909-vf-8mg" secondAttribute="bottom" constant="540" id="UmO-Oe-AGE"/>
+                            <constraint firstItem="roj-sn-DRj" firstAttribute="top" secondItem="Ck8-4J-hwy" secondAttribute="bottom" constant="8" id="c2Z-sH-M2w"/>
                             <constraint firstAttribute="trailingMargin" secondItem="909-vf-8mg" secondAttribute="trailing" constant="-20" id="cHT-Da-YkT"/>
                             <constraint firstItem="DVC-hM-nIy" firstAttribute="centerX" secondItem="909-vf-8mg" secondAttribute="centerX" id="chh-mS-AaA"/>
+                            <constraint firstItem="Ck8-4J-hwy" firstAttribute="centerX" secondItem="09H-Dh-Kie" secondAttribute="centerX" id="dp4-kl-nLM"/>
+                            <constraint firstItem="09H-Dh-Kie" firstAttribute="centerX" secondItem="6QO-4j-GnO" secondAttribute="centerX" id="gCe-ex-zcb"/>
                             <constraint firstItem="DVC-hM-nIy" firstAttribute="bottom" secondItem="909-vf-8mg" secondAttribute="bottom" id="lDW-Ak-pGj"/>
                             <constraint firstItem="909-vf-8mg" firstAttribute="leading" secondItem="ncG-97-hUj" secondAttribute="leadingMargin" constant="-20" id="lxz-VD-4Lq"/>
+                            <constraint firstItem="09H-Dh-Kie" firstAttribute="top" secondItem="6QO-4j-GnO" secondAttribute="bottom" constant="8" id="v9R-f3-0Fr"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
@@ -388,10 +405,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="z0D-eC-dVl" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1751" y="213"/>
+            <point key="canvasLocation" x="1847" y="218"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="jh6-dY-x4q"/>
-    </inferredMetricsTieBreakers>
 </document>
