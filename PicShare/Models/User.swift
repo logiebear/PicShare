@@ -20,7 +20,7 @@ class User: PFUser {
         }
     }
     
-    init( email: String, username: String, password: String, profilePhoto: Photo?) {
+    init(email: String, username: String, password: String, profilePhoto: Photo?) {
         super.init()
         
         self.email = email
