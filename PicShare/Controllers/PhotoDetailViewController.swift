@@ -7,17 +7,26 @@
 //
 
 import UIKit
+import ParseUI
 
 class PhotoDetailViewController: UIViewController {
 
-    @IBOutlet weak var imageView: UIImageView!
-    var image: UIImage?
+    @IBOutlet weak var pfImageView: PFImageView!
+    @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
+    
+    var file: PFFile?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        if let image = image {
-            imageView.contentMode = .ScaleAspectFit
-            imageView.image = image
+        pfImageView.contentMode = .ScaleAspectFit
+        pfImageView.file = file
+        
+        activityIndicator.startAnimating()
+        pfImageView.loadInBackground { [unowned self](image, error) -> Void in
+            self.activityIndicator.stopAnimating()
+            if error != nil {
+                print("Error: \(error)")
+            }
         }
     }
     
