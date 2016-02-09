@@ -49,7 +49,7 @@ class PhotoHomeViewController: UIViewController {
     }
     
     @IBAction func myPhotosButtonPressed(sender: AnyObject) {
-        // TODO: IMPLEMENT MY PHOTOS
+        self.performSegueWithIdentifier("MyPhotos", sender: nil)
     }
 }
 
@@ -57,19 +57,6 @@ class PhotoHomeViewController: UIViewController {
     
 extension PhotoHomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     func imagePickerController(picker: UIImagePickerController, didFinishPickingImage image: UIImage, editingInfo: [String : AnyObject]?) {
-        print("Photo selected")
-//        if let fullImage = image.scaleAndRotateImage(960),
-//            thumbImage = image.scaleAndRotateImage(480),
-//            fullImageData = UIImagePNGRepresentation(fullImage),
-//            thumbImageData = UIImagePNGRepresentation(thumbImage)
-//        {
-//            let userPhoto = PFObject(className: photoClassName)
-//            userPhoto[photoFileKey] = PFFile(name: "original.png", data: fullImageData)
-//            userPhoto[thumbFileKey] = PFFile(name: "thumbnail.png", data: thumbImageData)
-//            userPhoto.saveEventually()
-//        } else {
-//            print("Photo saving error")
-//        }
         dismissViewControllerAnimated(true) { () -> Void in
             self.performSegueWithIdentifier("UploadPhoto", sender: image)
         }

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0A5586101C59DBF100738CD3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A55860F1C59DBF100738CD3 /* ProfileViewController.swift */; };
+		0A5663131C5E926300B1097E /* MyPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5663121C5E926300B1097E /* MyPhotosViewController.swift */; };
 		0ABADAE11BF909BB001CB962 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADAE01BF909BB001CB962 /* AppDelegate.swift */; };
 		0ABADAE61BF909BB001CB962 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABADAE41BF909BB001CB962 /* Main.storyboard */; };
 		0ABADAEB1BF909BB001CB962 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABADAE91BF909BB001CB962 /* LaunchScreen.storyboard */; };
@@ -52,6 +53,7 @@
 /* Begin PBXFileReference section */
 		0A2EF9CF1BF99E7E00A466E9 /* PicShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicShare-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A55860F1C59DBF100738CD3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
+		0A5663121C5E926300B1097E /* MyPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPhotosViewController.swift; path = Controllers/MyPhotosViewController.swift; sourceTree = "<group>"; };
 		0ABADADD1BF909BB001CB962 /* PicShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABADAE01BF909BB001CB962 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0ABADAE51BF909BB001CB962 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -209,6 +211,7 @@
 				0AE4D5B81BF97B0F00893D03 /* TabBarViewController.swift */,
 				0AE4D5BA1BF994D200893D03 /* PhotoHomeViewController.swift */,
 				0ADAE6B21C0BB06800E8BADE /* UploadPhotoViewController.swift */,
+				0A5663121C5E926300B1097E /* MyPhotosViewController.swift */,
 				0ADAE6B01C0A697E00E8BADE /* HomeViewController.swift */,
 				0ADB4BAB1BFEBFF800EA51F2 /* PhotoDetailViewController.swift */,
 				0AD0ACEF1C6A9D0900FD8963 /* EventPhotoScreenViewController.swift */,
@@ -431,6 +434,7 @@
 				0A5586101C59DBF100738CD3 /* ProfileViewController.swift in Sources */,
 				0ADAE6B11C0A697E00E8BADE /* HomeViewController.swift in Sources */,
 				0AE4D5BB1BF994D200893D03 /* PhotoHomeViewController.swift in Sources */,
+				0A5663131C5E926300B1097E /* MyPhotosViewController.swift in Sources */,
 				0AE4D5B91BF97B0F00893D03 /* TabBarViewController.swift in Sources */,
 				0ABADAE11BF909BB001CB962 /* AppDelegate.swift in Sources */,
 				0ADB4BAC1BFEBFF800EA51F2 /* PhotoDetailViewController.swift in Sources */,
