@@ -14,6 +14,8 @@
 		0ABADAEB1BF909BB001CB962 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABADAE91BF909BB001CB962 /* LaunchScreen.storyboard */; };
 		0ABADAF61BF909BC001CB962 /* PicShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADAF51BF909BC001CB962 /* PicShareTests.swift */; };
 		0ABADB011BF909BC001CB962 /* PicShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADB001BF909BC001CB962 /* PicShareUITests.swift */; };
+		0AD0ACEE1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0ACEC1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift */; };
+		0AD0ACF01C6A9D0900FD8963 /* EventPhotoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0ACEF1C6A9D0900FD8963 /* EventPhotoScreenViewController.swift */; };
 		0ADAE6A41C07A5F700E8BADE /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ADAE6A21C07A5F700E8BADE /* Account.storyboard */; };
 		0ADAE6A61C07E72A00E8BADE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6A51C07E72A00E8BADE /* LoginViewController.swift */; };
 		0ADAE6A91C09207E00E8BADE /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6A81C09207E00E8BADE /* SignUpViewController.swift */; };
@@ -63,6 +65,8 @@
 		0ABADAFC1BF909BC001CB962 /* PicShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABADB001BF909BC001CB962 /* PicShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicShareUITests.swift; sourceTree = "<group>"; };
 		0ABADB021BF909BC001CB962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0AD0ACEC1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventPhotoCollectionViewCell.swift; path = Controllers/EventPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		0AD0ACEF1C6A9D0900FD8963 /* EventPhotoScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventPhotoScreenViewController.swift; path = Controllers/EventPhotoScreenViewController.swift; sourceTree = "<group>"; };
 		0ADAE6A31C07A5F700E8BADE /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
 		0ADAE6A51C07E72A00E8BADE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		0ADAE6A81C09207E00E8BADE /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Controllers/SignUpViewController.swift; sourceTree = "<group>"; };
@@ -210,7 +214,9 @@
 				0A5663121C5E926300B1097E /* MyPhotosViewController.swift */,
 				0ADAE6B01C0A697E00E8BADE /* HomeViewController.swift */,
 				0ADB4BAB1BFEBFF800EA51F2 /* PhotoDetailViewController.swift */,
+				0AD0ACEF1C6A9D0900FD8963 /* EventPhotoScreenViewController.swift */,
 				0AE4D5BC1BF994FF00893D03 /* EventHomeViewController.swift */,
+				0AD0ACEC1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift */,
 				0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */,
 				0A55860F1C59DBF100738CD3 /* ProfileViewController.swift */,
 				0ADAE6A71C07E72E00E8BADE /* Account */,
@@ -417,8 +423,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0AD0ACF01C6A9D0900FD8963 /* EventPhotoScreenViewController.swift in Sources */,
 				0ADAE6AD1C09649500E8BADE /* Photo.swift in Sources */,
 				0ADAE6A91C09207E00E8BADE /* SignUpViewController.swift in Sources */,
+				0AD0ACEE1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift in Sources */,
 				0AE4D5BD1BF994FF00893D03 /* EventHomeViewController.swift in Sources */,
 				0ADB4BA71BFEBDB400EA51F2 /* UIImage+EXIF.m in Sources */,
 				0ADAE6B31C0BB06800E8BADE /* UploadPhotoViewController.swift in Sources */,
