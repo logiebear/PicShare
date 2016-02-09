@@ -64,8 +64,8 @@ extension MyPhotosViewController: UICollectionViewDataSource {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
         guard let pfImageView = cell.viewWithTag(1) as? PFImageView,
             photoArray = photoArray
-            else {
-                return cell
+        else {
+            return cell
         }
         
         let photo = photoArray[indexPath.item]
