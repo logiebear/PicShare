@@ -9,7 +9,7 @@
 import UIKit
 import Parse
 
-class CreateEventController: UIViewController, UITextFieldDelegate {
+class CreateEventController: UIViewController, UITextFieldDelegate{
 
     // Mark: - Properties
     
@@ -28,6 +28,13 @@ class CreateEventController: UIViewController, UITextFieldDelegate {
         
         // Handle the text field's user input through delegate callbacks.
         eventNameTextField.delegate = self
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        let destViewController : CreateEventPasswordViewController = segue.destinationViewController as! CreateEventPasswordViewController
+        
+        destViewController.hashtag = eventNameTextField.text!
+        
     }
     
     // Mark: - UITextFieldDelegate
@@ -49,11 +56,14 @@ class CreateEventController: UIViewController, UITextFieldDelegate {
     
     // Mark: - User Actions
     
+    
+    
     @IBAction func createEventButtonPressed(sender: AnyObject) {
         
         self.createEventObject()
-        
     }
+    
+    
     
     // Mark: - Private
     
