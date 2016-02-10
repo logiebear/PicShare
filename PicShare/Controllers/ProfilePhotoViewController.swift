@@ -11,9 +11,11 @@ import Parse
 
 class ProfilePhotoViewController: UIViewController {
 
+    @IBOutlet var containerView: UIView!
     @IBOutlet weak var profilePhotoPreview: UIImageView!
-    var profilePhoto: UIImage?
+    var userProfilePhoto: UIImage?
     var userInfo: User?
+    var currentContentViewController: UIViewController?
     
     //MARK: - User Actions
     @IBAction func backButtonPressed(sender: AnyObject) {
@@ -35,53 +37,30 @@ class ProfilePhotoViewController: UIViewController {
     }
     
     @IBAction func removeProfilePhoto(sender: AnyObject) {
-        profilePhoto = nil
+        userProfilePhoto = nil
         profilePhotoPreview.image = nil
     }
     
     @IBAction func useProfilePhoto(sender: AnyObject) {
         //Signup user to parse
         if let userInfo = userInfo {
+            //Add profile photo
+            if let userProfilePhoto = userProfilePhoto {
+                if let fullImage = userProfilePhoto.scaleAndRotateImage(960),
+                    fullImageData = UIImagePNGRepresentation(fullImage)
+                {
+                    let userPhoto = PFFile(name: "ProfilePhoto.png", data: fullImageData)
+                    userInfo.profilePhoto = userPhoto
+                }
+            }
             userInfo.signUpInBackgroundWithBlock { [weak self](success: Bool, error: NSError?) in
                 if success {
-                    //Add profile photo
-                    if let profilePhoto = self!.profilePhoto {
-                        if let fullImage = profilePhoto.scaleAndRotateImage(960),
-                            thumbImage = profilePhoto.scaleAndRotateImage(480),
-                            fullImageData = UIImagePNGRepresentation(fullImage),
-                            thumbImageData = UIImagePNGRepresentation(thumbImage)
-                        {
-                            let userPhoto = PFObject(className: photoClassName)
-                            userPhoto[photoFileKey] = PFFile(name: "original.png", data: fullImageData)
-                            userPhoto[thumbFileKey] = PFFile(name: "thumbnail.png", data: thumbImageData)
-                            userPhoto.saveEventually()
-                            let userProfilePhoto = Photo(image: PFFile(name: "original.png", data: fullImageData)!, thumbnail: PFFile(name: "thumbnail.png", data: thumbImageData)!, owner: userInfo, event: nil, location: nil, descriptiveText: nil)
-                            //Save profile photo
-                            userProfilePhoto.saveInBackgroundWithBlock {
-                                (success: Bool, error: NSError?) -> Void in
-                                if success {
-                                    NSLog("Profile photo saving successful!");
-                                    //Update user's profile photo
-                                    let currentUser = User.currentUser()
-                                    if let currentUser = currentUser {
-                                        currentUser.profilePhoto = userProfilePhoto
-                                        currentUser.saveEventually()
-                                        NSLog("User signing up successful!")
-                                    }
-                                    else {
-                                        NSLog("No login session!")
-                                    }
-                                }
-                                else {
-                                    print("Profile photo saving error")
-                                }
-                            }
-                        }
-                    }
-                    self?.dismissViewControllerAnimated(true, completion: { () -> Void in
-                        let nc = NSNotificationCenter.defaultCenter()
-                        nc.postNotificationName(accountStatusChangedNotification, object: nil)
-                    })
+                    NSLog("Account creation successful!")
+                    //Show home view
+                    let hv: UIViewController
+                    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    hv = mainStoryboard.instantiateViewControllerWithIdentifier("RootView")
+                    self!.showViewController(hv, sender: sender)
                 } else if let error = error {
                     // Something bad has occurred
                     self?.showErrorView(error)
@@ -106,7 +85,7 @@ class ProfilePhotoViewController: UIViewController {
 extension ProfilePhotoViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
         self.dismissViewControllerAnimated(true, completion: nil)
-        profilePhoto = image
+        userProfilePhoto = image
         profilePhotoPreview.image = image
     }
     

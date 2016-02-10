@@ -11,7 +11,7 @@ import Parse
 
 class User: PFUser {
     
-    @NSManaged var profilePhoto: Photo?
+    @NSManaged var profilePhoto: PFFile?
     
     override class func initialize() {
         var onceToken: dispatch_once_t = 0
@@ -20,7 +20,7 @@ class User: PFUser {
         }
     }
     
-    init(email: String, username: String, password: String, profilePhoto: Photo?) {
+    init(email: String, username: String, password: String, profilePhoto: PFFile?) {
         super.init()
         
         self.email = email

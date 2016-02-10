@@ -41,6 +41,7 @@ class SignUpViewController: UIViewController {
             self.showErrorView(error)
         }
         //Check whether email or username is taken
+        User.registerSubclass()
         let query = PFUser.query()
         if let emailTextField = emailTextField.text {
             if let query = query {
