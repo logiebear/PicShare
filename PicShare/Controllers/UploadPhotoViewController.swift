@@ -49,15 +49,17 @@ class UploadPhotoViewController: UIViewController {
             didRequestLocation = true
         } else {
             PFGeoPoint.geoPointForCurrentLocationInBackground { [weak self](geoPoint, error) -> Void in
-                if let geoPoint = geoPoint where error == nil {
+                if let error = error {
+                    print("Error: \(error)")
+                    return
+                }
+                
+                if let geoPoint = geoPoint {
                     self?.uploadPhotoWithGeoPoint(geoPoint)
-                } else {
-                    print("Error getting location")
                 }
             }
         }
     }
-    
     
     // MARK: - Private
     

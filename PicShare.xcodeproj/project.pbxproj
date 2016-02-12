@@ -7,8 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0A5586101C59DBF100738CD3 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A55860F1C59DBF100738CD3 /* ProfileViewController.swift */; };
 		0A5663131C5E926300B1097E /* MyPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5663121C5E926300B1097E /* MyPhotosViewController.swift */; };
+		0A63A6981C6584280014FD2C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63A6971C6584280014FD2C /* ProfileViewController.swift */; };
 		0ABADAE11BF909BB001CB962 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADAE01BF909BB001CB962 /* AppDelegate.swift */; };
 		0ABADAE61BF909BB001CB962 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABADAE41BF909BB001CB962 /* Main.storyboard */; };
 		0ABADAEB1BF909BB001CB962 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABADAE91BF909BB001CB962 /* LaunchScreen.storyboard */; };
@@ -30,6 +30,7 @@
 		0AE4D5BB1BF994D200893D03 /* PhotoHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BA1BF994D200893D03 /* PhotoHomeViewController.swift */; };
 		0AE4D5BD1BF994FF00893D03 /* EventHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BC1BF994FF00893D03 /* EventHomeViewController.swift */; };
 		0AE4D5BF1BF9955600893D03 /* SearchHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */; };
+		1CEF126B1C0AC5A4008F5243 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEF126A1C0AC5A4008F5243 /* SearchLocationViewController.swift */; };
 		CACDB6812DCE9C2FF4BE0671 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986BF3E755B56746A6F724 /* Pods.framework */; };
 /* End PBXBuildFile section */
 
@@ -52,8 +53,8 @@
 
 /* Begin PBXFileReference section */
 		0A2EF9CF1BF99E7E00A466E9 /* PicShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicShare-Bridging-Header.h"; sourceTree = "<group>"; };
-		0A55860F1C59DBF100738CD3 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		0A5663121C5E926300B1097E /* MyPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPhotosViewController.swift; path = Controllers/MyPhotosViewController.swift; sourceTree = "<group>"; };
+		0A63A6971C6584280014FD2C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		0ABADADD1BF909BB001CB962 /* PicShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABADAE01BF909BB001CB962 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0ABADAE51BF909BB001CB962 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -82,6 +83,7 @@
 		0AE4D5BA1BF994D200893D03 /* PhotoHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoHomeViewController.swift; path = Controllers/PhotoHomeViewController.swift; sourceTree = "<group>"; };
 		0AE4D5BC1BF994FF00893D03 /* EventHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventHomeViewController.swift; path = Controllers/EventHomeViewController.swift; sourceTree = "<group>"; };
 		0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchHomeViewController.swift; path = Controllers/SearchHomeViewController.swift; sourceTree = "<group>"; };
+		1CEF126A1C0AC5A4008F5243 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchLocationViewController.swift; path = Controllers/SearchLocationViewController.swift; sourceTree = "<group>"; };
 		2A9356C5D67042DB2D842FDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5635425CA4D08CF0D2D043C0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		9C986BF3E755B56746A6F724 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -213,12 +215,13 @@
 				0ADAE6B21C0BB06800E8BADE /* UploadPhotoViewController.swift */,
 				0A5663121C5E926300B1097E /* MyPhotosViewController.swift */,
 				0ADAE6B01C0A697E00E8BADE /* HomeViewController.swift */,
+				1CEF126A1C0AC5A4008F5243 /* SearchLocationViewController.swift */,
 				0ADB4BAB1BFEBFF800EA51F2 /* PhotoDetailViewController.swift */,
 				0AD0ACEF1C6A9D0900FD8963 /* EventPhotoScreenViewController.swift */,
 				0AE4D5BC1BF994FF00893D03 /* EventHomeViewController.swift */,
 				0AD0ACEC1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift */,
 				0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */,
-				0A55860F1C59DBF100738CD3 /* ProfileViewController.swift */,
+				0A63A6971C6584280014FD2C /* ProfileViewController.swift */,
 				0ADAE6A71C07E72E00E8BADE /* Account */,
 			);
 			name = Controllers;
@@ -431,14 +434,15 @@
 				0ADB4BA71BFEBDB400EA51F2 /* UIImage+EXIF.m in Sources */,
 				0ADAE6B31C0BB06800E8BADE /* UploadPhotoViewController.swift in Sources */,
 				0AE4D5B71BF9799700893D03 /* RootViewController.swift in Sources */,
-				0A5586101C59DBF100738CD3 /* ProfileViewController.swift in Sources */,
 				0ADAE6B11C0A697E00E8BADE /* HomeViewController.swift in Sources */,
+				0A63A6981C6584280014FD2C /* ProfileViewController.swift in Sources */,
 				0AE4D5BB1BF994D200893D03 /* PhotoHomeViewController.swift in Sources */,
 				0A5663131C5E926300B1097E /* MyPhotosViewController.swift in Sources */,
 				0AE4D5B91BF97B0F00893D03 /* TabBarViewController.swift in Sources */,
 				0ABADAE11BF909BB001CB962 /* AppDelegate.swift in Sources */,
 				0ADB4BAC1BFEBFF800EA51F2 /* PhotoDetailViewController.swift in Sources */,
 				0ADAE6A61C07E72A00E8BADE /* LoginViewController.swift in Sources */,
+				1CEF126B1C0AC5A4008F5243 /* SearchLocationViewController.swift in Sources */,
 				0AE4D5BF1BF9955600893D03 /* SearchHomeViewController.swift in Sources */,
 				0ADAE6AF1C09764900E8BADE /* Event.swift in Sources */,
 			);
