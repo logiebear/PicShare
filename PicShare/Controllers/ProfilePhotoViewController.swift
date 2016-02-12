@@ -57,10 +57,10 @@ class ProfilePhotoViewController: UIViewController {
                 if success {
                     NSLog("Account creation successful!")
                     //Show home view
-                    let hv: UIViewController
+                    let homeView: UIViewController
                     let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    hv = mainStoryboard.instantiateViewControllerWithIdentifier("RootView")
-                    self!.showViewController(hv, sender: sender)
+                    homeView = mainStoryboard.instantiateViewControllerWithIdentifier("RootView")
+                    self!.showViewController(homeView, sender: sender)
                 } else if let error = error {
                     // Something bad has occurred
                     self?.showErrorView(error)
