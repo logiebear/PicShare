@@ -15,20 +15,12 @@ class CreateEventController: UIViewController, UITextFieldDelegate{
     
     @IBOutlet weak var createEventButton: UIButton!
     @IBOutlet weak var eventNameTextField: UITextField!
+    @IBOutlet weak var backButton: UIButton!
     
-    var hashtag: String = " "
+    var hashtag: String? = nil
     var user: PFUser = PFUser.currentUser()!
     var isPublic: Bool = true
     var password: String? = nil
-    
-    override func viewDidLoad(){
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-        
-        // Handle the text field's user input through delegate callbacks.
-        eventNameTextField.delegate = self
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         let destViewController : CreateEventPasswordViewController = segue.destinationViewController as! CreateEventPasswordViewController
@@ -37,40 +29,28 @@ class CreateEventController: UIViewController, UITextFieldDelegate{
         
     }
     
-    // Mark: - UITextFieldDelegate
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
-        // Hide the keyboard
-        eventNameTextField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        if let text = eventNameTextField.text{
-            hashtag = text
-        }else{
-            // TO DO: - Show error message
-        }
-    }
-    
     // Mark: - User Actions
     
-    
-    
     @IBAction func createEventButtonPressed(sender: AnyObject) {
-        
+        if eventNameTextField.text == nil {
+            let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
+                NSLocalizedDescriptionKey: "Event name can't be empty!"
+                ])
+            self.showErrorView(error)
+        }
         self.createEventObject()
     }
     
-    
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        self.dismissViewControllerAnimated(true, completion: nil)
+    }
     
     // Mark: - Private
     
     private func createEventObject() {
         
         let event = Event(owner: user,
-            hashtag: hashtag,
+            hashtag: eventNameTextField.text!,
             isPublic: isPublic,
             password: password
         )
@@ -84,5 +64,11 @@ class CreateEventController: UIViewController, UITextFieldDelegate{
 
     // Mark: - Helper
     
-
+    func showErrorView(error: NSError) {
+        let alertView = UIAlertController(title: "Error",
+            message: error.localizedDescription, preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertView.addAction(OKAction)
+        self.presentViewController(alertView, animated: true, completion: nil)
+    }
 }

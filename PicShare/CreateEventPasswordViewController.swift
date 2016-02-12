@@ -9,8 +9,7 @@
 import UIKit
 import Parse
 
-class CreateEventPasswordViewController: UIViewController, UITextFieldDelegate{
-
+class CreateEventPasswordViewController: UIViewController{
 
     // Mark: - Properties
     
@@ -21,37 +20,6 @@ class CreateEventPasswordViewController: UIViewController, UITextFieldDelegate{
     var user: PFUser = PFUser.currentUser()!
     var isPublic: Bool = false
     var password: String? = nil
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-        
-        // Handle the text field's user input through delegate callbacks.
-        eventPasswordTextField.delegate = self
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    // Mark: - UITextFieldDelegate
-    
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
-        
-        // Hide the keyboard
-        eventPasswordTextField.resignFirstResponder()
-        return true
-    }
-    
-    func textFieldDidEndEditing(textField: UITextField) {
-        if let text = eventPasswordTextField.text{
-            password = text
-        }else{
-            // TO DO: - Show error message
-        }
-    }
 
     /*
     // MARK: - Navigation
@@ -66,9 +34,17 @@ class CreateEventPasswordViewController: UIViewController, UITextFieldDelegate{
     // MARK: - User Actions
     
     @IBAction func finishedButtonPressed(sender: AnyObject) {
+        if eventPasswordTextField.text == nil {
+            let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
+                NSLocalizedDescriptionKey: "Password can't be empty!"
+                ])
+            self.showErrorView(error)
+            
+        }
         self.createEventObject()
-
     }
+    
+    
     
     // Mark: - Private
     
@@ -77,7 +53,7 @@ class CreateEventPasswordViewController: UIViewController, UITextFieldDelegate{
         let event = Event(owner: user,
             hashtag: hashtag,
             isPublic: isPublic,
-            password: password
+            password: eventPasswordTextField.text!
         )
         
         event.saveInBackgroundWithBlock({ [weak self]
@@ -86,7 +62,15 @@ class CreateEventPasswordViewController: UIViewController, UITextFieldDelegate{
             self?.dismissViewControllerAnimated(true, completion: nil)
             })
     }
+    
+    // Mark: - Helper
+    
+    func showErrorView(error: NSError) {
+        let alertView = UIAlertController(title: "Error",
+            message: error.localizedDescription, preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertView.addAction(OKAction)
+        self.presentViewController(alertView, animated: true, completion: nil)
+    }
 
-    
-    
 }

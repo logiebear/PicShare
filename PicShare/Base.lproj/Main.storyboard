@@ -576,7 +576,7 @@
                                         <rect key="frame" x="25" y="15" width="46" height="30"/>
                                         <state key="normal" title="back"/>
                                         <connections>
-                                            <segue destination="kKa-6Q-0Fk" kind="show" id="rQb-7X-8Dc"/>
+                                            <action selector="backButtonPressed:" destination="q0k-Kj-ZjL" eventType="touchUpInside" id="e7R-Qf-Vek"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -631,6 +631,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="backButton" destination="EAl-gQ-bUP" id="VBS-KK-QUL"/>
                         <outlet property="createEventButton" destination="Qh1-UR-dNV" id="kd3-yx-j2h"/>
                         <outlet property="eventNameTextField" destination="ZLx-bC-eok" id="8dt-yx-ZFt"/>
                     </connections>
@@ -707,7 +708,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="rQb-7X-8Dc"/>
         <segue reference="sxK-iM-Z8c"/>
     </inferredMetricsTieBreakers>
 </document>
