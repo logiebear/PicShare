@@ -32,6 +32,28 @@ class Photo: PFObject {
         return query
     }
     
+    class func allPhotosForCurrentUserQuery() -> PFQuery? {
+        guard let currentUser = PFUser.currentUser() else {
+            return nil
+        }
+        let query = PFQuery(className: Photo.parseClassName())
+        query.whereKey("owner", equalTo: currentUser)
+        query.includeKey("owner")
+        query.orderByDescending("createdAt")
+        return query
+    }
+    
+    class func queryNearbyPhotosWithRadius(currentLocation: PFGeoPoint, radiusInMiles: Double) -> PFQuery? {
+        if radiusInMiles < 1 {
+            return nil
+        }
+        let query = PFQuery(className: Photo.parseClassName())
+        query.whereKey("location", nearGeoPoint: currentLocation, withinMiles: radiusInMiles)
+        query.includeKey("owner")
+        query.orderByDescending("createdAt")
+        return query
+    }
+    
     init(image: PFFile, thumbnail: PFFile, owner: PFUser,
         event: Event?, location: PFGeoPoint?, descriptiveText: String?) {
         super.init()
