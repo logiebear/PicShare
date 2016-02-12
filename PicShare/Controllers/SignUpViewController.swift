@@ -94,7 +94,7 @@ class SignUpViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let svc = segue.destinationViewController as! ProfilePhotoViewController
-        svc.userInfo = user
+        svc.user = user
     }
     
     //MARK: - Helper

@@ -21,17 +21,11 @@ class CreateEventPasswordViewController: UIViewController{
     var isPublic: Bool = false
     var password: String? = nil
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
     // MARK: - User Actions
+    
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
     
     @IBAction func finishedButtonPressed(sender: AnyObject) {
         if eventPasswordTextField.text == nil {

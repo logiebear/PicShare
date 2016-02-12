@@ -27,14 +27,20 @@ class Event: PFObject {
     
     init(owner: PFUser, hashtag: String, isPublic: Bool, password: String?) {
         super.init()
-        
         self.owner = owner
         self.hashtag = hashtag
         self.isPublic = isPublic
         self.password = password
         //self.expirationDate =
         //self.photos =
-        
+    }
+    
+    override func isEqual(object: AnyObject?) -> Bool {
+        if let object = object as? Event {
+            return hashtag == object.hashtag
+        } else {
+            return false
+        }
     }
     
 }
