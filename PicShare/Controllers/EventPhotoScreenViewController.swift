@@ -30,8 +30,9 @@ class EventPhotoScreenViewController: UIViewController {
         // Build a parse query object
         let query = PFQuery(className:"Photo")
         // Fetch data from the parse platform
-        let event : Event = Event()
-        query.whereKey("event", equalTo: event)
+        // TODO: UPDATE THIS
+//        let event: Event = Event()
+//        query.whereKey("event", equalTo: event)
         query.findObjectsInBackgroundWithBlock {
             (objects: [PFObject]?, error: NSError?) -> Void in
             if let error = error {

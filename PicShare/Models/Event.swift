@@ -14,13 +14,25 @@ class Event: PFObject {
     @NSManaged var owner: PFUser
     @NSManaged var hashtag: String
     @NSManaged var isPublic: Bool
-    @NSManaged var password: String
+    @NSManaged var password: String?
+    //@NSManaged var expirationDate: Datetime
+    //@NSManaged var photos: [Photo]
     
     override class func initialize() {
         var onceToken: dispatch_once_t = 0
         dispatch_once(&onceToken) {
             self.registerSubclass()
         }
+    }
+    
+    init(owner: PFUser, hashtag: String, isPublic: Bool, password: String?) {
+        super.init()
+        self.owner = owner
+        self.hashtag = hashtag
+        self.isPublic = isPublic
+        self.password = password
+        //self.expirationDate =
+        //self.photos =
     }
     
     override func isEqual(object: AnyObject?) -> Bool {
