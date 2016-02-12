@@ -363,9 +363,6 @@
                                             <constraint firstAttribute="height" constant="30" id="wen-r5-VHn"/>
                                         </constraints>
                                         <state key="normal" title="Back"/>
-                                        <connections>
-                                            <action selector="backButtonPressed:" destination="USF-Xn-IwV" eventType="touchUpInside" id="K5X-Iq-XXv"/>
-                                        </connections>
                                     </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.76470588240000004" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
@@ -606,7 +603,7 @@
         <!--Root View Controller-->
         <scene sceneID="rtS-o7-s13">
             <objects>
-                <viewController id="zNY-rV-0aN" customClass="RootViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="RootView" id="zNY-rV-0aN" customClass="RootViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="rZj-4y-emy"/>
                         <viewControllerLayoutGuide type="bottom" id="pQk-k1-7t3"/>
@@ -882,8 +879,8 @@
                                 </cells>
                                 <variation key="default">
                                     <mask key="constraints">
-                                        <exclude reference="OpX-YO-Oac"/>
                                         <exclude reference="0SD-FY-QRS"/>
+                                        <exclude reference="OpX-YO-Oac"/>
                                     </mask>
                                 </variation>
                                 <connections>
@@ -898,7 +895,7 @@
                                     <constraint firstAttribute="height" constant="21" id="fby-eT-rPg"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
@@ -925,10 +922,10 @@
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
-                                <exclude reference="6zP-pY-yGj"/>
-                                <exclude reference="63q-gi-LJo"/>
-                                <exclude reference="pSP-En-udT"/>
                                 <exclude reference="19h-cf-CiE"/>
+                                <exclude reference="63q-gi-LJo"/>
+                                <exclude reference="6zP-pY-yGj"/>
+                                <exclude reference="pSP-En-udT"/>
                                 <exclude reference="tmS-Lf-xDy"/>
                                 <exclude reference="8to-Xq-WA6"/>
                                 <exclude reference="MCW-fO-74I"/>
