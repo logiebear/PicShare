@@ -14,10 +14,11 @@ class ProfilePhotoViewController: UIViewController {
     @IBOutlet var containerView: UIView!
     @IBOutlet weak var profilePhotoPreview: UIImageView!
     var userProfilePhoto: UIImage?
-    var userInfo: User?
+    var user: User?
     var currentContentViewController: UIViewController?
     
-    //MARK: - User Actions
+    // MARK: - User Actions
+    
     @IBAction func backButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -42,49 +43,52 @@ class ProfilePhotoViewController: UIViewController {
     }
     
     @IBAction func useProfilePhoto(sender: AnyObject) {
-        //Signup user to parse
-        if let userInfo = userInfo {
-            //Add profile photo
-            if let userProfilePhoto = userProfilePhoto {
-                if let fullImage = userProfilePhoto.scaleAndRotateImage(960),
-                    fullImageData = UIImagePNGRepresentation(fullImage)
-                {
-                    let userPhoto = PFFile(name: "ProfilePhoto.png", data: fullImageData)
-                    userInfo.profilePhoto = userPhoto
-                }
-            }
-            userInfo.signUpInBackgroundWithBlock { [weak self](success: Bool, error: NSError?) in
-                if success {
-                    NSLog("Account creation successful!")
-                    //Show home view
-                    let homeView: UIViewController
-                    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                    homeView = mainStoryboard.instantiateViewControllerWithIdentifier("RootView")
-                    self!.showViewController(homeView, sender: sender)
-                } else if let error = error {
-                    // Something bad has occurred
-                    self?.showErrorView(error)
-                }
-            }
-        }
-        else {
+        // Signup user to parse
+        guard let user = user else {
             print("User doesn't exist!")
+            return
+        }
+
+        // Add profile photo
+        if let userProfilePhoto = userProfilePhoto,
+            fullImage = userProfilePhoto.scaleAndRotateImage(960),
+            fullImageData = UIImagePNGRepresentation(fullImage)
+        {
+            let userPhoto = PFFile(name: "ProfilePhoto.png", data: fullImageData)
+            user.profilePhoto = userPhoto
+        }
+        
+        user.signUpInBackgroundWithBlock { [weak self](success: Bool, error: NSError?) in
+            if success {
+                NSLog("Account creation successful!")
+                //Show home view
+                let homeView: UIViewController
+                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                homeView = mainStoryboard.instantiateViewControllerWithIdentifier("RootView")
+                self!.showViewController(homeView, sender: sender)
+            } else if let error = error {
+                // Something bad has occurred
+                self?.showErrorView(error)
+            }
         }
     }
     
-    //MARK: - Helper
+    // MARK: - Helper
+    
     func showErrorView(error: NSError) {
         let alertView = UIAlertController(title: "Error",
             message: error.localizedDescription, preferredStyle: .Alert)
         let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertView.addAction(OKAction)
-        self.presentViewController(alertView, animated: true, completion: nil)
+        presentViewController(alertView, animated: true, completion: nil)
     }
+    
 }
 
 extension ProfilePhotoViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
         userProfilePhoto = image
         profilePhotoPreview.image = image
     }
@@ -92,4 +96,5 @@ extension ProfilePhotoViewController: UINavigationControllerDelegate, UIImagePic
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
 }
