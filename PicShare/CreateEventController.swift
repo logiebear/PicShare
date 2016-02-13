@@ -16,6 +16,7 @@ class CreateEventController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var createEventButton: UIButton!
     @IBOutlet weak var eventNameTextField: UITextField!
     @IBOutlet weak var backButton: UIButton!
+    @IBOutlet weak var privateButton: UIButton!
     
     var hashtag: String? = nil
     var user: PFUser = PFUser.currentUser()!
@@ -32,11 +33,12 @@ class CreateEventController: UIViewController, UITextFieldDelegate{
     // Mark: - User Actions
     
     @IBAction func createEventButtonPressed(sender: AnyObject) {
-        if eventNameTextField.text == nil {
+        if eventNameTextField.text == "" {
             let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Event name can't be empty!"
                 ])
             self.showErrorView(error)
+            return
         }
         self.createEventObject()
     }
@@ -45,6 +47,16 @@ class CreateEventController: UIViewController, UITextFieldDelegate{
         self.dismissViewControllerAnimated(true, completion: nil)
     }
     
+    @IBAction func privateButtonPressed(sender: AnyObject) {
+        if eventNameTextField.text == "" {
+            let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
+                NSLocalizedDescriptionKey: "Event name can't be empty!"
+                ])
+            self.showErrorView(error)
+            return
+        }
+        self.showSetPasswordView()
+    }
     // Mark: - Private
     
     private func createEventObject() {
@@ -71,4 +83,12 @@ class CreateEventController: UIViewController, UITextFieldDelegate{
         alertView.addAction(OKAction)
         self.presentViewController(alertView, animated: true, completion: nil)
     }
+    
+    func showSetPasswordView() {
+        let SetPasswordView: UIViewController
+        let mainStoryboard = UIStoryboard(name:"Main", bundle: nil)
+        SetPasswordView = mainStoryboard.instantiateViewControllerWithIdentifier("SetPasswordView")
+        self.showViewController(SetPasswordView, sender: self)
+    }
+    
 }

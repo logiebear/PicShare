@@ -466,7 +466,7 @@
         <!--Events-->
         <scene sceneID="46A-hl-Ava">
             <objects>
-                <viewController id="kKa-6Q-0Fk" customClass="EventMgmtViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EventMgmtView" id="kKa-6Q-0Fk" customClass="EventMgmtViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="ged-PC-dmG"/>
                         <viewControllerLayoutGuide type="bottom" id="u1L-Pq-lCZ"/>
@@ -490,7 +490,7 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="YbT-fu-oZM">
+                            <view contentMode="scaleToFill" misplaced="YES" restorationIdentifier="EventMgmtView" translatesAutoresizingMaskIntoConstraints="NO" id="YbT-fu-oZM">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="64"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Event List" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="g1B-hE-yll">
@@ -593,7 +593,7 @@
                                 </constraints>
                                 <state key="normal" title="private"/>
                                 <connections>
-                                    <segue destination="qQ1-C9-Tnl" kind="show" id="fZE-br-evh"/>
+                                    <action selector="privateButtonPressed:" destination="q0k-Kj-ZjL" eventType="touchUpInside" id="kfD-zh-XEy"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hEy-CE-Fhb">
@@ -634,6 +634,7 @@
                         <outlet property="backButton" destination="EAl-gQ-bUP" id="VBS-KK-QUL"/>
                         <outlet property="createEventButton" destination="Qh1-UR-dNV" id="kd3-yx-j2h"/>
                         <outlet property="eventNameTextField" destination="ZLx-bC-eok" id="8dt-yx-ZFt"/>
+                        <outlet property="privateButton" destination="zQ0-sA-PlK" id="z8g-Yk-ahA"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="kNs-Lm-Wk5" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -643,12 +644,12 @@
         <!--Private Passwd Set-->
         <scene sceneID="n2V-pD-xPu">
             <objects>
-                <viewController title="Private Passwd Set" id="qQ1-C9-Tnl" customClass="CreateEventPasswordViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SetPasswordView" title="Private Passwd Set" id="qQ1-C9-Tnl" customClass="CreateEventPasswordViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="tjp-47-gGT"/>
                         <viewControllerLayoutGuide type="bottom" id="7MA-96-qiC"/>
                     </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="wPX-vT-C1X">
+                    <view key="view" contentMode="scaleToFill" restorationIdentifier="SetPasswordView" id="wPX-vT-C1X">
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
@@ -708,6 +709,6 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="sxK-iM-Z8c"/>
+        <segue reference="vda-6i-YVZ"/>
     </inferredMetricsTieBreakers>
 </document>

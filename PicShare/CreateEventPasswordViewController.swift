@@ -34,12 +34,12 @@ class CreateEventPasswordViewController: UIViewController{
     // MARK: - User Actions
     
     @IBAction func finishedButtonPressed(sender: AnyObject) {
-        if eventPasswordTextField.text == nil {
+        if eventPasswordTextField.text == "" {
             let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Password can't be empty!"
                 ])
             self.showErrorView(error)
-            
+            return
         }
         self.createEventObject()
     }
@@ -59,7 +59,8 @@ class CreateEventPasswordViewController: UIViewController{
         event.saveInBackgroundWithBlock({ [weak self]
             (success, error) -> Void in
             //self?.activityIndicatorViewControllerAnimating()
-            self?.dismissViewControllerAnimated(true, completion: nil)
+            //self?.dismissViewControllerAnimated(true, completion: nil)
+            self!.showEventMgmtView()
             })
     }
     
@@ -71,6 +72,14 @@ class CreateEventPasswordViewController: UIViewController{
         let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertView.addAction(OKAction)
         self.presentViewController(alertView, animated: true, completion: nil)
+    }
+    
+    func showEventMgmtView() {
+        let EventMgmtView: UIViewController
+        let mainStoryboard = UIStoryboard(name:"Main", bundle: nil)
+        EventMgmtView = mainStoryboard.instantiateViewControllerWithIdentifier("EventMgmtView")
+        self.showViewController(EventMgmtView, sender: self)
+        
     }
 
 }
