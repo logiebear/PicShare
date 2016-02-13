@@ -25,13 +25,13 @@ class LoginViewController: UIViewController {
         //Check username or password empty
         var error: NSError?
         var errorMsg: String = String()
-        if loginUserNameInput.text == nil && loginPasswordInput.text == nil {
+        if loginUserNameInput.text == "" && loginPasswordInput.text == "" {
             errorMsg += "Please type in username and password!"
         }
-        else if loginUserNameInput.text == nil {
+        else if loginUserNameInput.text == "" {
             errorMsg += "Please type in username!"
         }
-        else if loginPasswordInput.text == nil {
+        else if loginPasswordInput.text == "" {
             errorMsg += "Please type in password!"
         }
         if !errorMsg.isEmpty {
