@@ -36,6 +36,9 @@ class Event: PFObject {
         //self.photos =
         
     }
+    override init() {
+        super.init()
+    }
     
 }
 

@@ -40,7 +40,12 @@ class CreateEventController: UIViewController, UITextFieldDelegate{
             self.showErrorView(error)
             return
         }
-        self.createEventObject()
+        checkValid { (success) -> () in
+            if success {
+                self.createEventObject()
+            }
+        }
+        
     }
     
     @IBAction func backButtonPressed(sender: AnyObject) {
@@ -55,7 +60,11 @@ class CreateEventController: UIViewController, UITextFieldDelegate{
             self.showErrorView(error)
             return
         }
-        self.showSetPasswordView()
+        checkValid { (success) -> () in
+            if success {
+                self.showSetPasswordView()
+            }
+        }
     }
     // Mark: - Private
     
@@ -75,6 +84,25 @@ class CreateEventController: UIViewController, UITextFieldDelegate{
     }
 
     // Mark: - Helper
+
+    func checkValid(completion: ((Bool) -> ())) {
+        guard let query = Event.query() else {
+            return
+        }
+        if let eventNameTextField = eventNameTextField.text {
+            query.whereKey("hashtag", equalTo: eventNameTextField)
+            query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
+                if let objects = objects where objects.count == 0{
+                    completion(true)
+                } else {
+                    let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
+                        NSLocalizedDescriptionKey: "Event name has been taken!"])
+                    self?.showErrorView(error)
+                    completion(false)
+                }
+            }
+        }
+    }
     
     func showErrorView(error: NSError) {
         let alertView = UIAlertController(title: "Error",
@@ -90,5 +118,4 @@ class CreateEventController: UIViewController, UITextFieldDelegate{
         SetPasswordView = mainStoryboard.instantiateViewControllerWithIdentifier("SetPasswordView")
         self.showViewController(SetPasswordView, sender: self)
     }
-    
 }
