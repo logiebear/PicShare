@@ -1064,9 +1064,7 @@
                                         <rect key="frame" x="67" y="166" width="88" height="30"/>
                                         <state key="normal" title="private"/>
                                         <connections>
-                                            <segue destination="ffY-kS-47b" kind="show" id="aIG-eM-CTe">
-                                                <nil key="action"/>
-                                            </segue>
+                                            <action selector="privateButtonPressed:" destination="tLx-Nn-95y" eventType="touchUpInside" id="dP9-7l-hzc"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1091,6 +1089,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="eventNameTextField" destination="NLJ-Zx-kbK" id="won-OH-Wkw"/>
+                        <outlet property="privateButton" destination="Emf-iX-b8V" id="QyN-Hv-nwO"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ptN-YV-D5u" userLabel="First Responder" sceneMemberID="firstResponder"/>

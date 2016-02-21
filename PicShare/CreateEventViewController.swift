@@ -14,6 +14,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     // Mark: - Properties
     
     @IBOutlet weak var eventNameTextField: UITextField!
+    @IBOutlet weak var privateButton: UIButton!
     
     var hashtag: String? = nil
     var user: PFUser = PFUser.currentUser()!
@@ -29,13 +30,35 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     // Mark: - User Actions
     
     @IBAction func createPublicEvent(sender: AnyObject) {
-        if eventNameTextField.text == nil {
+        if eventNameTextField.text == "" {
             let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Event name can't be empty!"])
             self.showErrorView(error)
+            return
         }
-        self.createEventObject()
+        checkValid { (success) -> () in
+            if success {
+                self.createEventObject()
+            }
+        }
+        
     }
+    
+    @IBAction func privateButtonPressed(sender: AnyObject) {
+        if eventNameTextField.text == "" {
+            let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
+                NSLocalizedDescriptionKey: "Event name can't be empty!"
+                ])
+            self.showErrorView(error)
+            return
+        }
+        checkValid { (success) -> () in
+            if success {
+                self.showSetPasswordView()
+            }
+        }
+    }
+    
     
     @IBAction func backButtonPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -56,6 +79,24 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     }
 
     // Mark: - Helper
+    func checkValid(completion: ((Bool) -> ())) {
+        guard let query = Event.query() else {
+            return
+        }
+        if let eventNameTextField = eventNameTextField.text {
+            query.whereKey("hashtag", equalTo: eventNameTextField)
+            query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
+                if let objects = objects where objects.count == 0{
+                    completion(true)
+                } else {
+                    let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
+                        NSLocalizedDescriptionKey: "Event name has been taken!"])
+                    self?.showErrorView(error)
+                    completion(false)
+                }
+            }
+        }
+    }
     
     func showErrorView(error: NSError) {
         let alertView = UIAlertController(title: "Error",
@@ -63,6 +104,13 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertView.addAction(OKAction)
         self.presentViewController(alertView, animated: true, completion: nil)
+    }
+    
+    func showSetPasswordView() {
+        let SetPasswordView: UIViewController
+        let mainStoryboard = UIStoryboard(name:"Main", bundle: nil)
+        SetPasswordView = mainStoryboard.instantiateViewControllerWithIdentifier("SetPasswordView")
+        self.showViewController(SetPasswordView, sender: self)
     }
     
 }

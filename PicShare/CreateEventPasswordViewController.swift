@@ -28,7 +28,7 @@ class CreateEventPasswordViewController: UIViewController{
     }
     
     @IBAction func finishedButtonPressed(sender: AnyObject) {
-        if eventPasswordTextField.text == nil {
+        if eventPasswordTextField.text == "" {
             let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Password can't be empty!"
                 ])
