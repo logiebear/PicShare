@@ -43,6 +43,9 @@ class Event: PFObject {
         }
     }
     
+    override init() {
+        super.init()
+    }
 }
 
 extension Event: PFSubclassing {
