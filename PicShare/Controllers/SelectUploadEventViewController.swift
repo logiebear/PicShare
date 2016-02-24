@@ -12,13 +12,13 @@ import Parse
 class SelectUploadEventViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
-    var eventSet : [Event] = []
-    var photo : Photo?
-    var selectedEventIndex:Int?
-    var selectedEvent:Event? {
+    var eventArray: [Event] = []
+    var photo: Photo?
+    var selectedEventIndex: Int?
+    var selectedEvent: Event? {
         didSet {
-            if let selectedEvent = selectedEvent {
-                selectedEventIndex = eventSet.indexOf(selectedEvent)!
+            if let selectedEvent = selectedEvent, index = eventArray.indexOf(selectedEvent) {
+                selectedEventIndex = index
             }
         }
     }
@@ -27,16 +27,47 @@ class SelectUploadEventViewController: UIViewController {
         super.viewDidLoad()
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "EventCell")
         let eventQuery = PFQuery(className: "Event");
-        eventQuery.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) in
-            self.eventSet = objects as? [Event] ?? []
-            self.tableView.reloadData()
+        eventQuery.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) in
+            self?.eventArray = objects as? [Event] ?? []
+            self?.tableView.reloadData()
         }
     }
     
     //MARK: - User Actions
     @IBAction func backButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func uploadPhoto(sender: AnyObject) {
+        if let selectedEvent = selectedEvent {
+            guard let photo = photo else {
+                return
+            }
+            photo.event = selectedEvent
+            photo.saveInBackgroundWithBlock({ [weak self](success: Bool, error: NSError?) in
+                if let error = error {
+                    let alertView = UIAlertController(title: "Error",
+                        message: error.localizedDescription, preferredStyle: .Alert)
+                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                    alertView.addAction(OKAction)
+                    self?.presentViewController(alertView, animated: true, completion: nil)
+                    return
+                }
+                let alertView = UIAlertController(title: "Message",
+                    message: "Upload Success", preferredStyle: .Alert)
+                let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alertView.addAction(OKAction)
+                self?.presentViewController(alertView, animated: true, completion: nil)
+                })
+        }
+        else {
+            let alertView = UIAlertController(title: "Error",
+                message: "Please select an event!", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertView.addAction(OKAction)
+            presentViewController(alertView, animated: true, completion: nil)
+            return
+        }
     }
 }
 
@@ -46,12 +77,12 @@ extension SelectUploadEventViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return eventSet.count
+        return eventArray.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as UITableViewCell
-        cell.textLabel!.text = eventSet[indexPath.row].hashtag
+        cell.textLabel?.text = eventArray[indexPath.row].hashtag
         if indexPath.row == selectedEventIndex {
             cell.accessoryType = .Checkmark
         } else {
@@ -61,7 +92,6 @@ extension SelectUploadEventViewController: UITableViewDataSource {
     }
 }
 
-
 extension SelectUploadEventViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
@@ -70,28 +100,9 @@ extension SelectUploadEventViewController: UITableViewDelegate {
             let cell = tableView.cellForRowAtIndexPath(NSIndexPath(forRow: index, inSection: 0))
             cell?.accessoryType = .None
         }
-        selectedEvent = eventSet[indexPath.row]
+        selectedEvent = eventArray[indexPath.row]
         //update the checkmark for the current row and upload photo
         let cell = tableView.cellForRowAtIndexPath(indexPath)
         cell?.accessoryType = .Checkmark
-        if let photo = photo {
-            photo.event = selectedEvent
-            photo.saveInBackgroundWithBlock({ [weak self](success: Bool, error: NSError?) in
-                if let error = error {
-                    let alertView = UIAlertController(title: "Error",
-                        message: error.localizedDescription, preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                    alertView.addAction(OKAction)
-                    self!.presentViewController(alertView, animated: true, completion: nil)
-                    return
-                }
-                let alertView = UIAlertController(title: "Message",
-                    message: "Upload Success", preferredStyle: .Alert)
-                let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                alertView.addAction(OKAction)
-                self!.presentViewController(alertView, animated: true, completion: nil)
-            })
-        }
     }
 }
-
