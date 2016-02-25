@@ -13,17 +13,15 @@ import ParseUI
 class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: PFImageView!
+    @IBOutlet weak var usernameLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         let query = PFQuery(className: User.parseClassName())
         query.includeKey("owner")
         query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
-            
             if let error = error {
                 print("Error: \(error) \(error.userInfo)")
                 return
@@ -37,6 +35,15 @@ class ProfileViewController: UIViewController {
                 if user.objectId == PFUser.currentUser()?.objectId {
                     self?.profileImageView.file = user.profilePhoto
                     self?.profileImageView.loadInBackground()
+
+                    if let frame = self?.profileImageView.frame {
+                        self?.profileImageView.layer.cornerRadius = frame.height/2
+                        self?.profileImageView.clipsToBounds = true
+                    }
+
+                    if let username = user.username {
+                        self?.usernameLabel.text = String(username)
+                    }
                 }
             }
         }
