@@ -22,9 +22,17 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     var password: String? = nil
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        let destViewController : CreateEventPasswordViewController = segue.destinationViewController as! CreateEventPasswordViewController
+        if segue.identifier == "SetPassword" {
+            let destViewController : CreateEventPasswordViewController = segue.destinationViewController as! CreateEventPasswordViewController
         
-        destViewController.hashtag = eventNameTextField.text!
+            destViewController.hashtag = eventNameTextField.text!
+        }
+        if segue.identifier == "AddPhoto" {
+            let destViewController : AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
+            
+            destViewController.hashtag = eventNameTextField.text!
+        
+        }
     }
     
     // Mark: - User Actions
@@ -54,7 +62,8 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         }
         checkValid { (success) -> () in
             if success {
-                self.showSetPasswordView()
+                //self.showSetPasswordView()
+                self.performSegueWithIdentifier("SetPassword", sender: nil)
             }
         }
     }
@@ -73,8 +82,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         
        event.saveInBackgroundWithBlock({ [weak self]
             (success, error) -> Void in
-            //self?.activityIndicatorViewControllerAnimating()
-            self?.dismissViewControllerAnimated(true, completion: nil)
+            self?.performSegueWithIdentifier("AddPhoto", sender: nil)
         })
     }
 
@@ -104,13 +112,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertView.addAction(OKAction)
         self.presentViewController(alertView, animated: true, completion: nil)
-    }
-    
-    func showSetPasswordView() {
-        let SetPasswordView: UIViewController
-        let mainStoryboard = UIStoryboard(name:"Main", bundle: nil)
-        SetPasswordView = mainStoryboard.instantiateViewControllerWithIdentifier("SetPasswordView")
-        self.showViewController(SetPasswordView, sender: self)
     }
     
 }

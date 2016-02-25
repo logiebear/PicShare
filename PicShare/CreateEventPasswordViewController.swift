@@ -21,6 +21,27 @@ class CreateEventPasswordViewController: UIViewController{
     var isPublic: Bool = false
     var password: String? = nil
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        // Do any additional setup after loading the view.
+        /*if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
+        takePhotoButton.hidden = true // check if device have camera
+        }
+        */
+        finishedButton.backgroundColor = UIColor.redColor()
+        finishedButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
+    }
+    
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "AddPhoto" {
+            let destViewController : AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
+            
+            destViewController.hashtag = hashtag
+        
+        }
+    }
     // MARK: - User Actions
     
     @IBAction func backButtonPressed(sender: AnyObject) {
@@ -33,7 +54,7 @@ class CreateEventPasswordViewController: UIViewController{
                 NSLocalizedDescriptionKey: "Password can't be empty!"
                 ])
             self.showErrorView(error)
-            
+            return
         }
         self.createEventObject()
     }
@@ -53,7 +74,8 @@ class CreateEventPasswordViewController: UIViewController{
         event.saveInBackgroundWithBlock({ [weak self]
             (success, error) -> Void in
             //self?.activityIndicatorViewControllerAnimating()
-            self?.dismissViewControllerAnimated(true, completion: nil)
+            //self?.dismissViewControllerAnimated(true, completion: nil)
+            self?.performSegueWithIdentifier("AddPhoto", sender: nil)
             })
     }
     
