@@ -40,6 +40,13 @@ class SignUpViewController: UIViewController {
                 ])
             self.showErrorView(error)
         }
+        else if !isValidEmail(emailTextField.text!) {
+            let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
+                NSLocalizedDescriptionKey: "Invalid email address!"
+                ])
+            self.showErrorView(error)
+        }
+        
         //Check whether email or username is taken
         User.registerSubclass()
         let query = PFUser.query()
@@ -105,4 +112,12 @@ class SignUpViewController: UIViewController {
         alertView.addAction(OKAction)
         self.presentViewController(alertView, animated: true, completion: nil)
     }
+    //email validation function
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let range = testStr.rangeOfString(emailRegEx, options:.RegularExpressionSearch)
+        let result = range != nil ? true : false
+        return result
+    }
 }
+

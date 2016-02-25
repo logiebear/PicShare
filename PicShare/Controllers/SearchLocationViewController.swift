@@ -24,6 +24,7 @@ class SearchLocationViewController: UIViewController {
     @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var filterHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var filterView: UIView!
+    @IBOutlet weak var nearbyView: UIView!
     
     let locationManager = CLLocationManager()
     var photoArray: [Photo]?
@@ -32,8 +33,14 @@ class SearchLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
-        filterButton.setTitle("Filter", forState: .Normal)
-        filterButton.setTitle("Close", forState: .Selected)
+        let sliderKnobImage = UIImage(named: "sliderKnob")
+        radiusSlider.setThumbImage(sliderKnobImage, forState: .Normal)
+        let filterIconImage = UIImage(named: "filterIcon")
+        filterButton.setImage(filterIconImage, forState: .Normal)
+        filterButton.setTitle(" Filter", forState: .Normal)
+        let checkmarkImage = UIImage(named: "checkmark")
+        filterButton.setImage(checkmarkImage, forState: .Selected)
+        filterButton.setTitle("", forState: .Selected)
         filterView.alpha = 0.0
         
         updateCurrentLocation()
