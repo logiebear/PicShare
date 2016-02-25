@@ -32,6 +32,9 @@
 		0AE4D5BB1BF994D200893D03 /* PhotoHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BA1BF994D200893D03 /* PhotoHomeViewController.swift */; };
 		0AE4D5BD1BF994FF00893D03 /* EventHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BC1BF994FF00893D03 /* EventHomeViewController.swift */; };
 		0AE4D5BF1BF9955600893D03 /* SearchHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */; };
+		1C6B5DDB1C7939FD00232AE9 /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B5DDA1C7939FD00232AE9 /* SearchEventViewController.swift */; };
+		1C6B5DDD1C794D4B00232AE9 /* SearchEventResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B5DDC1C794D4B00232AE9 /* SearchEventResultsViewController.swift */; };
+		1CBBDDA31C7D27400072FDDD /* SearchEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBDDA21C7D27400072FDDD /* SearchEventTableViewCell.swift */; };
 		1CEF126B1C0AC5A4008F5243 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEF126A1C0AC5A4008F5243 /* SearchLocationViewController.swift */; };
 		CACDB6812DCE9C2FF4BE0671 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986BF3E755B56746A6F724 /* Pods.framework */; };
 		E4FD1B951C5B354D001A4795 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4FD1B931C5B354D001A4795 /* Account.storyboard */; };
@@ -87,6 +90,9 @@
 		0AE4D5BA1BF994D200893D03 /* PhotoHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoHomeViewController.swift; path = Controllers/PhotoHomeViewController.swift; sourceTree = "<group>"; };
 		0AE4D5BC1BF994FF00893D03 /* EventHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventHomeViewController.swift; path = Controllers/EventHomeViewController.swift; sourceTree = "<group>"; };
 		0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchHomeViewController.swift; path = Controllers/SearchHomeViewController.swift; sourceTree = "<group>"; };
+		1C6B5DDA1C7939FD00232AE9 /* SearchEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
+		1C6B5DDC1C794D4B00232AE9 /* SearchEventResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventResultsViewController.swift; sourceTree = "<group>"; };
+		1CBBDDA21C7D27400072FDDD /* SearchEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventTableViewCell.swift; sourceTree = "<group>"; };
 		1CEF126A1C0AC5A4008F5243 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchLocationViewController.swift; path = Controllers/SearchLocationViewController.swift; sourceTree = "<group>"; };
 		2A9356C5D67042DB2D842FDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5635425CA4D08CF0D2D043C0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -235,6 +241,9 @@
 				0AD0ACEC1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift */,
 				0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */,
 				0A63A6971C6584280014FD2C /* ProfileViewController.swift */,
+				1C6B5DDA1C7939FD00232AE9 /* SearchEventViewController.swift */,
+				1C6B5DDC1C794D4B00232AE9 /* SearchEventResultsViewController.swift */,
+				1CBBDDA21C7D27400072FDDD /* SearchEventTableViewCell.swift */,
 				0ADAE6A71C07E72E00E8BADE /* Account */,
 			);
 			name = Controllers;
@@ -338,6 +347,7 @@
 				TargetAttributes = {
 					0ABADADC1BF909BB001CB962 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = Y9ZHXVUY6F;
 					};
 					0ABADAF01BF909BC001CB962 = {
 						CreatedOnToolsVersion = 7.1;
@@ -461,17 +471,20 @@
 				0ADAE6B11C0A697E00E8BADE /* HomeViewController.swift in Sources */,
 				0A63A6981C6584280014FD2C /* ProfileViewController.swift in Sources */,
 				0AD4103A1C6DAF5600833618 /* EventMgmtViewController.swift in Sources */,
+				1C6B5DDB1C7939FD00232AE9 /* SearchEventViewController.swift in Sources */,
 				0AE4D5BB1BF994D200893D03 /* PhotoHomeViewController.swift in Sources */,
 				0A5663131C5E926300B1097E /* MyPhotosViewController.swift in Sources */,
 				0AE4D5B91BF97B0F00893D03 /* TabBarViewController.swift in Sources */,
 				E4FD1B981C5B3575001A4795 /* SignUpViewController.swift in Sources */,
 				E4FD1B991C5B3575001A4795 /* ProfilePhotoViewController.swift in Sources */,
 				0ABADAE11BF909BB001CB962 /* AppDelegate.swift in Sources */,
+				1CBBDDA31C7D27400072FDDD /* SearchEventTableViewCell.swift in Sources */,
 				0ADB4BAC1BFEBFF800EA51F2 /* PhotoDetailViewController.swift in Sources */,
 				0ADAE6A61C07E72A00E8BADE /* LoginViewController.swift in Sources */,
 				1CEF126B1C0AC5A4008F5243 /* SearchLocationViewController.swift in Sources */,
 				0AD410381C6DA76400833618 /* Event.swift in Sources */,
 				0AD4103B1C6DAF5A00833618 /* CreateEventViewController.swift in Sources */,
+				1C6B5DDD1C794D4B00232AE9 /* SearchEventResultsViewController.swift in Sources */,
 				0AE4D5BF1BF9955600893D03 /* SearchHomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
