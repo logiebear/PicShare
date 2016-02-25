@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zNY-rV-0aN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zNY-rV-0aN">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
     </dependencies>
     <scenes>
@@ -661,7 +661,6 @@
         <!--Profile-->
         <scene sceneID="toC-qf-ylB">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="ZfL-bh-tvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController id="eU6-Aj-CwX" customClass="ProfileViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="vuJ-EU-412"/>
@@ -671,8 +670,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fE-A0-XHg">
-                                <rect key="frame" x="150" y="404" width="300" height="21"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="300" translatesAutoresizingMaskIntoConstraints="NO" id="8fE-A0-XHg">
+                                <rect key="frame" x="150" y="404" width="300" height="29"/>
                                 <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
                                 <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
@@ -684,17 +683,25 @@
                                     <constraint firstAttribute="height" constant="300" id="p0t-Hc-A2d"/>
                                 </constraints>
                             </imageView>
-                            <view contentMode="scaleToFill" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nLB-fg-Cyv">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLB-fg-Cyv">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="158" translatesAutoresizingMaskIntoConstraints="NO" id="LaP-Wj-ja4">
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="158" translatesAutoresizingMaskIntoConstraints="NO" id="LaP-Wj-ja4">
                                         <rect key="frame" x="269" y="15" width="63" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="ESq-7D-bPX"/>
+                                            <constraint firstAttribute="width" constant="63" id="ged-cU-uLo"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="12"/>
                                         <color key="textColor" red="0.31764705882352939" green="0.33333333333333331" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjh-ZN-v4o">
-                                        <rect key="frame" x="498" y="13" width="70" height="34"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjh-ZN-v4o">
+                                        <rect key="frame" x="510" y="20" width="70" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="70" id="lry-hs-HCa"/>
+                                            <constraint firstAttribute="height" constant="30" id="vWi-Jh-urq"/>
+                                        </constraints>
                                         <fontDescription key="fontDescription" type="system" pointSize="12"/>
                                         <state key="normal" title="Log Out">
                                             <color key="titleColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
@@ -707,22 +714,26 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="Cmk-b7-LbZ"/>
+                                    <constraint firstItem="Mjh-ZN-v4o" firstAttribute="top" secondItem="nLB-fg-Cyv" secondAttribute="top" constant="20" id="Ep9-D4-9pC"/>
+                                    <constraint firstItem="LaP-Wj-ja4" firstAttribute="centerY" secondItem="nLB-fg-Cyv" secondAttribute="centerY" id="HM8-dI-yTs"/>
+                                    <constraint firstAttribute="height" constant="60" id="azB-hZ-ViV"/>
+                                    <constraint firstItem="LaP-Wj-ja4" firstAttribute="centerX" secondItem="nLB-fg-Cyv" secondAttribute="centerX" id="iJ5-1D-E7E"/>
+                                    <constraint firstItem="LaP-Wj-ja4" firstAttribute="centerY" secondItem="nLB-fg-Cyv" secondAttribute="centerY" id="poS-cw-j1T"/>
+                                    <constraint firstAttribute="trailing" secondItem="Mjh-ZN-v4o" secondAttribute="trailing" constant="20" id="wpo-e4-5js"/>
                                 </constraints>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="nLB-fg-Cyv" firstAttribute="centerX" secondItem="RYR-DJ-tLM" secondAttribute="centerX" id="FB6-FJ-EHh"/>
+                            <constraint firstItem="nLB-fg-Cyv" firstAttribute="top" secondItem="RYR-DJ-tLM" secondAttribute="top" id="3wm-SI-Hyr"/>
                             <constraint firstItem="id3-5L-tjs" firstAttribute="leading" secondItem="8fE-A0-XHg" secondAttribute="leading" id="IVb-w3-c2e"/>
-                            <constraint firstItem="nLB-fg-Cyv" firstAttribute="top" secondItem="RYR-DJ-tLM" secondAttribute="top" id="PnP-gw-MvE"/>
-                            <constraint firstItem="id3-5L-tjs" firstAttribute="top" secondItem="nLB-fg-Cyv" secondAttribute="bottom" constant="22" id="aFV-Uu-oRT"/>
                             <constraint firstItem="8fE-A0-XHg" firstAttribute="centerX" secondItem="RYR-DJ-tLM" secondAttribute="centerX" id="aGh-bJ-RmA"/>
                             <constraint firstItem="id3-5L-tjs" firstAttribute="top" secondItem="RYR-DJ-tLM" secondAttribute="top" constant="82" id="aWh-Ph-2PJ"/>
                             <constraint firstItem="8fE-A0-XHg" firstAttribute="top" secondItem="id3-5L-tjs" secondAttribute="bottom" constant="22" id="px6-2I-9yJ"/>
-                            <constraint firstItem="nLB-fg-Cyv" firstAttribute="centerX" secondItem="RYR-DJ-tLM" secondAttribute="centerX" id="qfT-d2-fxg"/>
+                            <constraint firstItem="nLB-fg-Cyv" firstAttribute="leading" secondItem="RYR-DJ-tLM" secondAttribute="leading" id="sQn-4i-XlV"/>
                             <constraint firstItem="id3-5L-tjs" firstAttribute="centerX" secondItem="RYR-DJ-tLM" secondAttribute="centerX" id="v1z-lI-PuH"/>
                             <constraint firstItem="id3-5L-tjs" firstAttribute="trailing" secondItem="8fE-A0-XHg" secondAttribute="trailing" id="vVU-VW-a8M"/>
+                            <constraint firstAttribute="trailing" secondItem="nLB-fg-Cyv" secondAttribute="trailing" id="zIx-5S-Pua"/>
                         </constraints>
                     </view>
                     <tabBarItem key="tabBarItem" title="Profile" image="profileIcon.png" id="moU-SC-eBL">
@@ -739,6 +750,7 @@
                         <outlet property="usernameLabel" destination="8fE-A0-XHg" id="0ms-QI-EVk"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="ZfL-bh-tvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-650" y="645"/>
         </scene>
