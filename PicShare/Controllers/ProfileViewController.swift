@@ -17,14 +17,11 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         let query = PFQuery(className: User.parseClassName())
         query.includeKey("owner")
         query.orderByDescending("createdAt")
         query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
-            
             if let error = error {
                 print("Error: \(error) \(error.userInfo)")
                 return
@@ -49,8 +46,6 @@ class ProfileViewController: UIViewController {
                     }
                 }
             }
-            
-            
         }
     }
 
