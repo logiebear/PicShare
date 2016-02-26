@@ -223,10 +223,10 @@
 		0AE4D5B51BF9796E00893D03 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6AFDC5901C5C4A640089598C /* Event */,
 				0AE4D5B61BF9799700893D03 /* RootViewController.swift */,
 				0AE4D5B81BF97B0F00893D03 /* TabBarViewController.swift */,
 				E48091EB1C792FAE0092B04C /* SelectUploadEventViewController.swift */,
+				6AFDC5901C5C4A640089598C /* Event */,
 				0AE4D5BA1BF994D200893D03 /* PhotoHomeViewController.swift */,
 				0ADAE6B21C0BB06800E8BADE /* UploadPhotoViewController.swift */,
 				0A5663121C5E926300B1097E /* MyPhotosViewController.swift */,

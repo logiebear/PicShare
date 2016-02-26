@@ -39,34 +39,32 @@ class SelectUploadEventViewController: UIViewController {
     }
     
     @IBAction func uploadPhoto(sender: AnyObject) {
-        if let selectedEvent = selectedEvent {
-            guard let photo = photo else {
-                return
-            }
-            photo.event = selectedEvent
-            photo.saveInBackgroundWithBlock({ [weak self](success: Bool, error: NSError?) in
-                if let error = error {
-                    let alertView = UIAlertController(title: "Error",
-                        message: error.localizedDescription, preferredStyle: .Alert)
-                    let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                    alertView.addAction(OKAction)
-                    self?.presentViewController(alertView, animated: true, completion: nil)
-                    return
-                }
-                let alertView = UIAlertController(title: "Message",
-                    message: "Upload Success", preferredStyle: .Alert)
-                let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                alertView.addAction(OKAction)
-                self?.presentViewController(alertView, animated: true, completion: nil)
-                })
-        }
-        else {
+        guard let selectedEvent = selectedEvent else {
             let alertView = UIAlertController(title: "Error",
                 message: "Please select an event!", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
             alertView.addAction(OKAction)
             presentViewController(alertView, animated: true, completion: nil)
             return
+        }
+        guard let photo = photo else {
+            return
+        }
+        photo.event = selectedEvent
+        photo.saveInBackgroundWithBlock { [weak self](success: Bool, error: NSError?) in
+            if let error = error {
+                let alertView = UIAlertController(title: "Error",
+                    message: error.localizedDescription, preferredStyle: .Alert)
+                let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                alertView.addAction(OKAction)
+                self?.presentViewController(alertView, animated: true, completion: nil)
+                return
+            }
+            let alertView = UIAlertController(title: "Message",
+                message: "Upload Success", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            alertView.addAction(OKAction)
+            self?.presentViewController(alertView, animated: true, completion: nil)
         }
     }
 }
