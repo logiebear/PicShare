@@ -673,12 +673,16 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="QxR-dS-0y9">
                                 <rect key="frame" x="0.0" y="60" width="600" height="391"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="id3-5L-tjs" customClass="PFImageView">
+                                    <imageView contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="id3-5L-tjs" customClass="PFImageView">
                                         <rect key="frame" x="150" y="20" width="300" height="300"/>
+                                        <gestureRecognizers/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="300" id="0z4-PS-PVl"/>
                                             <constraint firstAttribute="width" constant="300" id="JTW-1S-En5"/>
                                         </constraints>
+                                        <connections>
+                                            <outletCollection property="gestureRecognizers" destination="sjf-Un-rpu" appends="YES" id="obi-Y9-wt8"/>
+                                        </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fE-A0-XHg">
                                         <rect key="frame" x="150" y="340" width="300" height="29"/>
@@ -853,10 +857,17 @@
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="profileImageView" destination="id3-5L-tjs" id="uC0-vX-fzT"/>
+                        <outlet property="userInfoImageView" destination="QxR-dS-0y9" id="mg0-Ta-esQ"/>
+                        <outlet property="userInfoImageViewHeight" destination="vh6-VG-42R" id="ski-P9-ler"/>
                         <outlet property="usernameLabel" destination="8fE-A0-XHg" id="0ms-QI-EVk"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZfL-bh-tvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="sjf-Un-rpu">
+                    <connections>
+                        <action selector="profilePhotoTapped:" destination="eU6-Aj-CwX" id="KY0-fe-Nps"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="-569" y="669"/>
         </scene>
