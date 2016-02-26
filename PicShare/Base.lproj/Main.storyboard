@@ -1273,6 +1273,9 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="96" id="vUv-f0-mMw"/>
                                         </constraints>
                                         <state key="normal" title="Take a photo"/>
+                                        <connections>
+                                            <action selector="takePhotoButtonPressed:" destination="Cfg-3N-ygj" eventType="touchUpInside" id="Ywo-Be-o3t"/>
+                                        </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivY-lO-Dpf">
                                         <rect key="frame" x="89" y="305" width="83" height="30"/>
@@ -1284,7 +1287,7 @@
                                         </constraints>
                                         <state key="normal" title="Camera Roll"/>
                                         <connections>
-                                            <action selector="cameraRollButtonPressed:" destination="Cfg-3N-ygj" eventType="touchUpInside" id="9KU-nO-AK0"/>
+                                            <action selector="cameraRollButtonPressed:" destination="Cfg-3N-ygj" eventType="touchUpInside" id="H3N-WS-5XA"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Congrats!" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="fXW-Gf-g9Q">

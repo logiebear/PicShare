@@ -17,7 +17,7 @@ class CreateEventPasswordViewController: UIViewController{
     @IBOutlet weak var finishedButton: UIButton!
  
     var hashtag = String()
-    var user: PFUser = PFUser.currentUser()!
+    var user: PFUser? = PFUser.currentUser()
     var isPublic: Bool = false
     var password: String? = nil
 
@@ -25,21 +25,14 @@ class CreateEventPasswordViewController: UIViewController{
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        /*if !UIImagePickerController.isSourceTypeAvailable(.Camera) {
-        takePhotoButton.hidden = true // check if device have camera
-        }
-        */
         finishedButton.backgroundColor = UIColor.redColor()
         finishedButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
     }
     
-    
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "AddPhoto" {
-            let destViewController : AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
-            
+            let destViewController: AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
             destViewController.hashtag = hashtag
-        
         }
     }
     // MARK: - User Actions
@@ -49,44 +42,36 @@ class CreateEventPasswordViewController: UIViewController{
     }
     
     @IBAction func finishedButtonPressed(sender: AnyObject) {
-        if eventPasswordTextField.text == "" {
-            let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
-                NSLocalizedDescriptionKey: "Password can't be empty!"
-                ])
-            self.showErrorView(error)
+        if eventPasswordTextField.text == "" ||  eventPasswordTextField.text == nil{
+            self.showErrorView("Invalid password", msg: "Password can't be empty!")
             return
         }
         self.createEventObject()
     }
     
-    
-    
     // Mark: - Private
     
     private func createEventObject() {
+        if let user = user{
+            let event = Event(
+                owner: user,
+                hashtag: hashtag,
+                isPublic: isPublic,
+                password: eventPasswordTextField.text!
+            )
         
-        let event = Event(owner: user,
-            hashtag: hashtag,
-            isPublic: isPublic,
-            password: eventPasswordTextField.text!
-        )
-        
-        event.saveInBackgroundWithBlock({ [weak self]
-            (success, error) -> Void in
-            //self?.activityIndicatorViewControllerAnimating()
-            //self?.dismissViewControllerAnimated(true, completion: nil)
-            self?.performSegueWithIdentifier("AddPhoto", sender: nil)
+            event.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
+                self?.performSegueWithIdentifier("AddPhoto", sender: nil)
             })
+        }
     }
     
     // Mark: - Helper
     
-    func showErrorView(error: NSError) {
-        let alertView = UIAlertController(title: "Error",
-            message: error.localizedDescription, preferredStyle: .Alert)
-        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertView.addAction(OKAction)
-        self.presentViewController(alertView, animated: true, completion: nil)
+    func showErrorView(title: String, msg: String) {
+        let alert = UIAlertView(title: title,
+            message: msg,
+            delegate: nil, cancelButtonTitle: "Try Again")
+        alert.show()
     }
-
 }

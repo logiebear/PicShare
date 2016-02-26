@@ -17,31 +17,28 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     @IBOutlet weak var privateButton: UIButton!
     
     var hashtag: String? = nil
-    var user: PFUser = PFUser.currentUser()!
+    var user: PFUser? = PFUser.currentUser()
     var isPublic: Bool = true
     var password: String? = nil
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "SetPassword" {
-            let destViewController : CreateEventPasswordViewController = segue.destinationViewController as! CreateEventPasswordViewController
-        
-            destViewController.hashtag = eventNameTextField.text!
-        }
-        if segue.identifier == "AddPhoto" {
-            let destViewController : AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
-            
-            destViewController.hashtag = eventNameTextField.text!
-        
+        if let eventNameText = eventNameTextField.text{
+            if segue.identifier == "SetPassword" {
+                let destViewController: CreateEventPasswordViewController = segue.destinationViewController as! CreateEventPasswordViewController
+                destViewController.hashtag = eventNameText
+            }
+            if segue.identifier == "AddPhoto" {
+                let destViewController: AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
+                destViewController.hashtag = eventNameText
+            }
         }
     }
     
     // Mark: - User Actions
     
     @IBAction func createPublicEvent(sender: AnyObject) {
-        if eventNameTextField.text == "" {
-            let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
-                NSLocalizedDescriptionKey: "Event name can't be empty!"])
-            self.showErrorView(error)
+        if eventNameTextField.text == "" || eventNameTextField.text == nil {
+            self.showErrorView("Invalid event name", msg: "Event name can't be empty!")
             return
         }
         checkValid { (success) -> () in
@@ -49,25 +46,19 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
                 self.createEventObject()
             }
         }
-        
     }
     
     @IBAction func privateButtonPressed(sender: AnyObject) {
         if eventNameTextField.text == "" {
-            let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
-                NSLocalizedDescriptionKey: "Event name can't be empty!"
-                ])
-            self.showErrorView(error)
+            self.showErrorView("Invalid event name", msg: "Event name can't be empty!")
             return
         }
         checkValid { (success) -> () in
             if success {
-                //self.showSetPasswordView()
                 self.performSegueWithIdentifier("SetPassword", sender: nil)
             }
         }
     }
-    
     
     @IBAction func backButtonPressed(sender: AnyObject) {
         self.dismissViewControllerAnimated(true, completion: nil)
@@ -76,18 +67,21 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     // Mark: - Private
     
     private func createEventObject() {
-        let event = Event(owner: user, hashtag: eventNameTextField.text!,isPublic: isPublic,
-            password: password
-        )
-        
-       event.saveInBackgroundWithBlock({ [weak self]
-            (success, error) -> Void in
-            self?.performSegueWithIdentifier("AddPhoto", sender: nil)
-        })
+        if let user = user, eventNameText = eventNameTextField.text{
+            let event = Event(
+                owner: user,
+                hashtag: eventNameText,
+                isPublic: isPublic,
+                password: password
+            )
+            event.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
+                self?.performSegueWithIdentifier("AddPhoto", sender: nil)
+            })
+        }
     }
 
     // Mark: - Helper
-    func checkValid(completion: ((Bool) -> ())) {
+    func checkValid(completion: (Bool) -> ()) {
         guard let query = Event.query() else {
             return
         }
@@ -97,21 +91,17 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
                 if let objects = objects where objects.count == 0{
                     completion(true)
                 } else {
-                    let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
-                        NSLocalizedDescriptionKey: "Event name has been taken!"])
-                    self?.showErrorView(error)
+                    self?.showErrorView("Invalid event name", msg: "Event name has been taken!")
                     completion(false)
                 }
             }
         }
     }
     
-    func showErrorView(error: NSError) {
-        let alertView = UIAlertController(title: "Error",
-            message: error.localizedDescription, preferredStyle: .Alert)
-        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertView.addAction(OKAction)
-        self.presentViewController(alertView, animated: true, completion: nil)
+    func showErrorView(title: String, msg: String) {
+        let alert = UIAlertView(title: title,
+            message: msg,
+            delegate: nil, cancelButtonTitle: "Try Again")
+        alert.show()
     }
-    
 }
