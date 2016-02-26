@@ -33,18 +33,21 @@ class SignUpViewController: UIViewController {
                 NSLocalizedDescriptionKey: "Please fill out all the fields!"
                 ])
             self.showErrorView(error)
+            return
         }
         else if passwordTextField.text! != passwordConfirmTextField.text! {
             let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Two passwords are different!"
                 ])
             self.showErrorView(error)
+            return
         }
         else if !isValidEmail(emailTextField.text!) {
             let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Invalid email address!"
                 ])
             self.showErrorView(error)
+            return
         }
         
         //Check whether email or username is taken
