@@ -37,6 +37,7 @@
 		0AE4D5BF1BF9955600893D03 /* SearchHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BE1BF9955600893D03 /* SearchHomeViewController.swift */; };
 		1CEF126B1C0AC5A4008F5243 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEF126A1C0AC5A4008F5243 /* SearchLocationViewController.swift */; };
 		CACDB6812DCE9C2FF4BE0671 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986BF3E755B56746A6F724 /* Pods.framework */; };
+		E48091EC1C792FAE0092B04C /* SelectUploadEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E48091EB1C792FAE0092B04C /* SelectUploadEventViewController.swift */; };
 		E4FD1B951C5B354D001A4795 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4FD1B931C5B354D001A4795 /* Account.storyboard */; };
 		E4FD1B981C5B3575001A4795 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FD1B961C5B3575001A4795 /* SignUpViewController.swift */; };
 		E4FD1B991C5B3575001A4795 /* ProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FD1B971C5B3575001A4795 /* ProfilePhotoViewController.swift */; };
@@ -100,6 +101,7 @@
 		6AFDC5951C6595150089598C /* EventMgmtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMgmtViewController.swift; sourceTree = "<group>"; };
 		6AFDC5971C6AA21E0089598C /* CreateEventPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventPasswordViewController.swift; sourceTree = "<group>"; };
 		9C986BF3E755B56746A6F724 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		E48091EB1C792FAE0092B04C /* SelectUploadEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectUploadEventViewController.swift; path = Controllers/SelectUploadEventViewController.swift; sourceTree = "<group>"; };
 		E4FD1B941C5B354D001A4795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
 		E4FD1B961C5B3575001A4795 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Controllers/SignUpViewController.swift; sourceTree = "<group>"; };
 		E4FD1B971C5B3575001A4795 /* ProfilePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilePhotoViewController.swift; path = Controllers/ProfilePhotoViewController.swift; sourceTree = "<group>"; };
@@ -238,9 +240,10 @@
 		0AE4D5B51BF9796E00893D03 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				6AFDC5901C5C4A640089598C /* Event */,
 				0AE4D5B61BF9799700893D03 /* RootViewController.swift */,
 				0AE4D5B81BF97B0F00893D03 /* TabBarViewController.swift */,
+				E48091EB1C792FAE0092B04C /* SelectUploadEventViewController.swift */,
+				6AFDC5901C5C4A640089598C /* Event */,
 				0AE4D5BA1BF994D200893D03 /* PhotoHomeViewController.swift */,
 				0ADAE6B21C0BB06800E8BADE /* UploadPhotoViewController.swift */,
 				0A5663121C5E926300B1097E /* MyPhotosViewController.swift */,
@@ -480,6 +483,7 @@
 				0AD0ACF21C6AAA2900FD8963 /* User.swift in Sources */,
 				0ADAE6B11C0A697E00E8BADE /* HomeViewController.swift in Sources */,
 				0A63A6981C6584280014FD2C /* ProfileViewController.swift in Sources */,
+				E48091EC1C792FAE0092B04C /* SelectUploadEventViewController.swift in Sources */,
 				0AD4103A1C6DAF5600833618 /* EventMgmtViewController.swift in Sources */,
 				0AE4D5BB1BF994D200893D03 /* PhotoHomeViewController.swift in Sources */,
 				0A5663131C5E926300B1097E /* MyPhotosViewController.swift in Sources */,
