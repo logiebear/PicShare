@@ -59,7 +59,6 @@ extension AddPhotoViewController: UIImagePickerControllerDelegate, UINavigationC
         dismissViewControllerAnimated(true) { () -> Void in
             self.performSegueWithIdentifier("UploadPhoto", sender: image)
         }
-        
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

@@ -22,7 +22,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     var password: String? = nil
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let eventNameText = eventNameTextField.text{
+        if let eventNameText = eventNameTextField.text {
             if segue.identifier == "SetPassword" {
                 let destViewController: CreateEventPasswordViewController = segue.destinationViewController as! CreateEventPasswordViewController
                 destViewController.hashtag = eventNameText
@@ -67,13 +67,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     // Mark: - Private
     
     private func createEventObject() {
-        if let user = user, eventNameText = eventNameTextField.text{
-            let event = Event(
-                owner: user,
-                hashtag: eventNameText,
-                isPublic: isPublic,
-                password: password
-            )
+        if let user = user, eventNameText = eventNameTextField.text {
+            let event = Event(owner: user, hashtag: eventNameText,
+                isPublic: isPublic, password: password)
             event.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
                 self?.performSegueWithIdentifier("AddPhoto", sender: nil)
             })
@@ -99,9 +95,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     }
     
     func showErrorView(title: String, msg: String) {
-        let alert = UIAlertView(title: title,
-            message: msg,
-            delegate: nil, cancelButtonTitle: "Try Again")
-        alert.show()
+        let alertView = UIAlertController(title: title,
+            message: msg, preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertView.addAction(OKAction)
+        self.presentViewController(alertView, animated: true, completion: nil)
     }
 }

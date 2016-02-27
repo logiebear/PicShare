@@ -42,7 +42,7 @@ class CreateEventPasswordViewController: UIViewController{
     }
     
     @IBAction func finishedButtonPressed(sender: AnyObject) {
-        if eventPasswordTextField.text == "" ||  eventPasswordTextField.text == nil{
+        if eventPasswordTextField.text == "" ||  eventPasswordTextField.text == nil {
             self.showErrorView("Invalid password", msg: "Password can't be empty!")
             return
         }
@@ -52,26 +52,23 @@ class CreateEventPasswordViewController: UIViewController{
     // Mark: - Private
     
     private func createEventObject() {
-        if let user = user{
-            let event = Event(
-                owner: user,
-                hashtag: hashtag,
-                isPublic: isPublic,
-                password: eventPasswordTextField.text!
-            )
+        if let user = user, eventPasswordText = eventPasswordTextField.text {
+            let event = Event(owner: user, hashtag: hashtag,
+                isPublic: isPublic, password: eventPasswordText)
         
-            event.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
+            event.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
                 self?.performSegueWithIdentifier("AddPhoto", sender: nil)
-            })
+            }
         }
     }
     
     // Mark: - Helper
     
     func showErrorView(title: String, msg: String) {
-        let alert = UIAlertView(title: title,
-            message: msg,
-            delegate: nil, cancelButtonTitle: "Try Again")
-        alert.show()
+        let alertView = UIAlertController(title: title,
+            message: msg, preferredStyle: .Alert)
+        let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        alertView.addAction(OKAction)
+        self.presentViewController(alertView, animated: true, completion: nil)
     }
 }
