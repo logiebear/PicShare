@@ -13,6 +13,7 @@ class EventPhotoScreenViewController: UIViewController {
     
     @IBOutlet weak var eventPhotoCollectionView: UICollectionView!
     var eventPhotos: [PFObject]?
+    var event: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,39 +27,37 @@ class EventPhotoScreenViewController: UIViewController {
         loadCollectionViewData()
     }
     
-    func loadCollectionViewData() {
-        // Build a parse query object
-        let query = PFQuery(className:"Photo")
-        // Fetch data from the parse platform
-        // TODO: UPDATE THIS
-//        let event: Event = Event()
-//        query.whereKey("event", equalTo: event)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
-            if let error = error {
-                print("Error: \(error)")
-                return
-            }
-            // The find succeeded now rocess the found objects into the photo array
-            // Clear existing photo data
-            if self.eventPhotos != nil {
-                self.eventPhotos!.removeAll(keepCapacity: true)
-            }
-            // Add photo objects to our array
-            if let objects = objects {
-                self.eventPhotos = Array(objects.generate())
-            }
-            // reload our data into the collection view
-            self.eventPhotoCollectionView.reloadData()
-        }
+    // MARK: - User Actions
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
+    func loadCollectionViewData() {
+        let query = PFQuery(className:"Photo")
+        if let event = event {
+            query.whereKey("event", equalTo: event)
+            query.findObjectsInBackgroundWithBlock {
+                (objects: [PFObject]?, error: NSError?) -> Void in
+                if let error = error {
+                    print("Error: \(error)")
+                    return
+                }
+                if self.eventPhotos != nil {
+                    self.eventPhotos!.removeAll(keepCapacity: true)
+                }
+                if let objects = objects {
+                    self.eventPhotos = Array(objects.generate())
+                }
+                self.eventPhotoCollectionView.reloadData()
+            }
+        }
     }
 }
 
 extension EventPhotoScreenViewController: UICollectionViewDataSource {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let eventPhotos = self.eventPhotos {
@@ -66,9 +65,6 @@ extension EventPhotoScreenViewController: UICollectionViewDataSource {
         }
         return 0
     }
-}
-
-extension EventPhotoScreenViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! EventPhotoCollectionViewCell
@@ -90,4 +86,7 @@ extension EventPhotoScreenViewController: UICollectionViewDelegate {
         }
         return cell
     }
+}
+
+extension EventPhotoScreenViewController: UICollectionViewDelegate {
 }
