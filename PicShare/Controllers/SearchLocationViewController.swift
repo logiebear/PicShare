@@ -20,6 +20,7 @@ class SearchLocationViewController: UIViewController {
   
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var filterButton: UIButton!
+    @IBOutlet weak var closeButton: UIButton!
     @IBOutlet weak var radiusLabel: UILabel!
     @IBOutlet weak var radiusSlider: UISlider!
     @IBOutlet weak var filterHeightConstraint: NSLayoutConstraint!
@@ -29,10 +30,12 @@ class SearchLocationViewController: UIViewController {
     let locationManager = CLLocationManager()
     var photoArray: [Photo]?
     var didRequestLocation = false
+    var formerRadius = 0
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view
+
         let sliderKnobImage = UIImage(named: "sliderKnob")
         radiusSlider.setThumbImage(sliderKnobImage, forState: .Normal)
         let filterIconImage = UIImage(named: "filterIcon")
@@ -42,6 +45,7 @@ class SearchLocationViewController: UIViewController {
         filterButton.setImage(checkmarkImage, forState: .Selected)
         filterButton.setTitle("", forState: .Selected)
         filterView.alpha = 0.0
+        closeButton.alpha = 0.0
         
         updateCurrentLocation()
     }
@@ -58,12 +62,32 @@ class SearchLocationViewController: UIViewController {
             if let filterButton = self?.filterButton {
                 let alpha: CGFloat = filterButton.selected ? 1.0 : 0.0
                 self?.filterView.alpha = alpha
+                self?.closeButton.alpha = alpha
+                self?.nearbyView.alpha = (1 - alpha)
             }
         }
         
         if !filterButton.selected {
             updateCurrentLocation()
         }
+        else{
+            formerRadius = Int(radiusSlider.value)
+        }
+    }
+    
+    @IBAction func closeButtonPressed(sender: AnyObject) {
+        filterButton.selected = !filterButton.selected
+        UIView.animateWithDuration(0.5) { [weak self]() -> Void in
+            if let filterButton = self?.filterButton {
+                let alpha: CGFloat = filterButton.selected ? 1.0 : 0.0
+                self?.filterView.alpha = alpha
+                self?.closeButton.alpha = alpha
+                self?.nearbyView.alpha = (1 - alpha)
+            }
+        }
+        radiusSlider.value = Float(formerRadius)
+        let radius = Int(radiusSlider.value)
+        radiusLabel.text = "\(radius) Miles"
     }
     
     @IBAction func radiusSliderValueChanged(sender: AnyObject) {
