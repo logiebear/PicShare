@@ -14,8 +14,14 @@ class ProfileViewController: UIViewController {
     
     @IBOutlet weak var profileImageView: PFImageView!
     @IBOutlet weak var usernameLabel: UILabel!
-    @IBOutlet weak var userInfoImageView: UIView!
     @IBOutlet weak var userInfoImageViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var profileImageViewHeight: NSLayoutConstraint!
+    @IBOutlet weak var profileImageViewWidth: NSLayoutConstraint!
+    @IBOutlet weak var usernameLabelTopSpacing: NSLayoutConstraint!
+    @IBOutlet weak var usernameLabelHeight: NSLayoutConstraint!
+    @IBOutlet weak var removePhotoButton: UIView!
+    @IBOutlet weak var takePhotoButton: UIView!
+    @IBOutlet weak var cameraRollButton: UIView!
     
     private var modifyButtonsVisible = false
     
@@ -64,28 +70,36 @@ class ProfileViewController: UIViewController {
     }
     
     private func hideButtons() {
-//        print("Visible. Size of superview: \(self.userInfoImageView.frame.size.height)")
-//        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height
-//        self.profileImageView.frame.size.height = self.profileImageView.frame.size.height*2
-//        self.profileImageView.frame.size.width = self.profileImageView.frame.size.width*2
-//        self.userInfoImageView.frame.size.height = self.userInfoImageView.frame.size.height*2
-//        print("Hiding. Size of superview: \(self.userInfoImageView.frame.size.height)")
-        self.userInfoImageViewHeight.constant = 300
+        self.userInfoImageViewHeight.constant = 391
+        self.profileImageViewHeight.constant = 300
+        self.profileImageViewWidth.constant = 300
+        self.usernameLabelTopSpacing.constant = 20
+        self.usernameLabelHeight.constant = 30
+        
         UIView.animateWithDuration(0.5) {
+            self.usernameLabel.font = UIFont.boldSystemFontOfSize(24)
+            self.profileImageView.layer.cornerRadius = 150
+            self.cameraRollButton.hidden = true
+            self.removePhotoButton.hidden = true
+            self.takePhotoButton.hidden = true
             self.view.layoutIfNeeded()
         }
         modifyButtonsVisible = false
     }
     
     private func showButtons() {
-//        print("Hidden. Size of superview: \(self.userInfoImageView.frame.size.height)")
-//        self.profileImageView.frame.size.height = self.profileImageView.frame.size.height/2
-//        self.profileImageView.frame.size.width = self.profileImageView.frame.size.width/2
-//        self.profileImageView.layer.cornerRadius = self.profileImageView.frame.size.height/2
-//        self.userInfoImageView.frame.size.height = self.userInfoImageView.frame.size.height/2
-//          print("Visifying. Size of superview: \(self.userInfoImageView.frame.size.height)")
         self.userInfoImageViewHeight.constant = 150
+        self.profileImageViewHeight.constant = 100
+        self.profileImageViewWidth.constant = 100
+        self.usernameLabelTopSpacing.constant = 7
+        self.usernameLabelHeight.constant = 15
+        
         UIView.animateWithDuration(0.5) {
+            self.profileImageView.layer.cornerRadius = 50
+            self.usernameLabel.font = UIFont.boldSystemFontOfSize(12)
+            self.cameraRollButton.hidden = false
+            self.removePhotoButton.hidden = false
+            self.takePhotoButton.hidden = false
             self.view.layoutIfNeeded()
         }
         modifyButtonsVisible = true
@@ -98,14 +112,22 @@ class ProfileViewController: UIViewController {
     
    
     @IBAction func profilePhotoTapped(sender: UITapGestureRecognizer) {
-        // Things I need to do
-        // 1. Toggle photo size between large and less large
         if (modifyButtonsVisible) {
             hideButtons()
-
         } else {
             showButtons()
         }
-        // 2. Toggle three buttons visible or not visible
+    }
+    
+    @IBAction func removePhotoButtonTapped(sender: UITapGestureRecognizer) {
+        print("Remove Photo Button tapped")
+    }
+    
+    @IBAction func takePhotoButtonTapped(sender: UITapGestureRecognizer) {
+        print("Take Photo Button tapped")
+    }
+    
+    @IBAction func cameraRollButtonTapped(sender: UITapGestureRecognizer) {
+        print("Camera Roll Button Tapped")
     }
 }

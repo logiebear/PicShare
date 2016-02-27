@@ -685,11 +685,9 @@
                                         </connections>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="center" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8fE-A0-XHg">
-                                        <rect key="frame" x="150" y="340" width="300" height="29"/>
+                                        <rect key="frame" x="150" y="340" width="300" height="30"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="29" id="871-d1-9pZ"/>
-                                            <constraint firstAttribute="height" constant="29" id="LFW-yO-x3T"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="acp-vr-3Ja"/>
+                                            <constraint firstAttribute="height" constant="30" id="LFW-yO-x3T"/>
                                             <constraint firstAttribute="width" constant="300" id="zOe-xg-oeJ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="24"/>
@@ -821,28 +819,92 @@
                                     <constraint firstAttribute="trailing" secondItem="Mjh-ZN-v4o" secondAttribute="trailing" id="mxL-5L-jJw"/>
                                 </constraints>
                             </view>
+                            <view hidden="YES" tag="1010" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Rnv-CP-0K1">
+                                <rect key="frame" x="150" y="411" width="300" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Take New Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="x3D-dd-3gM">
+                                        <rect key="frame" x="0.0" y="9" width="300" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.85882352939999995" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="Zhd-bY-GK4"/>
+                                    <constraint firstAttribute="width" constant="300" id="v3B-lz-Syl"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="x2S-A0-lEL" appends="YES" id="FaA-MX-nT0"/>
+                                </connections>
+                            </view>
+                            <view hidden="YES" tag="1010" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Qxy-bJ-5mq">
+                                <rect key="frame" x="150" y="351" width="300" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Remove Photo" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QLX-3y-Wf8">
+                                        <rect key="frame" x="0.0" y="9" width="300" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.85882352939999995" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="40" id="FPi-h9-DyF"/>
+                                    <constraint firstAttribute="width" constant="300" id="U59-dY-w1Y"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="nlm-qx-1jI" appends="YES" id="cWq-0n-U25"/>
+                                </connections>
+                            </view>
+                            <view hidden="YES" tag="1010" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Chh-aN-8gX">
+                                <rect key="frame" x="150" y="471" width="300" height="40"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Camera Roll" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="bso-EM-mVO">
+                                        <rect key="frame" x="0.0" y="9" width="300" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                </subviews>
+                                <color key="backgroundColor" red="0.98039215690000003" green="0.85882352939999995" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                <gestureRecognizers/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="300" id="Zvb-go-s4C"/>
+                                    <constraint firstAttribute="height" constant="40" id="hOR-tX-T6f"/>
+                                </constraints>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="Hnn-oF-Ol6" appends="YES" id="jna-LV-2dY"/>
+                                </connections>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="QxR-dS-0y9" firstAttribute="top" secondItem="IDU-p6-VYR" secondAttribute="bottom" id="0kk-yC-jU1"/>
+                            <constraint firstItem="P5x-y3-DZy" firstAttribute="top" secondItem="Chh-aN-8gX" secondAttribute="bottom" constant="40" id="3LZ-Bn-mMz"/>
                             <constraint firstAttribute="trailing" secondItem="IDU-p6-VYR" secondAttribute="trailing" id="6ch-4q-SZf"/>
-                            <constraint firstItem="P5x-y3-DZy" firstAttribute="top" secondItem="IDU-p6-VYR" secondAttribute="bottom" constant="10" id="Jyw-JE-3am"/>
+                            <constraint firstItem="P5x-y3-DZy" firstAttribute="top" secondItem="Qxy-bJ-5mq" secondAttribute="bottom" constant="160" id="X1a-nW-zH4"/>
                             <constraint firstAttribute="trailing" secondItem="QxR-dS-0y9" secondAttribute="trailing" id="Xwt-JT-Dto"/>
                             <constraint firstItem="IDU-p6-VYR" firstAttribute="top" secondItem="nLB-fg-Cyv" secondAttribute="bottom" id="YR3-Oj-Z38"/>
                             <constraint firstItem="IDU-p6-VYR" firstAttribute="leading" secondItem="RYR-DJ-tLM" secondAttribute="leading" id="a9w-4h-eiz"/>
                             <constraint firstItem="nLB-fg-Cyv" firstAttribute="top" secondItem="RYR-DJ-tLM" secondAttribute="top" id="bSn-u1-wTj"/>
+                            <constraint firstItem="P5x-y3-DZy" firstAttribute="top" secondItem="Rnv-CP-0K1" secondAttribute="bottom" constant="100" id="ecr-6D-Z9e"/>
+                            <constraint firstItem="Qxy-bJ-5mq" firstAttribute="centerX" secondItem="RYR-DJ-tLM" secondAttribute="centerX" id="fIV-UE-EwH"/>
+                            <constraint firstItem="Chh-aN-8gX" firstAttribute="centerX" secondItem="RYR-DJ-tLM" secondAttribute="centerX" id="faD-0z-vnt"/>
                             <constraint firstItem="IDU-p6-VYR" firstAttribute="top" secondItem="nLB-fg-Cyv" secondAttribute="bottom" id="jIj-VB-Fe3"/>
                             <constraint firstItem="QxR-dS-0y9" firstAttribute="top" secondItem="IDU-p6-VYR" secondAttribute="bottom" constant="7" id="jvp-TV-6yh"/>
                             <constraint firstItem="nLB-fg-Cyv" firstAttribute="leading" secondItem="RYR-DJ-tLM" secondAttribute="leading" id="jzH-EL-U5B"/>
                             <constraint firstAttribute="trailing" secondItem="nLB-fg-Cyv" secondAttribute="trailing" id="kCX-So-oiw"/>
                             <constraint firstItem="QxR-dS-0y9" firstAttribute="leading" secondItem="RYR-DJ-tLM" secondAttribute="leading" id="r8t-qm-j1l"/>
                             <constraint firstItem="QxR-dS-0y9" firstAttribute="top" secondItem="IDU-p6-VYR" secondAttribute="bottom" constant="7" id="yEN-GF-mFI"/>
+                            <constraint firstItem="Rnv-CP-0K1" firstAttribute="centerX" secondItem="RYR-DJ-tLM" secondAttribute="centerX" id="zll-hd-oR4"/>
                         </constraints>
                         <variation key="default">
                             <mask key="constraints">
                                 <exclude reference="0kk-yC-jU1"/>
                                 <exclude reference="jvp-TV-6yh"/>
-                                <exclude reference="Jyw-JE-3am"/>
                             </mask>
                         </variation>
                     </view>
@@ -856,16 +918,37 @@
                     </tabBarItem>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="cameraRollButton" destination="Chh-aN-8gX" id="OzY-Xn-95w"/>
                         <outlet property="profileImageView" destination="id3-5L-tjs" id="uC0-vX-fzT"/>
-                        <outlet property="userInfoImageView" destination="QxR-dS-0y9" id="mg0-Ta-esQ"/>
+                        <outlet property="profileImageViewHeight" destination="0z4-PS-PVl" id="bjw-s3-GRE"/>
+                        <outlet property="profileImageViewWidth" destination="JTW-1S-En5" id="miz-dI-AiC"/>
+                        <outlet property="removePhotoButton" destination="Qxy-bJ-5mq" id="f5C-hW-B6x"/>
+                        <outlet property="takePhotoButton" destination="Rnv-CP-0K1" id="CQl-WZ-kUw"/>
                         <outlet property="userInfoImageViewHeight" destination="vh6-VG-42R" id="ski-P9-ler"/>
                         <outlet property="usernameLabel" destination="8fE-A0-XHg" id="0ms-QI-EVk"/>
+                        <outlet property="usernameLabelHeight" destination="LFW-yO-x3T" id="0aZ-Qc-OFm"/>
+                        <outlet property="usernameLabelTopSpacing" destination="U4N-7U-nhx" id="aeW-I5-Kzp"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZfL-bh-tvw" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <tapGestureRecognizer id="sjf-Un-rpu">
                     <connections>
-                        <action selector="profilePhotoTapped:" destination="eU6-Aj-CwX" id="KY0-fe-Nps"/>
+                        <action selector="profilePhotoTapped:" destination="eU6-Aj-CwX" id="vkk-D7-wd8"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="Hnn-oF-Ol6">
+                    <connections>
+                        <action selector="cameraRollButtonTapped:" destination="eU6-Aj-CwX" id="xrA-Sv-75a"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="x2S-A0-lEL">
+                    <connections>
+                        <action selector="takePhotoButtonTapped:" destination="eU6-Aj-CwX" id="M4A-CW-H7H"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <tapGestureRecognizer id="nlm-qx-1jI">
+                    <connections>
+                        <action selector="removePhotoButtonTapped:" destination="eU6-Aj-CwX" id="9SW-IE-qcN"/>
                     </connections>
                 </tapGestureRecognizer>
             </objects>
