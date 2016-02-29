@@ -32,34 +32,29 @@ class ProfileViewController: UIViewController {
         // Do any additional setup after loading the view.
         
         let query = PFQuery(className: User.parseClassName())
-        query.includeKey("owner")
-        query.orderByDescending("createdAt")
-        query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
-            
+        query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
+        query.getFirstObjectInBackgroundWithBlock { [weak self](object: PFObject?, error: NSError?) -> Void in
+                
             if let error = error {
                 print("Error: \(error) \(error.userInfo)")
                 return
             }
             
-            guard let users = objects as? [User] else {
+            guard let user = object as? User else {
                 return
             }
             
-            for user in users {
-                if user.objectId == PFUser.currentUser()?.objectId {
-                    self?.user = user
-                    self?.profileImageView.file = user.profilePhoto
-                    self?.profileImageView.loadInBackground()
+            self?.user = user
+            self?.profileImageView.file = user.profilePhoto
+            self?.profileImageView.loadInBackground()
 
-                    if let frame = self?.profileImageView.frame {
-                        self?.profileImageView.layer.cornerRadius = frame.height/2
-                        self?.profileImageView.clipsToBounds = true
-                    }
+            if let frame = self?.profileImageView.frame {
+                self?.profileImageView.layer.cornerRadius = frame.height/2
+                self?.profileImageView.clipsToBounds = true
+            }
 
-                    if let username = user.username {
-                        self?.usernameLabel.text = String(username)
-                    }
-                }
+            if let username = user.username {
+                self?.usernameLabel.text = String(username)
             }
         }
     }
@@ -118,7 +113,6 @@ class ProfileViewController: UIViewController {
         PFUser.logOut()
         NSNotificationCenter.defaultCenter().postNotificationName(accountStatusChangedNotification, object: nil)
     }
-    
    
     @IBAction func profilePhotoTapped(sender: UITapGestureRecognizer) {
         if (modifyButtonsVisible) {
@@ -129,9 +123,18 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func removePhotoButtonTapped(sender: UIButton) {
-        print("Remove Photo Button tapped")
+        
+        if let user = self.user {
+            user.profilePhoto = nil
+            user.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
+                if success {
+                    self?.profileImageView.image = nil
+                } else {
+                    // TODO: SHOW ERROR MESSAGE
+                }
+            })
+        }
     }
-
 
     @IBAction func takePhotoButtonTapped(sender: UIButton) {
         let selector = UIImagePickerController()
@@ -152,27 +155,24 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
         dismissViewControllerAnimated(true, completion: nil)
-        //userProfilePhoto = image
-        //profilePhotoPreview.image = image
-        
-        if let _ = image {
-            print ("I think I've gotten an image")
-        }
-        
-        self.profileImageView.image = image
-        
+
         if let newProfilePhoto = image,
             fullImage = newProfilePhoto.scaleAndRotateImage(960),
             fullImageData = UIImagePNGRepresentation(fullImage)
-            {
-                let userPhoto = PFFile(name: "ProfilePhoto.png", data: fullImageData)
-                if let user = self.user {
-                    user.profilePhoto = userPhoto
-                }
+        {
+
+            let userPhoto = PFFile(name: "ProfilePhoto.png", data: fullImageData)
+            if let user = self.user {
+                user.profilePhoto = userPhoto
+                user.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
+                    if success {
+                        self?.profileImageView.image = newProfilePhoto
+                    } else {
+                        // TODO: SHOW ERROR MESSAGE
+                    }
+                })
             }
-        
-        
-        
+        }
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
