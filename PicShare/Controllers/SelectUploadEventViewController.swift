@@ -66,10 +66,7 @@ class SelectUploadEventViewController: UIViewController {
             let alertView = UIAlertController(title: "Message",
                 message: "Upload Success", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-                let photoHomeView: UIViewController
-                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                photoHomeView = mainStoryboard.instantiateViewControllerWithIdentifier("PhotoHomeView")
-                self!.showViewController(photoHomeView, sender: sender)
+                self?.dismissViewControllerAnimated(true, completion: nil)
             })
             alertView.addAction(OKAction)
             self?.presentViewController(alertView, animated: true, completion: nil)
