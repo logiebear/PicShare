@@ -19,11 +19,12 @@ class ProfileViewController: UIViewController {
     @IBOutlet weak var profileImageViewWidth: NSLayoutConstraint!
     @IBOutlet weak var usernameLabelTopSpacing: NSLayoutConstraint!
     @IBOutlet weak var usernameLabelHeight: NSLayoutConstraint!
-    @IBOutlet weak var removePhotoButton: UIView!
-    @IBOutlet weak var takePhotoButton: UIView!
-    @IBOutlet weak var cameraRollButton: UIView!
+    @IBOutlet weak var removePhotoButton: UIButton!
+    @IBOutlet weak var takePhotoButton: UIButton!
+    @IBOutlet weak var cameraRollButton: UIButton!
     
     private var modifyButtonsVisible = false
+    private var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -46,6 +47,7 @@ class ProfileViewController: UIViewController {
             
             for user in users {
                 if user.objectId == PFUser.currentUser()?.objectId {
+                    self?.user = user
                     self?.profileImageView.file = user.profilePhoto
                     self?.profileImageView.loadInBackground()
 
@@ -79,11 +81,14 @@ class ProfileViewController: UIViewController {
         UIView.animateWithDuration(0.5) {
             self.usernameLabel.font = UIFont.boldSystemFontOfSize(24)
             self.profileImageView.layer.cornerRadius = 150
-            self.cameraRollButton.hidden = true
-            self.removePhotoButton.hidden = true
-            self.takePhotoButton.hidden = true
+            self.cameraRollButton.alpha = 0.0
+            self.removePhotoButton.alpha = 0.0
+            self.takePhotoButton.alpha = 0.0
             self.view.layoutIfNeeded()
         }
+        self.cameraRollButton.hidden = true
+        self.removePhotoButton.hidden = true
+        self.takePhotoButton.hidden = true
         modifyButtonsVisible = false
     }
     
@@ -93,15 +98,19 @@ class ProfileViewController: UIViewController {
         self.profileImageViewWidth.constant = 100
         self.usernameLabelTopSpacing.constant = 7
         self.usernameLabelHeight.constant = 15
+        self.cameraRollButton.hidden = false
+        self.removePhotoButton.hidden = false
+        self.takePhotoButton.hidden = false
         
         UIView.animateWithDuration(0.5) {
             self.profileImageView.layer.cornerRadius = 50
             self.usernameLabel.font = UIFont.boldSystemFontOfSize(12)
-            self.cameraRollButton.hidden = false
-            self.removePhotoButton.hidden = false
-            self.takePhotoButton.hidden = false
+            self.cameraRollButton.alpha = 1.0
+            self.removePhotoButton.alpha = 1.0
+            self.takePhotoButton.alpha = 1.0
             self.view.layoutIfNeeded()
         }
+
         modifyButtonsVisible = true
     }
 
@@ -119,15 +128,55 @@ class ProfileViewController: UIViewController {
         }
     }
     
-    @IBAction func removePhotoButtonTapped(sender: UITapGestureRecognizer) {
+    @IBAction func removePhotoButtonTapped(sender: UIButton) {
         print("Remove Photo Button tapped")
     }
-    
-    @IBAction func takePhotoButtonTapped(sender: UITapGestureRecognizer) {
-        print("Take Photo Button tapped")
+
+
+    @IBAction func takePhotoButtonTapped(sender: UIButton) {
+        let selector = UIImagePickerController()
+        selector.delegate = self
+        selector.sourceType = .Camera
+        presentViewController(selector, animated: true, completion: nil)
     }
     
-    @IBAction func cameraRollButtonTapped(sender: UITapGestureRecognizer) {
-        print("Camera Roll Button Tapped")
+    @IBAction func cameraRollButtonTapped(sender: UIButton) {
+        let selector = UIImagePickerController()
+        selector.delegate = self
+        selector.sourceType = .PhotoLibrary
+        presentViewController(selector, animated: true, completion: nil)
     }
+}
+
+extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+    
+    func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
+        dismissViewControllerAnimated(true, completion: nil)
+        //userProfilePhoto = image
+        //profilePhotoPreview.image = image
+        
+        if let _ = image {
+            print ("I think I've gotten an image")
+        }
+        
+        self.profileImageView.image = image
+        
+        if let newProfilePhoto = image,
+            fullImage = newProfilePhoto.scaleAndRotateImage(960),
+            fullImageData = UIImagePNGRepresentation(fullImage)
+            {
+                let userPhoto = PFFile(name: "ProfilePhoto.png", data: fullImageData)
+                if let user = self.user {
+                    user.profilePhoto = userPhoto
+                }
+            }
+        
+        
+        
+    }
+    
+    func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
 }
