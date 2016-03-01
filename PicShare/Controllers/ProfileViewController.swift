@@ -71,19 +71,23 @@ class ProfileViewController: UIViewController {
         self.profileImageViewHeight.constant = 300
         self.profileImageViewWidth.constant = 300
         self.usernameLabelTopSpacing.constant = 20
-        self.usernameLabelHeight.constant = 30
+       
+        let radiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
+        radiusAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        radiusAnimation.fromValue = self.profileImageView.layer.cornerRadius
+        radiusAnimation.toValue = 150
+        radiusAnimation.duration = 0.5
+        self.profileImageView.layer.addAnimation(radiusAnimation, forKey: "cornerRadius")
         
-        UIView.animateWithDuration(0.5) {
-            self.usernameLabel.font = UIFont.boldSystemFontOfSize(24)
-            self.profileImageView.layer.cornerRadius = 150
-            self.cameraRollButton.alpha = 0.0
-            self.removePhotoButton.alpha = 0.0
-            self.takePhotoButton.alpha = 0.0
-            self.view.layoutIfNeeded()
-        }
-        self.cameraRollButton.hidden = true
-        self.removePhotoButton.hidden = true
-        self.takePhotoButton.hidden = true
+        UIView.animateWithDuration(0.5,
+            animations: {
+                self.usernameLabel.transform = CGAffineTransformMakeScale(1.0, 1.0)
+                self.cameraRollButton.alpha = 0
+                self.removePhotoButton.alpha = 0
+                self.takePhotoButton.alpha = 0
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        self.profileImageView.layer.cornerRadius = 150
         modifyButtonsVisible = false
     }
     
@@ -91,21 +95,24 @@ class ProfileViewController: UIViewController {
         self.userInfoImageViewHeight.constant = 150
         self.profileImageViewHeight.constant = 100
         self.profileImageViewWidth.constant = 100
-        self.usernameLabelTopSpacing.constant = 7
-        self.usernameLabelHeight.constant = 15
-        self.cameraRollButton.hidden = false
-        self.removePhotoButton.hidden = false
-        self.takePhotoButton.hidden = false
+        self.usernameLabelTopSpacing.constant = 0
         
-        UIView.animateWithDuration(0.5) {
-            self.profileImageView.layer.cornerRadius = 50
-            self.usernameLabel.font = UIFont.boldSystemFontOfSize(12)
-            self.cameraRollButton.alpha = 1.0
-            self.removePhotoButton.alpha = 1.0
-            self.takePhotoButton.alpha = 1.0
-            self.view.layoutIfNeeded()
-        }
+        let radiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
+        radiusAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
+        radiusAnimation.fromValue = self.profileImageView.layer.cornerRadius
+        radiusAnimation.toValue = 50
+        radiusAnimation.duration = 0.5
+        self.profileImageView.layer.addAnimation(radiusAnimation, forKey: "cornerRadius")
 
+        UIView.animateWithDuration(0.5,
+            animations: {
+                self.usernameLabel.transform = CGAffineTransformMakeScale(0.5, 0.5)
+                self.cameraRollButton.alpha = 1
+                self.removePhotoButton.alpha = 1
+                self.takePhotoButton.alpha = 1
+                self.view.layoutIfNeeded()
+            }, completion: nil)
+        self.profileImageView.layer.cornerRadius = 50
         modifyButtonsVisible = true
     }
 
