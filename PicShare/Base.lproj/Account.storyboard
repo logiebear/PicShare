@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pDL-Be-YlO">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -268,7 +268,7 @@
                         <outlet property="passwordConfirmTextField" destination="pwD-W8-pLy" id="EVP-g2-Fhd"/>
                         <outlet property="passwordTextField" destination="1My-Wf-O1c" id="6vi-NP-hIy"/>
                         <outlet property="userNameTextField" destination="YYc-Yx-UDQ" id="Zwr-rQ-63z"/>
-                        <segue destination="7AA-Kh-eOa" kind="show" identifier="ShowProfilePhotoScreen" id="xR0-JN-t1o"/>
+                        <segue destination="7AA-Kh-eOa" kind="show" identifier="ShowProfilePhotoScreen" id="Qj0-5Q-FqZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGn-dL-gZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>

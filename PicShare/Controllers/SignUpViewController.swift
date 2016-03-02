@@ -27,19 +27,26 @@ class SignUpViewController: UIViewController {
     }
     
     @IBAction func goButton(sender: UIButton) {
+        var error: NSError?
         //Check empty field or inconsistent passwords
         if emailTextField.text == "" || userNameTextField.text == "" || passwordTextField.text == "" || passwordConfirmTextField.text == "" {
-            let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
+            error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Please fill out all the fields!"
-                ])
-            self.showErrorView(error)
-        }
-        else if passwordTextField.text! != passwordConfirmTextField.text! {
-            let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
+            ])
+        } else if passwordTextField.text! != passwordConfirmTextField.text! {
+            error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Two passwords are different!"
-                ])
-            self.showErrorView(error)
+            ])
+        } else if !isValidEmail(emailTextField.text!) {
+            error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
+                NSLocalizedDescriptionKey: "Invalid email address!"
+            ])
         }
+        if let error = error {
+            self.showErrorView(error)
+            return
+        }
+        
         //Check whether email or username is taken
         User.registerSubclass()
         let query = PFUser.query()
@@ -51,8 +58,7 @@ class SignUpViewController: UIViewController {
                     if error == nil {
                         if (objects!.count > 0){
                             let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
-                                NSLocalizedDescriptionKey: "Email address has been taken!"
-                                ])
+                                NSLocalizedDescriptionKey: "Email address has been taken!"])
                             self.showErrorView(error)
                         }
                         else {
@@ -104,5 +110,12 @@ class SignUpViewController: UIViewController {
         let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertView.addAction(OKAction)
         self.presentViewController(alertView, animated: true, completion: nil)
+    }
+    //email validation function
+    func isValidEmail(testStr:String) -> Bool {
+        let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
+        let range = testStr.rangeOfString(emailRegEx, options:.RegularExpressionSearch)
+        let result = range != nil
+        return result
     }
 }
