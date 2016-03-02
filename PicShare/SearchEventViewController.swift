@@ -16,10 +16,8 @@ class SearchEventViewController: UIViewController {
     @IBOutlet weak var eventName: UITextField!
     @IBOutlet weak var eventSearch: UIButton!
     
-    var event: String = "Hey, i'm transported."
-
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "segueTransfer") {
+        if (segue.identifier == "SearchResults") {
             let svc = segue.destinationViewController as! SearchEventResultViewController;
             svc.toPass = eventName.text
         }
@@ -29,11 +27,8 @@ class SearchEventViewController: UIViewController {
     @IBAction func backButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
     @IBAction func searchEventButtonPressed(sender: AnyObject) {
-        if let event = eventName.text {
-            self.event = event
-        }
         eventName.text = nil
-        
     }
 }
