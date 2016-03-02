@@ -1595,5 +1595,9 @@
         <image name="close" width="14" height="14"/>
         <image name="filterIcon" width="14" height="14"/>
         <image name="nearbyIcon" width="11" height="11"/>
+        <image name="profileIcon.png" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="YRZ-Ni-v42"/>
+    </inferredMetricsTieBreakers>
 </document>
