@@ -26,7 +26,7 @@ class RootViewController: UIViewController {
     
     func displayCorrectHomeViewController() {
         let vc: UIViewController
-        if let user = PFUser.currentUser() where user.isAuthenticated() {
+        if let user = PFUser.currentUser() where user.authenticated {
             vc = storyboard?.instantiateViewControllerWithIdentifier("tabBarViewController") as! TabBarViewController
         } else {
             let accountStoryboard = UIStoryboard(name: "Account", bundle: nil)

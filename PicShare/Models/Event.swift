@@ -42,7 +42,9 @@ class Event: PFObject {
             return false
         }
     }
-    
+    override init() {
+        super.init()
+    }
 }
 
 extension Event: PFSubclassing {
