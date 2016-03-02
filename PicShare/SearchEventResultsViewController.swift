@@ -95,7 +95,7 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! SearchEventTableViewCell
         let row = indexPath.row
         if let eventArray = eventArray {
-            cell.eventLabel.text = eventArray[row].hashtag as? String
+            cell.eventLabel.text = eventArray[row].hashtag
             isPublic = eventArray[row].isPublic
             let intervals = self.calculateDays(eventArray[row].createdAt!, end: currentDate)
             if(isPublic) {
