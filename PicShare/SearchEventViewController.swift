@@ -13,13 +13,13 @@ import ParseUI
 
 class SearchEventViewController: UIViewController {
 
-    @IBOutlet weak var eventName: UITextField!
-    @IBOutlet weak var eventSearch: UIButton!
+    @IBOutlet weak var eventNameTextField: UITextField!
+    @IBOutlet weak var eventSearchButton: UIButton!
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if (segue.identifier == "SearchResults") {
             let svc = segue.destinationViewController as! SearchEventResultViewController;
-            svc.toPass = eventName.text
+            svc.eventName = eventNameTextField.text
         }
     }
     
@@ -29,6 +29,6 @@ class SearchEventViewController: UIViewController {
     }
     
     @IBAction func searchEventButtonPressed(sender: AnyObject) {
-        eventName.text = nil
+        eventNameTextField.text = nil
     }
 }

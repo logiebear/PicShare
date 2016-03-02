@@ -337,8 +337,8 @@
                         </constraints>
                     </view>
                     <connections>
-                        <outlet property="eventName" destination="aEY-fS-O0a" id="Frx-tf-tmH"/>
-                        <outlet property="eventSearch" destination="3Ct-cg-4gF" id="cRM-8I-eoM"/>
+                        <outlet property="eventNameTextField" destination="aEY-fS-O0a" id="ujk-1F-ObR"/>
+                        <outlet property="eventSearchButton" destination="3Ct-cg-4gF" id="wCt-bF-7gi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="py3-S3-1Yu" userLabel="First Responder" sceneMemberID="firstResponder"/>

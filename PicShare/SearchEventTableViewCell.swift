@@ -13,15 +13,5 @@ class SearchEventTableViewCell: UITableViewCell {
     @IBOutlet weak var eventLabel: UILabel!
     @IBOutlet weak var sublabel: UILabel!
     @IBOutlet weak var joinButton: UIButton!
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
-    }
-
-    override func setSelected(selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
-    }
 
 }
