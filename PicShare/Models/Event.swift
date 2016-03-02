@@ -42,7 +42,6 @@ class Event: PFObject {
             return false
         }
     }
-    
     override init() {
         super.init()
     }
