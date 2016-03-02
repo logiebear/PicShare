@@ -14,23 +14,23 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     // Mark: - Properties
     
     @IBOutlet weak var eventNameTextField: UITextField!
-    @IBOutlet weak var privateButton: UIButton!
-    
-    var hashtag: String? = nil
-    var user: PFUser? = PFUser.currentUser()
-    var isPublic: Bool = true
-    var password: String? = nil
-    
+    @IBOutlet weak var privateButton: UIButton!    
+    var hashtag: String?
+    var password: String?
+    var isPublic = true
+
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if let eventNameText = eventNameTextField.text {
-            if segue.identifier == "SetPassword" {
-                let destViewController: CreateEventPasswordViewController = segue.destinationViewController as! CreateEventPasswordViewController
-                destViewController.hashtag = eventNameText
-            }
-            if segue.identifier == "AddPhoto" {
-                let destViewController: AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
-                destViewController.hashtag = eventNameText
-            }
+        guard let eventNameText = eventNameTextField.text else {
+            return
+        }
+
+        if segue.identifier == "SetPassword" {
+            let destViewController: CreateEventPasswordViewController = segue.destinationViewController as! CreateEventPasswordViewController
+            destViewController.hashtag = eventNameText
+        }
+        if segue.identifier == "AddPhoto" {
+            let destViewController: AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
+            destViewController.hashtag = eventNameText
         }
     }
     
@@ -38,22 +38,26 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     
     @IBAction func createPublicEvent(sender: AnyObject) {
         if eventNameTextField.text == "" || eventNameTextField.text == nil {
-            self.showErrorView("Invalid event name", msg: "Event name can't be empty!")
+            showErrorView("Invalid event name", msg: "Event name can't be empty!")
             return
         }
-        checkValid { (success) -> () in
+        
+        validateHashtag { [weak self](success) -> () in
             if success {
-                self.createEventObject()
+                self?.createEventObject()
+            } else {
+                self?.showErrorView("Invalid event name", msg: "Event name has been taken!")
             }
         }
     }
     
     @IBAction func privateButtonPressed(sender: AnyObject) {
-        if eventNameTextField.text == "" {
-            self.showErrorView("Invalid event name", msg: "Event name can't be empty!")
+        if eventNameTextField.text == "" || eventNameTextField.text == nil {
+            showErrorView("Invalid event name", msg: "Event name can't be empty!")
             return
         }
-        checkValid { (success) -> () in
+        
+        validateHashtag { (success) -> () in
             if success {
                 self.performSegueWithIdentifier("SetPassword", sender: nil)
             }
@@ -61,35 +65,36 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func backButtonPressed(sender: AnyObject) {
-        self.dismissViewControllerAnimated(true, completion: nil)
+        dismissViewControllerAnimated(true, completion: nil)
     }
     
     // Mark: - Private
     
     private func createEventObject() {
-        if let user = user, eventNameText = eventNameTextField.text {
-            let event = Event(owner: user, hashtag: eventNameText,
-                isPublic: isPublic, password: password)
-            event.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
-                self?.performSegueWithIdentifier("AddPhoto", sender: nil)
-            })
+        guard let user = PFUser.currentUser(), eventNameText = eventNameTextField.text else {
+            return
+        }
+
+        let event = Event(owner: user, hashtag: eventNameText,
+            isPublic: isPublic, password: password)
+        event.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
+            self?.performSegueWithIdentifier("AddPhoto", sender: nil)
         }
     }
 
     // Mark: - Helper
-    func checkValid(completion: (Bool) -> ()) {
-        guard let query = Event.query() else {
+    
+    func validateHashtag(completion: (Bool) -> ()) {
+        guard let query = Event.query(), eventNameTextField = eventNameTextField.text else {
             return
         }
-        if let eventNameTextField = eventNameTextField.text {
-            query.whereKey("hashtag", equalTo: eventNameTextField)
-            query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
-                if let objects = objects where objects.count == 0{
-                    completion(true)
-                } else {
-                    self?.showErrorView("Invalid event name", msg: "Event name has been taken!")
-                    completion(false)
-                }
+        
+        query.whereKey("hashtag", equalTo: eventNameTextField)
+        query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
+            if let objects = objects where objects.isEmpty {
+                completion(true)
+            } else {
+                completion(false)
             }
         }
     }
