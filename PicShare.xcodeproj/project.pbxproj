@@ -11,6 +11,7 @@
 		0161A0391C7C21600084C673 /* profileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0161A0361C7C21600084C673 /* profileIcon.png */; };
 		0161A03A1C7C21600084C673 /* profileIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0161A0371C7C21600084C673 /* profileIcon@2x.png */; };
 		0A14D8871C866E18005069E2 /* SelectUploadEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14D8861C866E18005069E2 /* SelectUploadEventViewController.swift */; };
+		0A14D8891C8673B1005069E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A14D8881C8673B1005069E2 /* Assets.xcassets */; };
 		0A5663131C5E926300B1097E /* MyPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5663121C5E926300B1097E /* MyPhotosViewController.swift */; };
 		0A63A6981C6584280014FD2C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63A6971C6584280014FD2C /* ProfileViewController.swift */; };
 		0ABADAE11BF909BB001CB962 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADAE01BF909BB001CB962 /* AppDelegate.swift */; };
@@ -66,6 +67,7 @@
 		0161A0361C7C21600084C673 /* profileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileIcon.png; sourceTree = "<group>"; };
 		0161A0371C7C21600084C673 /* profileIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profileIcon@2x.png"; sourceTree = "<group>"; };
 		0A14D8861C866E18005069E2 /* SelectUploadEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectUploadEventViewController.swift; path = Controllers/SelectUploadEventViewController.swift; sourceTree = "<group>"; };
+		0A14D8881C8673B1005069E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A2EF9CF1BF99E7E00A466E9 /* PicShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicShare-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A5663121C5E926300B1097E /* MyPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPhotosViewController.swift; path = Controllers/MyPhotosViewController.swift; sourceTree = "<group>"; };
 		0A63A6971C6584280014FD2C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
@@ -174,6 +176,7 @@
 				0161A03B1C7C216B0084C673 /* icoProfileIcon */,
 				0A2EF9CF1BF99E7E00A466E9 /* PicShare-Bridging-Header.h */,
 				0ABADAE01BF909BB001CB962 /* AppDelegate.swift */,
+				0A14D8881C8673B1005069E2 /* Assets.xcassets */,
 				0ADAE6AB1C09647A00E8BADE /* User Interface */,
 				0ADAE6AA1C09647200E8BADE /* Models */,
 				0AE4D5B51BF9796E00893D03 /* Controllers */,
@@ -403,6 +406,7 @@
 				0161A03A1C7C21600084C673 /* profileIcon@2x.png in Resources */,
 				0ABADAEB1BF909BB001CB962 /* LaunchScreen.storyboard in Resources */,
 				0161A0381C7C21600084C673 /* profileIcon@3x.png in Resources */,
+				0A14D8891C8673B1005069E2 /* Assets.xcassets in Resources */,
 				E4FD1B951C5B354D001A4795 /* Account.storyboard in Resources */,
 				0161A0391C7C21600084C673 /* profileIcon.png in Resources */,
 			);
