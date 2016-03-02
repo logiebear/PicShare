@@ -30,6 +30,16 @@ class AddPhotoViewController: UIViewController {
         eventNameLabel.text = hashtag
     }
     
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "UploadPhoto" {
+            if let image = sender as? UIImage,
+                vc = segue.destinationViewController as? UploadPhotoToEventViewController {
+                    vc.image = image
+                    vc.hashtag = hashtag
+            }
+        }
+    }
+    
     // MARK: - User Actions
     
     // refer to Logan's code
