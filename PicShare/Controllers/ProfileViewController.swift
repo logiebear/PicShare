@@ -28,13 +28,12 @@ class ProfileViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
         
         let query = PFQuery(className: User.parseClassName())
+
         query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
         query.getFirstObjectInBackgroundWithBlock { [weak self](object: PFObject?, error: NSError?) -> Void in
-                
+
             if let error = error {
                 print("Error: \(error) \(error.userInfo)")
                 return

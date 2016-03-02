@@ -268,7 +268,7 @@
                         <outlet property="passwordConfirmTextField" destination="pwD-W8-pLy" id="EVP-g2-Fhd"/>
                         <outlet property="passwordTextField" destination="1My-Wf-O1c" id="6vi-NP-hIy"/>
                         <outlet property="userNameTextField" destination="YYc-Yx-UDQ" id="Zwr-rQ-63z"/>
-                        <segue destination="7AA-Kh-eOa" kind="show" identifier="ShowProfilePhotoScreen" id="xR0-JN-t1o"/>
+                        <segue destination="7AA-Kh-eOa" kind="show" identifier="ShowProfilePhotoScreen" id="Qj0-5Q-FqZ"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HGn-dL-gZ9" userLabel="First Responder" sceneMemberID="firstResponder"/>
