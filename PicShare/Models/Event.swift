@@ -42,9 +42,18 @@ class Event: PFObject {
             return false
         }
     }
+    
+    class func queryEventsWithSubstring(event: String) -> PFQuery? {
+        let query = PFQuery(className: Event.parseClassName())
+        query.whereKey("hashtag", containsString: event)
+        query.orderByDescending("createdAt")
+        return query
+    }
+    
     override init() {
         super.init()
     }
+    
 }
 
 extension Event: PFSubclassing {
