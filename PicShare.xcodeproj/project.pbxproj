@@ -290,6 +290,7 @@
 			isa = PBXGroup;
 			children = (
 				6A517F551C8122F200EBB1A9 /* EventMgmtViewController.swift */,
+				0A14D8861C866E18005069E2 /* SelectUploadEventViewController.swift */,
 				6A517F541C8122F200EBB1A9 /* CreateEventViewController.swift */,
 				6A517F521C8122E800EBB1A9 /* CreateEventPasswordViewController.swift */,
 				6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */,
