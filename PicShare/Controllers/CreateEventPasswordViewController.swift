@@ -31,10 +31,11 @@ class CreateEventPasswordViewController: UIViewController{
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "AddPhoto" {
-            let destViewController: AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
+            let destViewController = segue.destinationViewController as! AddPhotoViewController
             destViewController.hashtag = hashtag
         }
     }
+    
     // MARK: - User Actions
     
     @IBAction func backButtonPressed(sender: AnyObject) {
@@ -43,7 +44,7 @@ class CreateEventPasswordViewController: UIViewController{
     
     @IBAction func finishedButtonPressed(sender: AnyObject) {
         if eventPasswordTextField.text == "" ||  eventPasswordTextField.text == nil {
-            self.showErrorView("Invalid password", msg: "Password can't be empty!")
+            showErrorView("Invalid password", msg: "Password can't be empty!")
             return
         }
         self.createEventObject()
@@ -52,13 +53,15 @@ class CreateEventPasswordViewController: UIViewController{
     // Mark: - Private
     
     private func createEventObject() {
-        if let user = user, eventPasswordText = eventPasswordTextField.text {
-            let event = Event(owner: user, hashtag: hashtag,
-                isPublic: isPublic, password: eventPasswordText)
+        guard let user = user, eventPasswordText = eventPasswordTextField.text else {
+            return
+        }
         
-            event.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
-                self?.performSegueWithIdentifier("AddPhoto", sender: nil)
-            }
+        let event = Event(owner: user, hashtag: hashtag,
+            isPublic: isPublic, password: eventPasswordText)
+    
+        event.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
+            self?.performSegueWithIdentifier("AddPhoto", sender: nil)
         }
     }
     
@@ -69,6 +72,6 @@ class CreateEventPasswordViewController: UIViewController{
             message: msg, preferredStyle: .Alert)
         let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertView.addAction(OKAction)
-        self.presentViewController(alertView, animated: true, completion: nil)
+        presentViewController(alertView, animated: true, completion: nil)
     }
 }

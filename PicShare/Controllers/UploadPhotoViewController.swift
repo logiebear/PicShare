@@ -15,6 +15,7 @@ class UploadPhotoViewController: UIViewController {
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     var image: UIImage?
+    var photo: Photo?
     let locationManager = CLLocationManager()
     var didRequestLocation = false
 
@@ -35,8 +36,25 @@ class UploadPhotoViewController: UIViewController {
     @IBAction func backButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
     @IBAction func uploadToEvent(sender: AnyObject) {
-        // TODO: Upload to Event
+        if let image = image,
+            fullImage = image.scaleAndRotateImage(960), // Magic number
+            thumbImage = image.scaleAndRotateImage(480), // Magic number
+            fullImageData = UIImagePNGRepresentation(fullImage),
+            thumbImageData = UIImagePNGRepresentation(thumbImage),
+            imageFile = PFFile(name: "image.png", data: fullImageData),
+            thumbFile = PFFile(name: "thumbnail.png", data: thumbImageData),
+            user = PFUser.currentUser()
+        {
+            photo = Photo(image: imageFile, thumbnail: thumbFile, owner: user, event: nil, location: nil, descriptiveText: nil)
+            if let descritpiveText = descriptionTextField.text {
+                if let photo = photo {
+                    photo.descriptiveText = descritpiveText
+                }
+            }
+            self.performSegueWithIdentifier("showSelectEventScreen", sender: self)
+        }
     }
     
     @IBAction func uploadToLocation(sender: AnyObject) {
@@ -125,6 +143,12 @@ class UploadPhotoViewController: UIViewController {
         alertView.addAction(okAction)
         presentViewController(alertView, animated: true, completion: nil)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        let svc = segue.destinationViewController as! SelectUploadEventViewController
+        svc.photo = photo
+    }
+
 }
 
 // MARK: - UIGestureRecognizerDelegate
