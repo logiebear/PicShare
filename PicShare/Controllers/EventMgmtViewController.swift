@@ -25,9 +25,6 @@ class EventMgmtViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "EventCell")
-    }
-    
-    override func viewWillAppear(animated: Bool) {
         let eventQuery = PFQuery(className: "Event");
         if let user = PFUser.currentUser() {
             eventQuery.whereKey("owner", equalTo: user)

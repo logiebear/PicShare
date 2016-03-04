@@ -53,6 +53,7 @@ class SelectUploadEventViewController: UIViewController {
         guard let photo = photo else {
             return
         }
+        let parentView = self.presentingViewController
         photo.event = selectedEvent
         photo.saveInBackgroundWithBlock { [weak self](success: Bool, error: NSError?) in
             if let error = error {
@@ -65,8 +66,10 @@ class SelectUploadEventViewController: UIViewController {
             }
             let alertView = UIAlertController(title: "Message",
                 message: "Upload Success", preferredStyle: .Alert)
-            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction!) in
-                self?.dismissViewControllerAnimated(true, completion: nil)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+                self?.dismissViewControllerAnimated(false, completion: {
+                    parentView?.dismissViewControllerAnimated(true, completion: nil)
+                })
             })
             alertView.addAction(OKAction)
             self?.presentViewController(alertView, animated: true, completion: nil)
