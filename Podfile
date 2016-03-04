@@ -1,4 +1,3 @@
-source 'git@github.com:jibjab/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '8.0'
