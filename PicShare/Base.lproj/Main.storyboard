@@ -676,11 +676,12 @@
                         <outlet property="activityIndicatorView" destination="cyP-pT-M3w" id="Mii-VD-FaU"/>
                         <outlet property="descriptionTextField" destination="b9s-ds-Kwt" id="2Sv-wB-4ba"/>
                         <outlet property="imageView" destination="PYJ-or-0Yi" id="LDa-gS-pYF"/>
+                        <segue destination="pTd-Vp-14w" kind="show" identifier="showSelectEventScreen" id="eHv-uP-Ofa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C98-2p-kkM" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="67" y="-1461"/>
+            <point key="canvasLocation" x="81" y="-1455"/>
         </scene>
         <!--Select Upload Event View Controller-->
         <scene sceneID="a80-nW-Iy8">
