@@ -12,7 +12,8 @@ import Parse
 class EventPhotoScreenViewController: UIViewController {
     
     @IBOutlet weak var eventPhotoCollectionView: UICollectionView!
-    var eventPhotos: [PFObject]?
+    var eventPhotos: [Photo]?
+    var event: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,45 +21,38 @@ class EventPhotoScreenViewController: UIViewController {
         let cellWidth = ((UIScreen.mainScreen().bounds.width) - 32 - 30 ) / 3
         let cellLayout = eventPhotoCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         cellLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
         loadCollectionViewData()
     }
     
+    // MARK: - User Actions
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     func loadCollectionViewData() {
-        // Build a parse query object
         let query = PFQuery(className:"Photo")
-        // Fetch data from the parse platform
-        // TODO: UPDATE THIS
-//        let event: Event = Event()
-//        query.whereKey("event", equalTo: event)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
+        guard let event = event else {
+            return
+        }
+        query.whereKey("event", equalTo: event)
+        query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
                 print("Error: \(error)")
                 return
             }
-            // The find succeeded now rocess the found objects into the photo array
-            // Clear existing photo data
-            if self.eventPhotos != nil {
-                self.eventPhotos!.removeAll(keepCapacity: true)
+            self?.eventPhotos?.removeAll(keepCapacity: true)
+            if let objects = objects as? [Photo] {
+                self?.eventPhotos = objects
             }
-            // Add photo objects to our array
-            if let objects = objects {
-                self.eventPhotos = Array(objects.generate())
-            }
-            // reload our data into the collection view
-            self.eventPhotoCollectionView.reloadData()
+            self?.eventPhotoCollectionView.reloadData()
         }
-    }
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
     }
 }
 
 extension EventPhotoScreenViewController: UICollectionViewDataSource {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let eventPhotos = self.eventPhotos {
@@ -66,9 +60,6 @@ extension EventPhotoScreenViewController: UICollectionViewDataSource {
         }
         return 0
     }
-}
-
-extension EventPhotoScreenViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! EventPhotoCollectionViewCell
@@ -89,5 +80,16 @@ extension EventPhotoScreenViewController: UICollectionViewDelegate {
             }
         }
         return cell
+    }
+}
+
+extension EventPhotoScreenViewController: UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
+        if let eventPhotos = eventPhotos {
+            let photo = eventPhotos[indexPath.item]
+            vc.file = photo.image
+            presentViewController(vc, animated: true, completion: nil)
+        }
     }
 }
