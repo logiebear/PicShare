@@ -113,9 +113,19 @@ class ProfileViewController: UIViewController {
         modifyButtonsVisible = true
     }
 
-    @IBAction func logoutButtonPressed(sender: AnyObject) {
-        PFUser.logOut()
-        NSNotificationCenter.defaultCenter().postNotificationName(accountStatusChangedNotification, object: nil)
+    @IBAction func showLogoutAlert(sender: UIButton) {
+        let logoutAlert = UIAlertController(title: nil, message: "Are you sure you want to log out?", preferredStyle: .Alert)
+        
+        let noAction = UIAlertAction(title: "No", style: .Cancel, handler: nil)
+        let yesAction = UIAlertAction(title: "Yes", style: .Default, handler: { (logoutAlert) -> Void in
+            PFUser.logOut()
+            NSNotificationCenter.defaultCenter().postNotificationName(accountStatusChangedNotification, object: nil)
+        })
+        
+        logoutAlert.addAction(noAction)
+        logoutAlert.addAction(yesAction)
+        
+        presentViewController(logoutAlert, animated: true, completion: nil)
     }
    
     @IBAction func profilePhotoTapped(sender: UITapGestureRecognizer) {
@@ -180,5 +190,4 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
 }
