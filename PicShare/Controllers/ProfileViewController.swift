@@ -30,10 +30,8 @@ class ProfileViewController: UIViewController {
         super.viewDidLoad()
         
         let query = PFQuery(className: User.parseClassName())
-
         query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
         query.getFirstObjectInBackgroundWithBlock { [weak self](object: PFObject?, error: NSError?) -> Void in
-
             if let error = error {
                 print("Error: \(error) \(error.userInfo)")
                 return
@@ -60,7 +58,7 @@ class ProfileViewController: UIViewController {
     
     override func viewWillDisappear(animated: Bool) {
         super.viewWillDisappear(animated)
-        if (modifyButtonsVisible) {
+        if modifyButtonsVisible {
             hideButtons()
         }
     }
@@ -115,9 +113,19 @@ class ProfileViewController: UIViewController {
         modifyButtonsVisible = true
     }
 
-    @IBAction func logoutButtonPressed(sender: AnyObject) {
-        PFUser.logOut()
-        NSNotificationCenter.defaultCenter().postNotificationName(accountStatusChangedNotification, object: nil)
+    @IBAction func showLogoutAlert(sender: UIButton) {
+        let logoutAlert = UIAlertController(title: nil, message: "Are you sure you want to log out?", preferredStyle: .Alert)
+        
+        let noAction = UIAlertAction(title: "No", style: .Cancel, handler: nil)
+        let yesAction = UIAlertAction(title: "Yes", style: .Default, handler: { (logoutAlert) -> Void in
+            PFUser.logOut()
+            NSNotificationCenter.defaultCenter().postNotificationName(accountStatusChangedNotification, object: nil)
+        })
+        
+        logoutAlert.addAction(noAction)
+        logoutAlert.addAction(yesAction)
+        
+        presentViewController(logoutAlert, animated: true, completion: nil)
     }
    
     @IBAction func profilePhotoTapped(sender: UITapGestureRecognizer) {
@@ -131,13 +139,13 @@ class ProfileViewController: UIViewController {
     @IBAction func removePhotoButtonTapped(sender: UIButton) {
         if let user = self.user {
             user.profilePhoto = nil
-            user.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
+            user.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
                 if success {
                     self?.profileImageView.image = nil
                 } else {
                     // TODO: SHOW ERROR MESSAGE
                 }
-            })
+            }
         }
     }
 
@@ -170,17 +178,16 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
             fullImage = newProfilePhoto.scaleAndRotateImage(960),
             fullImageData = UIImagePNGRepresentation(fullImage)
         {
-
             let userPhoto = PFFile(name: "ProfilePhoto.png", data: fullImageData)
             if let user = self.user {
                 user.profilePhoto = userPhoto
-                user.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
+                user.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
                     if success {
                         self?.profileImageView.image = newProfilePhoto
                     } else {
                         // TODO: SHOW ERROR MESSAGE
                     }
-                })
+                }
             }
         }
     }
@@ -188,5 +195,4 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
         dismissViewControllerAnimated(true, completion: nil)
     }
-    
 }
