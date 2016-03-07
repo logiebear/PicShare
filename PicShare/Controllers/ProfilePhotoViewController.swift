@@ -32,7 +32,7 @@ class ProfilePhotoViewController: UIViewController {
     }
     
     @IBAction func takeProfilePhoto(sender: AnyObject) {
-        if !checkCameraAvailability() {
+        if !cameraAvailable() {
             showAlert("Trouble With Camera", message: "Please enable your camera in your device settings to take a photo.")
             return
         }
@@ -49,6 +49,10 @@ class ProfilePhotoViewController: UIViewController {
     }
     
     @IBAction func useProfilePhoto(sender: AnyObject) {
+        if !networkReachable() {
+            showAlert("No Internet Connection", message: "Please check your internet connection and try again.")
+        }
+        
         // Signup user to parse
         guard let user = user else {
             print("User doesn't exist!")
@@ -87,21 +91,6 @@ class ProfilePhotoViewController: UIViewController {
         let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertView.addAction(OKAction)
         presentViewController(alertView, animated: true, completion: nil)
-    }
-    
-    private func checkCameraAvailability() -> Bool {
-        var available = true
-        let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
-        if status == .Denied || status == .Restricted {
-            available = false
-        } else if status == .NotDetermined {
-            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo) { (granted) -> Void in
-                if !granted {
-                    available = false
-                }
-            }
-        }
-        return available
     }
     
 }

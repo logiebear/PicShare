@@ -6,3 +6,4 @@ use_frameworks!
 
 pod 'Parse', '~> 1.9'
 pod 'ParseUI', '~> 1.2'
+pod 'Reachability', '~> 3.2'

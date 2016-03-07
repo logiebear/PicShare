@@ -129,7 +129,6 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func removePhotoButtonTapped(sender: UIButton) {
-        
         if let user = self.user {
             user.profilePhoto = nil
             user.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
@@ -143,6 +142,11 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func takePhotoButtonTapped(sender: UIButton) {
+        if !cameraAvailable() {
+            showAlert("Trouble With Camera", message: "Please enable your camera in your device settings to take a photo.")
+            return
+        }
+        
         let selector = UIImagePickerController()
         selector.delegate = self
         selector.sourceType = .Camera

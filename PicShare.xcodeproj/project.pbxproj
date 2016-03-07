@@ -15,6 +15,7 @@
 		0A5663131C5E926300B1097E /* MyPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5663121C5E926300B1097E /* MyPhotosViewController.swift */; };
 		0A63A6981C6584280014FD2C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63A6971C6584280014FD2C /* ProfileViewController.swift */; };
 		0A79F9091C8D03A60051AB9D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79F9081C8D03A60051AB9D /* UIViewControllerExtension.swift */; };
+		0A79F90C1C8D07B60051AB9D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79F90B1C8D07B60051AB9D /* Utilities.swift */; };
 		0ABADAE11BF909BB001CB962 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADAE01BF909BB001CB962 /* AppDelegate.swift */; };
 		0ABADAEB1BF909BB001CB962 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABADAE91BF909BB001CB962 /* LaunchScreen.storyboard */; };
 		0ABADAF61BF909BC001CB962 /* PicShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADAF51BF909BC001CB962 /* PicShareTests.swift */; };
@@ -76,6 +77,7 @@
 		0A5663121C5E926300B1097E /* MyPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPhotosViewController.swift; path = Controllers/MyPhotosViewController.swift; sourceTree = "<group>"; };
 		0A63A6971C6584280014FD2C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		0A79F9081C8D03A60051AB9D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
+		0A79F90B1C8D07B60051AB9D /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		0ABADADD1BF909BB001CB962 /* PicShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABADAE01BF909BB001CB962 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		0ABADAE51BF909BB001CB962 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -164,6 +166,14 @@
 			path = Extensions;
 			sourceTree = "<group>";
 		};
+		0A79F90A1C8D079F0051AB9D /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				0A79F90B1C8D07B60051AB9D /* Utilities.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		0ABADAD41BF909BB001CB962 = {
 			isa = PBXGroup;
 			children = (
@@ -198,7 +208,7 @@
 				0AE4D5B51BF9796E00893D03 /* Controllers */,
 				0ADB4BA11BFEBA6E00EA51F2 /* Categories */,
 				0A79F9071C8D03A60051AB9D /* Extensions */,
-				0ABADAE91BF909BB001CB962 /* LaunchScreen.storyboard */,
+				0A79F90A1C8D079F0051AB9D /* Utilities */,
 				0ABADAEC1BF909BC001CB962 /* Info.plist */,
 			);
 			path = PicShare;
@@ -245,6 +255,7 @@
 		0ADAE6AB1C09647A00E8BADE /* User Interface */ = {
 			isa = PBXGroup;
 			children = (
+				0ABADAE91BF909BB001CB962 /* LaunchScreen.storyboard */,
 				E4FD1B931C5B354D001A4795 /* Account.storyboard */,
 				0ABADAE41BF909BB001CB962 /* Main.storyboard */,
 			);
@@ -505,6 +516,7 @@
 				0ADAE6AD1C09649500E8BADE /* Photo.swift in Sources */,
 				0AD0ACEE1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift in Sources */,
 				0AE4D5BD1BF994FF00893D03 /* EventHomeViewController.swift in Sources */,
+				0A79F90C1C8D07B60051AB9D /* Utilities.swift in Sources */,
 				0A14D8871C866E18005069E2 /* SelectUploadEventViewController.swift in Sources */,
 				0ADB4BA71BFEBDB400EA51F2 /* UIImage+EXIF.m in Sources */,
 				0ADAE6B31C0BB06800E8BADE /* UploadPhotoViewController.swift in Sources */,

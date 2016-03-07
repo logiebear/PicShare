@@ -87,9 +87,11 @@ if [[ "$CONFIGURATION" == "Debug" ]]; then
   install_framework "Pods/Bolts.framework"
   install_framework "Pods/Parse.framework"
   install_framework "Pods/ParseUI.framework"
+  install_framework "Pods/Reachability.framework"
 fi
 if [[ "$CONFIGURATION" == "Release" ]]; then
   install_framework "Pods/Bolts.framework"
   install_framework "Pods/Parse.framework"
   install_framework "Pods/ParseUI.framework"
+  install_framework "Pods/Reachability.framework"
 fi
