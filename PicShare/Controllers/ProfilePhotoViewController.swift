@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import AVFoundation
 
 class ProfilePhotoViewController: UIViewController {
 
@@ -31,6 +32,11 @@ class ProfilePhotoViewController: UIViewController {
     }
     
     @IBAction func takeProfilePhoto(sender: AnyObject) {
+        if !checkCameraAvailability() {
+            showAlert("Trouble With Camera", message: "Please enable your camera in your device settings to take a photo.")
+            return
+        }
+        
         let selector = UIImagePickerController()
         selector.delegate = self
         selector.sourceType = .Camera
@@ -81,6 +87,21 @@ class ProfilePhotoViewController: UIViewController {
         let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertView.addAction(OKAction)
         presentViewController(alertView, animated: true, completion: nil)
+    }
+    
+    private func checkCameraAvailability() -> Bool {
+        var available = true
+        let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
+        if status == .Denied || status == .Restricted {
+            available = false
+        } else if status == .NotDetermined {
+            AVCaptureDevice.requestAccessForMediaType(AVMediaTypeVideo) { (granted) -> Void in
+                if !granted {
+                    available = false
+                }
+            }
+        }
+        return available
     }
     
 }

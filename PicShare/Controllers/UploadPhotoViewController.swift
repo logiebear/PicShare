@@ -136,13 +136,6 @@ class UploadPhotoViewController: UIViewController {
     func resignKeyboard() {
         descriptionTextField.resignFirstResponder()
     }
-
-    func showAlert(title: String, message: String) {
-        let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertView.addAction(okAction)
-        presentViewController(alertView, animated: true, completion: nil)
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         let svc = segue.destinationViewController as! SelectUploadEventViewController
