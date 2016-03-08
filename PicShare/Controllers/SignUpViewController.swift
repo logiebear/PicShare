@@ -77,7 +77,7 @@ class SignUpViewController: UIViewController {
                                             }
                                             else {
                                                 if let passwordTextField = self.passwordTextField.text {
-                                                    self.user = User(email: emailTextField, username: userNameTextField, password: passwordTextField, profilePhoto: nil)
+                                                    self.user = User(email: emailTextField, username: userNameTextField, password: passwordTextField, profilePhoto: nil, event: nil)
                                                 }
                                                 self.performSegueWithIdentifier("ShowProfilePhotoScreen", sender: self)
                                             }

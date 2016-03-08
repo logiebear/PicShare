@@ -20,10 +20,14 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
     let currentDate = NSDate()
     var isPublic = false
     var eventCategory = "Private "
+    var userEvent: [Event]?
+    private var user: User?
+    var joinedEventFlag: [Bool]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        queryForAllUserEvents()
         if let eventName = eventName {
             self.queryForSpecificEvents(eventName)
         }
@@ -35,7 +39,31 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
         dismissViewControllerAnimated(true, completion: nil)
     }
     
-// MARK: - Event method
+// MARK: - Private
+    
+    private func queryForAllUserEvents() {
+        guard let query = User.allEventsForCurrentUserQuery() else {
+            return
+        }
+        
+        query.getFirstObjectInBackgroundWithBlock { [weak self](objects: PFObject?, error: NSError?) -> Void in
+            if error == nil {
+                guard let user = objects as? User else {
+                    return
+                }
+                self?.user = user
+                self?.userEvent = user.event
+                print("User events query success. Number events: \(self?.userEvent?.count)")
+                if let userEvent = self?.userEvent {
+                    for event in userEvent {
+                        print(event.hashtag)
+                    }
+                }
+            } else {
+                print("Error: \(error!) \(error!.userInfo)")
+            }
+        }
+    }
     
     private func queryForSpecificEvents(event: String) {
         guard let query = Event.queryEventsWithSubstring(event) else {
@@ -48,12 +76,34 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
                 return
             }
             self?.eventArray = objects as? [Event]
-            self?.resultTableView.reloadData()
             if self?.eventArray?.count == 0 {
                 self?.showAlert("No result", message: "Not Found! Be the owner now!")
             }
             print("Event query success. Number events: \(objects?.count)")
+            self?.joinedEventFlag = self?.flagJoinedEvent(self?.eventArray, userEvent: self?.userEvent)
+            self?.resultTableView.reloadData()
         }
+    }
+    
+    private func flagJoinedEvent(eventArray: [Event]?, userEvent: [Event]?) -> [Bool] {
+        var count = 0
+        var joinedEventFlag = [Bool]()
+        if let eventArray = eventArray {
+            for _ in 1...eventArray.count {
+                joinedEventFlag.append(false)
+            }
+            if let userEvent = userEvent {
+                for event in eventArray {
+                    for userEvent in userEvent {
+                        if userEvent.hashtag == event.hashtag {
+                            joinedEventFlag[count] = true
+                        }
+                    }
+                    count++
+                }
+            }
+        }
+        return joinedEventFlag
     }
     
     private func calculateDays(start: NSDate, end: NSDate) -> Int {
@@ -68,7 +118,21 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
 // MARK: - Table Action
     
     @IBAction func join(button: UIButton) {
-        button.setTitle("ok", forState: UIControlState.Normal)
+        if button.titleLabel?.text == "join" {
+            button.setTitle("ok", forState: UIControlState.Normal)
+            let row = button.tag
+            if let user = self.user {
+                if user.event != nil {
+                    user.event!.append(eventArray![row])
+                    user.saveInBackground()
+                } else {
+                    user.event = [Event]()
+                    user.event!.append(eventArray![row])
+                    user.saveInBackground()
+                }
+                print("join event successfully")
+            }
+        }
     }
     
 // MARK: - Helpers
@@ -98,8 +162,16 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
         let cell = tableView.dequeueReusableCellWithIdentifier(textCellIdentifier, forIndexPath: indexPath) as! SearchEventTableViewCell
         let row = indexPath.row
         var dayLeft = ""
+        cell.joinButton.tag = row
         if let eventArray = eventArray {
             cell.eventLabel.text = eventArray[row].hashtag
+            if let joinedEventFlag = joinedEventFlag {
+                if joinedEventFlag[row] == true {
+                    cell.joinButton.setTitle("ok", forState: UIControlState.Normal)
+                } else {
+                    cell.joinButton.setTitle("join", forState: UIControlState.Normal)
+                }
+            }
             isPublic = eventArray[row].isPublic
             if let createdAt = eventArray[row].createdAt {
                 let intervals = self.calculateDays(createdAt, end: currentDate)
@@ -109,8 +181,9 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
                 eventCategory = "Public "
             }
             cell.sublabel.text = eventCategory + "Event " + dayLeft
-            cell.joinButton.tag = row
-            cell.joinButton.addTarget(self, action: "join:", forControlEvents: .TouchUpInside)
+            if "ok" != cell.joinButton.titleLabel?.text {
+                cell.joinButton.addTarget(self, action: "join:", forControlEvents: .TouchUpInside)
+            }
         }
         return cell
     }

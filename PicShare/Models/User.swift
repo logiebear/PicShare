@@ -12,6 +12,7 @@ import Parse
 class User: PFUser {
     
     @NSManaged var profilePhoto: PFFile?
+    @NSManaged var event: [Event]?
     
     override class func initialize() {
         var onceToken: dispatch_once_t = 0
@@ -20,13 +21,24 @@ class User: PFUser {
         }
     }
     
-    init(email: String, username: String, password: String, profilePhoto: PFFile?) {
+    init(email: String, username: String, password: String, profilePhoto: PFFile?, event: [Event]?) {
         super.init()
         
         self.email = email
         self.username = username
         self.password = password
         self.profilePhoto = profilePhoto
+        self.event = event
+    }
+    
+    class func allEventsForCurrentUserQuery() -> PFQuery? {
+        guard let currentUser = PFUser.currentUser() else {
+            return nil
+        }
+        let query = PFUser.query()
+        query?.whereKey("username", equalTo: currentUser.username!)
+        query?.includeKey("event")
+        return query
     }
     
     override init() {
