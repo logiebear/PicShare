@@ -1421,17 +1421,6 @@
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DoL-HK-Biw">
-                                        <rect key="frame" x="539" y="13" width="46" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="7Qj-A6-oF1"/>
-                                            <constraint firstAttribute="width" constant="46" id="Xxx-xz-nt8"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                        <state key="normal" title="Edit">
-                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                    </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ir8-mi-Zyt">
                                         <rect key="frame" x="15" y="15" width="42" height="30"/>
                                         <constraints>
@@ -1446,12 +1435,26 @@
                                             <action selector="backButtonPressed:" destination="395-qI-wdV" eventType="touchUpInside" id="2ol-x2-MJe"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="DoL-HK-Biw">
+                                        <rect key="frame" x="542" y="13" width="50" height="34"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="34" id="7Qj-A6-oF1"/>
+                                            <constraint firstAttribute="width" constant="50" id="Xxx-xz-nt8"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                                        <state key="normal" title="Edit">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="editEvent:" destination="395-qI-wdV" eventType="touchUpInside" id="yCt-ei-Sta"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.76470588240000004" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstItem="Ir8-mi-Zyt" firstAttribute="leading" secondItem="iKe-4G-UXG" secondAttribute="leading" constant="15" id="9ZH-Lq-t8O"/>
                                     <constraint firstItem="Ir8-mi-Zyt" firstAttribute="centerY" secondItem="iKe-4G-UXG" secondAttribute="centerY" id="d8B-hP-MRP"/>
-                                    <constraint firstAttribute="trailing" secondItem="DoL-HK-Biw" secondAttribute="trailing" constant="15" id="ghT-dd-Gu6"/>
+                                    <constraint firstAttribute="trailing" secondItem="DoL-HK-Biw" secondAttribute="trailing" constant="8" id="ghT-dd-Gu6"/>
                                     <constraint firstItem="OoG-dh-SpK" firstAttribute="centerY" secondItem="iKe-4G-UXG" secondAttribute="centerY" id="lwh-Va-IdM"/>
                                     <constraint firstAttribute="height" constant="60" id="mQ5-2z-eBy"/>
                                     <constraint firstAttribute="width" constant="600" id="tkE-2A-ECa"/>
@@ -1548,6 +1551,7 @@
                         </variation>
                     </view>
                     <connections>
+                        <outlet property="editEvent" destination="DoL-HK-Biw" id="rvf-Li-p01"/>
                         <outlet property="eventPhotoCollectionView" destination="8AY-4g-w3a" id="4kF-FH-OC6"/>
                     </connections>
                 </viewController>
