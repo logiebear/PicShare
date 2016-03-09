@@ -27,6 +27,12 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        if let userEvent = userEvent {
+            print("user event")
+            for event in userEvent {
+                print(event)
+            }
+        }
         queryForAllUserEvents()
         if let eventName = eventName {
             self.queryForSpecificEvents(eventName)
@@ -54,11 +60,6 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
                 self?.user = user
                 self?.userEvent = user.event
                 print("User events query success. Number events: \(self?.userEvent?.count)")
-                if let userEvent = self?.userEvent {
-                    for event in userEvent {
-                        print(event.hashtag)
-                    }
-                }
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
             }
