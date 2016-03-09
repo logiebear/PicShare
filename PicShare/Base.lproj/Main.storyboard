@@ -715,8 +715,8 @@
                                     <constraint firstAttribute="trailing" secondItem="HAt-qm-Cca" secondAttribute="trailing" constant="8" id="zUz-RK-QLa"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select an Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QK0-Jv-CiQ">
-                                <rect key="frame" x="213" y="15" width="176" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select an Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QK0-Jv-CiQ">
+                                <rect key="frame" x="212" y="15" width="177" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -820,7 +820,7 @@
         <!--My Photos View Controller-->
         <scene sceneID="oo9-19-u8C">
             <objects>
-                <viewController id="CkF-ot-gHk" customClass="MyPhotosViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="myPhotosViewController" id="CkF-ot-gHk" customClass="MyPhotosViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="V1N-rQ-rc0"/>
                         <viewControllerLayoutGuide type="bottom" id="lMH-dl-oP6"/>
@@ -936,12 +936,12 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lXg-eI-Dh6">
-                                <rect key="frame" x="541" y="20" width="39" height="30"/>
+                                <rect key="frame" x="23" y="14" width="34" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="39" id="ba6-dG-sEN"/>
-                                    <constraint firstAttribute="height" constant="30" id="hBD-ra-ugc"/>
+                                    <constraint firstAttribute="height" constant="30" id="IbC-RM-Nox"/>
+                                    <constraint firstAttribute="width" constant="34" id="Rdt-PK-fv1"/>
                                 </constraints>
-                                <state key="normal" title="Close"/>
+                                <state key="normal" title="Back"/>
                                 <connections>
                                     <action selector="closeButtonPressed:" destination="MUh-FL-oeF" eventType="touchUpInside" id="u1y-qy-o2H"/>
                                 </connections>
@@ -952,22 +952,41 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UM7-zn-lbf">
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHx-4c-4Xs">
+                                <rect key="frame" x="528" y="14" width="45" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="OoU-5a-qGv"/>
+                                    <constraint firstAttribute="width" constant="45" id="S42-Dm-ZHs"/>
+                                </constraints>
+                                <state key="normal" title="Delete"/>
+                                <connections>
+                                    <action selector="deleteButtonPressed:" destination="MUh-FL-oeF" eventType="touchUpInside" id="8ic-Sd-4op"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
+                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leadingMargin" constant="3" id="2qq-OP-gtY"/>
                             <constraint firstItem="ZKD-L2-8rU" firstAttribute="top" secondItem="HbX-y6-D5G" secondAttribute="bottom" id="434-Dc-wWh"/>
-                            <constraint firstItem="HbX-y6-D5G" firstAttribute="top" secondItem="lXg-eI-Dh6" secondAttribute="bottom" constant="8" id="8Ln-Wv-JpM"/>
                             <constraint firstItem="UM7-zn-lbf" firstAttribute="centerX" secondItem="nQE-51-I1k" secondAttribute="centerX" id="KaF-7s-wNt"/>
+                            <constraint firstItem="EHx-4c-4Xs" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" constant="-6" id="LpK-C3-KmV"/>
+                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" constant="-6" id="O9n-Sj-y4f"/>
                             <constraint firstAttribute="trailing" secondItem="HbX-y6-D5G" secondAttribute="trailing" id="OTc-9S-3gu"/>
-                            <constraint firstAttribute="trailing" secondItem="lXg-eI-Dh6" secondAttribute="trailing" constant="20" id="Uj7-7r-w60"/>
                             <constraint firstItem="HbX-y6-D5G" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leading" id="Vl4-r6-tfv"/>
                             <constraint firstItem="UM7-zn-lbf" firstAttribute="centerY" secondItem="nQE-51-I1k" secondAttribute="centerY" id="XVM-Rr-kHt"/>
-                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" id="kXQ-AJ-kZ7"/>
+                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" constant="-6" id="Xop-du-M21"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="EHx-4c-4Xs" secondAttribute="trailing" constant="7" id="dve-Pj-sdH"/>
+                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" constant="-6" id="fcE-ei-4aM"/>
+                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leadingMargin" constant="3" id="oMz-WZ-GKG"/>
+                            <constraint firstItem="EHx-4c-4Xs" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" constant="-6" id="q8X-8P-68Y"/>
+                            <constraint firstItem="HbX-y6-D5G" firstAttribute="top" secondItem="EHx-4c-4Xs" secondAttribute="bottom" constant="14" id="rY2-Og-NYW"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="UM7-zn-lbf" id="fZO-Da-ieZ"/>
+                        <outlet property="deleteButton" destination="EHx-4c-4Xs" id="aCh-L2-weQ"/>
                         <outlet property="pfImageView" destination="HbX-y6-D5G" id="POW-KJ-rxc"/>
+                        <segue destination="CkF-ot-gHk" kind="show" identifier="MyPhotos" id="Cra-CO-7HR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0T-2S-sSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1735,6 +1754,7 @@
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="eventNameTextField" destination="NLJ-Zx-kbK" id="won-OH-Wkw"/>
+                        <segue destination="Cfg-3N-ygj" kind="show" identifier="AddPhoto" id="Xbf-fA-QIi"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ptN-YV-D5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1822,6 +1842,7 @@
                     <connections>
                         <outlet property="eventPasswordTextField" destination="tow-BK-mvN" id="FIE-Y4-UDu"/>
                         <outlet property="finishedButton" destination="mnW-m4-apW" id="WAI-r6-Wc7"/>
+                        <segue destination="Cfg-3N-ygj" kind="show" identifier="AddPhoto" id="Sns-VZ-cot"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAA-8Y-Me6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2101,4 +2122,8 @@
     <resources>
         <image name="profileIcon.png" width="25" height="25"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="Sns-VZ-cot"/>
+        <segue reference="Cra-CO-7HR"/>
+    </inferredMetricsTieBreakers>
 </document>

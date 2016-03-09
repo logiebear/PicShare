@@ -17,17 +17,19 @@ class MyPhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        queryForAllUserPhotos()
+        //queryForAllUserPhotos()
     }
     
+    override func viewWillAppear(animated: Bool) {
+        //NSLog("HERE")
+        queryForAllUserPhotos()
+    }
     // MARK: - Private
     
     private func queryForAllUserPhotos() {
         guard let query = Photo.allPhotosForCurrentUserQuery() else {
             return
         }
-        
         query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 self?.photoArray = objects as? [Photo]
@@ -85,6 +87,7 @@ extension MyPhotosViewController: UICollectionViewDelegate {
         if let photoArray = photoArray {
             let photo = photoArray[indexPath.item]
             vc.file = photo.image
+            vc.photo = photo
             presentViewController(vc, animated: true, completion: nil)
         }
     }
