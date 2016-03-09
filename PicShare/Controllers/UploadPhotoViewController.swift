@@ -82,6 +82,9 @@ class UploadPhotoViewController: UIViewController {
     // MARK: - Private
     
     private func uploadPhotoWithGeoPoint(geoPoint: PFGeoPoint) {
+        
+       
+        
         if let image = image,
             fullImage = image.scaleAndRotateImage(960), // Magic number
             thumbImage = image.scaleAndRotateImage(480), // Magic number
@@ -91,10 +94,24 @@ class UploadPhotoViewController: UIViewController {
             thumbFile = PFFile(name: "thumbnail.png", data: thumbImageData),
             user = PFUser.currentUser()
         {
+            var validComment = true
             var text = ""
+            
             if let descritpiveText = descriptionTextField.text {
-                text = descritpiveText
+                if(descritpiveText.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) != ""){
+                    text = descritpiveText
+                }else{
+                    validComment = false
+                }
+                
+            }else{
+                validComment = false
             }
+                
+            
+            
+            if (validComment){
+                
             
             activityIndicatorView.startAnimating()
             imageFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
@@ -114,6 +131,12 @@ class UploadPhotoViewController: UIViewController {
             }, progressBlock: { (progress) -> Void in
                 print("image progress: \(progress)%")
             })
+        
+        
+            }else{
+                showAlert("Comment Missing", message: "Please Enter a valid Comment")
+            }
+        
         } else {
             print("Photo saving error")
         }
