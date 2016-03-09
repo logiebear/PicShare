@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import AVFoundation
 
 class ProfilePhotoViewController: UIViewController {
 
@@ -31,6 +32,11 @@ class ProfilePhotoViewController: UIViewController {
     }
     
     @IBAction func takeProfilePhoto(sender: AnyObject) {
+        if !cameraAvailable() {
+            showAlert("Trouble With Camera", message: "Please enable your camera in your device settings to take a photo.")
+            return
+        }
+        
         let selector = UIImagePickerController()
         selector.delegate = self
         selector.sourceType = .Camera
@@ -43,6 +49,10 @@ class ProfilePhotoViewController: UIViewController {
     }
     
     @IBAction func useProfilePhoto(sender: AnyObject) {
+        if !networkReachable() {
+            showAlert("No Internet Connection", message: "Please check your internet connection and try again.")
+        }
+        
         // Signup user to parse
         guard let user = user else {
             print("User doesn't exist!")
