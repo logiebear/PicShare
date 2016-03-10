@@ -1446,7 +1446,7 @@
                                             <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         </state>
                                         <connections>
-                                            <action selector="editEvent:" destination="395-qI-wdV" eventType="touchUpInside" id="yCt-ei-Sta"/>
+                                            <action selector="editEvent:" destination="395-qI-wdV" eventType="touchUpInside" id="bEl-pK-vRO"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1551,7 +1551,7 @@
                         </variation>
                     </view>
                     <connections>
-                        <outlet property="editEvent" destination="DoL-HK-Biw" id="rvf-Li-p01"/>
+                        <outlet property="editEventBtn" destination="DoL-HK-Biw" id="JMJ-hr-GkY"/>
                         <outlet property="eventPhotoCollectionView" destination="8AY-4g-w3a" id="4kF-FH-OC6"/>
                     </connections>
                 </viewController>

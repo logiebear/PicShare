@@ -12,27 +12,24 @@ import Parse
 class EventPhotoScreenViewController: UIViewController {
     
     @IBOutlet weak var eventPhotoCollectionView: UICollectionView!
-    @IBOutlet weak var editEvent: UIButton!
-    var photoID = [String]()
+    @IBOutlet weak var editEventBtn: UIButton!
+    var photoIDArray = [String]()
     var eventPhotos: [Photo]?
     var event: Event?
-    var eventOwner: PFUser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         do {
-            self.eventOwner = try self.event?.owner.fetchIfNeeded()
+            try self.event?.owner.fetchIfNeeded()
         }
         catch {
-            self.eventOwner = nil
+            print("Error: not a valid event!")
         }
+        editEventBtn.setTitle("Edit", forState: .Normal)
+        editEventBtn.setTitle("Done", forState: .Selected)
         //Check whether current user owns this event
-        if let currentUser = PFUser.currentUser() {
-            if let event = event {
-                if event.owner.username != currentUser.username {
-                    editEvent.hidden = true;
-                }
-            }
+        if let currentUser = PFUser.currentUser(), event = event {
+            editEventBtn.hidden = event.owner.username != currentUser.username
         }
         // Resize size of collection view items in grid so that we achieve 3 boxes across
         let cellWidth = ((UIScreen.mainScreen().bounds.width) - 32 - 30 ) / 3
@@ -47,12 +44,7 @@ class EventPhotoScreenViewController: UIViewController {
     }
     
     @IBAction func editEvent(sender: AnyObject) {
-        if editEvent.titleLabel!.text == "Edit" {
-            editEvent.setTitle("Done", forState: .Normal)
-        }
-        else {
-            editEvent.setTitle("Edit", forState: .Normal)
-        }
+        editEventBtn.selected = !editEventBtn.selected
     }
     
     func loadCollectionViewData() {
@@ -67,16 +59,14 @@ class EventPhotoScreenViewController: UIViewController {
                 return
             }
             self?.eventPhotos?.removeAll(keepCapacity: true)
-            self?.photoID.removeAll(keepCapacity: true)
+            self?.photoIDArray.removeAll(keepCapacity: true)
             if let objects = objects {
+                self?.eventPhotos = objects as? [Photo]
                 for object in objects {
                     if let objectID = object.objectId {
-                        self?.photoID.append(objectID)
+                        self?.photoIDArray.append(objectID)
                     }
                 }
-            }
-            if let objects = objects as? [Photo] {
-                self?.eventPhotos = objects
             }
             self?.eventPhotoCollectionView.reloadData()
         }
@@ -119,7 +109,7 @@ extension EventPhotoScreenViewController: UICollectionViewDataSource {
 
 extension EventPhotoScreenViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
-        if editEvent.titleLabel!.text == "Edit" {
+        if !editEventBtn.selected {
             let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
             if let eventPhotos = eventPhotos {
                 let photo = eventPhotos[indexPath.item]
@@ -132,7 +122,7 @@ extension EventPhotoScreenViewController: UICollectionViewDelegate {
                 message: "Are you sure to delete this photo?", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
                 let query = PFQuery(className: "Photo")
-                query.getObjectInBackgroundWithId(self.photoID[indexPath.item]) { (object, error) -> Void in
+                query.getObjectInBackgroundWithId(self.photoIDArray[indexPath.item]) { (object, error) -> Void in
                     if let error = error {
                         print("Error: \(error)")
                         return
