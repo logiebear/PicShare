@@ -1,4 +1,3 @@
-source 'git@github.com:jibjab/Specs.git'
 source 'https://github.com/CocoaPods/Specs.git'
 
 platform :ios, '8.0'
@@ -7,3 +6,4 @@ use_frameworks!
 
 pod 'Parse', '~> 1.9'
 pod 'ParseUI', '~> 1.2'
+pod 'Reachability', '~> 3.2'

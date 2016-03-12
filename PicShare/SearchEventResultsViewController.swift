@@ -136,15 +136,6 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
         }
     }
     
-// MARK: - Helpers
-    
-    private func showAlert(title: String, message: String) {
-        let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertView.addAction(okAction)
-        presentViewController(alertView, animated: true, completion: nil)
-    }
-    
 // MARK: - UITableViewDataSource
     
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
