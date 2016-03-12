@@ -399,7 +399,7 @@
                                         <rect key="frame" x="0.0" y="28" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cH6-Xk-jBC" id="x3U-HM-oVy">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oR8-l8-LqG">
@@ -470,7 +470,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhv-ll-KyL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="802" y="-2114"/>
+            <point key="canvasLocation" x="811" y="-2141"/>
         </scene>
         <!--Photos-->
         <scene sceneID="gG1-Uw-8io">
@@ -620,17 +620,35 @@
                                     <constraint firstAttribute="width" constant="300" id="hoZ-Hf-vlW"/>
                                 </constraints>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1Q-0E-Ovl">
-                                <rect key="frame" x="225" y="406" width="150" height="40"/>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ryC-jz-UQH" userLabel="View - Buttons">
+                                <rect key="frame" x="150" y="414" width="300" height="40"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="i1Q-0E-Ovl">
+                                        <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
+                                        <state key="normal" title="Upload to event"/>
+                                        <connections>
+                                            <action selector="uploadToEvent:" destination="USF-Xn-IwV" eventType="touchUpInside" id="h8J-7C-jqf"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4c-Je-n8M">
+                                        <rect key="frame" x="170" y="0.0" width="130" height="40"/>
+                                        <state key="normal" title="Upload to location"/>
+                                        <connections>
+                                            <action selector="uploadToLocation:" destination="USF-Xn-IwV" eventType="touchUpInside" id="8kA-36-ued"/>
+                                        </connections>
+                                    </button>
+                                    <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cyP-pT-M3w">
+                                        <rect key="frame" x="140" y="10" width="20" height="20"/>
+                                    </activityIndicatorView>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="40" id="b67-6o-LeG"/>
-                                    <constraint firstAttribute="width" constant="150" id="xdv-B2-AMo"/>
+                                    <constraint firstItem="cyP-pT-M3w" firstAttribute="centerX" secondItem="ryC-jz-UQH" secondAttribute="centerX" id="HGO-oo-WXr"/>
+                                    <constraint firstItem="cyP-pT-M3w" firstAttribute="centerY" secondItem="ryC-jz-UQH" secondAttribute="centerY" id="Uoa-m2-x4M"/>
+                                    <constraint firstAttribute="width" constant="300" id="WNL-NU-xTC"/>
+                                    <constraint firstAttribute="height" constant="40" id="xDL-0N-hbz"/>
                                 </constraints>
-                                <state key="normal" title="Upload to event"/>
-                                <connections>
-                                    <action selector="uploadToEvent:" destination="USF-Xn-IwV" eventType="touchUpInside" id="h8J-7C-jqf"/>
-                                </connections>
-                            </button>
+                            </view>
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Add a comment" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b9s-ds-Kwt">
                                 <rect key="frame" x="150" y="368" width="300" height="30"/>
                                 <constraints>
@@ -640,35 +658,17 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="C4c-Je-n8M">
-                                <rect key="frame" x="225" y="454" width="150" height="40"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="150" id="bYm-6l-VUH"/>
-                                    <constraint firstAttribute="height" constant="40" id="kJh-wd-tqj"/>
-                                </constraints>
-                                <state key="normal" title="Upload to location"/>
-                                <connections>
-                                    <action selector="uploadToLocation:" destination="USF-Xn-IwV" eventType="touchUpInside" id="8kA-36-ued"/>
-                                </connections>
-                            </button>
-                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="cyP-pT-M3w">
-                                <rect key="frame" x="290" y="502" width="20" height="20"/>
-                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="C4c-Je-n8M" firstAttribute="centerX" secondItem="2pM-yL-SLG" secondAttribute="centerX" id="2Vo-IL-sIG"/>
                             <constraint firstAttribute="trailing" secondItem="9aU-cb-lRb" secondAttribute="trailing" id="7Ip-GP-g7Q"/>
-                            <constraint firstItem="i1Q-0E-Ovl" firstAttribute="centerX" secondItem="2pM-yL-SLG" secondAttribute="centerX" id="EjT-AW-OI6"/>
-                            <constraint firstItem="cyP-pT-M3w" firstAttribute="centerX" secondItem="2pM-yL-SLG" secondAttribute="centerX" id="M2I-sW-8Fe"/>
                             <constraint firstItem="b9s-ds-Kwt" firstAttribute="top" secondItem="PYJ-or-0Yi" secondAttribute="bottom" constant="8" id="OyM-GK-wbb"/>
-                            <constraint firstItem="C4c-Je-n8M" firstAttribute="top" secondItem="i1Q-0E-Ovl" secondAttribute="bottom" constant="8" id="X1U-Lx-Mrv"/>
+                            <constraint firstItem="ryC-jz-UQH" firstAttribute="centerX" secondItem="2pM-yL-SLG" secondAttribute="centerX" id="U8A-Ys-bHY"/>
                             <constraint firstItem="b9s-ds-Kwt" firstAttribute="centerX" secondItem="2pM-yL-SLG" secondAttribute="centerX" id="cth-r3-nMB"/>
                             <constraint firstItem="PYJ-or-0Yi" firstAttribute="top" secondItem="9aU-cb-lRb" secondAttribute="bottom" id="d7z-k2-uS1"/>
-                            <constraint firstItem="i1Q-0E-Ovl" firstAttribute="top" secondItem="b9s-ds-Kwt" secondAttribute="bottom" constant="8" id="k9R-EP-SlR"/>
+                            <constraint firstItem="ryC-jz-UQH" firstAttribute="top" secondItem="b9s-ds-Kwt" secondAttribute="bottom" constant="16" id="kdh-oW-Vlx"/>
                             <constraint firstItem="9aU-cb-lRb" firstAttribute="top" secondItem="2pM-yL-SLG" secondAttribute="top" id="q2k-HK-TLL"/>
                             <constraint firstItem="9aU-cb-lRb" firstAttribute="leading" secondItem="2pM-yL-SLG" secondAttribute="leading" id="vtv-ww-1Nt"/>
-                            <constraint firstItem="cyP-pT-M3w" firstAttribute="top" secondItem="C4c-Je-n8M" secondAttribute="bottom" constant="8" id="xnM-o6-avr"/>
                             <constraint firstItem="PYJ-or-0Yi" firstAttribute="centerX" secondItem="2pM-yL-SLG" secondAttribute="centerX" id="z9N-fZ-Xfu"/>
                         </constraints>
                     </view>
@@ -716,8 +716,8 @@
                                     <constraint firstAttribute="trailing" secondItem="HAt-qm-Cca" secondAttribute="trailing" constant="8" id="zUz-RK-QLa"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select an Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QK0-Jv-CiQ">
-                                <rect key="frame" x="212.5" y="15" width="176.5" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select an Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QK0-Jv-CiQ">
+                                <rect key="frame" x="213" y="15" width="177" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1171,7 +1171,7 @@
                                             <color key="titleColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="logoutButtonPressed:" destination="eU6-Aj-CwX" eventType="touchUpInside" id="LjD-oY-mzI"/>
+                                            <action selector="showLogoutAlert:" destination="eU6-Aj-CwX" eventType="touchUpInside" id="tji-g2-m1g"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="158" translatesAutoresizingMaskIntoConstraints="NO" id="LaP-Wj-ja4">

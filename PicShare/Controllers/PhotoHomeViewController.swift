@@ -8,6 +8,7 @@
 
 import UIKit
 import Parse
+import AVFoundation
 
 class PhotoHomeViewController: UIViewController {
 
@@ -42,6 +43,11 @@ class PhotoHomeViewController: UIViewController {
     }
     
     @IBAction func takePhotoButtonPressed(sender: AnyObject) {
+        if !cameraAvailable() {
+            showAlert("Trouble With Camera", message: "Please enable your camera in your device settings to take a photo.")
+            return
+        }
+        
         let picker = UIImagePickerController()
         picker.delegate = self
         picker.sourceType = .Camera

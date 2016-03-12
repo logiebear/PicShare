@@ -328,14 +328,14 @@
                                 </variation>
                             </view>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVC-hM-nIy">
-                                <rect key="frame" x="180" y="95" width="240" height="240"/>
+                                <rect key="frame" x="180" y="68" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="10w-g2-4QY"/>
                                     <constraint firstAttribute="width" constant="240" id="dEv-JK-8kP"/>
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6QO-4j-GnO">
-                                <rect key="frame" x="204" y="360" width="193" height="30"/>
+                                <rect key="frame" x="204" y="316" width="193" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="193" id="46m-Zo-Gc7"/>
                                 </constraints>
@@ -345,21 +345,21 @@
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="09H-Dh-Kie">
-                                <rect key="frame" x="262" y="398" width="77" height="30"/>
+                                <rect key="frame" x="262" y="354" width="77" height="30"/>
                                 <state key="normal" title="Take Photo"/>
                                 <connections>
                                     <action selector="takeProfilePhoto:" destination="7AA-Kh-eOa" eventType="touchUpInside" id="hub-eC-E7B"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ck8-4J-hwy">
-                                <rect key="frame" x="250" y="436" width="100" height="30"/>
+                                <rect key="frame" x="250" y="392" width="100" height="30"/>
                                 <state key="normal" title="Remove Photo"/>
                                 <connections>
                                     <action selector="removeProfilePhoto:" destination="7AA-Kh-eOa" eventType="touchUpInside" id="EpP-Ku-1wf"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="roj-sn-DRj">
-                                <rect key="frame" x="248" y="474" width="105" height="30"/>
+                                <rect key="frame" x="248" y="430" width="105" height="30"/>
                                 <state key="normal" title="Use This Photo"/>
                                 <connections>
                                     <action selector="useProfilePhoto:" destination="7AA-Kh-eOa" eventType="touchUpInside" id="bLJ-Le-9EG"/>
@@ -368,36 +368,20 @@
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="6QO-4j-GnO" firstAttribute="top" secondItem="DVC-hM-nIy" secondAttribute="bottom" constant="27" id="1le-xn-RkY"/>
                             <constraint firstItem="DVC-hM-nIy" firstAttribute="centerX" secondItem="ncG-97-hUj" secondAttribute="centerX" id="4YC-CJ-rlM"/>
                             <constraint firstItem="6QO-4j-GnO" firstAttribute="centerX" secondItem="qyT-Tv-92B" secondAttribute="centerX" id="6Zw-Q7-znx"/>
-                            <constraint firstItem="DVC-hM-nIy" firstAttribute="top" secondItem="909-vf-8mg" secondAttribute="bottom" constant="35" id="Oz0-OG-D4s"/>
+                            <constraint firstItem="6QO-4j-GnO" firstAttribute="top" secondItem="DVC-hM-nIy" secondAttribute="bottom" constant="8" id="HeN-IY-cxk"/>
+                            <constraint firstItem="DVC-hM-nIy" firstAttribute="top" secondItem="909-vf-8mg" secondAttribute="bottom" constant="8" id="Oz0-OG-D4s"/>
                             <constraint firstItem="Ck8-4J-hwy" firstAttribute="top" secondItem="09H-Dh-Kie" secondAttribute="bottom" constant="8" id="Pd7-pz-b02"/>
-                            <constraint firstItem="F1E-Xc-XYs" firstAttribute="top" secondItem="909-vf-8mg" secondAttribute="bottom" constant="540" id="Pgd-Cl-h6a"/>
-                            <constraint firstItem="6QO-4j-GnO" firstAttribute="top" secondItem="cva-JK-iCo" secondAttribute="bottom" constant="340" id="Q3R-jc-Jzb"/>
                             <constraint firstItem="roj-sn-DRj" firstAttribute="centerX" secondItem="Ck8-4J-hwy" secondAttribute="centerX" id="QEC-wk-71J"/>
-                            <constraint firstItem="DVC-hM-nIy" firstAttribute="top" secondItem="909-vf-8mg" secondAttribute="top" id="SyI-Z4-5di"/>
-                            <constraint firstItem="DVC-hM-nIy" firstAttribute="top" secondItem="cva-JK-iCo" secondAttribute="bottom" constant="75" id="T7L-Cd-Srk"/>
-                            <constraint firstItem="F1E-Xc-XYs" firstAttribute="top" secondItem="909-vf-8mg" secondAttribute="bottom" constant="540" id="UmO-Oe-AGE"/>
+                            <constraint firstItem="DVC-hM-nIy" firstAttribute="top" secondItem="cva-JK-iCo" secondAttribute="bottom" constant="48" id="T7L-Cd-Srk"/>
                             <constraint firstItem="roj-sn-DRj" firstAttribute="top" secondItem="Ck8-4J-hwy" secondAttribute="bottom" constant="8" id="c2Z-sH-M2w"/>
                             <constraint firstAttribute="trailingMargin" secondItem="909-vf-8mg" secondAttribute="trailing" constant="-20" id="cHT-Da-YkT"/>
-                            <constraint firstItem="DVC-hM-nIy" firstAttribute="centerX" secondItem="909-vf-8mg" secondAttribute="centerX" id="chh-mS-AaA"/>
                             <constraint firstItem="Ck8-4J-hwy" firstAttribute="centerX" secondItem="09H-Dh-Kie" secondAttribute="centerX" id="dp4-kl-nLM"/>
                             <constraint firstItem="09H-Dh-Kie" firstAttribute="centerX" secondItem="6QO-4j-GnO" secondAttribute="centerX" id="gCe-ex-zcb"/>
-                            <constraint firstItem="DVC-hM-nIy" firstAttribute="bottom" secondItem="909-vf-8mg" secondAttribute="bottom" id="lDW-Ak-pGj"/>
                             <constraint firstItem="909-vf-8mg" firstAttribute="leading" secondItem="ncG-97-hUj" secondAttribute="leadingMargin" constant="-20" id="lxz-VD-4Lq"/>
                             <constraint firstItem="09H-Dh-Kie" firstAttribute="top" secondItem="6QO-4j-GnO" secondAttribute="bottom" constant="8" id="v9R-f3-0Fr"/>
                         </constraints>
-                        <variation key="default">
-                            <mask key="constraints">
-                                <exclude reference="SyI-Z4-5di"/>
-                                <exclude reference="chh-mS-AaA"/>
-                                <exclude reference="lDW-Ak-pGj"/>
-                                <exclude reference="1le-xn-RkY"/>
-                                <exclude reference="Pgd-Cl-h6a"/>
-                                <exclude reference="UmO-Oe-AGE"/>
-                            </mask>
-                        </variation>
                     </view>
                     <connections>
                         <outlet property="containerView" destination="ncG-97-hUj" id="jdB-nM-0Tg"/>
