@@ -38,6 +38,11 @@ class UploadPhotoViewController: UIViewController {
     }
     
     @IBAction func uploadToEvent(sender: AnyObject) {
+        if !networkReachable() {
+            showAlert("No Internet Connection", message: "Please check your internet connection and try again.")
+            return
+        }
+        
         if let image = image,
             fullImage = image.scaleAndRotateImage(960), // Magic number
             thumbImage = image.scaleAndRotateImage(480), // Magic number
@@ -58,6 +63,11 @@ class UploadPhotoViewController: UIViewController {
     }
     
     @IBAction func uploadToLocation(sender: AnyObject) {
+        if !networkReachable() {
+            showAlert("No Internet Connection", message: "Please check your internet connection and try again.")
+            return
+        }
+        
         let status = CLLocationManager.authorizationStatus()
         if status == .Denied || status == .Restricted {
             showAlert("Location Services Disabled", message: "Please go to your device settings to enable location services.")
@@ -150,21 +160,14 @@ class UploadPhotoViewController: UIViewController {
             owner: user,
             event: nil, location: geoPoint, descriptiveText: text)
         
-        photo.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
+        photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
             self?.activityIndicatorView.stopAnimating()
             self?.dismissViewControllerAnimated(true, completion: nil)
-        })
+        }
     }
     
     func resignKeyboard() {
         descriptionTextField.resignFirstResponder()
-    }
-
-    func showAlert(title: String, message: String) {
-        let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertView.addAction(okAction)
-        presentViewController(alertView, animated: true, completion: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
