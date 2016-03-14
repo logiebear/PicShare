@@ -27,17 +27,20 @@ class SelectUploadEventViewController: UIViewController {
         super.viewDidLoad()
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "EventCell")
         let eventQuery = PFQuery(className: "Event");
-        eventQuery.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) in
-            self?.eventArray = objects as? [Event] ?? []
-            self?.tableView.reloadData()
+        if let user = PFUser.currentUser() {
+            eventQuery.whereKey("owner", equalTo: user)
+            eventQuery.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) in
+                self?.eventArray = objects as? [Event] ?? []
+                self?.tableView.reloadData()
+            }
+        }
+        else {
+            print("Login required")
+            return
         }
     }
     
     //MARK: - User Actions
-    @IBAction func backButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
-    
     @IBAction func uploadPhoto(sender: AnyObject) {
         guard let selectedEvent = selectedEvent else {
             let alertView = UIAlertController(title: "Error",
@@ -50,6 +53,7 @@ class SelectUploadEventViewController: UIViewController {
         guard let photo = photo else {
             return
         }
+        let parentView = self.presentingViewController
         photo.event = selectedEvent
         photo.saveInBackgroundWithBlock { [weak self](success: Bool, error: NSError?) in
             if let error = error {
@@ -62,7 +66,11 @@ class SelectUploadEventViewController: UIViewController {
             }
             let alertView = UIAlertController(title: "Message",
                 message: "Upload Success", preferredStyle: .Alert)
-            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+                self?.dismissViewControllerAnimated(false, completion: {
+                    parentView?.dismissViewControllerAnimated(true, completion: nil)
+                })
+            })
             alertView.addAction(OKAction)
             self?.presentViewController(alertView, animated: true, completion: nil)
         }

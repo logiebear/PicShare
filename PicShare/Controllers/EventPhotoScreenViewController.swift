@@ -12,53 +12,71 @@ import Parse
 class EventPhotoScreenViewController: UIViewController {
     
     @IBOutlet weak var eventPhotoCollectionView: UICollectionView!
-    var eventPhotos: [PFObject]?
+    @IBOutlet weak var editEventBtn: UIButton!
+    var photoIDArray = [String]()
+    var eventPhotos: [Photo]?
+    var event: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        do {
+            try self.event?.owner.fetchIfNeeded()
+        }
+        catch {
+            print("Error: not a valid event!")
+        }
+        editEventBtn.setTitle("Edit", forState: .Normal)
+        editEventBtn.setTitle("Done", forState: .Selected)
+        //Check whether current user owns this event
+        if let currentUser = PFUser.currentUser(), event = event {
+            editEventBtn.hidden = event.owner.username != currentUser.username
+        }
         // Resize size of collection view items in grid so that we achieve 3 boxes across
         let cellWidth = ((UIScreen.mainScreen().bounds.width) - 32 - 30 ) / 3
         let cellLayout = eventPhotoCollectionView.collectionViewLayout as! UICollectionViewFlowLayout
         cellLayout.itemSize = CGSize(width: cellWidth, height: cellWidth)
-    }
-    
-    override func viewDidAppear(animated: Bool) {
         loadCollectionViewData()
     }
     
+    // MARK: - User Actions
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
+    @IBAction func editEvent(sender: AnyObject) {
+        editEventBtn.selected = !editEventBtn.selected
+    }
+    
     func loadCollectionViewData() {
-        // Build a parse query object
         let query = PFQuery(className:"Photo")
-        // Fetch data from the parse platform
-        // TODO: UPDATE THIS
-//        let event: Event = Event()
-//        query.whereKey("event", equalTo: event)
-        query.findObjectsInBackgroundWithBlock {
-            (objects: [PFObject]?, error: NSError?) -> Void in
+        guard let event = event else {
+            return
+        }
+        query.whereKey("event", equalTo: event)
+        query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
                 print("Error: \(error)")
                 return
             }
-            // The find succeeded now rocess the found objects into the photo array
-            // Clear existing photo data
-            if self.eventPhotos != nil {
-                self.eventPhotos!.removeAll(keepCapacity: true)
-            }
-            // Add photo objects to our array
+            self?.eventPhotos?.removeAll(keepCapacity: true)
+            self?.photoIDArray.removeAll(keepCapacity: true)
             if let objects = objects {
-                self.eventPhotos = Array(objects.generate())
+                self?.eventPhotos = objects as? [Photo]
+                for object in objects {
+                    if let objectID = object.objectId {
+                        self?.photoIDArray.append(objectID)
+                    }
+                }
             }
-            // reload our data into the collection view
-            self.eventPhotoCollectionView.reloadData()
+            self?.eventPhotoCollectionView.reloadData()
         }
-    }
-    
-    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
-        return 1
     }
 }
 
 extension EventPhotoScreenViewController: UICollectionViewDataSource {
+    func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
+        return 1
+    }
     
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         if let eventPhotos = self.eventPhotos {
@@ -66,9 +84,6 @@ extension EventPhotoScreenViewController: UICollectionViewDataSource {
         }
         return 0
     }
-}
-
-extension EventPhotoScreenViewController: UICollectionViewDelegate {
     
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! EventPhotoCollectionViewCell
@@ -89,5 +104,39 @@ extension EventPhotoScreenViewController: UICollectionViewDelegate {
             }
         }
         return cell
+    }
+}
+
+extension EventPhotoScreenViewController: UICollectionViewDelegate {
+    func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        if !editEventBtn.selected {
+            let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
+            if let eventPhotos = eventPhotos {
+                let photo = eventPhotos[indexPath.item]
+                vc.file = photo.image
+                presentViewController(vc, animated: true, completion: nil)
+            }
+        }
+        else {
+            let alertView = UIAlertController(title: "Delete Photo",
+                message: "Are you sure to delete this photo?", preferredStyle: .Alert)
+            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+                let query = PFQuery(className: "Photo")
+                query.getObjectInBackgroundWithId(self.photoIDArray[indexPath.item]) { (object, error) -> Void in
+                    if let error = error {
+                        print("Error: \(error)")
+                        return
+                    }
+                    if let object = object {
+                        object.deleteInBackground()
+                        self.eventPhotos?.removeAtIndex(indexPath.item)
+                        self.eventPhotoCollectionView.reloadData()
+                    }
+                }
+            })
+            alertView.addAction(OKAction)
+            alertView.addAction(UIAlertAction(title: "Cancel", style: UIAlertActionStyle.Cancel, handler: nil))
+            self.presentViewController(alertView, animated: true, completion: nil)
+        }
     }
 }
