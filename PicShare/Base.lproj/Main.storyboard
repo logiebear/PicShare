@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zNY-rV-0aN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zNY-rV-0aN">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -953,10 +953,22 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UM7-zn-lbf">
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                             </activityIndicatorView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6w-tT-Mlt">
+                                <rect key="frame" x="20" y="20" width="70" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="70" id="jUD-NM-AKR"/>
+                                    <constraint firstAttribute="height" constant="30" id="mRk-Y5-poz"/>
+                                </constraints>
+                                <state key="normal" title="Download"/>
+                                <connections>
+                                    <action selector="downloadButtonPressed:" destination="MUh-FL-oeF" eventType="touchUpInside" id="5H7-au-KSA"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
                             <constraint firstItem="ZKD-L2-8rU" firstAttribute="top" secondItem="HbX-y6-D5G" secondAttribute="bottom" id="434-Dc-wWh"/>
+                            <constraint firstItem="n6w-tT-Mlt" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leading" constant="20" id="5q7-hK-AJ6"/>
                             <constraint firstItem="HbX-y6-D5G" firstAttribute="top" secondItem="lXg-eI-Dh6" secondAttribute="bottom" constant="8" id="8Ln-Wv-JpM"/>
                             <constraint firstItem="UM7-zn-lbf" firstAttribute="centerX" secondItem="nQE-51-I1k" secondAttribute="centerX" id="KaF-7s-wNt"/>
                             <constraint firstAttribute="trailing" secondItem="HbX-y6-D5G" secondAttribute="trailing" id="OTc-9S-3gu"/>
@@ -964,6 +976,7 @@
                             <constraint firstItem="HbX-y6-D5G" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leading" id="Vl4-r6-tfv"/>
                             <constraint firstItem="UM7-zn-lbf" firstAttribute="centerY" secondItem="nQE-51-I1k" secondAttribute="centerY" id="XVM-Rr-kHt"/>
                             <constraint firstItem="lXg-eI-Dh6" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" id="kXQ-AJ-kZ7"/>
+                            <constraint firstItem="n6w-tT-Mlt" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" id="q1f-t6-IvD"/>
                         </constraints>
                     </view>
                     <connections>
