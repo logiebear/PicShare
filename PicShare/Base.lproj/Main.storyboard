@@ -2095,6 +2095,9 @@
                                     <action selector="UploadButtonPressed:" destination="Xaf-Ra-DeP" eventType="touchUpInside" id="i4F-28-Xm6"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gkM-Xz-kIv">
+                                <rect key="frame" x="290" y="437" width="20" height="20"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2110,6 +2113,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="activityIndicatorView" destination="gkM-Xz-kIv" id="hOp-bN-waC"/>
                         <outlet property="commentTextField" destination="ie4-d3-bIc" id="YyA-sc-VQz"/>
                         <outlet property="imageView" destination="OIT-TN-0Kn" id="7GY-gD-qya"/>
                     </connections>

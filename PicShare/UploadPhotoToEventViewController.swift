@@ -13,6 +13,7 @@ class UploadPhotoToEventViewController: UIViewController {
 
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentTextField: UITextField!
+    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
     
     var image: UIImage?
     var hashtag: String?
@@ -25,11 +26,6 @@ class UploadPhotoToEventViewController: UIViewController {
         imageView.contentMode = .ScaleAspectFit
         imageView.image = image
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
     
     // MARK: - User Actions
     
@@ -38,12 +34,11 @@ class UploadPhotoToEventViewController: UIViewController {
     }
 
     @IBAction func UploadButtonPressed(sender: AnyObject) {
-        
         checkValid { (success) -> () in
             if success {
-                self.uploadPhotoToEvent()}
+                self.uploadPhotoToEvent()
+            }
         }
-       
     }
     
     // MARK: - Private
@@ -64,7 +59,7 @@ class UploadPhotoToEventViewController: UIViewController {
                 text = commentText
             }
             
-            //activityIndicatorView.startAnimating()
+            activityIndicatorView.startAnimating()
             imageFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
                 if success {
                     thumbFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
@@ -86,7 +81,6 @@ class UploadPhotoToEventViewController: UIViewController {
             print("Photo saving error")
         }
     }
-    
     
     // MARK: - Helpers
     
@@ -115,7 +109,7 @@ class UploadPhotoToEventViewController: UIViewController {
             event: self.event, location: nil, descriptiveText: text)
         
         photo.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
-            //self?.activityIndicatorView.stopAnimating()
+            self?.activityIndicatorView.stopAnimating()
             self?.dismissViewControllerAnimated(true, completion: nil)
             })
     }
@@ -128,7 +122,3 @@ class UploadPhotoToEventViewController: UIViewController {
         self.presentViewController(alertView, animated: true, completion: nil)
     }
 }
-
-
-
-

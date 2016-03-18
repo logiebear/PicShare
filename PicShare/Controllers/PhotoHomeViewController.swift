@@ -66,7 +66,6 @@ extension PhotoHomeViewController: UIImagePickerControllerDelegate, UINavigation
         dismissViewControllerAnimated(true) { () -> Void in
             self.performSegueWithIdentifier("UploadPhoto", sender: image)
         }
-
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {

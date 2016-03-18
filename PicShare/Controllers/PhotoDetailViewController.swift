@@ -36,7 +36,7 @@ class PhotoDetailViewController: UIViewController {
         dismissViewControllerAnimated(true, completion: nil)
     }
     @IBAction func deleteButtonPressed(sender: AnyObject) {
-        self.showConfirmView("", msg: "Do you want to Delete this photo?")
+        self.showConfirmView("", msg: "Do you want to delete this photo?")
     }
     
     // MARK: - Helpers
@@ -46,7 +46,7 @@ class PhotoDetailViewController: UIViewController {
             message: msg, preferredStyle: .Alert)
         let okAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.Default) {
             UIAlertAction in
-            NSLog("YES Pressed")
+            print("YES Pressed")
             if let photo = self.photo {
                 photo.deleteInBackground()
                 self.dismissViewControllerAnimated(true, completion: nil)
@@ -54,7 +54,7 @@ class PhotoDetailViewController: UIViewController {
         }
         let cancelAction = UIAlertAction(title: "NO", style: UIAlertActionStyle.Cancel) {
             UIAlertAction in
-            NSLog("NO Pressed")
+            print("NO Pressed")
         }
         alertView.addAction(okAction)
         alertView.addAction(cancelAction)

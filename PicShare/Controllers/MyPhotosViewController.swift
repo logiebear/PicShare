@@ -17,13 +17,12 @@ class MyPhotosViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        //queryForAllUserPhotos()
     }
     
     override func viewWillAppear(animated: Bool) {
-        //NSLog("HERE")
         queryForAllUserPhotos()
     }
+    
     // MARK: - Private
     
     private func queryForAllUserPhotos() {
