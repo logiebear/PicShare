@@ -715,8 +715,8 @@
                                     <constraint firstAttribute="trailing" secondItem="HAt-qm-Cca" secondAttribute="trailing" constant="8" id="zUz-RK-QLa"/>
                                 </constraints>
                             </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Select an Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QK0-Jv-CiQ">
-                                <rect key="frame" x="213" y="15" width="177" height="29"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Select an Event" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QK0-Jv-CiQ">
+                                <rect key="frame" x="212" y="15" width="177" height="29"/>
                                 <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
@@ -1693,9 +1693,7 @@
                                         <rect key="frame" x="67" y="166" width="88" height="30"/>
                                         <state key="normal" title="private"/>
                                         <connections>
-                                            <segue destination="ffY-kS-47b" kind="show" id="aIG-eM-CTe">
-                                                <nil key="action"/>
-                                            </segue>
+                                            <action selector="privateButtonPressed:" destination="tLx-Nn-95y" eventType="touchUpInside" id="eY0-Tz-Lan"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1755,6 +1753,7 @@
                     <connections>
                         <outlet property="eventNameTextField" destination="NLJ-Zx-kbK" id="won-OH-Wkw"/>
                         <segue destination="Cfg-3N-ygj" kind="show" identifier="AddPhoto" id="Xbf-fA-QIi"/>
+                        <segue destination="ffY-kS-47b" kind="show" identifier="SetPassword" id="gb0-KH-lR0"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ptN-YV-D5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1824,7 +1823,7 @@
                                 </constraints>
                                 <state key="normal" title="Finished"/>
                                 <connections>
-                                    <action selector="finishedButtonPressed:" destination="ffY-kS-47b" eventType="touchUpInside" id="jOS-y1-NOh"/>
+                                    <action selector="finishedButtonPressed:" destination="ffY-kS-47b" eventType="touchUpInside" id="a2D-Dj-POR"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -1842,7 +1841,7 @@
                     <connections>
                         <outlet property="eventPasswordTextField" destination="tow-BK-mvN" id="FIE-Y4-UDu"/>
                         <outlet property="finishedButton" destination="mnW-m4-apW" id="WAI-r6-Wc7"/>
-                        <segue destination="Cfg-3N-ygj" kind="show" identifier="AddPhoto" id="Sns-VZ-cot"/>
+                        <segue destination="Cfg-3N-ygj" kind="show" identifier="AddPhoto" id="Qma-si-Utr"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="oAA-8Y-Me6" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2028,7 +2027,7 @@
         <!--Upload Photo to Event View Controller-->
         <scene sceneID="GhW-8F-Svl">
             <objects>
-                <viewController title="Upload Photo to Event View Controller" id="Xaf-Ra-DeP" customClass="UploadPhotoToEventViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="uploadPhotoToEventViewController" title="Upload Photo to Event View Controller" id="Xaf-Ra-DeP" customClass="UploadPhotoToEventViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Bl4-Ol-pEZ"/>
                         <viewControllerLayoutGuide type="bottom" id="5Ux-wf-cF2"/>
@@ -2095,7 +2094,7 @@
                                     <action selector="UploadButtonPressed:" destination="Xaf-Ra-DeP" eventType="touchUpInside" id="i4F-28-Xm6"/>
                                 </connections>
                             </button>
-                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gkM-Xz-kIv">
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="gkM-Xz-kIv">
                                 <rect key="frame" x="290" y="437" width="20" height="20"/>
                             </activityIndicatorView>
                         </subviews>
@@ -2105,7 +2104,9 @@
                             <constraint firstItem="fFa-xE-UhZ" firstAttribute="centerX" secondItem="OIT-TN-0Kn" secondAttribute="centerX" id="7jM-Ev-r37"/>
                             <constraint firstItem="fFa-xE-UhZ" firstAttribute="leading" secondItem="Igg-MF-8BD" secondAttribute="leading" id="AVm-bX-2jX"/>
                             <constraint firstItem="ie4-d3-bIc" firstAttribute="top" secondItem="OIT-TN-0Kn" secondAttribute="bottom" constant="24" id="DXW-5a-c8l"/>
+                            <constraint firstItem="gkM-Xz-kIv" firstAttribute="top" secondItem="ie4-d3-bIc" secondAttribute="bottom" constant="15" id="DwP-LR-nxS"/>
                             <constraint firstItem="tKq-HY-6r1" firstAttribute="top" secondItem="ie4-d3-bIc" secondAttribute="bottom" constant="36" id="EdZ-fQ-Q4V"/>
+                            <constraint firstItem="gkM-Xz-kIv" firstAttribute="centerX" secondItem="Igg-MF-8BD" secondAttribute="centerX" id="Kl4-y9-BeS"/>
                             <constraint firstItem="OIT-TN-0Kn" firstAttribute="top" secondItem="fFa-xE-UhZ" secondAttribute="bottom" constant="8" id="QfJ-q7-N7k"/>
                             <constraint firstItem="ie4-d3-bIc" firstAttribute="centerX" secondItem="Igg-MF-8BD" secondAttribute="centerX" id="VAQ-Bh-8ae"/>
                             <constraint firstItem="tKq-HY-6r1" firstAttribute="centerX" secondItem="Igg-MF-8BD" secondAttribute="centerX" id="X2t-d9-lvy"/>
@@ -2127,7 +2128,7 @@
         <image name="profileIcon.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Sns-VZ-cot"/>
+        <segue reference="Xbf-fA-QIi"/>
         <segue reference="Cra-CO-7HR"/>
     </inferredMetricsTieBreakers>
 </document>

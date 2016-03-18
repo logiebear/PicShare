@@ -14,10 +14,11 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     // Mark: - Properties
     
     @IBOutlet weak var eventNameTextField: UITextField!
-    @IBOutlet weak var privateButton: UIButton!    
+    
     var hashtag: String?
     var password: String?
     var isPublic = true
+    var event: Event?
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let eventNameText = eventNameTextField.text else {
@@ -31,6 +32,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         if segue.identifier == "AddPhoto" {
             let destViewController: AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
             destViewController.hashtag = eventNameText
+            destViewController.event = event
         }
     }
     
@@ -74,10 +76,9 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         guard let user = PFUser.currentUser(), eventNameText = eventNameTextField.text else {
             return
         }
-
-        let event = Event(owner: user, hashtag: eventNameText,
+        self.event = Event(owner: user, hashtag: eventNameText,
             isPublic: isPublic, password: password)
-        event.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
+        self.event?.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
             self?.performSegueWithIdentifier("AddPhoto", sender: nil)
         }
     }

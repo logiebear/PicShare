@@ -25,6 +25,7 @@ class UploadPhotoToEventViewController: UIViewController {
         // Do any additional setup after loading the view.
         imageView.contentMode = .ScaleAspectFit
         imageView.image = image
+        print(event)
     }
     
     // MARK: - User Actions
@@ -34,11 +35,7 @@ class UploadPhotoToEventViewController: UIViewController {
     }
 
     @IBAction func UploadButtonPressed(sender: AnyObject) {
-        checkValid { (success) -> () in
-            if success {
-                self.uploadPhotoToEvent()
-            }
-        }
+        self.uploadPhotoToEvent()
     }
     
     // MARK: - Private
@@ -83,24 +80,6 @@ class UploadPhotoToEventViewController: UIViewController {
     }
     
     // MARK: - Helpers
-    
-    func checkValid(completion: (Bool) -> ()) {
-        guard let query = Event.query() else {
-            return
-        }
-        if let hashtag = self.hashtag {
-            query.whereKey("hashtag", equalTo: hashtag)
-            query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
-                if let objects = objects where objects.count == 1{
-                    self?.event = objects.first as? Event
-                    completion(true)
-                } else {
-                    self?.showErrorView("Invalid event", msg: "Event does not exist")
-                    completion(false)
-                }
-            }
-        }
-    }
     
     func proceedToUploadPhoto(imageFile: PFFile, thumbFile: PFFile, user: PFUser, text: String) {
         let photo = Photo(image: imageFile,
