@@ -16,10 +16,11 @@ class CreateEventPasswordViewController: UIViewController{
     @IBOutlet weak var eventPasswordTextField: UITextField!
     @IBOutlet weak var finishedButton: UIButton!
  
-    var hashtag = String()
+    var hashtag: String?
     var user: PFUser? = PFUser.currentUser()
     var isPublic: Bool = false
     var password: String? = nil
+    var event: Event?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,6 +34,7 @@ class CreateEventPasswordViewController: UIViewController{
         if segue.identifier == "AddPhoto" {
             let destViewController = segue.destinationViewController as! AddPhotoViewController
             destViewController.hashtag = hashtag
+            destViewController.event = event
         }
     }
     
@@ -53,14 +55,12 @@ class CreateEventPasswordViewController: UIViewController{
     // Mark: - Private
     
     private func createEventObject() {
-        guard let user = user, eventPasswordText = eventPasswordTextField.text else {
+        guard let user = user, eventPasswordText = eventPasswordTextField.text, hashtag = self.hashtag else {
             return
         }
-        
-        let event = Event(owner: user, hashtag: hashtag,
+        self.event = Event(owner: user, hashtag: hashtag,
             isPublic: isPublic, password: eventPasswordText)
-    
-        event.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
+        self.event?.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
             self?.performSegueWithIdentifier("AddPhoto", sender: nil)
         }
     }

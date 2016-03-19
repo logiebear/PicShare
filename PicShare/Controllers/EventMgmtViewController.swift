@@ -12,6 +12,7 @@ import Parse
 class EventMgmtViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
+    
     var eventArray: [Event] = []
     var selectedEventIndex: Int?
     var selectedEvent: Event? {
