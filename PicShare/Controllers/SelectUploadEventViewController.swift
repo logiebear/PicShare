@@ -12,6 +12,7 @@ import Parse
 class SelectUploadEventViewController: UIViewController {
 
     @IBOutlet weak var tableView: UITableView!
+    
     var eventArray: [Event] = []
     var photo: Photo?
     var selectedEventIndex: Int?
