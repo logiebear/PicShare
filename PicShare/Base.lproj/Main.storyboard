@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zNY-rV-0aN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zNY-rV-0aN">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -939,8 +939,8 @@
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="lXg-eI-Dh6">
                                 <rect key="frame" x="23" y="14" width="34" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="IbC-RM-Nox"/>
-                                    <constraint firstAttribute="width" constant="34" id="Rdt-PK-fv1"/>
+                                    <constraint firstAttribute="height" constant="30" id="0Cf-W8-s6q"/>
+                                    <constraint firstAttribute="width" constant="34" id="3bd-5q-cvU"/>
                                 </constraints>
                                 <state key="normal" title="Back"/>
                                 <connections>
@@ -953,39 +953,48 @@
                             <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="UM7-zn-lbf">
                                 <rect key="frame" x="290" y="290" width="20" height="20"/>
                             </activityIndicatorView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="EHx-4c-4Xs">
-                                <rect key="frame" x="528" y="14" width="45" height="30"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6w-tT-Mlt">
+                                <rect key="frame" x="502" y="14" width="70" height="30"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="OoU-5a-qGv"/>
-                                    <constraint firstAttribute="width" constant="45" id="S42-Dm-ZHs"/>
+                                    <constraint firstAttribute="width" constant="70" id="67m-Sr-HlL"/>
+                                    <constraint firstAttribute="height" constant="30" id="mzk-SP-p1d"/>
+                                </constraints>
+                                <state key="normal" title="Download"/>
+                                <connections>
+                                    <action selector="downloadButtonPressed:" destination="MUh-FL-oeF" eventType="touchUpInside" id="5H7-au-KSA"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BM8-Ni-GVm">
+                                <rect key="frame" x="447" y="14" width="45" height="30"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="30" id="5xq-DF-kka"/>
+                                    <constraint firstAttribute="width" constant="45" id="j7H-14-lIx"/>
                                 </constraints>
                                 <state key="normal" title="Delete"/>
                                 <connections>
-                                    <action selector="deleteButtonPressed:" destination="MUh-FL-oeF" eventType="touchUpInside" id="8ic-Sd-4op"/>
+                                    <action selector="deleteButtonPressed:" destination="MUh-FL-oeF" eventType="touchUpInside" id="taq-kX-u9y"/>
                                 </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leadingMargin" constant="3" id="2qq-OP-gtY"/>
-                            <constraint firstItem="ZKD-L2-8rU" firstAttribute="top" secondItem="HbX-y6-D5G" secondAttribute="bottom" id="434-Dc-wWh"/>
-                            <constraint firstItem="UM7-zn-lbf" firstAttribute="centerX" secondItem="nQE-51-I1k" secondAttribute="centerX" id="KaF-7s-wNt"/>
-                            <constraint firstItem="EHx-4c-4Xs" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" constant="-6" id="LpK-C3-KmV"/>
-                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" constant="-6" id="O9n-Sj-y4f"/>
-                            <constraint firstAttribute="trailing" secondItem="HbX-y6-D5G" secondAttribute="trailing" id="OTc-9S-3gu"/>
-                            <constraint firstItem="HbX-y6-D5G" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leading" id="Vl4-r6-tfv"/>
-                            <constraint firstItem="UM7-zn-lbf" firstAttribute="centerY" secondItem="nQE-51-I1k" secondAttribute="centerY" id="XVM-Rr-kHt"/>
-                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" constant="-6" id="Xop-du-M21"/>
-                            <constraint firstAttribute="trailingMargin" secondItem="EHx-4c-4Xs" secondAttribute="trailing" constant="7" id="dve-Pj-sdH"/>
-                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" constant="-6" id="fcE-ei-4aM"/>
-                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leadingMargin" constant="3" id="oMz-WZ-GKG"/>
-                            <constraint firstItem="EHx-4c-4Xs" firstAttribute="top" secondItem="qu0-wy-ZGf" secondAttribute="bottom" constant="-6" id="q8X-8P-68Y"/>
-                            <constraint firstItem="HbX-y6-D5G" firstAttribute="top" secondItem="EHx-4c-4Xs" secondAttribute="bottom" constant="14" id="rY2-Og-NYW"/>
+                            <constraint firstItem="UM7-zn-lbf" firstAttribute="centerY" secondItem="nQE-51-I1k" secondAttribute="centerY" id="2yr-7V-u6q"/>
+                            <constraint firstItem="n6w-tT-Mlt" firstAttribute="top" secondItem="nQE-51-I1k" secondAttribute="top" constant="14" id="Bjy-pa-tuD"/>
+                            <constraint firstItem="HbX-y6-D5G" firstAttribute="top" secondItem="BM8-Ni-GVm" secondAttribute="bottom" constant="14" id="J4G-CF-GMf"/>
+                            <constraint firstAttribute="trailing" secondItem="n6w-tT-Mlt" secondAttribute="trailing" constant="28" id="Lgp-Ap-jlX"/>
+                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="top" secondItem="nQE-51-I1k" secondAttribute="top" constant="14" id="M8T-uo-MId"/>
+                            <constraint firstItem="lXg-eI-Dh6" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leading" constant="23" id="RlW-H3-g9P"/>
+                            <constraint firstItem="n6w-tT-Mlt" firstAttribute="leading" secondItem="BM8-Ni-GVm" secondAttribute="trailing" constant="10" id="T5H-Ac-eTX"/>
+                            <constraint firstItem="UM7-zn-lbf" firstAttribute="centerX" secondItem="nQE-51-I1k" secondAttribute="centerX" id="UNJ-q3-Am9"/>
+                            <constraint firstItem="BM8-Ni-GVm" firstAttribute="top" secondItem="nQE-51-I1k" secondAttribute="top" constant="14" id="jR2-Df-w5P"/>
+                            <constraint firstItem="ZKD-L2-8rU" firstAttribute="top" secondItem="HbX-y6-D5G" secondAttribute="bottom" id="tOl-Ek-YQu"/>
+                            <constraint firstAttribute="trailing" secondItem="HbX-y6-D5G" secondAttribute="trailing" id="tVs-Vw-Udc"/>
+                            <constraint firstItem="HbX-y6-D5G" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leading" id="uCR-VZ-H4Q"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="activityIndicator" destination="UM7-zn-lbf" id="fZO-Da-ieZ"/>
-                        <outlet property="deleteButton" destination="EHx-4c-4Xs" id="aCh-L2-weQ"/>
+                        <outlet property="deleteButton" destination="BM8-Ni-GVm" id="33O-IF-LMX"/>
                         <outlet property="pfImageView" destination="HbX-y6-D5G" id="POW-KJ-rxc"/>
                         <segue destination="CkF-ot-gHk" kind="show" identifier="MyPhotos" id="Cra-CO-7HR"/>
                     </connections>

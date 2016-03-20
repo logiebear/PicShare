@@ -15,31 +15,57 @@ class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var deleteButton: UIButton!
     
-    var file: PFFile?
     var photo: Photo?
+    private var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let photo = photo else {
+            // TODO: SHOW PHOTO ERROR MESSAGE
+            return
+        }
+        
         pfImageView.contentMode = .ScaleAspectFit
-        pfImageView.file = file
+        pfImageView.file = photo.image
         
         activityIndicator.startAnimating()
-        pfImageView.loadInBackground { [unowned self](image, error) -> Void in
-            self.activityIndicator.stopAnimating()
+        pfImageView.loadInBackground { [weak self](image, error) -> Void in
+            self?.activityIndicator.stopAnimating()
+            self?.image = image
             if error != nil {
                 print("Error: \(error)")
             }
         }
     }
     
+    // MARK: - User Actions
+    
     @IBAction func closeButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
+    
+    @IBAction func downloadButtonPressed(sender: AnyObject) {
+        guard let image = image else {
+            showAlert("Download Error", message: "Unable to download image.")
+            return
+        }
+        
+        UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
+    }
+    
     @IBAction func deleteButtonPressed(sender: AnyObject) {
         self.showConfirmView("", msg: "Do you want to delete this photo?")
     }
     
     // MARK: - Helpers
+    
+    func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
+        if let error = error {
+            showAlert("Download Error", message: error.localizedDescription)
+        } else {
+            showAlert("Success!", message: "You have downloaded the image successfully!")
+        }
+    }
     
     func showConfirmView(title: String, msg: String) {
         let alertView = UIAlertController(title: title,
