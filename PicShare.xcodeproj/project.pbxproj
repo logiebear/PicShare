@@ -44,7 +44,6 @@
 		6A517F561C8122F200EBB1A9 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517F541C8122F200EBB1A9 /* CreateEventViewController.swift */; };
 		6A517F571C8122F200EBB1A9 /* EventMgmtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517F551C8122F200EBB1A9 /* EventMgmtViewController.swift */; };
 		6AFDC59A1C79518B0089598C /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */; };
-		73CD64A11C9E4D2E00FE3ADA /* PicShareUITestsLoginLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD64A01C9E4D2E00FE3ADA /* PicShareUITestsLoginLogout.swift */; };
 		CACDB6812DCE9C2FF4BE0671 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986BF3E755B56746A6F724 /* Pods.framework */; };
 		E4FD1B951C5B354D001A4795 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4FD1B931C5B354D001A4795 /* Account.storyboard */; };
 		E4FD1B981C5B3575001A4795 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FD1B961C5B3575001A4795 /* SignUpViewController.swift */; };
@@ -60,13 +59,6 @@
 			remoteInfo = PicShare;
 		};
 		0ABADAFD1BF909BC001CB962 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = 0ABADAD51BF909BB001CB962 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = 0ABADADC1BF909BB001CB962;
-			remoteInfo = PicShare;
-		};
-		73CD64A31C9E4D2E00FE3ADA /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 0ABADAD51BF909BB001CB962 /* Project object */;
 			proxyType = 1;
@@ -124,9 +116,6 @@
 		6A517F551C8122F200EBB1A9 /* EventMgmtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventMgmtViewController.swift; path = Controllers/EventMgmtViewController.swift; sourceTree = "<group>"; };
 		6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddPhotoViewController.swift; path = Controllers/AddPhotoViewController.swift; sourceTree = "<group>"; };
 		73CD64991C9E4CD800FE3ADA /* PicShareUITests-LoginLogOut */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "PicShareUITests-LoginLogOut"; sourceTree = "<group>"; };
-		73CD649E1C9E4D2E00FE3ADA /* PicShareUITestsLoginLogout.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicShareUITestsLoginLogout.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		73CD64A01C9E4D2E00FE3ADA /* PicShareUITestsLoginLogout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicShareUITestsLoginLogout.swift; sourceTree = "<group>"; };
-		73CD64A21C9E4D2E00FE3ADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C986BF3E755B56746A6F724 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48091EB1C792FAE0092B04C /* SelectUploadEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectUploadEventViewController.swift; path = Controllers/SelectUploadEventViewController.swift; sourceTree = "<group>"; };
 		E4FD1B941C5B354D001A4795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
@@ -151,13 +140,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0ABADAF91BF909BC001CB962 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		73CD649B1C9E4D2E00FE3ADA /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -199,7 +181,6 @@
 				0ABADADF1BF909BB001CB962 /* PicShare */,
 				0ABADAF41BF909BC001CB962 /* PicShareTests */,
 				0ABADAFF1BF909BC001CB962 /* PicShareUITests */,
-				73CD649F1C9E4D2E00FE3ADA /* PicShareUITestsLoginLogout */,
 				0ABADADE1BF909BB001CB962 /* Products */,
 				5B7C612A9EF92C259D5CC17B /* Pods */,
 				E75C50575B26629CAA942EE7 /* Frameworks */,
@@ -212,7 +193,6 @@
 				0ABADADD1BF909BB001CB962 /* PicShare.app */,
 				0ABADAF11BF909BC001CB962 /* PicShareTests.xctest */,
 				0ABADAFC1BF909BC001CB962 /* PicShareUITests.xctest */,
-				73CD649E1C9E4D2E00FE3ADA /* PicShareUITestsLoginLogout.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -340,15 +320,6 @@
 			name = Event;
 			sourceTree = "<group>";
 		};
-		73CD649F1C9E4D2E00FE3ADA /* PicShareUITestsLoginLogout */ = {
-			isa = PBXGroup;
-			children = (
-				73CD64A01C9E4D2E00FE3ADA /* PicShareUITestsLoginLogout.swift */,
-				73CD64A21C9E4D2E00FE3ADA /* Info.plist */,
-			);
-			path = PicShareUITestsLoginLogout;
-			sourceTree = "<group>";
-		};
 		E75C50575B26629CAA942EE7 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -416,24 +387,6 @@
 			productReference = 0ABADAFC1BF909BC001CB962 /* PicShareUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
-		73CD649D1C9E4D2E00FE3ADA /* PicShareUITestsLoginLogout */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 73CD64A51C9E4D2E00FE3ADA /* Build configuration list for PBXNativeTarget "PicShareUITestsLoginLogout" */;
-			buildPhases = (
-				73CD649A1C9E4D2E00FE3ADA /* Sources */,
-				73CD649B1C9E4D2E00FE3ADA /* Frameworks */,
-				73CD649C1C9E4D2E00FE3ADA /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				73CD64A41C9E4D2E00FE3ADA /* PBXTargetDependency */,
-			);
-			name = PicShareUITestsLoginLogout;
-			productName = PicShareUITestsLoginLogout;
-			productReference = 73CD649E1C9E4D2E00FE3ADA /* PicShareUITestsLoginLogout.xctest */;
-			productType = "com.apple.product-type.bundle.ui-testing";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -455,10 +408,6 @@
 						CreatedOnToolsVersion = 7.1;
 						TestTargetID = 0ABADADC1BF909BB001CB962;
 					};
-					73CD649D1C9E4D2E00FE3ADA = {
-						CreatedOnToolsVersion = 7.2.1;
-						TestTargetID = 0ABADADC1BF909BB001CB962;
-					};
 				};
 			};
 			buildConfigurationList = 0ABADAD81BF909BB001CB962 /* Build configuration list for PBXProject "PicShare" */;
@@ -477,7 +426,6 @@
 				0ABADADC1BF909BB001CB962 /* PicShare */,
 				0ABADAF01BF909BC001CB962 /* PicShareTests */,
 				0ABADAFB1BF909BC001CB962 /* PicShareUITests */,
-				73CD649D1C9E4D2E00FE3ADA /* PicShareUITestsLoginLogout */,
 			);
 		};
 /* End PBXProject section */
@@ -505,13 +453,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		0ABADAFA1BF909BC001CB962 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		73CD649C1C9E4D2E00FE3ADA /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -623,14 +564,6 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		73CD649A1C9E4D2E00FE3ADA /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				73CD64A11C9E4D2E00FE3ADA /* PicShareUITestsLoginLogout.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -643,11 +576,6 @@
 			isa = PBXTargetDependency;
 			target = 0ABADADC1BF909BB001CB962 /* PicShare */;
 			targetProxy = 0ABADAFD1BF909BC001CB962 /* PBXContainerItemProxy */;
-		};
-		73CD64A41C9E4D2E00FE3ADA /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = 0ABADADC1BF909BB001CB962 /* PicShare */;
-			targetProxy = 73CD64A31C9E4D2E00FE3ADA /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -842,32 +770,6 @@
 			};
 			name = Release;
 		};
-		73CD64A61C9E4D2E00FE3ADA /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PicShareUITestsLoginLogout/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = bla.PicShareUITestsLoginLogout;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PicShare;
-				USES_XCTRUNNER = YES;
-			};
-			name = Debug;
-		};
-		73CD64A71C9E4D2E00FE3ADA /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				INFOPLIST_FILE = PicShareUITestsLoginLogout/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 9.2;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = bla.PicShareUITestsLoginLogout;
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				TEST_TARGET_NAME = PicShare;
-				USES_XCTRUNNER = YES;
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -906,14 +808,6 @@
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
-		};
-		73CD64A51C9E4D2E00FE3ADA /* Build configuration list for PBXNativeTarget "PicShareUITestsLoginLogout" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				73CD64A61C9E4D2E00FE3ADA /* Debug */,
-				73CD64A71C9E4D2E00FE3ADA /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
 		};
 /* End XCConfigurationList section */
 	};
