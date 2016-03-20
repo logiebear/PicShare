@@ -13,13 +13,20 @@ class PhotoDetailViewController: UIViewController {
 
     @IBOutlet weak var pfImageView: PFImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
-    var file: PFFile?
+    @IBOutlet weak var deleteButton: UIButton!
+    
+    var photo: Photo?
     private var image: UIImage?
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        guard let photo = photo else {
+            // TODO: SHOW PHOTO ERROR MESSAGE
+            return
+        }
+        
         pfImageView.contentMode = .ScaleAspectFit
-        pfImageView.file = file
+        pfImageView.file = photo.image
         
         activityIndicator.startAnimating()
         pfImageView.loadInBackground { [weak self](image, error) -> Void in
@@ -46,7 +53,11 @@ class PhotoDetailViewController: UIViewController {
         UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
     }
     
-    // MARK: - Handler
+    @IBAction func deleteButtonPressed(sender: AnyObject) {
+        self.showConfirmView("", msg: "Do you want to delete this photo?")
+    }
+    
+    // MARK: - Helpers
     
     func image(image: UIImage, didFinishSavingWithError error: NSError?, contextInfo:UnsafePointer<Void>) {
         if let error = error {
@@ -54,6 +65,26 @@ class PhotoDetailViewController: UIViewController {
         } else {
             showAlert("Success!", message: "You have downloaded the image successfully!")
         }
+    }
+    
+    func showConfirmView(title: String, msg: String) {
+        let alertView = UIAlertController(title: title,
+            message: msg, preferredStyle: .Alert)
+        let okAction = UIAlertAction(title: "YES", style: UIAlertActionStyle.Default) {
+            UIAlertAction in
+            print("YES Pressed")
+            if let photo = self.photo {
+                photo.deleteInBackground()
+                self.dismissViewControllerAnimated(true, completion: nil)
+            }
+        }
+        let cancelAction = UIAlertAction(title: "NO", style: UIAlertActionStyle.Cancel) {
+            UIAlertAction in
+            print("NO Pressed")
+        }
+        alertView.addAction(okAction)
+        alertView.addAction(cancelAction)
+        self.presentViewController(alertView, animated: true, completion: nil)
     }
     
 }

@@ -177,7 +177,7 @@ extension SearchLocationViewController: UICollectionViewDelegate {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
         if let photoArray = photoArray {
             let photo = photoArray[indexPath.item]
-            vc.file = photo.image
+            vc.photo = photo
             presentViewController(vc, animated: true, completion: nil)
         }
     }
