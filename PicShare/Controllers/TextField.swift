@@ -24,7 +24,6 @@ class TextField: UITextField {
     }
     
     private func newBounds(bounds: CGRect) -> CGRect {
-        
         var newBounds = bounds
         newBounds.origin.x += padding.left
         newBounds.origin.y += padding.top
