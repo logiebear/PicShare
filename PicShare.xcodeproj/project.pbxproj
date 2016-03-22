@@ -43,6 +43,7 @@
 		6A517F531C8122E800EBB1A9 /* CreateEventPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517F521C8122E800EBB1A9 /* CreateEventPasswordViewController.swift */; };
 		6A517F561C8122F200EBB1A9 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517F541C8122F200EBB1A9 /* CreateEventViewController.swift */; };
 		6A517F571C8122F200EBB1A9 /* EventMgmtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517F551C8122F200EBB1A9 /* EventMgmtViewController.swift */; };
+		6AFB3C091C864AAA00455645 /* UploadPhotoToEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFB3C081C864AAA00455645 /* UploadPhotoToEventViewController.swift */; };
 		6AFDC59A1C79518B0089598C /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */; };
 		73CD64AF1C9E500400FE3ADA /* PicShareUITestsLoginLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD64AE1C9E500400FE3ADA /* PicShareUITestsLoginLogout.swift */; };
 		CACDB6812DCE9C2FF4BE0671 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986BF3E755B56746A6F724 /* Pods.framework */; };
@@ -122,6 +123,7 @@
 		6A517F521C8122E800EBB1A9 /* CreateEventPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEventPasswordViewController.swift; path = Controllers/CreateEventPasswordViewController.swift; sourceTree = "<group>"; };
 		6A517F541C8122F200EBB1A9 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEventViewController.swift; path = Controllers/CreateEventViewController.swift; sourceTree = "<group>"; };
 		6A517F551C8122F200EBB1A9 /* EventMgmtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventMgmtViewController.swift; path = Controllers/EventMgmtViewController.swift; sourceTree = "<group>"; };
+		6AFB3C081C864AAA00455645 /* UploadPhotoToEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoToEventViewController.swift; sourceTree = "<group>"; };
 		6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddPhotoViewController.swift; path = Controllers/AddPhotoViewController.swift; sourceTree = "<group>"; };
 		73CD64991C9E4CD800FE3ADA /* PicShareUITests-LoginLogOut */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "PicShareUITests-LoginLogOut"; sourceTree = "<group>"; };
 		73CD64AC1C9E500400FE3ADA /* PicShareUITestsLoginLogout.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicShareUITestsLoginLogout.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -331,11 +333,12 @@
 		6AFDC5901C5C4A640089598C /* Event */ = {
 			isa = PBXGroup;
 			children = (
+				6A517F551C8122F200EBB1A9 /* EventMgmtViewController.swift */,
 				0A14D8861C866E18005069E2 /* SelectUploadEventViewController.swift */,
 				6A517F541C8122F200EBB1A9 /* CreateEventViewController.swift */,
-				6A517F551C8122F200EBB1A9 /* EventMgmtViewController.swift */,
-				6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */,
 				6A517F521C8122E800EBB1A9 /* CreateEventPasswordViewController.swift */,
+				6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */,
+				6AFB3C081C864AAA00455645 /* UploadPhotoToEventViewController.swift */,
 			);
 			name = Event;
 			sourceTree = "<group>";
@@ -585,6 +588,7 @@
 				6A517F531C8122E800EBB1A9 /* CreateEventPasswordViewController.swift in Sources */,
 				6AFDC59A1C79518B0089598C /* AddPhotoViewController.swift in Sources */,
 				0AE4D5B71BF9799700893D03 /* RootViewController.swift in Sources */,
+				6AFB3C091C864AAA00455645 /* UploadPhotoToEventViewController.swift in Sources */,
 				0AD0ACF21C6AAA2900FD8963 /* User.swift in Sources */,
 				0ADAE6B11C0A697E00E8BADE /* HomeViewController.swift in Sources */,
 				0A63A6981C6584280014FD2C /* ProfileViewController.swift in Sources */,
@@ -770,7 +774,7 @@
 				INFOPLIST_FILE = PicShare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cs577.PicShare;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cs577.PicShare-jiashun";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicShare/PicShare-Bridging-Header.h";
@@ -787,7 +791,7 @@
 				INFOPLIST_FILE = PicShare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cs577.PicShare;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cs577.PicShare-jiashun";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicShare/PicShare-Bridging-Header.h";
@@ -821,10 +825,12 @@
 		0ABADB0C1BF909BC001CB962 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PicShareUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cs577.PicShareUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_TARGET_NAME = PicShare;
 				USES_XCTRUNNER = YES;
 			};
@@ -833,10 +839,12 @@
 		0ABADB0D1BF909BC001CB962 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				INFOPLIST_FILE = PicShareUITests/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.cs577.PicShareUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				TEST_TARGET_NAME = PicShare;
 				USES_XCTRUNNER = YES;
 			};
