@@ -11,8 +11,9 @@ import UIKit
 import Parse
 import ParseUI
 
-class SearchEventResultViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
+class SearchEventResultsViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
+    @IBOutlet weak var popUpView: UIView!
     @IBOutlet weak var resultTableView: UITableView!
     var eventName:String?
     var eventArray: [Event]?
@@ -20,26 +21,52 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
     let currentDate = NSDate()
     var isPublic = false
     var eventCategory = "Private "
-    var userEvent: [Event]?
+    var userEventArray: [Event]?
+    var row: Int = 0
     private var user: User?
     var joinedEventFlag: [Bool]?
+    let checkIcon = UIImage(named: "greenCheckmark")
+    @IBOutlet weak var password: UITextField!
+    @IBOutlet weak var popUpEventName: UILabel!
+    @IBOutlet weak var quitEnterPasswordButton: UIButton!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
-        if let userEvent = userEvent {
-            print("user event")
-            for event in userEvent {
-                print(event)
-            }
-        }
+        self.popUpView.hidden = true
+        self.popUpView.layer.shadowOpacity = 0.8
+        self.popUpView.layer.shadowOffset = CGSizeMake(0.0, 0.0)
         queryForAllUserEvents()
-        if let eventName = eventName {
-            self.queryForSpecificEvents(eventName)
-        }
     }
     
-// MARK: - User Actions
+    // MARK: - User Actions
+    
+    @IBAction func closePopup(sender: AnyObject) {
+        self.popUpView.hidden = true
+    }
+    
+    @IBAction func enterPrivateEvent(sender: AnyObject) {
+        if password.text == eventArray![row].password {
+            userEventArray?.append(eventArray![row])
+            if let user = self.user {
+                if user.events != nil {
+                    user.events!.append(eventArray![row])
+                    user.saveInBackground()
+                } else {
+                    user.events = [Event]()
+                    user.events!.append(eventArray![row])
+                    user.saveInBackground()
+                }
+                print("join event successfully")
+                self.popUpView.hidden = true
+                queryForAllUserEvents()
+            }
+        } else {
+            print(eventArray![row].password)
+            showAlert("Wrong Password", message: "Incorrect password")
+        }
+        password.text = nil
+    }
     
     @IBAction func backButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
@@ -58,53 +85,13 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
                     return
                 }
                 self?.user = user
-                self?.userEvent = user.event
-                print("User events query success. Number events: \(self?.userEvent?.count)")
+                self?.userEventArray = user.events
+                print("User events query success. Number events: \(self?.userEventArray?.count)")
             } else {
                 print("Error: \(error!) \(error!.userInfo)")
             }
-        }
-    }
-    
-    private func queryForSpecificEvents(event: String) {
-        guard let query = Event.queryEventsWithSubstring(event) else {
-            return
-        }
-        query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
-            if let error = error {
-                // TODO:
-                print("Error: \(error) \(error.userInfo)")
-                return
-            }
-            self?.eventArray = objects as? [Event]
-            if self?.eventArray?.count == 0 {
-                self?.showAlert("No result", message: "Not Found! Be the owner now!")
-            }
-            print("Event query success. Number events: \(objects?.count)")
-            self?.joinedEventFlag = self?.flagJoinedEvent(self?.eventArray, userEvent: self?.userEvent)
             self?.resultTableView.reloadData()
         }
-    }
-    
-    private func flagJoinedEvent(eventArray: [Event]?, userEvent: [Event]?) -> [Bool] {
-        var count = 0
-        var joinedEventFlag = [Bool]()
-        if let eventArray = eventArray {
-            for _ in 1...eventArray.count {
-                joinedEventFlag.append(false)
-            }
-            if let userEvent = userEvent {
-                for event in eventArray {
-                    for userEvent in userEvent {
-                        if userEvent.hashtag == event.hashtag {
-                            joinedEventFlag[count] = true
-                        }
-                    }
-                    count++
-                }
-            }
-        }
-        return joinedEventFlag
     }
     
     private func calculateDays(start: NSDate, end: NSDate) -> Int {
@@ -119,16 +106,22 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
 // MARK: - Table Action
     
     @IBAction func join(button: UIButton) {
-        if button.titleLabel?.text == "join" {
-            button.setTitle("ok", forState: UIControlState.Normal)
-            let row = button.tag
+        row = button.tag
+        if eventArray![row].isPublic == false {
+            popUpEventName.text = eventArray![row].hashtag
+            self.resultTableView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
+            self.popUpView.hidden = false
+        } else{
+            button.setTitle("", forState: UIControlState.Normal)
+            button.frame = CGRectMake(1, 1, 43, 34)
+            button.setImage(checkIcon, forState: .Normal)
             if let user = self.user {
-                if user.event != nil {
-                    user.event!.append(eventArray![row])
+                if user.events != nil {
+                    user.events!.append(eventArray![row])
                     user.saveInBackground()
                 } else {
-                    user.event = [Event]()
-                    user.event!.append(eventArray![row])
+                    user.events = [Event]()
+                    user.events!.append(eventArray![row])
                     user.saveInBackground()
                 }
                 print("join event successfully")
@@ -157,11 +150,14 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
         cell.joinButton.tag = row
         if let eventArray = eventArray {
             cell.eventLabel.text = eventArray[row].hashtag
-            if let joinedEventFlag = joinedEventFlag {
-                if joinedEventFlag[row] == true {
-                    cell.joinButton.setTitle("ok", forState: UIControlState.Normal)
+            if let userEventArray = userEventArray {
+                if userEventArray.contains(eventArray[row]) {
+                    cell.joinButton.setTitle("", forState: UIControlState.Normal)
+                    cell.joinButton.frame = CGRectMake(1, 1, 43, 34)
+                    cell.joinButton.setImage(checkIcon, forState: .Normal)
                 } else {
-                    cell.joinButton.setTitle("join", forState: UIControlState.Normal)
+                    cell.joinButton.setImage(nil, forState: .Normal)
+                    cell.joinButton.setTitle("JOIN", forState: UIControlState.Normal)
                 }
             }
             isPublic = eventArray[row].isPublic
@@ -171,9 +167,11 @@ class SearchEventResultViewController: UIViewController, UITableViewDataSource, 
             }
             if isPublic {
                 eventCategory = "Public "
+            } else {
+                eventCategory = "Private "
             }
             cell.sublabel.text = eventCategory + "Event " + dayLeft
-            if "ok" != cell.joinButton.titleLabel?.text {
+            if "JOIN" == cell.joinButton.titleLabel?.text {
                 cell.joinButton.addTarget(self, action: "join:", forControlEvents: .TouchUpInside)
             }
         }

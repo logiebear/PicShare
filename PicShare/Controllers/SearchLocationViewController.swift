@@ -26,6 +26,7 @@ class SearchLocationViewController: UIViewController {
     @IBOutlet weak var filterHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var nearbyView: UIView!
+    @IBOutlet weak var nearbyPhotoLabel: UILabel!
     
     let locationManager = CLLocationManager()
     var photoArray: [Photo]?
@@ -36,6 +37,13 @@ class SearchLocationViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view
 
+        let attachment = NSTextAttachment()
+        attachment.image = UIImage(named: "nearbyIcon")
+        let attachmentString = NSAttributedString(attachment: attachment)
+        let nearbyPhotoString = NSMutableAttributedString(string: "Nearby Photo")
+        nearbyPhotoString.appendAttributedString(attachmentString)
+        nearbyPhotoLabel.attributedText = nearbyPhotoString
+        
         let sliderKnobImage = UIImage(named: "sliderKnob")
         radiusSlider.setThumbImage(sliderKnobImage, forState: .Normal)
         let filterIconImage = UIImage(named: "filterIcon")
@@ -126,6 +134,9 @@ class SearchLocationViewController: UIViewController {
             }
 
             self?.photoArray = objects as? [Photo]
+            if objects?.count == 0 {
+                self?.showAlert("None Result", message: "No nearby photo found. Upload one!")
+            }
             self?.collectionView.reloadData()
             print("Photo query success. Number photos: \(objects?.count)")
         }
@@ -137,7 +148,6 @@ class SearchLocationViewController: UIViewController {
         distance = sqrt((location.longitude - currentLocation.longitude)*(location.longitude - currentLocation.longitude)+(location.latitude - currentLocation.latitude)*(location.latitude - currentLocation.latitude))
         return distance
     }
-
 }
 
 // MARK: - UICollectionViewDataSource
