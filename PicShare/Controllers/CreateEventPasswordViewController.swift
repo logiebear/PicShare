@@ -49,6 +49,19 @@ class CreateEventPasswordViewController: UIViewController{
             showErrorView("Invalid password", msg: "Password can't be empty!")
             return
         }
+        
+        guard let eventPasswordTextField = eventPasswordTextField.text else {
+            return
+        }
+        
+        for scalar in eventPasswordTextField.unicodeScalars {
+            let value = scalar.value
+            if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57)) {
+                showErrorView("Invalid password", msg: "Password can only conclude alphanumerics!")
+                return
+            }
+        }
+        
         self.createEventObject()
     }
     
