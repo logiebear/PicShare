@@ -19,12 +19,7 @@ class EventPhotoScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            try self.event?.owner.fetchIfNeeded()
-        }
-        catch {
-            print("Error: not a valid event!")
-        }
+        
         editEventBtn.setTitle("Edit", forState: .Normal)
         editEventBtn.setTitle("Done", forState: .Selected)
         //Check whether current user owns this event
