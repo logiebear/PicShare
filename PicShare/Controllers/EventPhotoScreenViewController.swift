@@ -16,7 +16,6 @@ class EventPhotoScreenViewController: UIViewController {
     var photoIDArray = [String]()
     var eventPhotos: [Photo]?
     var event: Event?
-    var owner: PFUser?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,8 +23,8 @@ class EventPhotoScreenViewController: UIViewController {
         editEventBtn.setTitle("Edit", forState: .Normal)
         editEventBtn.setTitle("Done", forState: .Selected)
         //Check whether current user owns this event
-        if let currentUser = PFUser.currentUser(), owner = owner {
-            editEventBtn.hidden = owner.username != currentUser.username
+        if let currentUser = PFUser.currentUser(), event = event {
+            editEventBtn.hidden = event.owner.username != currentUser.username
         }
         // Resize size of collection view items in grid so that we achieve 3 boxes across
         let cellWidth = ((UIScreen.mainScreen().bounds.width) - 32 - 30 ) / 3
