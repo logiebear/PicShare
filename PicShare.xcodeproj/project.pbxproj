@@ -12,6 +12,12 @@
 		0161A03A1C7C21600084C673 /* profileIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0161A0371C7C21600084C673 /* profileIcon@2x.png */; };
 		0A14D8871C866E18005069E2 /* SelectUploadEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14D8861C866E18005069E2 /* SelectUploadEventViewController.swift */; };
 		0A14D8891C8673B1005069E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A14D8881C8673B1005069E2 /* Assets.xcassets */; };
+		0A31F5641CA2168F000EB388 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F55E1CA2168F000EB388 /* Lato-Black.ttf */; };
+		0A31F5651CA2168F000EB388 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F55F1CA2168F000EB388 /* Lato-Bold.ttf */; };
+		0A31F5661CA2168F000EB388 /* Lato-Heavy.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5601CA2168F000EB388 /* Lato-Heavy.ttf */; };
+		0A31F5671CA2168F000EB388 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5611CA2168F000EB388 /* Lato-Light.ttf */; };
+		0A31F5681CA2168F000EB388 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5621CA2168F000EB388 /* Lato-Medium.ttf */; };
+		0A31F5691CA2168F000EB388 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5631CA2168F000EB388 /* Lato-Regular.ttf */; };
 		0A5663131C5E926300B1097E /* MyPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5663121C5E926300B1097E /* MyPhotosViewController.swift */; };
 		0A63A6981C6584280014FD2C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63A6971C6584280014FD2C /* ProfileViewController.swift */; };
 		0A79F9091C8D03A60051AB9D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79F9081C8D03A60051AB9D /* UIViewControllerExtension.swift */; };
@@ -46,6 +52,7 @@
 		6AFB3C091C864AAA00455645 /* UploadPhotoToEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFB3C081C864AAA00455645 /* UploadPhotoToEventViewController.swift */; };
 		6AFDC59A1C79518B0089598C /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */; };
 		CACDB6812DCE9C2FF4BE0671 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986BF3E755B56746A6F724 /* Pods.framework */; };
+		E4C843A21C98DD38003EC0BD /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C843A11C98DD38003EC0BD /* TextField.swift */; };
 		E4FD1B951C5B354D001A4795 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4FD1B931C5B354D001A4795 /* Account.storyboard */; };
 		E4FD1B981C5B3575001A4795 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FD1B961C5B3575001A4795 /* SignUpViewController.swift */; };
 		E4FD1B991C5B3575001A4795 /* ProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FD1B971C5B3575001A4795 /* ProfilePhotoViewController.swift */; };
@@ -75,6 +82,12 @@
 		0A14D8861C866E18005069E2 /* SelectUploadEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectUploadEventViewController.swift; path = Controllers/SelectUploadEventViewController.swift; sourceTree = "<group>"; };
 		0A14D8881C8673B1005069E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A2EF9CF1BF99E7E00A466E9 /* PicShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicShare-Bridging-Header.h"; sourceTree = "<group>"; };
+		0A31F55E1CA2168F000EB388 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
+		0A31F55F1CA2168F000EB388 /* Lato-Bold.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Bold.ttf"; sourceTree = "<group>"; };
+		0A31F5601CA2168F000EB388 /* Lato-Heavy.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Heavy.ttf"; sourceTree = "<group>"; };
+		0A31F5611CA2168F000EB388 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
+		0A31F5621CA2168F000EB388 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
+		0A31F5631CA2168F000EB388 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
 		0A5663121C5E926300B1097E /* MyPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPhotosViewController.swift; path = Controllers/MyPhotosViewController.swift; sourceTree = "<group>"; };
 		0A63A6971C6584280014FD2C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		0A79F9081C8D03A60051AB9D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
@@ -119,6 +132,7 @@
 		6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddPhotoViewController.swift; path = Controllers/AddPhotoViewController.swift; sourceTree = "<group>"; };
 		9C986BF3E755B56746A6F724 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		E48091EB1C792FAE0092B04C /* SelectUploadEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectUploadEventViewController.swift; path = Controllers/SelectUploadEventViewController.swift; sourceTree = "<group>"; };
+		E4C843A11C98DD38003EC0BD /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = Controllers/TextField.swift; sourceTree = "<group>"; };
 		E4FD1B941C5B354D001A4795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
 		E4FD1B961C5B3575001A4795 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Controllers/SignUpViewController.swift; sourceTree = "<group>"; };
 		E4FD1B971C5B3575001A4795 /* ProfilePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilePhotoViewController.swift; path = Controllers/ProfilePhotoViewController.swift; sourceTree = "<group>"; };
@@ -158,6 +172,19 @@
 				0161A0371C7C21600084C673 /* profileIcon@2x.png */,
 			);
 			name = icoProfileIcon;
+			sourceTree = "<group>";
+		};
+		0A31F55D1CA2168F000EB388 /* Fonts */ = {
+			isa = PBXGroup;
+			children = (
+				0A31F55E1CA2168F000EB388 /* Lato-Black.ttf */,
+				0A31F55F1CA2168F000EB388 /* Lato-Bold.ttf */,
+				0A31F5601CA2168F000EB388 /* Lato-Heavy.ttf */,
+				0A31F5611CA2168F000EB388 /* Lato-Light.ttf */,
+				0A31F5621CA2168F000EB388 /* Lato-Medium.ttf */,
+				0A31F5631CA2168F000EB388 /* Lato-Regular.ttf */,
+			);
+			path = Fonts;
 			sourceTree = "<group>";
 		};
 		0A79F9071C8D03A60051AB9D /* Extensions */ = {
@@ -211,6 +238,7 @@
 				0ADB4BA11BFEBA6E00EA51F2 /* Categories */,
 				0A79F9071C8D03A60051AB9D /* Extensions */,
 				0A79F90A1C8D079F0051AB9D /* Utilities */,
+				0A31F55D1CA2168F000EB388 /* Fonts */,
 				0ABADAEC1BF909BC001CB962 /* Info.plist */,
 			);
 			path = PicShare;
@@ -295,6 +323,7 @@
 				1C6B5DDC1C794D4B00232AE9 /* SearchEventResultsViewController.swift */,
 				1CBBDDA21C7D27400072FDDD /* SearchEventTableViewCell.swift */,
 				0ADAE6A71C07E72E00E8BADE /* Account */,
+				E4C843A11C98DD38003EC0BD /* TextField.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -400,6 +429,7 @@
 				TargetAttributes = {
 					0ABADADC1BF909BB001CB962 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = WNJ63DYX5C;
 					};
 					0ABADAF01BF909BC001CB962 = {
 						CreatedOnToolsVersion = 7.1;
@@ -436,12 +466,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				0A31F5661CA2168F000EB388 /* Lato-Heavy.ttf in Resources */,
+				0A31F5681CA2168F000EB388 /* Lato-Medium.ttf in Resources */,
 				0AD410391C6DAD3B00833618 /* Main.storyboard in Resources */,
 				0161A03A1C7C21600084C673 /* profileIcon@2x.png in Resources */,
+				0A31F5671CA2168F000EB388 /* Lato-Light.ttf in Resources */,
 				0ABADAEB1BF909BB001CB962 /* LaunchScreen.storyboard in Resources */,
 				0161A0381C7C21600084C673 /* profileIcon@3x.png in Resources */,
+				0A31F5641CA2168F000EB388 /* Lato-Black.ttf in Resources */,
 				0A14D8891C8673B1005069E2 /* Assets.xcassets in Resources */,
 				E4FD1B951C5B354D001A4795 /* Account.storyboard in Resources */,
+				0A31F5691CA2168F000EB388 /* Lato-Regular.ttf in Resources */,
+				0A31F5651CA2168F000EB388 /* Lato-Bold.ttf in Resources */,
 				0161A0391C7C21600084C673 /* profileIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -535,6 +571,7 @@
 				0AE4D5BB1BF994D200893D03 /* PhotoHomeViewController.swift in Sources */,
 				0A5663131C5E926300B1097E /* MyPhotosViewController.swift in Sources */,
 				0AE4D5B91BF97B0F00893D03 /* TabBarViewController.swift in Sources */,
+				E4C843A21C98DD38003EC0BD /* TextField.swift in Sources */,
 				0A79F9091C8D03A60051AB9D /* UIViewControllerExtension.swift in Sources */,
 				E4FD1B981C5B3575001A4795 /* SignUpViewController.swift in Sources */,
 				E4FD1B991C5B3575001A4795 /* ProfilePhotoViewController.swift in Sources */,

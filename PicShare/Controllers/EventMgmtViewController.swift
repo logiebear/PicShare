@@ -73,6 +73,14 @@ extension EventMgmtViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         selectedEvent = eventArray[indexPath.row]
-        self.performSegueWithIdentifier("ShowEventPreview", sender: self)
+        guard let selectedEvent = selectedEvent else {
+            return
+        }
+        
+        selectedEvent.owner.fetchIfNeededInBackgroundWithBlock { (object, error) -> Void in
+            if error == nil {
+                self.performSegueWithIdentifier("ShowEventPreview", sender: self)
+            }
+        }
     }
 }
