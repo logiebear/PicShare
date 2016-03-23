@@ -59,9 +59,12 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
             return
         }
         
+        
         validateHashtag { (success) -> () in
             if success {
+                NSLog("here1")
                 self.performSegueWithIdentifier("SetPassword", sender: nil)
+                
             } else {
                 self.showErrorView("Invalid event name", msg: "Event name has been taken!")
             }

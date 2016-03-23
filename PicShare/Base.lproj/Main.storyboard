@@ -7,12 +7,19 @@
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
     <customFonts key="customFonts">
+        <mutableArray key="Lato-Black.ttf">
+            <string>Lato-Black</string>
+        </mutableArray>
         <mutableArray key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
@@ -1955,8 +1962,11 @@
                                     <constraint firstItem="RDa-Ig-fFl" firstAttribute="centerY" secondItem="FPl-HT-HIM" secondAttribute="centerY" id="au8-dS-zLf"/>
                                 </constraints>
                             </view>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="congratsAddPhotoBanner" translatesAutoresizingMaskIntoConstraints="NO" id="i4P-LR-7Sx">
+                                <rect key="frame" x="0.0" y="58" width="600" height="223"/>
+                            </imageView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="VMg-BD-3OJ">
-                                <rect key="frame" x="170" y="102" width="261" height="397"/>
+                                <rect key="frame" x="170" y="203" width="261" height="397"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="GL7-68-4PV">
                                         <rect key="frame" x="54" y="148" width="159" height="40"/>
@@ -1967,8 +1977,8 @@
                                             <constraint firstAttribute="height" constant="40" id="oTC-A5-Yel"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="54" id="vwU-b4-MuN"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="22"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="24"/>
+                                        <color key="textColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="Now start adding photos!" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="UDg-no-4YY">
@@ -1980,31 +1990,36 @@
                                             <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="38" id="RjH-fV-17P"/>
                                             <constraint firstAttribute="height" constant="38" id="iEE-9p-koB"/>
                                         </constraints>
+                                        <color key="textColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTO-fL-qc4">
-                                        <rect key="frame" x="79" y="256" width="96" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zTO-fL-qc4">
+                                        <rect key="frame" x="-19" y="260" width="300" height="28"/>
+                                        <color key="backgroundColor" red="0.9137254901960784" green="0.22745098039215686" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="2Iu-0b-glN"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="D6B-Nc-HuW"/>
-                                            <constraint firstAttribute="width" constant="96" id="i0x-J4-5kC"/>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="96" id="vUv-f0-mMw"/>
+                                            <constraint firstAttribute="width" constant="300" id="3Ie-3z-Dg5"/>
+                                            <constraint firstAttribute="height" constant="28" id="aMF-In-5CN"/>
                                         </constraints>
-                                        <state key="normal" title="Take a photo"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                        <state key="normal" title="Take a photo" image="takePhotoIcon">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="takePhotoButtonPressed:" destination="Cfg-3N-ygj" eventType="touchUpInside" id="Ywo-Be-o3t"/>
                                         </connections>
                                     </button>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivY-lO-Dpf">
-                                        <rect key="frame" x="89" y="305" width="83" height="30"/>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ivY-lO-Dpf">
+                                        <rect key="frame" x="-19" y="315" width="300" height="28"/>
+                                        <color key="backgroundColor" red="0.91372549020000005" green="0.2274509804" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="83" id="mmn-DC-Jta"/>
-                                            <constraint firstAttribute="height" constant="30" id="qx8-Ei-AHV"/>
-                                            <constraint firstAttribute="width" constant="83" id="rS9-Mp-Epl"/>
-                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="wiY-Av-LKD"/>
+                                            <constraint firstAttribute="height" constant="28" id="5Fo-Rp-tCV"/>
+                                            <constraint firstAttribute="width" constant="300" id="8kv-01-8OB"/>
                                         </constraints>
-                                        <state key="normal" title="Camera Roll"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                        <state key="normal" title="Camera Roll" image="cameraRollIcon">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
                                         <connections>
                                             <action selector="cameraRollButtonPressed:" destination="Cfg-3N-ygj" eventType="touchUpInside" id="H3N-WS-5XA"/>
                                         </connections>
@@ -2017,8 +2032,8 @@
                                             <constraint firstAttribute="width" constant="211" id="dlz-Ur-M9d"/>
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="211" id="tQk-zC-4qd"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="49"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Lato-Black" family="Lato" pointSize="44"/>
+                                        <color key="textColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" text="You have created event" textAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="akk-0G-G4c">
@@ -2030,29 +2045,29 @@
                                             <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="168" id="qk5-1T-GdL"/>
                                             <constraint firstAttribute="width" constant="242" id="znr-gA-Kvw"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="20"/>
+                                        <color key="textColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="20"/>
                                         <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                     </textView>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" white="1" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="zTO-fL-qc4" firstAttribute="top" secondItem="UDg-no-4YY" secondAttribute="bottom" constant="22" id="3Mb-vi-kbN"/>
+                                    <constraint firstItem="zTO-fL-qc4" firstAttribute="top" secondItem="UDg-no-4YY" secondAttribute="bottom" constant="26" id="3AO-Kb-TFV"/>
                                     <constraint firstItem="GL7-68-4PV" firstAttribute="top" secondItem="akk-0G-G4c" secondAttribute="bottom" constant="14" id="8A2-is-paN"/>
                                     <constraint firstItem="fXW-Gf-g9Q" firstAttribute="centerX" secondItem="VMg-BD-3OJ" secondAttribute="centerX" id="BVM-De-sjo"/>
+                                    <constraint firstItem="ivY-lO-Dpf" firstAttribute="top" secondItem="zTO-fL-qc4" secondAttribute="bottom" constant="27" id="DV5-zg-qfL"/>
                                     <constraint firstItem="fXW-Gf-g9Q" firstAttribute="centerX" secondItem="VMg-BD-3OJ" secondAttribute="centerX" id="HFB-Ze-FTw"/>
                                     <constraint firstItem="akk-0G-G4c" firstAttribute="centerX" secondItem="VMg-BD-3OJ" secondAttribute="centerX" id="HUK-Yq-es5"/>
+                                    <constraint firstItem="zTO-fL-qc4" firstAttribute="centerX" secondItem="VMg-BD-3OJ" secondAttribute="centerX" id="Lhy-9F-B6B"/>
                                     <constraint firstAttribute="width" constant="261" id="Nhc-Xs-gLw"/>
                                     <constraint firstItem="akk-0G-G4c" firstAttribute="top" secondItem="fXW-Gf-g9Q" secondAttribute="bottom" constant="17" id="Opf-ov-9ye"/>
                                     <constraint firstItem="fXW-Gf-g9Q" firstAttribute="top" secondItem="VMg-BD-3OJ" secondAttribute="top" constant="17" id="QK1-aj-0ZR"/>
-                                    <constraint firstItem="zTO-fL-qc4" firstAttribute="centerX" secondItem="VMg-BD-3OJ" secondAttribute="centerX" constant="-3.5" id="Ss1-Fn-5d9"/>
                                     <constraint firstAttribute="height" constant="397" id="X9z-TW-EpF"/>
-                                    <constraint firstItem="zTO-fL-qc4" firstAttribute="centerX" secondItem="VMg-BD-3OJ" secondAttribute="centerX" constant="-3.5" id="YTp-ao-dl0"/>
                                     <constraint firstItem="UDg-no-4YY" firstAttribute="centerX" secondItem="VMg-BD-3OJ" secondAttribute="centerX" constant="2.5" id="c9k-LR-3nq"/>
                                     <constraint firstItem="UDg-no-4YY" firstAttribute="top" secondItem="GL7-68-4PV" secondAttribute="bottom" constant="8" id="cYT-7X-Yke"/>
+                                    <constraint firstItem="ivY-lO-Dpf" firstAttribute="centerX" secondItem="VMg-BD-3OJ" secondAttribute="centerX" id="njI-PQ-4ah"/>
                                     <constraint firstItem="akk-0G-G4c" firstAttribute="centerX" secondItem="VMg-BD-3OJ" secondAttribute="centerX" constant="-4.5" id="nnB-fp-sNN"/>
-                                    <constraint firstItem="ivY-lO-Dpf" firstAttribute="centerX" secondItem="VMg-BD-3OJ" secondAttribute="centerX" id="rab-6V-81V"/>
                                     <constraint firstItem="GL7-68-4PV" firstAttribute="centerX" secondItem="VMg-BD-3OJ" secondAttribute="centerX" constant="3" id="u4s-Gf-Dn9"/>
-                                    <constraint firstItem="ivY-lO-Dpf" firstAttribute="top" secondItem="zTO-fL-qc4" secondAttribute="bottom" constant="19" id="x1m-TV-W9P"/>
                                 </constraints>
                                 <variation key="default">
                                     <mask key="constraints">
@@ -2062,11 +2077,17 @@
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <accessibility key="accessibilityConfiguration">
+                            <accessibilityTraits key="traits" image="YES"/>
+                        </accessibility>
                         <constraints>
                             <constraint firstItem="FPl-HT-HIM" firstAttribute="leading" secondItem="2fC-8m-RZA" secondAttribute="leading" id="1eK-xR-wWz"/>
-                            <constraint firstItem="VMg-BD-3OJ" firstAttribute="centerY" secondItem="2fC-8m-RZA" secondAttribute="centerY" id="6tW-wd-xMU"/>
+                            <constraint firstItem="VMg-BD-3OJ" firstAttribute="centerY" secondItem="2fC-8m-RZA" secondAttribute="centerY" constant="101.5" id="6tW-wd-xMU"/>
+                            <constraint firstItem="i4P-LR-7Sx" firstAttribute="centerX" secondItem="rO8-AR-BdT" secondAttribute="centerX" id="7au-8b-6Q2"/>
                             <constraint firstItem="FPl-HT-HIM" firstAttribute="top" secondItem="4o0-L0-8UF" secondAttribute="bottom" id="BLj-xF-cGf"/>
+                            <constraint firstItem="i4P-LR-7Sx" firstAttribute="width" secondItem="2fC-8m-RZA" secondAttribute="width" id="HjQ-z3-Lrt"/>
                             <constraint firstAttribute="trailing" secondItem="FPl-HT-HIM" secondAttribute="trailing" id="JVP-cV-reX"/>
+                            <constraint firstItem="i4P-LR-7Sx" firstAttribute="top" secondItem="FPl-HT-HIM" secondAttribute="bottom" constant="-2" id="Lf5-3J-dxy"/>
                             <constraint firstItem="VMg-BD-3OJ" firstAttribute="centerX" secondItem="2fC-8m-RZA" secondAttribute="centerX" id="RVc-ul-8gY"/>
                         </constraints>
                     </view>
@@ -2185,12 +2206,15 @@
         </scene>
     </scenes>
     <resources>
+        <image name="cameraRollIcon" width="17" height="17"/>
+        <image name="congratsAddPhotoBanner" width="354" height="223"/>
         <image name="privateIcon" width="14" height="21"/>
         <image name="profileIcon.png" width="25" height="25"/>
         <image name="publicIcon" width="18" height="21"/>
+        <image name="takePhotoIcon" width="17" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Xbf-fA-QIi"/>
+        <segue reference="Qma-si-Utr"/>
         <segue reference="Cra-CO-7HR"/>
     </inferredMetricsTieBreakers>
 </document>
