@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController {
     var user: User!
     
     // MARK: - User Actions
-    @IBAction func backButtonPressed(sender: AnyObject) {
+    @IBAction func LoginButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
@@ -77,7 +77,7 @@ class SignUpViewController: UIViewController {
                                             }
                                             else {
                                                 if let passwordTextField = self.passwordTextField.text {
-                                                    self.user = User(email: emailTextField, username: userNameTextField, password: passwordTextField, profilePhoto: nil)
+                                                    self.user = User(email: emailTextField, username: userNameTextField, password: passwordTextField, profilePhoto: nil, events: nil)
                                                 }
                                                 self.performSegueWithIdentifier("ShowProfilePhotoScreen", sender: self)
                                             }
