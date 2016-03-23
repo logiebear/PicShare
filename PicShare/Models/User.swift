@@ -34,7 +34,7 @@ class User: PFUser {
     class func allEventsForCurrentUserQuery() -> PFQuery? {
         guard let currentUser = PFUser.currentUser(),
             username = currentUser.username
-            else {
+        else {
             return nil
         }
         let query = PFUser.query()

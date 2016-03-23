@@ -43,6 +43,7 @@ class SearchEventViewController: UIViewController {
     }
     
     // MARK: - User Actions
+    
     @IBAction func backButtonPressed(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
@@ -82,12 +83,4 @@ class SearchEventViewController: UIViewController {
         }
     }
     
-    // MARK: - Helpers
-    
-    private func showAlert(title: String, message: String) {
-        let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-        alertView.addAction(okAction)
-        presentViewController(alertView, animated: true, completion: nil)
-    }
 }
