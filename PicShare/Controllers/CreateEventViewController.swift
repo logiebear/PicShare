@@ -44,6 +44,18 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
             return
         }
         
+        guard let eventNameTextField = eventNameTextField.text else {
+            return
+        }
+        
+        for scalar in eventNameTextField.unicodeScalars {
+            let value = scalar.value
+            if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57)) {
+                showErrorView("Invalid event name", msg: "Event name can only conclude alphanumerics!")
+                return
+            }
+        }
+        
         validateHashtag { [weak self](success) -> () in
             if success {
                 self?.createEventObject()
@@ -58,10 +70,24 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
             showErrorView("Invalid event name", msg: "Event name can't be empty!")
             return
         }
+
+        guard let eventNameTextField = eventNameTextField.text else {
+            return
+        }
+        
+        for scalar in eventNameTextField.unicodeScalars {
+            let value = scalar.value
+            if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57)) {
+                showErrorView("Invalid event name", msg: "Event name can only conclude alphanumerics!")
+                return
+            }
+        }
         
         validateHashtag { (success) -> () in
             if success {
                 self.performSegueWithIdentifier("SetPassword", sender: nil)
+            } else {
+                self.showErrorView("Invalid event name", msg: "Event name has been taken!")
             }
         }
     }
@@ -89,7 +115,6 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         guard let query = Event.query(), eventNameTextField = eventNameTextField.text else {
             return
         }
-        
         query.whereKey("hashtag", equalTo: eventNameTextField)
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if let objects = objects where objects.isEmpty {
