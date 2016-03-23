@@ -6,6 +6,21 @@
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+        </mutableArray>
+        <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
+        </mutableArray>
+    </customFonts>
     <scenes>
         <!--Search Home View Controller-->
         <scene sceneID="XrK-gs-jtd">
@@ -1682,41 +1697,6 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="KBo-S7-PEA">
-                                <rect key="frame" x="189" y="100" width="222" height="202"/>
-                                <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Event Name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mYC-7Y-9W7">
-                                        <rect key="frame" x="63" y="6" width="97" height="23"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NLJ-Zx-kbK">
-                                        <rect key="frame" x="0.0" y="46" width="222" height="30"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Bu-O3-i7l">
-                                        <rect key="frame" x="88" y="106" width="46" height="30"/>
-                                        <state key="normal" title="public"/>
-                                        <connections>
-                                            <action selector="createPublicEvent:" destination="tLx-Nn-95y" eventType="touchUpInside" id="5i7-hX-lpg"/>
-                                        </connections>
-                                    </button>
-                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Emf-iX-b8V">
-                                        <rect key="frame" x="67" y="166" width="88" height="30"/>
-                                        <state key="normal" title="private"/>
-                                        <connections>
-                                            <action selector="privateButtonPressed:" destination="tLx-Nn-95y" eventType="touchUpInside" id="eY0-Tz-Lan"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="222" id="6Ee-4J-K2A"/>
-                                    <constraint firstAttribute="height" constant="202" id="OKU-Jr-5nL"/>
-                                </constraints>
-                            </view>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Igi-O6-Zsh">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <subviews>
@@ -1726,7 +1706,10 @@
                                             <constraint firstAttribute="width" constant="46" id="CvO-lj-g6X"/>
                                             <constraint firstAttribute="height" constant="30" id="dFN-up-sy1"/>
                                         </constraints>
-                                        <state key="normal" title="Back"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="tLx-Nn-95y" eventType="touchUpInside" id="2DV-Vi-dIJ"/>
                                         </connections>
@@ -1737,8 +1720,8 @@
                                             <constraint firstAttribute="width" constant="158" id="NhV-nQ-nVm"/>
                                             <constraint firstAttribute="height" constant="30" id="Yyf-dC-KRQ"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                        <color key="textColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                 </subviews>
@@ -1751,14 +1734,56 @@
                                     <constraint firstItem="8J1-51-C5b" firstAttribute="centerY" secondItem="Igi-O6-Zsh" secondAttribute="centerY" id="tnA-3D-ue6"/>
                                 </constraints>
                             </view>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Fda-Ca-suw">
+                                <rect key="frame" x="140" y="85" width="320" height="150"/>
+                                <subviews>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event Name" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="NLJ-Zx-kbK">
+                                        <rect key="frame" x="8" y="20" width="300" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="300" id="QZS-Mf-QhK"/>
+                                        </constraints>
+                                        <color key="textColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
+                                        <textInputTraits key="textInputTraits"/>
+                                    </textField>
+                                    <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Emf-iX-b8V">
+                                        <rect key="frame" x="8" y="86" width="135" height="40"/>
+                                        <color key="backgroundColor" red="0.9137254901960784" green="0.22745098039215686" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                                        <state key="normal" title="private" image="privateIcon">
+                                            <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="privateButtonPressed:" destination="tLx-Nn-95y" eventType="touchUpInside" id="pap-RV-iY2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="249" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6Bu-O3-i7l">
+                                        <rect key="frame" x="173" y="86" width="135" height="40"/>
+                                        <color key="backgroundColor" red="0.9137254901960784" green="0.22745098039215686" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="18"/>
+                                        <state key="normal" title="public" image="publicIcon"/>
+                                        <connections>
+                                            <action selector="createPublicEvent:" destination="tLx-Nn-95y" eventType="touchUpInside" id="5i7-hX-lpg"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="320" id="6MD-lM-wQz"/>
+                                    <constraint firstItem="NLJ-Zx-kbK" firstAttribute="centerX" secondItem="Fda-Ca-suw" secondAttribute="centerX" constant="-2" id="EsX-4j-Soh"/>
+                                    <constraint firstItem="NLJ-Zx-kbK" firstAttribute="top" secondItem="Fda-Ca-suw" secondAttribute="top" constant="20" id="MVY-e5-LVc"/>
+                                    <constraint firstItem="NLJ-Zx-kbK" firstAttribute="centerX" secondItem="Fda-Ca-suw" secondAttribute="centerX" constant="-2" id="POy-eF-Qtk"/>
+                                    <constraint firstAttribute="height" constant="150" id="xPi-op-a8K"/>
+                                </constraints>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="KBo-S7-PEA" firstAttribute="centerX" secondItem="QQe-AD-30z" secondAttribute="centerX" id="2RN-fd-rGH"/>
+                            <constraint firstItem="Fda-Ca-suw" firstAttribute="top" secondItem="Igi-O6-Zsh" secondAttribute="bottom" constant="25" id="3wq-Er-RiT"/>
                             <constraint firstAttribute="trailing" secondItem="Igi-O6-Zsh" secondAttribute="trailing" id="IXg-99-PJU"/>
                             <constraint firstItem="Igi-O6-Zsh" firstAttribute="leading" secondItem="QQe-AD-30z" secondAttribute="leading" id="QKp-75-RPv"/>
                             <constraint firstItem="Igi-O6-Zsh" firstAttribute="top" secondItem="QQe-AD-30z" secondAttribute="top" id="TNC-OE-c7R"/>
-                            <constraint firstItem="KBo-S7-PEA" firstAttribute="top" secondItem="Igi-O6-Zsh" secondAttribute="bottom" constant="40" id="rLa-7h-0l9"/>
+                            <constraint firstItem="Fda-Ca-suw" firstAttribute="centerX" secondItem="QQe-AD-30z" secondAttribute="centerX" id="oPn-hH-ie7"/>
                         </constraints>
                     </view>
                     <nil key="simulatedStatusBarMetrics"/>
@@ -1767,7 +1792,7 @@
                     <connections>
                         <outlet property="eventNameTextField" destination="NLJ-Zx-kbK" id="won-OH-Wkw"/>
                         <segue destination="Cfg-3N-ygj" kind="show" identifier="AddPhoto" id="Xbf-fA-QIi"/>
-                        <segue destination="ffY-kS-47b" kind="show" identifier="SetPassword" id="gb0-KH-lR0"/>
+                        <segue destination="ffY-kS-47b" kind="show" identifier="SetPassword" id="wYg-6W-RCh"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ptN-YV-D5u" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1789,27 +1814,30 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YJ2-ba-WpI">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdO-iW-YsU">
-                                        <rect key="frame" x="20" y="15" width="46" height="30"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="30" id="Z8b-x2-E4R"/>
-                                            <constraint firstAttribute="width" constant="46" id="vSH-KP-MQO"/>
-                                        </constraints>
-                                        <state key="normal" title="Back"/>
-                                        <connections>
-                                            <action selector="backButtonPressed:" destination="ffY-kS-47b" eventType="touchUpInside" id="JmF-Ao-qXJ"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Create Event Password" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="gjM-3c-iVI">
                                         <rect key="frame" x="158" y="15" width="285" height="30"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="285" id="0Rv-aZ-I5z"/>
                                             <constraint firstAttribute="height" constant="30" id="Awo-1l-4Ki"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                        <color key="textColor" red="0.31764705882352939" green="0.33333333333333331" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="XdO-iW-YsU">
+                                        <rect key="frame" x="8" y="15" width="46" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="Z8b-x2-E4R"/>
+                                            <constraint firstAttribute="width" constant="46" id="vSH-KP-MQO"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="15"/>
+                                        <state key="normal" title="Back">
+                                            <color key="titleColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="backButtonPressed:" destination="ffY-kS-47b" eventType="touchUpInside" id="JmF-Ao-qXJ"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" red="0.35686274509999999" green="0.76470588240000004" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
@@ -1817,31 +1845,49 @@
                                     <constraint firstItem="gjM-3c-iVI" firstAttribute="centerY" secondItem="YJ2-ba-WpI" secondAttribute="centerY" id="AT9-9U-5vA"/>
                                     <constraint firstAttribute="height" constant="60" id="MQS-xq-v6x"/>
                                     <constraint firstItem="XdO-iW-YsU" firstAttribute="top" secondItem="YJ2-ba-WpI" secondAttribute="top" constant="15" id="OA7-nh-5mM"/>
-                                    <constraint firstItem="XdO-iW-YsU" firstAttribute="leading" secondItem="YJ2-ba-WpI" secondAttribute="leading" constant="20" id="pkW-Fx-TbH"/>
+                                    <constraint firstItem="XdO-iW-YsU" firstAttribute="leading" secondItem="YJ2-ba-WpI" secondAttribute="leading" constant="8" id="pkW-Fx-TbH"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tow-BK-mvN">
-                                <rect key="frame" x="203" y="100" width="194" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Event Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="tow-BK-mvN">
+                                <rect key="frame" x="150" y="100" width="300" height="30"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="194" id="S7I-EB-KkG"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="XSz-tW-eGM"/>
                                     <constraint firstAttribute="height" constant="30" id="YP1-pD-aQX"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="30" id="fN4-M2-c14"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="Lato-Regular" family="Lato" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="S7I-EB-KkG"/>
+                                    </mask>
+                                </variation>
                             </textField>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mnW-m4-apW">
-                                <rect key="frame" x="222" y="160" width="156" height="28"/>
+                                <rect key="frame" x="150" y="160" width="300" height="28"/>
+                                <color key="backgroundColor" red="0.9137254901960784" green="0.22745098039215686" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="28" id="CZv-bu-hVm"/>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="300" id="Mts-JR-wXu"/>
                                     <constraint firstAttribute="width" constant="156" id="Rhx-45-8lR"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="28" id="gmS-3m-y2V"/>
                                 </constraints>
-                                <state key="normal" title="Finished"/>
+                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                <state key="normal" title="Finished">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="Rhx-45-8lR"/>
+                                    </mask>
+                                </variation>
                                 <connections>
                                     <action selector="finishedButtonPressed:" destination="ffY-kS-47b" eventType="touchUpInside" id="a2D-Dj-POR"/>
                                 </connections>
                             </button>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="YJ2-ba-WpI" firstAttribute="leading" secondItem="xJd-hQ-iDS" secondAttribute="leading" id="2cc-5Z-lgZ"/>
                             <constraint firstItem="YJ2-ba-WpI" firstAttribute="top" secondItem="xJd-hQ-iDS" secondAttribute="top" id="Khu-Ft-icI"/>
@@ -2139,10 +2185,12 @@
         </scene>
     </scenes>
     <resources>
+        <image name="privateIcon" width="14" height="21"/>
         <image name="profileIcon.png" width="25" height="25"/>
+        <image name="publicIcon" width="18" height="21"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qma-si-Utr"/>
+        <segue reference="Xbf-fA-QIi"/>
         <segue reference="Cra-CO-7HR"/>
     </inferredMetricsTieBreakers>
 </document>

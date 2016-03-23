@@ -14,8 +14,7 @@ class CreateEventPasswordViewController: UIViewController{
     // Mark: - Properties
     
     @IBOutlet weak var eventPasswordTextField: UITextField!
-    @IBOutlet weak var finishedButton: UIButton!
- 
+    
     var hashtag: String?
     var user: PFUser? = PFUser.currentUser()
     var isPublic: Bool = false
@@ -26,8 +25,6 @@ class CreateEventPasswordViewController: UIViewController{
         super.viewDidLoad()
         
         // Do any additional setup after loading the view.
-        finishedButton.backgroundColor = UIColor.redColor()
-        finishedButton.setTitleColor(UIColor.whiteColor(), forState: UIControlState.Normal)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {

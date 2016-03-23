@@ -21,17 +21,17 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     var event: Event?
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let eventNameText = eventNameTextField.text else {
+        guard let eventNameTextField = eventNameTextField.text else {
             return
         }
 
         if segue.identifier == "SetPassword" {
             let destViewController: CreateEventPasswordViewController = segue.destinationViewController as! CreateEventPasswordViewController
-            destViewController.hashtag = eventNameText
+            destViewController.hashtag = eventNameTextField
         }
         if segue.identifier == "AddPhoto" {
             let destViewController: AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
-            destViewController.hashtag = eventNameText
+            destViewController.hashtag = eventNameTextField
             destViewController.event = event
         }
     }
@@ -62,6 +62,8 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         validateHashtag { (success) -> () in
             if success {
                 self.performSegueWithIdentifier("SetPassword", sender: nil)
+            } else {
+                self.showErrorView("Invalid event name", msg: "Event name has been taken!")
             }
         }
     }
