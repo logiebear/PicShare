@@ -17,7 +17,9 @@ class AddPhotoViewController: UIViewController {
     @IBOutlet weak var cameraRollButton: UIButton!
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var secondHalfTextField: UITextView!
+    
     var hashtag: String?
+    var event: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -29,6 +31,15 @@ class AddPhotoViewController: UIViewController {
             takePhotoButton.hidden = true
         }
         eventNameLabel.text = hashtag
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
+        if segue.identifier == "UploadPhoto" {
+            if let image = sender as? UIImage, vc = segue.destinationViewController as? UploadPhotoToEventViewController {
+                    vc.image = image
+                    vc.event = event
+            }
+        }
     }
     
     // MARK: - User Actions

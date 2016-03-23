@@ -19,12 +19,7 @@ class EventPhotoScreenViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        do {
-            try self.event?.owner.fetchIfNeeded()
-        }
-        catch {
-            print("Error: not a valid event!")
-        }
+        
         editEventBtn.setTitle("Edit", forState: .Normal)
         editEventBtn.setTitle("Done", forState: .Selected)
         //Check whether current user owns this event
@@ -113,7 +108,7 @@ extension EventPhotoScreenViewController: UICollectionViewDelegate {
             let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
             if let eventPhotos = eventPhotos {
                 let photo = eventPhotos[indexPath.item]
-                vc.file = photo.image
+                vc.photo = photo
                 presentViewController(vc, animated: true, completion: nil)
             }
         }

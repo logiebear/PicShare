@@ -18,6 +18,11 @@ class ProfilePhotoViewController: UIViewController {
     var user: User?
     var currentContentViewController: UIViewController?
     
+    override func viewDidLoad() {
+        self.profilePhotoPreview.layer.cornerRadius = self.profilePhotoPreview.frame.size.width / 2;
+        self.profilePhotoPreview.clipsToBounds = true;
+    }
+    
     // MARK: - User Actions
     
     @IBAction func backButtonPressed(sender: AnyObject) {

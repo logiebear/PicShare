@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController {
     var user: User!
     
     // MARK: - User Actions
-    @IBAction func backButtonPressed(sender: AnyObject) {
+    @IBAction func LoginButton(sender: AnyObject) {
         dismissViewControllerAnimated(true, completion: nil)
     }
     
