@@ -2065,9 +2065,9 @@
                         <constraints>
                             <constraint firstItem="FPl-HT-HIM" firstAttribute="leading" secondItem="2fC-8m-RZA" secondAttribute="leading" id="1eK-xR-wWz"/>
                             <constraint firstItem="VMg-BD-3OJ" firstAttribute="centerY" secondItem="2fC-8m-RZA" secondAttribute="centerY" id="6tW-wd-xMU"/>
+                            <constraint firstItem="FPl-HT-HIM" firstAttribute="top" secondItem="4o0-L0-8UF" secondAttribute="bottom" id="BLj-xF-cGf"/>
                             <constraint firstAttribute="trailing" secondItem="FPl-HT-HIM" secondAttribute="trailing" id="JVP-cV-reX"/>
                             <constraint firstItem="VMg-BD-3OJ" firstAttribute="centerX" secondItem="2fC-8m-RZA" secondAttribute="centerX" id="RVc-ul-8gY"/>
-                            <constraint firstItem="FPl-HT-HIM" firstAttribute="top" secondItem="4o0-L0-8UF" secondAttribute="bottom" id="ynI-6O-ZlR"/>
                         </constraints>
                     </view>
                     <connections>
