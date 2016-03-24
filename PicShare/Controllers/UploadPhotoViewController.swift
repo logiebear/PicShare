@@ -101,25 +101,21 @@ class UploadPhotoViewController: UIViewController {
             thumbFile = PFFile(name: "thumbnail.png", data: thumbImageData),
             user = PFUser.currentUser()
         {
-            var validComment = false
-            var text = ""
-            
-            if let descritpiveText = descriptionTextField.text {
-                if
-                descritpiveText.stringByTrimmingCharactersInSet(NSCharacterSet.whitespaceAndNewlineCharacterSet()) != ""
-                {
-                    text = descritpiveText
-                    validComment = true
-                }
+            let whiteSpaceSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+            guard let text = descriptionTextField.text
+                where text.stringByTrimmingCharactersInSet(whiteSpaceSet) != ""
+            else {
+                showAlert("Comment Missing", message: "Please Enter a valid Comment")
+                return
             }
             
-            if validComment {
             activityIndicatorView.startAnimating()
             imageFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
                 if success {
                     thumbFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
                         if success {
-                            self?.proceedToUploadPhoto(imageFile, thumbFile: thumbFile, user: user, geoPoint: geoPoint, text: text)
+                            self?.proceedToUploadPhoto(imageFile, thumbFile: thumbFile,
+                                user: user, geoPoint: geoPoint, text: text)
                         } else {
                             // TODO: SHOW ERROR MESSAGE
                         }
@@ -129,15 +125,10 @@ class UploadPhotoViewController: UIViewController {
                 } else {
                     // TODO: SHOW ERROR MESSAGE
                 }
-            }, progressBlock: { (progress) -> Void in
+            },
+            progressBlock: { (progress) -> Void in
                 print("image progress: \(progress)%")
             })
-        
-        
-            } else {
-                showAlert("Comment Missing", message: "Please Enter a valid Comment")
-            }
-        
         } else {
             print("Photo saving error")
         }
