@@ -52,12 +52,15 @@ class UploadPhotoViewController: UIViewController {
             thumbFile = PFFile(name: "thumbnail.png", data: thumbImageData),
             user = PFUser.currentUser()
         {
-            photo = Photo(image: imageFile, thumbnail: thumbFile, owner: user, event: nil, location: nil, descriptiveText: nil)
-            if let descritpiveText = descriptionTextField.text {
-                if let photo = photo {
-                    photo.descriptiveText = descritpiveText
-                }
+            let whiteSpaceSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+            guard let text = descriptionTextField.text
+                where text.stringByTrimmingCharactersInSet(whiteSpaceSet) != ""
+            else {
+                showAlert("Comment Missing", message: "Please Enter a valid Comment")
+                return
             }
+            
+            photo = Photo(image: imageFile, thumbnail: thumbFile, owner: user, event: nil, location: nil, descriptiveText: text)
             self.performSegueWithIdentifier("showSelectEventScreen", sender: self)
         }
     }

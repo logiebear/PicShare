@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pDL-Be-YlO">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="pDL-Be-YlO">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
@@ -53,6 +53,27 @@
                                         <exclude reference="c2W-FU-JC3"/>
                                         <exclude reference="cYo-sd-Mbs"/>
                                         <exclude reference="wtV-jw-KVq"/>
+                                    </mask>
+                                </variation>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Password" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="04P-b3-mFO" customClass="TextField" customModule="PicShare" customModuleProvider="target">
+                                <rect key="frame" x="160" y="258" width="280" height="40"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="269" id="SJJ-dG-bhR"/>
+                                    <constraint firstAttribute="height" constant="40" id="Wqs-xQ-ZZb"/>
+                                    <constraint firstAttribute="height" constant="30" id="bQY-VD-XgS"/>
+                                    <constraint firstAttribute="width" constant="200" id="cnl-Us-Scc"/>
+                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="41" id="xmg-tF-Xgv"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="SJJ-dG-bhR"/>
+                                        <exclude reference="bQY-VD-XgS"/>
+                                        <exclude reference="cnl-Us-Scc"/>
+                                        <exclude reference="xmg-tF-Xgv"/>
                                     </mask>
                                 </variation>
                             </textField>
@@ -123,15 +144,13 @@
                                     <constraint firstAttribute="height" constant="1" id="kiJ-vd-cpR"/>
                                 </constraints>
                             </view>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="04P-b3-mFO">
-                                <rect key="frame" x="200" y="168" width="200" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="bQY-VD-XgS"/>
-                                    <constraint firstAttribute="width" constant="200" id="cnl-Us-Scc"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits" secureTextEntry="YES"/>
-                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="218-Fx-19g">
+                                <rect key="frame" x="160" y="370" width="112" height="30"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="15"/>
+                                <state key="normal" title="Lost Password?">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
