@@ -51,7 +51,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         for scalar in eventNameTextField.unicodeScalars {
             let value = scalar.value
             if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57)) {
-                showErrorView("Invalid event name", msg: "Event name can only conclude alphanumerics!")
+                showErrorView("Invalid event name", msg: "Event name can only include alphanumeric characters.")
                 return
             }
         }
@@ -71,14 +71,14 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
             return
         }
 
-        guard let eventNameTextField = eventNameTextField.text else {
+        guard let eventNameText = eventNameTextField.text else {
             return
         }
         
-        for scalar in eventNameTextField.unicodeScalars {
+        for scalar in eventNameText.unicodeScalars {
             let value = scalar.value
             if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57)) {
-                showErrorView("Invalid event name", msg: "Event name can only conclude alphanumerics!")
+                showErrorView("Invalid event name", msg: "Event name can only include alphanumeric characters.")
                 return
             }
         }
