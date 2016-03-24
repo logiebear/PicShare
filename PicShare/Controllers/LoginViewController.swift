@@ -15,6 +15,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginPasswordInput: UITextField!
     
     override func viewDidLoad() {
+        loginUserNameInput.autocorrectionType = .No
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
