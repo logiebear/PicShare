@@ -2,7 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9532" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zNY-rV-0aN">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9530"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
     </dependencies>
@@ -20,61 +20,10 @@
         </mutableArray>
     </customFonts>
     <scenes>
-        <!--Search Home View Controller-->
-        <scene sceneID="XrK-gs-jtd">
-            <objects>
-                <viewController id="s5k-us-hef" customClass="SearchHomeViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Hui-R5-srf"/>
-                        <viewControllerLayoutGuide type="bottom" id="9BF-NH-zua"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="2Yt-YU-teJ">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FXJ-Uw-DZd">
-                                <rect key="frame" x="237" y="92" width="127" height="30"/>
-                                <constraints>
-                                    <constraint firstAttribute="width" constant="127" id="KjV-Qh-UyA"/>
-                                    <constraint firstAttribute="height" constant="30" id="l5M-Qx-BMB"/>
-                                </constraints>
-                                <state key="normal" title="Search by location">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="HKD-Y9-Ak4" kind="show" id="vmi-K2-rs5"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tb1-Ju-wEK">
-                                <rect key="frame" x="245" y="145" width="111" height="30"/>
-                                <state key="normal" title="Search by Event">
-                                    <color key="titleColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                    <color key="titleShadowColor" red="0.43529411759999997" green="0.4431372549" blue="0.47450980390000003" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <segue destination="adY-C4-QxI" kind="show" id="42h-Df-dxu"/>
-                                </connections>
-                            </button>
-                        </subviews>
-                        <color key="backgroundColor" red="0.99215686270000003" green="0.37254901959999998" blue="0.35294117650000001" alpha="1" colorSpace="calibratedRGB"/>
-                        <constraints>
-                            <constraint firstItem="FXJ-Uw-DZd" firstAttribute="top" secondItem="Hui-R5-srf" secondAttribute="bottom" constant="72" id="fnL-L1-RJR"/>
-                            <constraint firstItem="tb1-Ju-wEK" firstAttribute="top" secondItem="FXJ-Uw-DZd" secondAttribute="bottom" constant="23" id="qWr-pO-kqj"/>
-                            <constraint firstItem="tb1-Ju-wEK" firstAttribute="centerX" secondItem="2Yt-YU-teJ" secondAttribute="centerX" id="z6v-Q0-5QK"/>
-                            <constraint firstItem="FXJ-Uw-DZd" firstAttribute="centerX" secondItem="2Yt-YU-teJ" secondAttribute="centerX" id="zGQ-6E-rJZ"/>
-                        </constraints>
-                    </view>
-                    <tabBarItem key="tabBarItem" systemItem="search" id="ncD-xC-cCB"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="SEi-o9-n58" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-624" y="-2450"/>
-        </scene>
         <!--Search Location View Controller-->
         <scene sceneID="wXZ-2h-8m5">
             <objects>
-                <viewController id="HKD-Y9-Ak4" customClass="SearchLocationViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController id="HKD-Y9-Ak4" userLabel="Search Location View Controller" customClass="SearchLocationViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="p6w-Gi-Ly3"/>
                         <viewControllerLayoutGuide type="bottom" id="x6B-Vw-dSP"/>
@@ -95,7 +44,6 @@
                                         <state key="normal" title="Back"/>
                                         <connections>
                                             <action selector="backButtonPressed:" destination="HKD-Y9-Ak4" eventType="touchUpInside" id="2rm-nZ-dIO"/>
-                                            <action selector="backButtonPressed:" destination="USF-Xn-IwV" eventType="touchUpInside" id="h2i-T7-xnB"/>
                                         </connections>
                                     </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Nearby Photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="fYY-OZ-FNf">
@@ -356,23 +304,26 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Nearby" image="nearbyIcon" id="FsI-pV-8EM" userLabel="Nearby"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="closeButton" destination="KKD-ab-xxH" id="yM6-8L-Do7"/>
                         <outlet property="collectionView" destination="LUb-uA-JSO" id="2rr-5A-07j"/>
                         <outlet property="filterButton" destination="9MX-9I-74F" id="UZ7-8Q-efO"/>
                         <outlet property="filterHeightConstraint" destination="5sc-qK-MXs" id="JWZ-33-LbJ"/>
                         <outlet property="filterView" destination="cSZ-T6-Xqg" id="0u1-8w-4x1"/>
                         <outlet property="nearbyPhotoLabel" destination="rrL-aR-KMS" id="DQN-q1-miU"/>
+                        <outlet property="nearbyView" destination="Twl-Kb-nWO" id="iHf-Rl-H6p"/>
                         <outlet property="radiusLabel" destination="jDc-We-I5Z" id="SNG-wu-h0E"/>
                         <outlet property="radiusSlider" destination="dYM-5V-c2H" id="Ury-dh-pML"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ENC-zs-9ne" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="-2786"/>
+            <point key="canvasLocation" x="-650" y="-2818"/>
         </scene>
-        <!--Search Event View Controller-->
+        <!--Search-->
         <scene sceneID="CoE-1X-VUy">
             <objects>
                 <viewController id="adY-C4-QxI" customClass="SearchEventViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
@@ -616,6 +567,7 @@
                             </mask>
                         </variation>
                     </view>
+                    <tabBarItem key="tabBarItem" title="Search" image="hashtag" id="hKS-5M-rbp"/>
                     <connections>
                         <outlet property="createNewEventButton" destination="sXU-fq-CTi" id="Ano-bn-OGO"/>
                         <outlet property="dividingLineView" destination="Py5-u9-uDB" id="A2m-WF-2uD"/>
@@ -631,7 +583,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="py3-S3-1Yu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="-2141"/>
+            <point key="canvasLocation" x="-650" y="-2149"/>
         </scene>
         <!--Search Event Results View Controller-->
         <scene sceneID="yyv-fk-080">
@@ -768,7 +720,7 @@
                                         <rect key="frame" x="0.0" y="31" width="600" height="60"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="cH6-Xk-jBC" id="x3U-HM-oVy">
-                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="600" height="59"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="oR8-l8-LqG">
@@ -929,7 +881,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhv-ll-KyL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="811" y="-2141"/>
+            <point key="canvasLocation" x="81" y="-2141"/>
         </scene>
         <!--Photos-->
         <scene sceneID="gG1-Uw-8io">
@@ -1460,7 +1412,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0T-2S-sSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="-3574"/>
+            <point key="canvasLocation" x="811" y="-2141"/>
         </scene>
         <!--Root View Controller-->
         <scene sceneID="rtS-o7-s13">
@@ -1506,11 +1458,11 @@
                         <color key="selectedImageTintColor" red="0.31764705882352939" green="0.33333333333333331" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
                     </tabBar>
                     <connections>
-                        <segue destination="1cg-PW-ook" kind="relationship" relationship="viewControllers" id="wIc-Vr-epW"/>
-                        <segue destination="s5k-us-hef" kind="relationship" relationship="viewControllers" id="bzj-iO-bcS"/>
-                        <segue destination="cas-Z6-giO" kind="relationship" relationship="viewControllers" id="RMK-1S-7CH"/>
-                        <segue destination="b7N-KC-Kmb" kind="relationship" relationship="viewControllers" id="bCb-LP-AqJ"/>
-                        <segue destination="eU6-Aj-CwX" kind="relationship" relationship="viewControllers" id="gzk-ma-3Gc"/>
+                        <segue destination="HKD-Y9-Ak4" kind="relationship" relationship="viewControllers" id="xAn-NF-Ym7"/>
+                        <segue destination="adY-C4-QxI" kind="relationship" relationship="viewControllers" id="W8i-Ag-OAJ"/>
+                        <segue destination="cas-Z6-giO" kind="relationship" relationship="viewControllers" id="zEC-Df-Uav"/>
+                        <segue destination="b7N-KC-Kmb" kind="relationship" relationship="viewControllers" id="7KO-rT-DVW"/>
+                        <segue destination="eU6-Aj-CwX" kind="relationship" relationship="viewControllers" id="OfS-nb-Aq8"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JXt-de-yiy" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1881,7 +1833,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qru-7k-too" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-632" y="-3550"/>
+            <point key="canvasLocation" x="-2337" y="-100"/>
         </scene>
         <!--Event Photo Screen View Controller-->
         <scene sceneID="uZ9-Ma-g7n">
@@ -2598,11 +2550,13 @@
         </scene>
     </scenes>
     <resources>
+        <image name="hashtag" width="15" height="14"/>
+        <image name="nearbyIcon" width="11" height="11"/>
         <image name="popupClose" width="25" height="25"/>
         <image name="profileIcon.png" width="25" height="25"/>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="Xbf-fA-QIi"/>
-        <segue reference="Cra-CO-7HR"/>
+        <segue reference="KnV-RN-NZL"/>
     </inferredMetricsTieBreakers>
 </document>
