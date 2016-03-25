@@ -23,7 +23,7 @@ class SignUpViewController: UIViewController {
     
     // MARK: - User Actions
     @IBAction func LoginButton(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func goButton(sender: UIButton) {

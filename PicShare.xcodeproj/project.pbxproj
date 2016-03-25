@@ -7,10 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		0161A0381C7C21600084C673 /* profileIcon@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0161A0351C7C21600084C673 /* profileIcon@3x.png */; };
-		0161A0391C7C21600084C673 /* profileIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = 0161A0361C7C21600084C673 /* profileIcon.png */; };
-		0161A03A1C7C21600084C673 /* profileIcon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0161A0371C7C21600084C673 /* profileIcon@2x.png */; };
-		0A14D8871C866E18005069E2 /* SelectUploadEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A14D8861C866E18005069E2 /* SelectUploadEventViewController.swift */; };
 		0A14D8891C8673B1005069E2 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0A14D8881C8673B1005069E2 /* Assets.xcassets */; };
 		0A31F5641CA2168F000EB388 /* Lato-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F55E1CA2168F000EB388 /* Lato-Black.ttf */; };
 		0A31F5651CA2168F000EB388 /* Lato-Bold.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F55F1CA2168F000EB388 /* Lato-Bold.ttf */; };
@@ -18,44 +14,45 @@
 		0A31F5671CA2168F000EB388 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5611CA2168F000EB388 /* Lato-Light.ttf */; };
 		0A31F5681CA2168F000EB388 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5621CA2168F000EB388 /* Lato-Medium.ttf */; };
 		0A31F5691CA2168F000EB388 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5631CA2168F000EB388 /* Lato-Regular.ttf */; };
-		0A5663131C5E926300B1097E /* MyPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5663121C5E926300B1097E /* MyPhotosViewController.swift */; };
-		0A63A6981C6584280014FD2C /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A63A6971C6584280014FD2C /* ProfileViewController.swift */; };
 		0A79F9091C8D03A60051AB9D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79F9081C8D03A60051AB9D /* UIViewControllerExtension.swift */; };
 		0A79F90C1C8D07B60051AB9D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79F90B1C8D07B60051AB9D /* Utilities.swift */; };
 		0ABADAE11BF909BB001CB962 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADAE01BF909BB001CB962 /* AppDelegate.swift */; };
 		0ABADAEB1BF909BB001CB962 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABADAE91BF909BB001CB962 /* LaunchScreen.storyboard */; };
 		0ABADAF61BF909BC001CB962 /* PicShareTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADAF51BF909BC001CB962 /* PicShareTests.swift */; };
 		0ABADB011BF909BC001CB962 /* PicShareUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADB001BF909BC001CB962 /* PicShareUITests.swift */; };
-		0AD0ACEE1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0ACEC1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift */; };
-		0AD0ACF01C6A9D0900FD8963 /* EventPhotoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0ACEF1C6A9D0900FD8963 /* EventPhotoScreenViewController.swift */; };
+		0AC2ABEB1CA4D596000A2230 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABCE1CA4D596000A2230 /* LoginViewController.swift */; };
+		0AC2ABEC1CA4D596000A2230 /* ProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABCF1CA4D596000A2230 /* ProfilePhotoViewController.swift */; };
+		0AC2ABED1CA4D596000A2230 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD01CA4D596000A2230 /* SignUpViewController.swift */; };
+		0AC2ABEE1CA4D596000A2230 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD21CA4D596000A2230 /* AddPhotoViewController.swift */; };
+		0AC2ABEF1CA4D596000A2230 /* CreateEventPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD31CA4D596000A2230 /* CreateEventPasswordViewController.swift */; };
+		0AC2ABF01CA4D596000A2230 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD41CA4D596000A2230 /* CreateEventViewController.swift */; };
+		0AC2ABF11CA4D596000A2230 /* EventHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD51CA4D596000A2230 /* EventHomeViewController.swift */; };
+		0AC2ABF21CA4D596000A2230 /* EventMgmtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD61CA4D596000A2230 /* EventMgmtViewController.swift */; };
+		0AC2ABF31CA4D596000A2230 /* EventPhotoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD71CA4D596000A2230 /* EventPhotoScreenViewController.swift */; };
+		0AC2ABF41CA4D596000A2230 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD81CA4D596000A2230 /* HomeViewController.swift */; };
+		0AC2ABF51CA4D596000A2230 /* MyPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDA1CA4D596000A2230 /* MyPhotosViewController.swift */; };
+		0AC2ABF61CA4D596000A2230 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDB1CA4D596000A2230 /* PhotoDetailViewController.swift */; };
+		0AC2ABF71CA4D596000A2230 /* PhotoHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDC1CA4D596000A2230 /* PhotoHomeViewController.swift */; };
+		0AC2ABF81CA4D596000A2230 /* SelectUploadEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDD1CA4D596000A2230 /* SelectUploadEventViewController.swift */; };
+		0AC2ABF91CA4D596000A2230 /* UploadPhotoToEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDE1CA4D596000A2230 /* UploadPhotoToEventViewController.swift */; };
+		0AC2ABFA1CA4D596000A2230 /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDF1CA4D596000A2230 /* UploadPhotoViewController.swift */; };
+		0AC2ABFB1CA4D596000A2230 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABE01CA4D596000A2230 /* ProfileViewController.swift */; };
+		0AC2ABFC1CA4D596000A2230 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABE11CA4D596000A2230 /* RootViewController.swift */; };
+		0AC2ABFD1CA4D596000A2230 /* SearchEventResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABE31CA4D596000A2230 /* SearchEventResultsViewController.swift */; };
+		0AC2ABFE1CA4D596000A2230 /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABE41CA4D596000A2230 /* SearchEventViewController.swift */; };
+		0AC2ABFF1CA4D596000A2230 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABE51CA4D596000A2230 /* SearchLocationViewController.swift */; };
+		0AC2AC001CA4D596000A2230 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABE61CA4D596000A2230 /* TabBarViewController.swift */; };
+		0AC2AC011CA4D596000A2230 /* EventPhotoCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABE81CA4D596000A2230 /* EventPhotoCollectionViewCell.swift */; };
+		0AC2AC021CA4D596000A2230 /* SearchEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABE91CA4D596000A2230 /* SearchEventTableViewCell.swift */; };
+		0AC2AC031CA4D596000A2230 /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABEA1CA4D596000A2230 /* TextField.swift */; };
 		0AD0ACF21C6AAA2900FD8963 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD0ACF11C6AAA2900FD8963 /* User.swift */; };
 		0AD410381C6DA76400833618 /* Event.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AD410371C6DA76400833618 /* Event.swift */; };
 		0AD410391C6DAD3B00833618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABADAE41BF909BB001CB962 /* Main.storyboard */; };
-		0ADAE6A61C07E72A00E8BADE /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6A51C07E72A00E8BADE /* LoginViewController.swift */; };
 		0ADAE6AD1C09649500E8BADE /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6AC1C09649500E8BADE /* Photo.swift */; };
-		0ADAE6B11C0A697E00E8BADE /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6B01C0A697E00E8BADE /* HomeViewController.swift */; };
-		0ADAE6B31C0BB06800E8BADE /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6B21C0BB06800E8BADE /* UploadPhotoViewController.swift */; };
 		0ADB4BA71BFEBDB400EA51F2 /* UIImage+EXIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB4BA61BFEBDB400EA51F2 /* UIImage+EXIF.m */; };
-		0ADB4BAC1BFEBFF800EA51F2 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB4BAB1BFEBFF800EA51F2 /* PhotoDetailViewController.swift */; };
-		0AE4D5B71BF9799700893D03 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5B61BF9799700893D03 /* RootViewController.swift */; };
-		0AE4D5B91BF97B0F00893D03 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5B81BF97B0F00893D03 /* TabBarViewController.swift */; };
-		0AE4D5BB1BF994D200893D03 /* PhotoHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BA1BF994D200893D03 /* PhotoHomeViewController.swift */; };
-		0AE4D5BD1BF994FF00893D03 /* EventHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AE4D5BC1BF994FF00893D03 /* EventHomeViewController.swift */; };
-		1C6B5DDB1C7939FD00232AE9 /* SearchEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B5DDA1C7939FD00232AE9 /* SearchEventViewController.swift */; };
-		1C6B5DDD1C794D4B00232AE9 /* SearchEventResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1C6B5DDC1C794D4B00232AE9 /* SearchEventResultsViewController.swift */; };
-		1CBBDDA31C7D27400072FDDD /* SearchEventTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CBBDDA21C7D27400072FDDD /* SearchEventTableViewCell.swift */; };
-		1CEF126B1C0AC5A4008F5243 /* SearchLocationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1CEF126A1C0AC5A4008F5243 /* SearchLocationViewController.swift */; };
-		6A517F531C8122E800EBB1A9 /* CreateEventPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517F521C8122E800EBB1A9 /* CreateEventPasswordViewController.swift */; };
-		6A517F561C8122F200EBB1A9 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517F541C8122F200EBB1A9 /* CreateEventViewController.swift */; };
-		6A517F571C8122F200EBB1A9 /* EventMgmtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517F551C8122F200EBB1A9 /* EventMgmtViewController.swift */; };
-		6AFB3C091C864AAA00455645 /* UploadPhotoToEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFB3C081C864AAA00455645 /* UploadPhotoToEventViewController.swift */; };
-		6AFDC59A1C79518B0089598C /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */; };
 		73CD64AF1C9E500400FE3ADA /* PicShareUITestsLoginLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD64AE1C9E500400FE3ADA /* PicShareUITestsLoginLogout.swift */; };
 		CACDB6812DCE9C2FF4BE0671 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986BF3E755B56746A6F724 /* Pods.framework */; };
-		E4C843A21C98DD38003EC0BD /* TextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4C843A11C98DD38003EC0BD /* TextField.swift */; };
 		E4FD1B951C5B354D001A4795 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4FD1B931C5B354D001A4795 /* Account.storyboard */; };
-		E4FD1B981C5B3575001A4795 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FD1B961C5B3575001A4795 /* SignUpViewController.swift */; };
-		E4FD1B991C5B3575001A4795 /* ProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = E4FD1B971C5B3575001A4795 /* ProfilePhotoViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,10 +80,6 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		0161A0351C7C21600084C673 /* profileIcon@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profileIcon@3x.png"; sourceTree = "<group>"; };
-		0161A0361C7C21600084C673 /* profileIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = profileIcon.png; sourceTree = "<group>"; };
-		0161A0371C7C21600084C673 /* profileIcon@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "profileIcon@2x.png"; sourceTree = "<group>"; };
-		0A14D8861C866E18005069E2 /* SelectUploadEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectUploadEventViewController.swift; path = Controllers/SelectUploadEventViewController.swift; sourceTree = "<group>"; };
 		0A14D8881C8673B1005069E2 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		0A2EF9CF1BF99E7E00A466E9 /* PicShare-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "PicShare-Bridging-Header.h"; sourceTree = "<group>"; };
 		0A31F55E1CA2168F000EB388 /* Lato-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Black.ttf"; sourceTree = "<group>"; };
@@ -95,8 +88,6 @@
 		0A31F5611CA2168F000EB388 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		0A31F5621CA2168F000EB388 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		0A31F5631CA2168F000EB388 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
-		0A5663121C5E926300B1097E /* MyPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MyPhotosViewController.swift; path = Controllers/MyPhotosViewController.swift; sourceTree = "<group>"; };
-		0A63A6971C6584280014FD2C /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfileViewController.swift; path = Controllers/ProfileViewController.swift; sourceTree = "<group>"; };
 		0A79F9081C8D03A60051AB9D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		0A79F90B1C8D07B60051AB9D /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		0ABADADD1BF909BB001CB962 /* PicShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -110,42 +101,44 @@
 		0ABADAFC1BF909BC001CB962 /* PicShareUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicShareUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		0ABADB001BF909BC001CB962 /* PicShareUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicShareUITests.swift; sourceTree = "<group>"; };
 		0ABADB021BF909BC001CB962 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0AD0ACEC1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventPhotoCollectionViewCell.swift; path = Controllers/EventPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
-		0AD0ACEF1C6A9D0900FD8963 /* EventPhotoScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventPhotoScreenViewController.swift; path = Controllers/EventPhotoScreenViewController.swift; sourceTree = "<group>"; };
+		0AC2ABCE1CA4D596000A2230 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		0AC2ABCF1CA4D596000A2230 /* ProfilePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePhotoViewController.swift; sourceTree = "<group>"; };
+		0AC2ABD01CA4D596000A2230 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		0AC2ABD21CA4D596000A2230 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
+		0AC2ABD31CA4D596000A2230 /* CreateEventPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventPasswordViewController.swift; sourceTree = "<group>"; };
+		0AC2ABD41CA4D596000A2230 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
+		0AC2ABD51CA4D596000A2230 /* EventHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHomeViewController.swift; sourceTree = "<group>"; };
+		0AC2ABD61CA4D596000A2230 /* EventMgmtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMgmtViewController.swift; sourceTree = "<group>"; };
+		0AC2ABD71CA4D596000A2230 /* EventPhotoScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPhotoScreenViewController.swift; sourceTree = "<group>"; };
+		0AC2ABD81CA4D596000A2230 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		0AC2ABDA1CA4D596000A2230 /* MyPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPhotosViewController.swift; sourceTree = "<group>"; };
+		0AC2ABDB1CA4D596000A2230 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
+		0AC2ABDC1CA4D596000A2230 /* PhotoHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHomeViewController.swift; sourceTree = "<group>"; };
+		0AC2ABDD1CA4D596000A2230 /* SelectUploadEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectUploadEventViewController.swift; sourceTree = "<group>"; };
+		0AC2ABDE1CA4D596000A2230 /* UploadPhotoToEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoToEventViewController.swift; sourceTree = "<group>"; };
+		0AC2ABDF1CA4D596000A2230 /* UploadPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoViewController.swift; sourceTree = "<group>"; };
+		0AC2ABE01CA4D596000A2230 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		0AC2ABE11CA4D596000A2230 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
+		0AC2ABE31CA4D596000A2230 /* SearchEventResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventResultsViewController.swift; sourceTree = "<group>"; };
+		0AC2ABE41CA4D596000A2230 /* SearchEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
+		0AC2ABE51CA4D596000A2230 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationViewController.swift; sourceTree = "<group>"; };
+		0AC2ABE61CA4D596000A2230 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		0AC2ABE81CA4D596000A2230 /* EventPhotoCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPhotoCollectionViewCell.swift; sourceTree = "<group>"; };
+		0AC2ABE91CA4D596000A2230 /* SearchEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventTableViewCell.swift; sourceTree = "<group>"; };
+		0AC2ABEA1CA4D596000A2230 /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextField.swift; sourceTree = "<group>"; };
 		0AD0ACF11C6AAA2900FD8963 /* User.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		0AD410371C6DA76400833618 /* Event.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Event.swift; sourceTree = "<group>"; };
-		0ADAE6A51C07E72A00E8BADE /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = LoginViewController.swift; path = Controllers/LoginViewController.swift; sourceTree = "<group>"; };
 		0ADAE6AC1C09649500E8BADE /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
-		0ADAE6B01C0A697E00E8BADE /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = Controllers/HomeViewController.swift; sourceTree = "<group>"; };
-		0ADAE6B21C0BB06800E8BADE /* UploadPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = UploadPhotoViewController.swift; path = Controllers/UploadPhotoViewController.swift; sourceTree = "<group>"; };
 		0ADB4BA51BFEBDB400EA51F2 /* UIImage+EXIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+EXIF.h"; path = "Categories/UIImage+EXIF.h"; sourceTree = "<group>"; };
 		0ADB4BA61BFEBDB400EA51F2 /* UIImage+EXIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+EXIF.m"; path = "Categories/UIImage+EXIF.m"; sourceTree = "<group>"; };
-		0ADB4BAB1BFEBFF800EA51F2 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoDetailViewController.swift; path = Controllers/PhotoDetailViewController.swift; sourceTree = "<group>"; };
-		0AE4D5B61BF9799700893D03 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RootViewController.swift; path = Controllers/RootViewController.swift; sourceTree = "<group>"; };
-		0AE4D5B81BF97B0F00893D03 /* TabBarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TabBarViewController.swift; path = Controllers/TabBarViewController.swift; sourceTree = "<group>"; };
-		0AE4D5BA1BF994D200893D03 /* PhotoHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = PhotoHomeViewController.swift; path = Controllers/PhotoHomeViewController.swift; sourceTree = "<group>"; };
-		0AE4D5BC1BF994FF00893D03 /* EventHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventHomeViewController.swift; path = Controllers/EventHomeViewController.swift; sourceTree = "<group>"; };
-		1C6B5DDA1C7939FD00232AE9 /* SearchEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventViewController.swift; sourceTree = "<group>"; };
-		1C6B5DDC1C794D4B00232AE9 /* SearchEventResultsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventResultsViewController.swift; sourceTree = "<group>"; };
-		1CBBDDA21C7D27400072FDDD /* SearchEventTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchEventTableViewCell.swift; sourceTree = "<group>"; };
-		1CEF126A1C0AC5A4008F5243 /* SearchLocationViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SearchLocationViewController.swift; path = Controllers/SearchLocationViewController.swift; sourceTree = "<group>"; };
 		2A9356C5D67042DB2D842FDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5635425CA4D08CF0D2D043C0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
-		6A517F521C8122E800EBB1A9 /* CreateEventPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEventPasswordViewController.swift; path = Controllers/CreateEventPasswordViewController.swift; sourceTree = "<group>"; };
-		6A517F541C8122F200EBB1A9 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEventViewController.swift; path = Controllers/CreateEventViewController.swift; sourceTree = "<group>"; };
-		6A517F551C8122F200EBB1A9 /* EventMgmtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventMgmtViewController.swift; path = Controllers/EventMgmtViewController.swift; sourceTree = "<group>"; };
-		6AFB3C081C864AAA00455645 /* UploadPhotoToEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoToEventViewController.swift; sourceTree = "<group>"; };
-		6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddPhotoViewController.swift; path = Controllers/AddPhotoViewController.swift; sourceTree = "<group>"; };
 		73CD64991C9E4CD800FE3ADA /* PicShareUITests-LoginLogOut */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "PicShareUITests-LoginLogOut"; sourceTree = "<group>"; };
 		73CD64AC1C9E500400FE3ADA /* PicShareUITestsLoginLogout.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = PicShareUITestsLoginLogout.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		73CD64AE1C9E500400FE3ADA /* PicShareUITestsLoginLogout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PicShareUITestsLoginLogout.swift; sourceTree = "<group>"; };
 		73CD64B01C9E500400FE3ADA /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9C986BF3E755B56746A6F724 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		E48091EB1C792FAE0092B04C /* SelectUploadEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SelectUploadEventViewController.swift; path = Controllers/SelectUploadEventViewController.swift; sourceTree = "<group>"; };
-		E4C843A11C98DD38003EC0BD /* TextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = TextField.swift; path = Controllers/TextField.swift; sourceTree = "<group>"; };
 		E4FD1B941C5B354D001A4795 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Account.storyboard; sourceTree = "<group>"; };
-		E4FD1B961C5B3575001A4795 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SignUpViewController.swift; path = Controllers/SignUpViewController.swift; sourceTree = "<group>"; };
-		E4FD1B971C5B3575001A4795 /* ProfilePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ProfilePhotoViewController.swift; path = Controllers/ProfilePhotoViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -181,16 +174,6 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		0161A03B1C7C216B0084C673 /* icoProfileIcon */ = {
-			isa = PBXGroup;
-			children = (
-				0161A0351C7C21600084C673 /* profileIcon@3x.png */,
-				0161A0361C7C21600084C673 /* profileIcon.png */,
-				0161A0371C7C21600084C673 /* profileIcon@2x.png */,
-			);
-			name = icoProfileIcon;
-			sourceTree = "<group>";
-		};
 		0A31F55D1CA2168F000EB388 /* Fonts */ = {
 			isa = PBXGroup;
 			children = (
@@ -247,13 +230,13 @@
 		0ABADADF1BF909BB001CB962 /* PicShare */ = {
 			isa = PBXGroup;
 			children = (
-				0161A03B1C7C216B0084C673 /* icoProfileIcon */,
 				0A2EF9CF1BF99E7E00A466E9 /* PicShare-Bridging-Header.h */,
 				0ABADAE01BF909BB001CB962 /* AppDelegate.swift */,
 				0A14D8881C8673B1005069E2 /* Assets.xcassets */,
 				0ADAE6AB1C09647A00E8BADE /* User Interface */,
 				0ADAE6AA1C09647200E8BADE /* Models */,
-				0AE4D5B51BF9796E00893D03 /* Controllers */,
+				0AC2ABE71CA4D596000A2230 /* Views */,
+				0AC2ABCC1CA4D596000A2230 /* Controllers */,
 				0ADB4BA11BFEBA6E00EA51F2 /* Categories */,
 				0A79F9071C8D03A60051AB9D /* Extensions */,
 				0A79F90A1C8D079F0051AB9D /* Utilities */,
@@ -282,14 +265,75 @@
 			path = PicShareUITests;
 			sourceTree = "<group>";
 		};
-		0ADAE6A71C07E72E00E8BADE /* Account */ = {
+		0AC2ABCC1CA4D596000A2230 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				E4FD1B961C5B3575001A4795 /* SignUpViewController.swift */,
-				E4FD1B971C5B3575001A4795 /* ProfilePhotoViewController.swift */,
-				0ADAE6A51C07E72A00E8BADE /* LoginViewController.swift */,
+				0AC2ABCD1CA4D596000A2230 /* Account */,
+				0AC2ABD11CA4D596000A2230 /* Event */,
+				0AC2ABD81CA4D596000A2230 /* HomeViewController.swift */,
+				0AC2ABD91CA4D596000A2230 /* Photo */,
+				0AC2ABE01CA4D596000A2230 /* ProfileViewController.swift */,
+				0AC2ABE11CA4D596000A2230 /* RootViewController.swift */,
+				0AC2ABE21CA4D596000A2230 /* Search */,
+				0AC2ABE61CA4D596000A2230 /* TabBarViewController.swift */,
 			);
-			name = Account;
+			path = Controllers;
+			sourceTree = "<group>";
+		};
+		0AC2ABCD1CA4D596000A2230 /* Account */ = {
+			isa = PBXGroup;
+			children = (
+				0AC2ABCE1CA4D596000A2230 /* LoginViewController.swift */,
+				0AC2ABCF1CA4D596000A2230 /* ProfilePhotoViewController.swift */,
+				0AC2ABD01CA4D596000A2230 /* SignUpViewController.swift */,
+			);
+			path = Account;
+			sourceTree = "<group>";
+		};
+		0AC2ABD11CA4D596000A2230 /* Event */ = {
+			isa = PBXGroup;
+			children = (
+				0AC2ABD21CA4D596000A2230 /* AddPhotoViewController.swift */,
+				0AC2ABD31CA4D596000A2230 /* CreateEventPasswordViewController.swift */,
+				0AC2ABD41CA4D596000A2230 /* CreateEventViewController.swift */,
+				0AC2ABD51CA4D596000A2230 /* EventHomeViewController.swift */,
+				0AC2ABD61CA4D596000A2230 /* EventMgmtViewController.swift */,
+				0AC2ABD71CA4D596000A2230 /* EventPhotoScreenViewController.swift */,
+			);
+			path = Event;
+			sourceTree = "<group>";
+		};
+		0AC2ABD91CA4D596000A2230 /* Photo */ = {
+			isa = PBXGroup;
+			children = (
+				0AC2ABDA1CA4D596000A2230 /* MyPhotosViewController.swift */,
+				0AC2ABDB1CA4D596000A2230 /* PhotoDetailViewController.swift */,
+				0AC2ABDC1CA4D596000A2230 /* PhotoHomeViewController.swift */,
+				0AC2ABDD1CA4D596000A2230 /* SelectUploadEventViewController.swift */,
+				0AC2ABDE1CA4D596000A2230 /* UploadPhotoToEventViewController.swift */,
+				0AC2ABDF1CA4D596000A2230 /* UploadPhotoViewController.swift */,
+			);
+			path = Photo;
+			sourceTree = "<group>";
+		};
+		0AC2ABE21CA4D596000A2230 /* Search */ = {
+			isa = PBXGroup;
+			children = (
+				0AC2ABE31CA4D596000A2230 /* SearchEventResultsViewController.swift */,
+				0AC2ABE41CA4D596000A2230 /* SearchEventViewController.swift */,
+				0AC2ABE51CA4D596000A2230 /* SearchLocationViewController.swift */,
+			);
+			path = Search;
+			sourceTree = "<group>";
+		};
+		0AC2ABE71CA4D596000A2230 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0AC2ABE81CA4D596000A2230 /* EventPhotoCollectionViewCell.swift */,
+				0AC2ABE91CA4D596000A2230 /* SearchEventTableViewCell.swift */,
+				0AC2ABEA1CA4D596000A2230 /* TextField.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		0ADAE6AA1C09647200E8BADE /* Models */ = {
@@ -321,32 +365,6 @@
 			name = Categories;
 			sourceTree = "<group>";
 		};
-		0AE4D5B51BF9796E00893D03 /* Controllers */ = {
-			isa = PBXGroup;
-			children = (
-				0AE4D5B61BF9799700893D03 /* RootViewController.swift */,
-				0AE4D5B81BF97B0F00893D03 /* TabBarViewController.swift */,
-				E48091EB1C792FAE0092B04C /* SelectUploadEventViewController.swift */,
-				6AFDC5901C5C4A640089598C /* Event */,
-				0AE4D5BA1BF994D200893D03 /* PhotoHomeViewController.swift */,
-				0ADAE6B21C0BB06800E8BADE /* UploadPhotoViewController.swift */,
-				0A5663121C5E926300B1097E /* MyPhotosViewController.swift */,
-				0ADAE6B01C0A697E00E8BADE /* HomeViewController.swift */,
-				1CEF126A1C0AC5A4008F5243 /* SearchLocationViewController.swift */,
-				0ADB4BAB1BFEBFF800EA51F2 /* PhotoDetailViewController.swift */,
-				0AD0ACEF1C6A9D0900FD8963 /* EventPhotoScreenViewController.swift */,
-				0AE4D5BC1BF994FF00893D03 /* EventHomeViewController.swift */,
-				0AD0ACEC1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift */,
-				0A63A6971C6584280014FD2C /* ProfileViewController.swift */,
-				1C6B5DDA1C7939FD00232AE9 /* SearchEventViewController.swift */,
-				1C6B5DDC1C794D4B00232AE9 /* SearchEventResultsViewController.swift */,
-				1CBBDDA21C7D27400072FDDD /* SearchEventTableViewCell.swift */,
-				0ADAE6A71C07E72E00E8BADE /* Account */,
-				E4C843A11C98DD38003EC0BD /* TextField.swift */,
-			);
-			name = Controllers;
-			sourceTree = "<group>";
-		};
 		5B7C612A9EF92C259D5CC17B /* Pods */ = {
 			isa = PBXGroup;
 			children = (
@@ -354,19 +372,6 @@
 				2A9356C5D67042DB2D842FDB /* Pods.release.xcconfig */,
 			);
 			name = Pods;
-			sourceTree = "<group>";
-		};
-		6AFDC5901C5C4A640089598C /* Event */ = {
-			isa = PBXGroup;
-			children = (
-				6A517F551C8122F200EBB1A9 /* EventMgmtViewController.swift */,
-				0A14D8861C866E18005069E2 /* SelectUploadEventViewController.swift */,
-				6A517F541C8122F200EBB1A9 /* CreateEventViewController.swift */,
-				6A517F521C8122E800EBB1A9 /* CreateEventPasswordViewController.swift */,
-				6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */,
-				6AFB3C081C864AAA00455645 /* UploadPhotoToEventViewController.swift */,
-			);
-			name = Event;
 			sourceTree = "<group>";
 		};
 		73CD64AD1C9E500400FE3ADA /* PicShareUITestsLoginLogout */ = {
@@ -520,16 +525,13 @@
 				0A31F5661CA2168F000EB388 /* Lato-Heavy.ttf in Resources */,
 				0A31F5681CA2168F000EB388 /* Lato-Medium.ttf in Resources */,
 				0AD410391C6DAD3B00833618 /* Main.storyboard in Resources */,
-				0161A03A1C7C21600084C673 /* profileIcon@2x.png in Resources */,
 				0A31F5671CA2168F000EB388 /* Lato-Light.ttf in Resources */,
 				0ABADAEB1BF909BB001CB962 /* LaunchScreen.storyboard in Resources */,
-				0161A0381C7C21600084C673 /* profileIcon@3x.png in Resources */,
 				0A31F5641CA2168F000EB388 /* Lato-Black.ttf in Resources */,
 				0A14D8891C8673B1005069E2 /* Assets.xcassets in Resources */,
 				E4FD1B951C5B354D001A4795 /* Account.storyboard in Resources */,
 				0A31F5691CA2168F000EB388 /* Lato-Regular.ttf in Resources */,
 				0A31F5651CA2168F000EB388 /* Lato-Bold.ttf in Resources */,
-				0161A0391C7C21600084C673 /* profileIcon.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -609,38 +611,38 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0AD0ACF01C6A9D0900FD8963 /* EventPhotoScreenViewController.swift in Sources */,
+				0AC2ABEC1CA4D596000A2230 /* ProfilePhotoViewController.swift in Sources */,
+				0AC2ABF61CA4D596000A2230 /* PhotoDetailViewController.swift in Sources */,
+				0AC2ABF51CA4D596000A2230 /* MyPhotosViewController.swift in Sources */,
+				0AC2ABF21CA4D596000A2230 /* EventMgmtViewController.swift in Sources */,
 				0ADAE6AD1C09649500E8BADE /* Photo.swift in Sources */,
-				0AD0ACEE1C6A9C8100FD8963 /* EventPhotoCollectionViewCell.swift in Sources */,
-				0AE4D5BD1BF994FF00893D03 /* EventHomeViewController.swift in Sources */,
+				0AC2ABF41CA4D596000A2230 /* HomeViewController.swift in Sources */,
+				0AC2ABFB1CA4D596000A2230 /* ProfileViewController.swift in Sources */,
+				0AC2ABFF1CA4D596000A2230 /* SearchLocationViewController.swift in Sources */,
+				0AC2ABEF1CA4D596000A2230 /* CreateEventPasswordViewController.swift in Sources */,
 				0A79F90C1C8D07B60051AB9D /* Utilities.swift in Sources */,
-				0A14D8871C866E18005069E2 /* SelectUploadEventViewController.swift in Sources */,
+				0AC2ABF11CA4D596000A2230 /* EventHomeViewController.swift in Sources */,
 				0ADB4BA71BFEBDB400EA51F2 /* UIImage+EXIF.m in Sources */,
-				0ADAE6B31C0BB06800E8BADE /* UploadPhotoViewController.swift in Sources */,
-				6A517F571C8122F200EBB1A9 /* EventMgmtViewController.swift in Sources */,
-				6A517F531C8122E800EBB1A9 /* CreateEventPasswordViewController.swift in Sources */,
-				6AFDC59A1C79518B0089598C /* AddPhotoViewController.swift in Sources */,
-				0AE4D5B71BF9799700893D03 /* RootViewController.swift in Sources */,
-				6AFB3C091C864AAA00455645 /* UploadPhotoToEventViewController.swift in Sources */,
+				0AC2ABF71CA4D596000A2230 /* PhotoHomeViewController.swift in Sources */,
+				0AC2ABED1CA4D596000A2230 /* SignUpViewController.swift in Sources */,
+				0AC2ABF01CA4D596000A2230 /* CreateEventViewController.swift in Sources */,
 				0AD0ACF21C6AAA2900FD8963 /* User.swift in Sources */,
-				0ADAE6B11C0A697E00E8BADE /* HomeViewController.swift in Sources */,
-				0A63A6981C6584280014FD2C /* ProfileViewController.swift in Sources */,
-				1C6B5DDB1C7939FD00232AE9 /* SearchEventViewController.swift in Sources */,
-				0AE4D5BB1BF994D200893D03 /* PhotoHomeViewController.swift in Sources */,
-				0A5663131C5E926300B1097E /* MyPhotosViewController.swift in Sources */,
-				0AE4D5B91BF97B0F00893D03 /* TabBarViewController.swift in Sources */,
-				E4C843A21C98DD38003EC0BD /* TextField.swift in Sources */,
+				0AC2ABFC1CA4D596000A2230 /* RootViewController.swift in Sources */,
+				0AC2ABFD1CA4D596000A2230 /* SearchEventResultsViewController.swift in Sources */,
+				0AC2AC011CA4D596000A2230 /* EventPhotoCollectionViewCell.swift in Sources */,
+				0AC2AC031CA4D596000A2230 /* TextField.swift in Sources */,
+				0AC2AC021CA4D596000A2230 /* SearchEventTableViewCell.swift in Sources */,
+				0AC2AC001CA4D596000A2230 /* TabBarViewController.swift in Sources */,
+				0AC2ABF31CA4D596000A2230 /* EventPhotoScreenViewController.swift in Sources */,
+				0AC2ABEE1CA4D596000A2230 /* AddPhotoViewController.swift in Sources */,
+				0AC2ABFE1CA4D596000A2230 /* SearchEventViewController.swift in Sources */,
+				0AC2ABFA1CA4D596000A2230 /* UploadPhotoViewController.swift in Sources */,
+				0AC2ABF91CA4D596000A2230 /* UploadPhotoToEventViewController.swift in Sources */,
+				0AC2ABEB1CA4D596000A2230 /* LoginViewController.swift in Sources */,
+				0AC2ABF81CA4D596000A2230 /* SelectUploadEventViewController.swift in Sources */,
 				0A79F9091C8D03A60051AB9D /* UIViewControllerExtension.swift in Sources */,
-				E4FD1B981C5B3575001A4795 /* SignUpViewController.swift in Sources */,
-				E4FD1B991C5B3575001A4795 /* ProfilePhotoViewController.swift in Sources */,
 				0ABADAE11BF909BB001CB962 /* AppDelegate.swift in Sources */,
-				1CBBDDA31C7D27400072FDDD /* SearchEventTableViewCell.swift in Sources */,
-				0ADB4BAC1BFEBFF800EA51F2 /* PhotoDetailViewController.swift in Sources */,
-				0ADAE6A61C07E72A00E8BADE /* LoginViewController.swift in Sources */,
-				1CEF126B1C0AC5A4008F5243 /* SearchLocationViewController.swift in Sources */,
 				0AD410381C6DA76400833618 /* Event.swift in Sources */,
-				1C6B5DDD1C794D4B00232AE9 /* SearchEventResultsViewController.swift in Sources */,
-				6A517F561C8122F200EBB1A9 /* CreateEventViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -955,6 +957,7 @@
 				73CD64B51C9E500400FE3ADA /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

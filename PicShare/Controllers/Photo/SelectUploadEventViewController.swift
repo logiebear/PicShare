@@ -44,7 +44,7 @@ class SelectUploadEventViewController: UIViewController {
     //MARK: - User Actions
     
     @IBAction func backButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func uploadPhoto(sender: AnyObject) {
@@ -73,9 +73,7 @@ class SelectUploadEventViewController: UIViewController {
             let alertView = UIAlertController(title: "Message",
                 message: "Upload Success", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
-                self?.dismissViewControllerAnimated(false, completion: {
-                    parentView?.dismissViewControllerAnimated(true, completion: nil)
-                })
+                self?.navigationController?.popToRootViewControllerAnimated(true)
             })
             alertView.addAction(OKAction)
             self?.presentViewController(alertView, animated: true, completion: nil)

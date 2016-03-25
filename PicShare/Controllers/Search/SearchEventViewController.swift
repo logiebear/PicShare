@@ -45,7 +45,7 @@ class SearchEventViewController: UIViewController {
     // MARK: - User Actions
     
     @IBAction func backButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func searchEventButtonPressed(sender: AnyObject) {
