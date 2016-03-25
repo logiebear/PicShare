@@ -43,7 +43,6 @@
 		6A517F531C8122E800EBB1A9 /* CreateEventPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517F521C8122E800EBB1A9 /* CreateEventPasswordViewController.swift */; };
 		6A517F561C8122F200EBB1A9 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517F541C8122F200EBB1A9 /* CreateEventViewController.swift */; };
 		6A517F571C8122F200EBB1A9 /* EventMgmtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6A517F551C8122F200EBB1A9 /* EventMgmtViewController.swift */; };
-		6AFAD38E1CA206DE00D8A921 /* Lato in Resources */ = {isa = PBXBuildFile; fileRef = 6AFAD38D1CA206DE00D8A921 /* Lato */; };
 		6AFB3C091C864AAA00455645 /* UploadPhotoToEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFB3C081C864AAA00455645 /* UploadPhotoToEventViewController.swift */; };
 		6AFDC59A1C79518B0089598C /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */; };
 		CACDB6812DCE9C2FF4BE0671 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986BF3E755B56746A6F724 /* Pods.framework */; };
@@ -116,7 +115,6 @@
 		6A517F521C8122E800EBB1A9 /* CreateEventPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEventPasswordViewController.swift; path = Controllers/CreateEventPasswordViewController.swift; sourceTree = "<group>"; };
 		6A517F541C8122F200EBB1A9 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CreateEventViewController.swift; path = Controllers/CreateEventViewController.swift; sourceTree = "<group>"; };
 		6A517F551C8122F200EBB1A9 /* EventMgmtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EventMgmtViewController.swift; path = Controllers/EventMgmtViewController.swift; sourceTree = "<group>"; };
-		6AFAD38D1CA206DE00D8A921 /* Lato */ = {isa = PBXFileReference; lastKnownFileType = folder; name = Lato; path = ../../../Downloads/Lato; sourceTree = "<group>"; };
 		6AFB3C081C864AAA00455645 /* UploadPhotoToEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoToEventViewController.swift; sourceTree = "<group>"; };
 		6AFDC5991C79518B0089598C /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AddPhotoViewController.swift; path = Controllers/AddPhotoViewController.swift; sourceTree = "<group>"; };
 		9C986BF3E755B56746A6F724 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -207,7 +205,6 @@
 				0A2EF9CF1BF99E7E00A466E9 /* PicShare-Bridging-Header.h */,
 				0ABADAE01BF909BB001CB962 /* AppDelegate.swift */,
 				0A14D8881C8673B1005069E2 /* Assets.xcassets */,
-				6AFAD38D1CA206DE00D8A921 /* Lato */,
 				0ADAE6AB1C09647A00E8BADE /* User Interface */,
 				0ADAE6AA1C09647200E8BADE /* Models */,
 				0AE4D5B51BF9796E00893D03 /* Controllers */,
@@ -443,7 +440,6 @@
 				0161A03A1C7C21600084C673 /* profileIcon@2x.png in Resources */,
 				0ABADAEB1BF909BB001CB962 /* LaunchScreen.storyboard in Resources */,
 				0161A0381C7C21600084C673 /* profileIcon@3x.png in Resources */,
-				6AFAD38E1CA206DE00D8A921 /* Lato in Resources */,
 				0A14D8891C8673B1005069E2 /* Assets.xcassets in Resources */,
 				E4FD1B951C5B354D001A4795 /* Account.storyboard in Resources */,
 				0161A0391C7C21600084C673 /* profileIcon.png in Resources */,
