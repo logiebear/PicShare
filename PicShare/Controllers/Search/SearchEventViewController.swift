@@ -57,6 +57,10 @@ class SearchEventViewController: UIViewController {
         }
     }
     
+    @IBAction func createNewEventButtonPressed(sender: AnyObject) {
+        self.performSegueWithIdentifier("NewEvent", sender: nil)
+    }
+    
     // MARK: - Private
     
     private func queryForSpecificEvents(event: String) {

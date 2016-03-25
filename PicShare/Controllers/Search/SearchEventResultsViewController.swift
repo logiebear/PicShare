@@ -117,7 +117,6 @@ class SearchEventResultsViewController: UIViewController, UITableViewDataSource,
         
         if eventArray[row].isPublic == false {
             popUpEventName.text = eventArray[row].hashtag
-            self.resultTableView.backgroundColor = UIColor.blackColor().colorWithAlphaComponent(0.6)
             self.popUpView.hidden = false
         } else{
             button.setTitle("", forState: UIControlState.Normal)
