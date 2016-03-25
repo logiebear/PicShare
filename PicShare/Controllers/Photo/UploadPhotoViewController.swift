@@ -11,6 +11,7 @@ import Parse
 
 class UploadPhotoViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -29,6 +30,9 @@ class UploadPhotoViewController: UIViewController {
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: "resignKeyboard")
         gestureRecognizer.delegate = self
         view.addGestureRecognizer(gestureRecognizer)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide",
+                                                         name: UIKeyboardDidHideNotification, object: nil)
     }
 
     // MARK: - User Actions
@@ -159,17 +163,13 @@ class UploadPhotoViewController: UIViewController {
         let svc = segue.destinationViewController as! SelectUploadEventViewController
         svc.photo = photo
     }
-
-}
-
-// MARK: - UIGestureRecognizerDelegate
-
-extension UploadPhotoViewController: UIGestureRecognizerDelegate {
     
-    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        return !(touch.view is UIControl)
+    // MARK: Notification
+    
+    func keyboardDidHide() {
+        scrollView.setContentOffset(CGPointZero, animated: true)
+        resignKeyboard()
     }
-    
 }
 
 extension UploadPhotoViewController: CLLocationManagerDelegate {
@@ -181,4 +181,31 @@ extension UploadPhotoViewController: CLLocationManagerDelegate {
             }
         }
     }
+}
+
+// MARK: - UITextFieldDelegate
+
+extension UploadPhotoViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        UIView.animateWithDuration(0.25) {
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: 40), animated: false)
+        }
+    }
+    
+}
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension UploadPhotoViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        return !(touch.view is UIControl)
+    }
+    
 }
