@@ -21,17 +21,17 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     var event: Event?
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        guard let eventNameText = eventNameTextField.text else {
+        guard let eventName = eventNameTextField.text else {
             return
         }
 
         if segue.identifier == "SetPassword" {
             let destViewController: CreateEventPasswordViewController = segue.destinationViewController as! CreateEventPasswordViewController
-            destViewController.hashtag = eventNameText
+            destViewController.hashtag = eventName
         }
         if segue.identifier == "AddPhoto" {
             let destViewController: AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
-            destViewController.hashtag = eventNameText
+            destViewController.hashtag = eventName
             destViewController.event = event
         }
     }
@@ -39,16 +39,12 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     // Mark: - User Actions
     
     @IBAction func createPublicEvent(sender: AnyObject) {
-        if eventNameTextField.text == "" || eventNameTextField.text == nil {
+        guard let eventName = eventNameTextField.text where eventName != "" else {
             showErrorView("Invalid event name", msg: "Event name can't be empty!")
             return
         }
         
-        guard let eventNameTextField = eventNameTextField.text else {
-            return
-        }
-        
-        for scalar in eventNameTextField.unicodeScalars {
+        for scalar in eventName.unicodeScalars {
             let value = scalar.value
             if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57)) {
                 showErrorView("Invalid event name", msg: "Event name can only include alphanumeric characters.")
@@ -66,22 +62,19 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     }
     
     @IBAction func privateButtonPressed(sender: AnyObject) {
-        if eventNameTextField.text == "" || eventNameTextField.text == nil {
+        guard let eventName = eventNameTextField.text where eventName != "" else {
             showErrorView("Invalid event name", msg: "Event name can't be empty!")
             return
         }
-
-        guard let eventNameText = eventNameTextField.text else {
-            return
-        }
         
-        for scalar in eventNameText.unicodeScalars {
+        for scalar in eventName.unicodeScalars {
             let value = scalar.value
             if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57)) {
                 showErrorView("Invalid event name", msg: "Event name can only include alphanumeric characters.")
                 return
             }
         }
+        
         
         validateHashtag { (success) -> () in
             if success {
@@ -99,10 +92,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     // Mark: - Private
     
     private func createEventObject() {
-        guard let user = PFUser.currentUser(), eventNameText = eventNameTextField.text else {
+        guard let user = PFUser.currentUser(), eventName = eventNameTextField.text else {
             return
         }
-        self.event = Event(owner: user, hashtag: eventNameText,
+        self.event = Event(owner: user, hashtag: eventName,
             isPublic: isPublic, password: password)
         self.event?.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
             self?.performSegueWithIdentifier("AddPhoto", sender: nil)
@@ -112,10 +105,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     // Mark: - Helper
     
     func validateHashtag(completion: (Bool) -> ()) {
-        guard let query = Event.query(), eventNameTextField = eventNameTextField.text else {
+        guard let query = Event.query(), eventName = eventNameTextField.text else {
             return
         }
-        query.whereKey("hashtag", equalTo: eventNameTextField)
+        query.whereKey("hashtag", equalTo: eventName)
         query.findObjectsInBackgroundWithBlock { (objects: [PFObject]?, error: NSError?) -> Void in
             if let objects = objects where objects.isEmpty {
                 completion(true)
