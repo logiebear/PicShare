@@ -42,6 +42,11 @@ class SelectUploadEventViewController: UIViewController {
     }
     
     //MARK: - User Actions
+    
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        dismissViewControllerAnimated(true, completion: nil)
+    }
+    
     @IBAction func uploadPhoto(sender: AnyObject) {
         guard let selectedEvent = selectedEvent else {
             let alertView = UIAlertController(title: "Error",
