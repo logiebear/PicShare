@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zNY-rV-0aN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gdO-Tc-kII">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -2686,6 +2686,12 @@
     </scenes>
     <resources>
         <image name="backButton" width="8" height="11"/>
+        <image name="checkmark" width="18" height="14"/>
+        <image name="close" width="14" height="14"/>
+        <image name="filterIcon" width="14" height="14"/>
+        <image name="hashtag" width="15" height="14"/>
+        <image name="logo" width="119" height="32"/>
+        <image name="nearbyIcon" width="11" height="11"/>
         <image name="popupClose" width="25" height="25"/>
         <image name="profileIcon.png" width="25" height="25"/>
         <image name="profilePlaceholder" width="650" height="650"/>
