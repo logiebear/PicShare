@@ -2133,7 +2133,7 @@
 				LastUpgradeCheck = 0700;
 				TargetAttributes = {
 					BCA053B6430690326435042FEB61B458 = {
-						DevelopmentTeam = DRDUNUGA7Z;
+						DevelopmentTeam = WNJ63DYX5C;
 					};
 				};
 			};
@@ -2487,6 +2487,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20B9538C2F5D62BEC360EECD841D8973 /* Bolts.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -2502,6 +2503,7 @@
 				MODULEMAP_FILE = "Target Support Files/Bolts/Bolts.modulemap";
 				MTL_ENABLE_DEBUG_INFO = YES;
 				PRODUCT_NAME = Bolts;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -2568,6 +2570,7 @@
 			isa = XCBuildConfiguration;
 			baseConfigurationReference = 20B9538C2F5D62BEC360EECD841D8973 /* Bolts.xcconfig */;
 			buildSettings = {
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				CURRENT_PROJECT_VERSION = 1;
 				DEFINES_MODULE = YES;
@@ -2583,6 +2586,7 @@
 				MODULEMAP_FILE = "Target Support Files/Bolts/Bolts.modulemap";
 				MTL_ENABLE_DEBUG_INFO = NO;
 				PRODUCT_NAME = Bolts;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SKIP_INSTALL = YES;
 				TARGETED_DEVICE_FAMILY = "1,2";
