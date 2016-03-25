@@ -1,34 +1,34 @@
 //
-//  HomeViewController.swift
+//  MyPhotosViewController.swift
 //  PicShare
 //
-//  Created by Logan Chang on 11/28/15.
-//  Copyright © 2015 USC. All rights reserved.
+//  Created by Logan Chang on 1/31/16.
+//  Copyright © 2016 USC. All rights reserved.
 //
 
 import UIKit
 import Parse
 import ParseUI
 
-class HomeViewController: UIViewController {
-    
+class MyPhotosViewController: UIViewController {
+
     @IBOutlet weak var collectionView: UICollectionView!
-    @IBOutlet weak var takePhotoButton: UIButton!
     var photoArray: [Photo]?
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        queryForAllPhotos()
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        queryForAllUserPhotos()
     }
     
     // MARK: - Private
     
-    private func queryForAllPhotos() {
-        guard let query = Photo.query() else {
+    private func queryForAllUserPhotos() {
+        guard let query = Photo.allPhotosForCurrentUserQuery() else {
             return
         }
-        
         query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
             if error == nil {
                 self?.photoArray = objects as? [Photo]
@@ -42,14 +42,15 @@ class HomeViewController: UIViewController {
     
     // MARK: - User Actions
     
-    @IBAction func syncButtonPressed(sender: AnyObject) {
-        queryForAllPhotos()
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
     }
 }
 
+
 // MARK: - UICollectionViewDataSource
 
-extension HomeViewController: UICollectionViewDataSource {
+extension MyPhotosViewController: UICollectionViewDataSource {
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
@@ -62,28 +63,24 @@ extension HomeViewController: UICollectionViewDataSource {
     }
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-        if let pfImageView = cell.viewWithTag(1) as? PFImageView,
-            userNameLabel = cell.viewWithTag(2) as? UILabel,
-            descriptionLabel = cell.viewWithTag(3) as? UILabel,
+        guard let pfImageView = cell.viewWithTag(1) as? PFImageView,
             photoArray = photoArray
-        {
-            let photo = photoArray[indexPath.item]
-            let user = photo.owner
-            user?.fetchIfNeededInBackground()
-            
-            userNameLabel.text = user?.username ?? "Unknown"
-            descriptionLabel.text = photo.descriptiveText ?? ""
-            pfImageView.file = photo.thumbnail
-            pfImageView.loadInBackground()
+        else {
+            return cell
         }
         
+        let photo = photoArray[indexPath.item]
+        pfImageView.contentMode = .ScaleAspectFit
+        pfImageView.file = photo.thumbnail
+        pfImageView.loadInBackground()
+
         return cell
     }
 }
 
 // MARK: - UICollectionViewDelegate
 
-extension HomeViewController: UICollectionViewDelegate {
+extension MyPhotosViewController: UICollectionViewDelegate {
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
         if let photoArray = photoArray {
