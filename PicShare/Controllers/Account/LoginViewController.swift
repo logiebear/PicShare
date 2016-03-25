@@ -11,17 +11,26 @@ import Parse
 
 class LoginViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var loginUserNameInput: UITextField!
     @IBOutlet weak var loginPasswordInput: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
         loginUserNameInput.autocorrectionType = .No
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        
+        let gestureRecognizer = UITapGestureRecognizer()
+        gestureRecognizer.addTarget(self, action: "resignKeyboard")
+        gestureRecognizer.delegate = self
+        view.addGestureRecognizer(gestureRecognizer)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide",
+                                                         name: UIKeyboardDidHideNotification, object: nil)
     }
     
     //MARK: - User Actions
+    
     @IBAction func loginSubmitButton(sender: UIButton) {
         //Check username or password empty
         var error: NSError?
@@ -54,6 +63,7 @@ class LoginViewController: UIViewController {
     }
     
     // MARK: - Helper
+    
     func showErrorView(error: NSError) {
         let alertView = UIAlertController(title: "Error",
             message: error.localizedDescription, preferredStyle: .Alert)
@@ -62,5 +72,41 @@ class LoginViewController: UIViewController {
         self.presentViewController(alertView, animated: true, completion: nil)
     }
     
-
+    func resignKeyboard() {
+        loginUserNameInput.resignFirstResponder()
+        loginPasswordInput.resignFirstResponder()
+    }
+    
+    // MARK: Notification
+    
+    func keyboardDidHide() {
+        scrollView.setContentOffset(CGPointZero, animated: true)
+        resignKeyboard()
+    }
 }
+
+// MARK: - UITextFieldDelegate
+
+extension LoginViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == self.loginUserNameInput {
+            loginPasswordInput.becomeFirstResponder()
+        } else {
+            loginPasswordInput.resignFirstResponder()
+            loginSubmitButton(loginButton)
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        UIView.animateWithDuration(0.25) {
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: 40), animated: false)
+        }
+    }
+    
+}
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension LoginViewController: UIGestureRecognizerDelegate {}

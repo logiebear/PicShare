@@ -15,11 +15,24 @@ let thumbFileKey = "thumbSizeFile"
 
 class SignUpViewController: UIViewController {
     
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var emailTextField: UITextField!
     @IBOutlet weak var userNameTextField: UITextField!
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var passwordConfirmTextField: UITextField!
     var user: User!
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        let gestureRecognizer = UITapGestureRecognizer()
+        gestureRecognizer.addTarget(self, action: "resignKeyboard")
+        gestureRecognizer.delegate = self
+        view.addGestureRecognizer(gestureRecognizer)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide",
+                                                         name: UIKeyboardDidHideNotification, object: nil)
+    }
     
     // MARK: - User Actions
     @IBAction func LoginButton(sender: AnyObject) {
@@ -103,7 +116,8 @@ class SignUpViewController: UIViewController {
         svc.user = user
     }
     
-    //MARK: - Helper
+    // MARK: Helper
+    
     func showErrorView(error: NSError) {
         let alertView = UIAlertController(title: "Error",
             message: error.localizedDescription, preferredStyle: .Alert)
@@ -111,6 +125,7 @@ class SignUpViewController: UIViewController {
         alertView.addAction(OKAction)
         self.presentViewController(alertView, animated: true, completion: nil)
     }
+    
     //email validation function
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
@@ -118,4 +133,48 @@ class SignUpViewController: UIViewController {
         let result = range != nil
         return result
     }
+    
+    func resignKeyboard() {
+        emailTextField.resignFirstResponder()
+        userNameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
+        passwordConfirmTextField.resignFirstResponder()
+    }
+    
+    // MARK: Notification
+    
+    func keyboardDidHide() {
+        scrollView.setContentOffset(CGPointZero, animated: true)
+        resignKeyboard()
+    }
 }
+
+// MARK: - UITextFieldDelegate
+
+extension SignUpViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == emailTextField {
+            userNameTextField.becomeFirstResponder()
+        } else if textField == userNameTextField {
+            passwordTextField.becomeFirstResponder()
+        } else if textField == passwordTextField {
+            passwordConfirmTextField.becomeFirstResponder()
+        } else {
+            passwordConfirmTextField.resignFirstResponder()
+            goButton(UIButton())
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        UIView.animateWithDuration(0.25) {
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: 40), animated: false)
+        }
+    }
+    
+}
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension SignUpViewController: UIGestureRecognizerDelegate {}
