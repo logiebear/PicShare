@@ -378,19 +378,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="7Kq-Ox-EDm" userLabel="View - Header">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="xaH-TW-IoF">
-                                        <rect key="frame" x="19" y="24" width="58" height="22"/>
-                                        <constraints>
-                                            <constraint firstAttribute="width" constant="58" id="8at-2t-EbD"/>
-                                            <constraint firstAttribute="height" constant="30" id="tn7-i2-Qaz"/>
-                                        </constraints>
-                                        <state key="normal" title=" Back" image="backButton">
-                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="backButtonPressed:" destination="adY-C4-QxI" eventType="touchUpInside" id="4bs-yC-mcd"/>
-                                        </connections>
-                                    </button>
                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iId-fx-LdJ">
                                         <rect key="frame" x="180" y="8" width="240" height="44"/>
                                         <constraints>
@@ -402,8 +389,6 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="iId-fx-LdJ" firstAttribute="centerX" secondItem="7Kq-Ox-EDm" secondAttribute="centerX" id="Glg-pw-7nD"/>
-                                    <constraint firstItem="xaH-TW-IoF" firstAttribute="leading" secondItem="7Kq-Ox-EDm" secondAttribute="leading" constant="20" id="HAq-fG-CiO"/>
-                                    <constraint firstItem="xaH-TW-IoF" firstAttribute="top" secondItem="7Kq-Ox-EDm" secondAttribute="top" constant="20" id="Tw2-6T-VLi"/>
                                     <constraint firstAttribute="height" constant="60" id="UML-0P-VLI"/>
                                     <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="60" id="eDb-Sr-ont"/>
                                     <constraint firstItem="iId-fx-LdJ" firstAttribute="centerY" secondItem="7Kq-Ox-EDm" secondAttribute="centerY" id="f4I-1h-mGs"/>
@@ -1827,7 +1812,7 @@
                     </connections>
                 </tapGestureRecognizer>
             </objects>
-            <point key="canvasLocation" x="-569" y="669"/>
+            <point key="canvasLocation" x="-650" y="672"/>
         </scene>
         <!--Home-->
         <scene sceneID="FbL-jR-m0e">
