@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="zNY-rV-0aN">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gdO-Tc-kII">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -10,14 +10,27 @@
     <customFonts key="customFonts">
         <mutableArray key="Lato-Black.ttf">
             <string>Lato-Black</string>
+            <string>Lato-Black</string>
+            <string>Lato-Black</string>
+            <string>Lato-Black</string>
         </mutableArray>
         <mutableArray key="Lato-Bold.ttf">
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
+        </mutableArray>
+        <mutableArray key="Lato-Heavy.ttf">
+            <string>Lato-Heavy</string>
+            <string>Lato-Heavy</string>
+            <string>Lato-Heavy</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
+            <string>Lato-Regular</string>
+            <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
             <string>Lato-Regular</string>
@@ -2731,15 +2744,25 @@
         </scene>
     </scenes>
     <resources>
+        <image name="backButton" width="8" height="11"/>
         <image name="cameraRollIcon" width="17" height="17"/>
+        <image name="checkmark" width="18" height="14"/>
+        <image name="close" width="14" height="14"/>
         <image name="congratsAddPhotoBanner" width="354" height="223"/>
+        <image name="filterIcon" width="14" height="14"/>
+        <image name="hashtag" width="15" height="14"/>
+        <image name="logo" width="119" height="32"/>
+        <image name="nearbyIcon" width="11" height="11"/>
+        <image name="popupClose" width="25" height="25"/>
         <image name="privateIcon" width="14" height="21"/>
         <image name="profileIcon.png" width="25" height="25"/>
+        <image name="profilePlaceholder" width="650" height="650"/>
         <image name="publicIcon" width="18" height="21"/>
         <image name="takePhotoIcon" width="17" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Qma-si-Utr"/>
-        <segue reference="Cra-CO-7HR"/>
+        <segue reference="OG7-Bd-fLq"/>
+        <segue reference="Xbf-fA-QIi"/>
+        <segue reference="KnV-RN-NZL"/>
     </inferredMetricsTieBreakers>
 </document>
