@@ -50,6 +50,7 @@
 		0AD410391C6DAD3B00833618 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0ABADAE41BF909BB001CB962 /* Main.storyboard */; };
 		0ADAE6AD1C09649500E8BADE /* Photo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ADAE6AC1C09649500E8BADE /* Photo.swift */; };
 		0ADB4BA71BFEBDB400EA51F2 /* UIImage+EXIF.m in Sources */ = {isa = PBXBuildFile; fileRef = 0ADB4BA61BFEBDB400EA51F2 /* UIImage+EXIF.m */; };
+		0AF9D8911CA4E4E3007DAA47 /* SearchLocationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AF9D8901CA4E4E3007DAA47 /* SearchLocationTableViewCell.swift */; };
 		73CD64AF1C9E500400FE3ADA /* PicShareUITestsLoginLogout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73CD64AE1C9E500400FE3ADA /* PicShareUITestsLoginLogout.swift */; };
 		CACDB6812DCE9C2FF4BE0671 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9C986BF3E755B56746A6F724 /* Pods.framework */; };
 		E4FD1B951C5B354D001A4795 /* Account.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = E4FD1B931C5B354D001A4795 /* Account.storyboard */; };
@@ -131,6 +132,7 @@
 		0ADAE6AC1C09649500E8BADE /* Photo.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Photo.swift; sourceTree = "<group>"; };
 		0ADB4BA51BFEBDB400EA51F2 /* UIImage+EXIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+EXIF.h"; path = "Categories/UIImage+EXIF.h"; sourceTree = "<group>"; };
 		0ADB4BA61BFEBDB400EA51F2 /* UIImage+EXIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+EXIF.m"; path = "Categories/UIImage+EXIF.m"; sourceTree = "<group>"; };
+		0AF9D8901CA4E4E3007DAA47 /* SearchLocationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchLocationTableViewCell.swift; sourceTree = "<group>"; };
 		2A9356C5D67042DB2D842FDB /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		5635425CA4D08CF0D2D043C0 /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
 		73CD64991C9E4CD800FE3ADA /* PicShareUITests-LoginLogOut */ = {isa = PBXFileReference; lastKnownFileType = folder; path = "PicShareUITests-LoginLogOut"; sourceTree = "<group>"; };
@@ -270,11 +272,11 @@
 			children = (
 				0AC2ABCD1CA4D596000A2230 /* Account */,
 				0AC2ABD11CA4D596000A2230 /* Event */,
-				0AC2ABD81CA4D596000A2230 /* HomeViewController.swift */,
 				0AC2ABD91CA4D596000A2230 /* Photo */,
+				0AC2ABE21CA4D596000A2230 /* Search */,
+				0AC2ABD81CA4D596000A2230 /* HomeViewController.swift */,
 				0AC2ABE01CA4D596000A2230 /* ProfileViewController.swift */,
 				0AC2ABE11CA4D596000A2230 /* RootViewController.swift */,
-				0AC2ABE21CA4D596000A2230 /* Search */,
 				0AC2ABE61CA4D596000A2230 /* TabBarViewController.swift */,
 			);
 			path = Controllers;
@@ -332,6 +334,7 @@
 				0AC2ABE81CA4D596000A2230 /* EventPhotoCollectionViewCell.swift */,
 				0AC2ABE91CA4D596000A2230 /* SearchEventTableViewCell.swift */,
 				0AC2ABEA1CA4D596000A2230 /* TextField.swift */,
+				0AF9D8901CA4E4E3007DAA47 /* SearchLocationTableViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -633,6 +636,7 @@
 				0AC2AC031CA4D596000A2230 /* TextField.swift in Sources */,
 				0AC2AC021CA4D596000A2230 /* SearchEventTableViewCell.swift in Sources */,
 				0AC2AC001CA4D596000A2230 /* TabBarViewController.swift in Sources */,
+				0AF9D8911CA4E4E3007DAA47 /* SearchLocationTableViewCell.swift in Sources */,
 				0AC2ABF31CA4D596000A2230 /* EventPhotoScreenViewController.swift in Sources */,
 				0AC2ABEE1CA4D596000A2230 /* AddPhotoViewController.swift in Sources */,
 				0AC2ABFE1CA4D596000A2230 /* SearchEventViewController.swift in Sources */,

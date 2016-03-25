@@ -59,7 +59,6 @@ class SelectUploadEventViewController: UIViewController {
         guard let photo = photo else {
             return
         }
-        let parentView = self.presentingViewController
         photo.event = selectedEvent
         photo.saveInBackgroundWithBlock { [weak self](success: Bool, error: NSError?) in
             if let error = error {

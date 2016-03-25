@@ -103,13 +103,14 @@ extension EventPhotoScreenViewController: UICollectionViewDataSource {
 }
 
 extension EventPhotoScreenViewController: UICollectionViewDelegate {
+    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         if !editEventBtn.selected {
             let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
             if let eventPhotos = eventPhotos {
                 let photo = eventPhotos[indexPath.item]
                 vc.photo = photo
-                presentViewController(vc, animated: true, completion: nil)
+                navigationController?.pushViewController(vc, animated: true)
             }
         }
         else {
@@ -134,4 +135,5 @@ extension EventPhotoScreenViewController: UICollectionViewDelegate {
             self.presentViewController(alertView, animated: true, completion: nil)
         }
     }
+    
 }

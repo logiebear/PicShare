@@ -86,7 +86,7 @@ extension MyPhotosViewController: UICollectionViewDelegate {
         if let photoArray = photoArray {
             let photo = photoArray[indexPath.item]
             vc.photo = photo
-            presentViewController(vc, animated: true, completion: nil)
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }
