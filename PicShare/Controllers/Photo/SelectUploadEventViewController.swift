@@ -42,6 +42,11 @@ class SelectUploadEventViewController: UIViewController {
     }
     
     //MARK: - User Actions
+    
+    @IBAction func backButtonPressed(sender: AnyObject) {
+        navigationController?.popViewControllerAnimated(true)
+    }
+    
     @IBAction func uploadPhoto(sender: AnyObject) {
         guard let selectedEvent = selectedEvent else {
             let alertView = UIAlertController(title: "Error",
@@ -54,7 +59,6 @@ class SelectUploadEventViewController: UIViewController {
         guard let photo = photo else {
             return
         }
-        let parentView = self.presentingViewController
         photo.event = selectedEvent
         photo.saveInBackgroundWithBlock { [weak self](success: Bool, error: NSError?) in
             if let error = error {
@@ -68,9 +72,7 @@ class SelectUploadEventViewController: UIViewController {
             let alertView = UIAlertController(title: "Message",
                 message: "Upload Success", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
-                self?.dismissViewControllerAnimated(false, completion: {
-                    parentView?.dismissViewControllerAnimated(true, completion: nil)
-                })
+                self?.navigationController?.popToRootViewControllerAnimated(true)
             })
             alertView.addAction(OKAction)
             self?.presentViewController(alertView, animated: true, completion: nil)

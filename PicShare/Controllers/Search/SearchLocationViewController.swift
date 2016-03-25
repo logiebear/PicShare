@@ -18,16 +18,15 @@ import ParseUI
 
 class SearchLocationViewController: UIViewController {
   
-    @IBOutlet weak var collectionView: UICollectionView!
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var filterButton: UIButton!
     @IBOutlet weak var closeButton: UIButton!
+    @IBOutlet weak var checkmarkButton: UIButton!
     @IBOutlet weak var radiusLabel: UILabel!
     @IBOutlet weak var radiusSlider: UISlider!
-    @IBOutlet weak var filterHeightConstraint: NSLayoutConstraint!
     @IBOutlet weak var filterView: UIView!
     @IBOutlet weak var nearbyView: UIView!
     @IBOutlet weak var nearbyPhotoLabel: UILabel!
-    
     let locationManager = CLLocationManager()
     var photoArray: [Photo]?
     var didRequestLocation = false
@@ -35,63 +34,44 @@ class SearchLocationViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view
-
-        let attachment = NSTextAttachment()
-        attachment.image = UIImage(named: "nearbyIcon")
-        let attachmentString = NSAttributedString(attachment: attachment)
-        let nearbyPhotoString = NSMutableAttributedString(string: "Nearby Photo")
-        nearbyPhotoString.appendAttributedString(attachmentString)
-        nearbyPhotoLabel.attributedText = nearbyPhotoString
         
         let sliderKnobImage = UIImage(named: "sliderKnob")
         radiusSlider.setThumbImage(sliderKnobImage, forState: .Normal)
-        let filterIconImage = UIImage(named: "filterIcon")
-        filterButton.setImage(filterIconImage, forState: .Normal)
-        filterButton.setTitle(" Filter", forState: .Normal)
-        let checkmarkImage = UIImage(named: "checkmark")
-        filterButton.setImage(checkmarkImage, forState: .Selected)
-        filterButton.setTitle("", forState: .Selected)
         filterView.alpha = 0.0
         closeButton.alpha = 0.0
+        checkmarkButton.alpha = 0.0
         
         updateCurrentLocation()
     }
     
-    // MARK: - User Actions
-    
-    @IBAction func backButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
-    }
+    // MARK: User Actions
     
     @IBAction func filterButtonPressed(sender: AnyObject) {
-        filterButton.selected = !filterButton.selected
         UIView.animateWithDuration(0.5) { [weak self]() -> Void in
-            if let filterButton = self?.filterButton {
-                let alpha: CGFloat = filterButton.selected ? 1.0 : 0.0
-                self?.filterView.alpha = alpha
-                self?.closeButton.alpha = alpha
-                self?.nearbyView.alpha = (1 - alpha)
-            }
+            self?.filterView.alpha = 1.0
+            self?.closeButton.alpha = 1.0
+            self?.checkmarkButton.alpha = 1.0
+            self?.filterButton.alpha = 0.0
         }
-        
-        if !filterButton.selected {
-            updateCurrentLocation()
+        formerRadius = Int(radiusSlider.value)
+    }
+    
+    @IBAction func checkmarkButtonPressed(sender: AnyObject) {
+        UIView.animateWithDuration(0.5) { [weak self]() -> Void in
+            self?.filterView.alpha = 0.0
+            self?.closeButton.alpha = 0.0
+            self?.checkmarkButton.alpha = 0.0
+            self?.filterButton.alpha = 1.0
         }
-        else{
-            formerRadius = Int(radiusSlider.value)
-        }
+        updateCurrentLocation()
     }
     
     @IBAction func closeButtonPressed(sender: AnyObject) {
-        filterButton.selected = !filterButton.selected
         UIView.animateWithDuration(0.5) { [weak self]() -> Void in
-            if let filterButton = self?.filterButton {
-                let alpha: CGFloat = filterButton.selected ? 1.0 : 0.0
-                self?.filterView.alpha = alpha
-                self?.closeButton.alpha = alpha
-                self?.nearbyView.alpha = (1 - alpha)
-            }
+            self?.filterView.alpha = 0.0
+            self?.closeButton.alpha = 0.0
+            self?.checkmarkButton.alpha = 0.0
+            self?.filterButton.alpha = 1.0
         }
         radiusSlider.value = Float(formerRadius)
         let radius = Int(radiusSlider.value)
@@ -103,7 +83,7 @@ class SearchLocationViewController: UIViewController {
         radiusLabel.text = "\(radius) Miles"
     }
 
-    // MARK: - Location Methods
+    // MARK: Location Methods
     
     private func updateCurrentLocation() {
         let status = CLLocationManager.authorizationStatus()
@@ -135,9 +115,9 @@ class SearchLocationViewController: UIViewController {
 
             self?.photoArray = objects as? [Photo]
             if objects?.count == 0 {
-                self?.showAlert("None Result", message: "No nearby photo found. Upload one!")
+                self?.showAlert("None Result", message: "No nearby photos found. Upload one!")
             }
-            self?.collectionView.reloadData()
+            self?.tableView.reloadData()
             print("Photo query success. Number photos: \(objects?.count)")
         }
     }
@@ -150,45 +130,45 @@ class SearchLocationViewController: UIViewController {
     }
 }
 
-// MARK: - UICollectionViewDataSource
+// MARK: - UITableViewDataSource
 
-extension SearchLocationViewController: UICollectionViewDataSource {
-    func numberOfSectionsInCollectionView(locationCollectionView: UICollectionView) -> Int {
-        return 1
-    }
-  
-    func collectionView(locationCollectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+extension SearchLocationViewController: UITableViewDataSource {
+    
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if let photoArray = photoArray {
             return photoArray.count
         }
         return 0
     }
     
-    func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCellWithReuseIdentifier("Cell", forIndexPath: indexPath)
-        guard let pfImageView = cell.viewWithTag(1) as? PFImageView,
-            photoArray = photoArray
-        else {
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCellWithIdentifier("Cell") as! SearchLocationTableViewCell
+        guard let photoArray = photoArray else {
             return cell
         }
         
         let photo = photoArray[indexPath.item]
-        pfImageView.contentMode = .ScaleAspectFit
-        pfImageView.file = photo.thumbnail
-        pfImageView.loadInBackground()
+        cell.photoImageView.contentMode = .ScaleAspectFit
+        cell.photoImageView.file = photo.thumbnail
+        cell.photoImageView.loadInBackground()
+        cell.commentLabel.text = photo.descriptiveText ?? ""
+        cell.usernameLabel.text = photo.owner?.username ?? "Anonymous"
+        // TODO: UPDATE PROFILE PHOTO AFTER WE ALTER PHOTO OWNER TO USER INSTEAD OF PFUSER
+        // cell.profilePhotoImageView.image = ...?
         return cell
     }
+    
 }
 
-// MARK: - UICollectionViewDelegate
+// MARK: - UITableViewDelegate
 
-extension SearchLocationViewController: UICollectionViewDelegate {
-    func collectionView(locationCollectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+extension SearchLocationViewController: UITableViewDelegate {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
         if let photoArray = photoArray {
             let photo = photoArray[indexPath.item]
             vc.photo = photo
-            presentViewController(vc, animated: true, completion: nil)
+            navigationController?.pushViewController(vc, animated: true)
         }
     }
 }

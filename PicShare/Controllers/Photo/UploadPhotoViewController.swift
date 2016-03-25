@@ -34,7 +34,7 @@ class UploadPhotoViewController: UIViewController {
     // MARK: - User Actions
     
     @IBAction func backButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func uploadToEvent(sender: AnyObject) {
@@ -52,12 +52,15 @@ class UploadPhotoViewController: UIViewController {
             thumbFile = PFFile(name: "thumbnail.png", data: thumbImageData),
             user = PFUser.currentUser()
         {
-            photo = Photo(image: imageFile, thumbnail: thumbFile, owner: user, event: nil, location: nil, descriptiveText: nil)
-            if let descritpiveText = descriptionTextField.text {
-                if let photo = photo {
-                    photo.descriptiveText = descritpiveText
-                }
+            let whiteSpaceSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+            guard let text = descriptionTextField.text
+                where text.stringByTrimmingCharactersInSet(whiteSpaceSet) != ""
+            else {
+                showAlert("Comment Missing", message: "Please Enter a valid Comment")
+                return
             }
+            
+            photo = Photo(image: imageFile, thumbnail: thumbFile, owner: user, event: nil, location: nil, descriptiveText: text)
             self.performSegueWithIdentifier("showSelectEventScreen", sender: self)
         }
     }
@@ -101,9 +104,12 @@ class UploadPhotoViewController: UIViewController {
             thumbFile = PFFile(name: "thumbnail.png", data: thumbImageData),
             user = PFUser.currentUser()
         {
-            var text = ""
-            if let descritpiveText = descriptionTextField.text {
-                text = descritpiveText
+            let whiteSpaceSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+            guard let text = descriptionTextField.text
+                where text.stringByTrimmingCharactersInSet(whiteSpaceSet) != ""
+            else {
+                showAlert("Comment Missing", message: "Please Enter a valid Comment")
+                return
             }
             
             activityIndicatorView.startAnimating()
@@ -111,7 +117,8 @@ class UploadPhotoViewController: UIViewController {
                 if success {
                     thumbFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
                         if success {
-                            self?.proceedToUploadPhoto(imageFile, thumbFile: thumbFile, user: user, geoPoint: geoPoint, text: text)
+                            self?.proceedToUploadPhoto(imageFile, thumbFile: thumbFile,
+                                user: user, geoPoint: geoPoint, text: text)
                         } else {
                             // TODO: SHOW ERROR MESSAGE
                         }
@@ -121,7 +128,8 @@ class UploadPhotoViewController: UIViewController {
                 } else {
                     // TODO: SHOW ERROR MESSAGE
                 }
-            }, progressBlock: { (progress) -> Void in
+            },
+            progressBlock: { (progress) -> Void in
                 print("image progress: \(progress)%")
             })
         } else {
@@ -139,7 +147,7 @@ class UploadPhotoViewController: UIViewController {
         
         photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
             self?.activityIndicatorView.stopAnimating()
-            self?.dismissViewControllerAnimated(true, completion: nil)
+            self?.navigationController?.popViewControllerAnimated(true)
         }
     }
     

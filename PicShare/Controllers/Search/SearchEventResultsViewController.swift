@@ -73,7 +73,7 @@ class SearchEventResultsViewController: UIViewController, UITableViewDataSource,
     }
     
     @IBAction func backButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     // MARK: - Private

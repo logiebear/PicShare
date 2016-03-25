@@ -41,7 +41,7 @@ class PhotoDetailViewController: UIViewController {
     // MARK: - User Actions
     
     @IBAction func closeButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func downloadButtonPressed(sender: AnyObject) {
@@ -75,7 +75,7 @@ class PhotoDetailViewController: UIViewController {
             print("YES Pressed")
             if let photo = self.photo {
                 photo.deleteInBackground()
-                self.dismissViewControllerAnimated(true, completion: nil)
+                self.navigationController?.popViewControllerAnimated(true)
             }
         }
         let cancelAction = UIAlertAction(title: "NO", style: UIAlertActionStyle.Cancel) {
