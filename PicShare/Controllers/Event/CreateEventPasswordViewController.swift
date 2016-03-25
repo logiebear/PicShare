@@ -41,7 +41,7 @@ class CreateEventPasswordViewController: UIViewController{
     // MARK: - User Actions
     
     @IBAction func backButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
     }
     
     @IBAction func finishedButtonPressed(sender: AnyObject) {

@@ -31,7 +31,7 @@ class UploadPhotoToEventViewController: UIViewController {
     // MARK: - User Actions
     
     @IBAction func backButtonPressed(sender: AnyObject) {
-        dismissViewControllerAnimated(true, completion: nil)
+        navigationController?.popViewControllerAnimated(true)
     }
 
     @IBAction func UploadButtonPressed(sender: AnyObject) {
@@ -87,10 +87,10 @@ class UploadPhotoToEventViewController: UIViewController {
             owner: user,
             event: self.event, location: nil, descriptiveText: text)
         
-        photo.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
+        photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
             self?.activityIndicatorView.stopAnimating()
-            self?.dismissViewControllerAnimated(true, completion: nil)
-            })
+            self?.navigationController?.popViewControllerAnimated(true)
+        }
     }
     
     func showErrorView(title: String, msg: String) {
