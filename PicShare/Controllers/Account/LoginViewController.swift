@@ -17,7 +17,6 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var loginButton: UIButton!
     
     override func viewDidLoad() {
-        loginUserNameInput.autocorrectionType = .No
         super.viewDidLoad()
         
         let gestureRecognizer = UITapGestureRecognizer()

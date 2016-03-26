@@ -11,6 +11,7 @@ import Parse
 
 class UploadPhotoToEventViewController: UIViewController {
 
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
@@ -26,6 +27,14 @@ class UploadPhotoToEventViewController: UIViewController {
         imageView.contentMode = .ScaleAspectFit
         imageView.image = image
         print(event)
+        
+        let gestureRecognizer = UITapGestureRecognizer()
+        gestureRecognizer.addTarget(self, action: "resignKeyboard")
+        gestureRecognizer.delegate = self
+        view.addGestureRecognizer(gestureRecognizer)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide",
+                                                         name: UIKeyboardDidHideNotification, object: nil)
     }
     
     // MARK: - User Actions
@@ -100,4 +109,36 @@ class UploadPhotoToEventViewController: UIViewController {
         alertView.addAction(OKAction)
         self.presentViewController(alertView, animated: true, completion: nil)
     }
+    
+    func resignKeyboard() {
+        commentTextField.resignFirstResponder()
+    }
+    
+    // MARK: Notification
+    
+    func keyboardDidHide() {
+        scrollView.setContentOffset(CGPointZero, animated: true)
+        resignKeyboard()
+    }
 }
+
+// MARK: - UITextFieldDelegate
+
+extension UploadPhotoToEventViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        UIView.animateWithDuration(0.25) {
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: 40), animated: false)
+        }
+    }
+    
+}
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension UploadPhotoToEventViewController: UIGestureRecognizerDelegate {}

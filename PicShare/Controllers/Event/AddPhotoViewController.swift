@@ -59,7 +59,7 @@ class AddPhotoViewController: UIViewController {
     }
     
     @IBAction func backButtonPressed(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popToRootViewControllerAnimated(true)
     }
     
 }
