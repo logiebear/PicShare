@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gdO-Tc-kII">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15D21" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="gdO-Tc-kII">
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
@@ -344,7 +344,7 @@
                             <constraint firstItem="fHK-8M-ZEB" firstAttribute="leading" secondItem="xJO-gZ-8S4" secondAttribute="leading" id="woV-gh-RGB"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Nearby" image="nearbyIcon" id="FsI-pV-8EM" userLabel="Nearby"/>
+                    <tabBarItem key="tabBarItem" title="Nearby" image="nearbyIconSelected" id="FsI-pV-8EM" userLabel="Nearby"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
@@ -591,7 +591,7 @@
                             <constraint firstItem="OZE-EP-vJX" firstAttribute="top" secondItem="zEZ-R0-qfk" secondAttribute="bottom" id="xPQ-y7-D7b"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Search" image="hashtag" id="hKS-5M-rbp"/>
+                    <tabBarItem key="tabBarItem" title="Search" image="searchEventsIconSelected" id="hKS-5M-rbp"/>
                     <connections>
                         <outlet property="createNewEventButton" destination="sXU-fq-CTi" id="Ano-bn-OGO"/>
                         <outlet property="dividingLineView" destination="Py5-u9-uDB" id="A2m-WF-2uD"/>
@@ -954,7 +954,7 @@
                                     <action selector="myPhotosButtonPressed:" destination="cas-Z6-giO" eventType="touchUpInside" id="qJ2-HC-GP0"/>
                                 </connections>
                             </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vkX-kM-akV">
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vkX-kM-akV" userLabel="View - Header">
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="60"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="100" translatesAutoresizingMaskIntoConstraints="NO" id="BBP-hM-Xhx">
@@ -964,14 +964,59 @@
                                             <constraint firstAttribute="height" constant="30" id="YeM-S8-GKZ"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Zw1-p3-ZL0" userLabel="View - Prism">
+                                        <rect key="frame" x="0.0" y="57" width="600" height="3"/>
+                                        <subviews>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MyS-iu-C61" userLabel="View - Blue">
+                                                <rect key="frame" x="0.0" y="0.0" width="150" height="3"/>
+                                                <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nZg-EQ-pcB" userLabel="View - Red">
+                                                <rect key="frame" x="150" y="0.0" width="150" height="3"/>
+                                                <color key="backgroundColor" red="0.91372549020000005" green="0.2274509804" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Axs-co-Z7P" userLabel="View - Green">
+                                                <rect key="frame" x="300" y="0.0" width="150" height="3"/>
+                                                <color key="backgroundColor" red="0.20784313730000001" green="0.87843137250000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
+                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="in9-yK-Jf7" userLabel="View - Yellow">
+                                                <rect key="frame" x="450" y="0.0" width="150" height="3"/>
+                                                <color key="backgroundColor" red="0.98039215690000003" green="0.85882352939999995" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
+                                            </view>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="bottom" secondItem="in9-yK-Jf7" secondAttribute="bottom" id="0Fb-41-3u7"/>
+                                            <constraint firstItem="Axs-co-Z7P" firstAttribute="top" secondItem="Zw1-p3-ZL0" secondAttribute="top" id="4Ya-Ry-cl4"/>
+                                            <constraint firstAttribute="bottom" secondItem="nZg-EQ-pcB" secondAttribute="bottom" id="6IF-Ma-IzI"/>
+                                            <constraint firstAttribute="trailing" secondItem="MyS-iu-C61" secondAttribute="trailing" multiplier="4/1" id="6d2-Kh-s0H"/>
+                                            <constraint firstItem="MyS-iu-C61" firstAttribute="top" secondItem="Zw1-p3-ZL0" secondAttribute="top" id="FGk-KH-IL0"/>
+                                            <constraint firstAttribute="bottom" secondItem="Axs-co-Z7P" secondAttribute="bottom" id="FuY-s9-QaH"/>
+                                            <constraint firstItem="in9-yK-Jf7" firstAttribute="top" secondItem="Zw1-p3-ZL0" secondAttribute="top" id="I0F-ZO-bTc"/>
+                                            <constraint firstItem="MyS-iu-C61" firstAttribute="width" secondItem="Zw1-p3-ZL0" secondAttribute="width" multiplier="1/4" id="JJ9-l7-dDx"/>
+                                            <constraint firstAttribute="trailing" secondItem="nZg-EQ-pcB" secondAttribute="trailing" multiplier="4/2" id="Lin-je-XR6"/>
+                                            <constraint firstItem="in9-yK-Jf7" firstAttribute="width" secondItem="MyS-iu-C61" secondAttribute="width" id="Qj1-5V-yLq"/>
+                                            <constraint firstAttribute="bottom" secondItem="MyS-iu-C61" secondAttribute="bottom" id="X0s-iN-S3J"/>
+                                            <constraint firstAttribute="trailing" secondItem="Axs-co-Z7P" secondAttribute="trailing" multiplier="4/3" id="X8F-PA-mWB"/>
+                                            <constraint firstAttribute="trailing" secondItem="in9-yK-Jf7" secondAttribute="trailing" id="c4f-hH-rIe"/>
+                                            <constraint firstItem="Axs-co-Z7P" firstAttribute="width" secondItem="MyS-iu-C61" secondAttribute="width" id="ciX-Mi-8Qn"/>
+                                            <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="3" id="eVs-2L-HOT"/>
+                                            <constraint firstAttribute="height" constant="3" id="kQG-qM-0jV"/>
+                                            <constraint firstItem="nZg-EQ-pcB" firstAttribute="width" secondItem="MyS-iu-C61" secondAttribute="width" id="p0c-o5-CNn"/>
+                                            <constraint firstItem="nZg-EQ-pcB" firstAttribute="top" secondItem="Zw1-p3-ZL0" secondAttribute="top" id="tc7-tZ-C8v"/>
+                                        </constraints>
+                                    </view>
                                 </subviews>
-                                <color key="backgroundColor" red="0.35686274509999999" green="0.76470588240000004" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="60" id="33V-DE-OPx"/>
                                     <constraint firstItem="BBP-hM-Xhx" firstAttribute="centerY" secondItem="vkX-kM-akV" secondAttribute="centerY" id="4pn-XC-gUe"/>
+                                    <constraint firstItem="Zw1-p3-ZL0" firstAttribute="leading" secondItem="vkX-kM-akV" secondAttribute="leading" id="PCQ-B7-kTD"/>
+                                    <constraint firstAttribute="trailing" secondItem="Zw1-p3-ZL0" secondAttribute="trailing" id="RXv-9v-pxQ"/>
+                                    <constraint firstAttribute="bottom" secondItem="Zw1-p3-ZL0" secondAttribute="bottom" id="Tgt-az-kU3"/>
                                     <constraint firstItem="BBP-hM-Xhx" firstAttribute="centerX" secondItem="vkX-kM-akV" secondAttribute="centerX" id="xPX-Yh-uIR"/>
                                 </constraints>
                             </view>
@@ -992,7 +1037,7 @@
                             <constraint firstItem="o4A-rT-r7T" firstAttribute="top" secondItem="vsE-b5-cyX" secondAttribute="bottom" constant="50" id="yAN-Ys-JQH"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Photos" id="aXB-6m-i7K"/>
+                    <tabBarItem key="tabBarItem" title="Photos" image="cameraIcon" id="aXB-6m-i7K"/>
                     <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="takePhotoButton" destination="bMW-gC-Dbo" id="Qiz-fS-mW2"/>
@@ -1782,7 +1827,7 @@
                             </mask>
                         </variation>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Profile" image="profileIcon.png" id="moU-SC-eBL">
+                    <tabBarItem key="tabBarItem" title="Profile" image="profileIconSelected" id="moU-SC-eBL">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
                         <userDefinedRuntimeAttributes>
                             <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
@@ -2101,7 +2146,7 @@
                                             <constraint firstAttribute="height" constant="30" id="s8l-f6-mI5"/>
                                         </constraints>
                                         <fontDescription key="fontDescription" type="boldSystem" pointSize="24"/>
-                                        <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <color key="textColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZrT-Ay-lEG">
@@ -2120,7 +2165,7 @@
                                         </connections>
                                     </button>
                                 </subviews>
-                                <color key="backgroundColor" red="0.35686274509999999" green="0.76470588240000004" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstItem="6vb-cN-Js7" firstAttribute="centerX" secondItem="Uc2-nl-97o" secondAttribute="centerX" id="7tl-K4-eLd"/>
                                     <constraint firstAttribute="height" constant="60" id="8vH-ir-Wzg"/>
@@ -2232,7 +2277,7 @@
                             <constraint firstAttribute="trailing" secondItem="Uc2-nl-97o" secondAttribute="trailing" id="vnw-Xv-8Vz"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Events" id="gM3-VY-Sf5"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="myEventsIconSelected" id="gM3-VY-Sf5"/>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
@@ -2796,24 +2841,27 @@
     </scenes>
     <resources>
         <image name="backButton" width="8" height="11"/>
+        <image name="cameraIcon" width="34" height="29"/>
         <image name="cameraRollIcon" width="17" height="17"/>
         <image name="checkmark" width="18" height="14"/>
         <image name="close" width="14" height="14"/>
         <image name="congratsAddPhotoBanner" width="354" height="223"/>
         <image name="filterIcon" width="14" height="14"/>
-        <image name="hashtag" width="15" height="14"/>
         <image name="logo" width="119" height="32"/>
+        <image name="myEventsIconSelected" width="45" height="45"/>
         <image name="nearbyIcon" width="11" height="11"/>
+        <image name="nearbyIconSelected" width="45" height="45"/>
         <image name="popupClose" width="25" height="25"/>
         <image name="privateIcon" width="14" height="21"/>
-        <image name="profileIcon.png" width="25" height="25"/>
+        <image name="profileIconSelected" width="37" height="37"/>
         <image name="profilePlaceholder" width="650" height="650"/>
         <image name="publicIcon" width="18" height="21"/>
+        <image name="searchEventsIconSelected" width="45" height="45"/>
         <image name="takePhotoIcon" width="17" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
+        <segue reference="SR9-up-W5U"/>
         <segue reference="OG7-Bd-fLq"/>
         <segue reference="Qma-si-Utr"/>
-        <segue reference="SR9-up-W5U"/>
     </inferredMetricsTieBreakers>
 </document>
