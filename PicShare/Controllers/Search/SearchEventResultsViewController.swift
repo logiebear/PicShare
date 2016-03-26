@@ -166,6 +166,14 @@ class SearchEventResultsViewController: UIViewController, UITableViewDataSource,
                     cell.joinButton.setImage(nil, forState: .Normal)
                     cell.joinButton.setTitle("JOIN", forState: UIControlState.Normal)
                 }
+                if eventArray[row].owner.objectId == self.user?.objectId {
+                    cell.joinButton.setTitle("", forState: UIControlState.Normal)
+                    cell.joinButton.frame = CGRectMake(1, 1, 43, 34)
+                    cell.joinButton.setImage(checkIcon, forState: .Normal)
+                } else {
+                    cell.joinButton.setImage(nil, forState: .Normal)
+                    cell.joinButton.setTitle("JOIN", forState: UIControlState.Normal)
+                }
             }
             isPublic = eventArray[row].isPublic
             if let createdAt = eventArray[row].createdAt {
