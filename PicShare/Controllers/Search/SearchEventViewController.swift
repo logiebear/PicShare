@@ -43,11 +43,6 @@ class SearchEventViewController: UIViewController {
     }
     
     // MARK: - User Actions
-    
-    @IBAction func backButtonPressed(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
-    }
-    
     @IBAction func searchEventButtonPressed(sender: AnyObject) {
         if eventNameTextField.text == "" || eventNameTextField.text == nil {
             showAlert("Invalid event name", message: "Event name can't be empty!")
