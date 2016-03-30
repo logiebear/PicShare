@@ -27,12 +27,21 @@ class SelectUploadEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "EventCell")
+        
         let eventQuery = PFQuery(className: "Event");
-        if let user = PFUser.currentUser() {
+        let userEventQuery = User.allEventsForCurrentUserQuery()
+        if let user = User.currentUser() {
             eventQuery.whereKey("owner", equalTo: user)
             eventQuery.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) in
-                self?.eventArray = objects as? [Event] ?? []
-                self?.tableView.reloadData()
+                let ownedEvents = objects as? [Event] ?? []
+                self?.eventArray = ownedEvents
+                userEventQuery?.getFirstObjectInBackgroundWithBlock{ (object, error) -> Void in
+                    if let user = object as? User {
+                        let joinedEvents = user.events ?? []
+                        self?.eventArray.appendContentsOf(joinedEvents)
+                        self?.tableView.reloadData()
+                    }
+                }
             }
         }
         else {
