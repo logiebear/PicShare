@@ -13,73 +13,131 @@ import ParseUI
 
 class SearchEventViewController: UIViewController {
 
-    @IBOutlet weak var promptLabel: UILabel!
+    @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var searchView: UIView!
-    @IBOutlet weak var noResultsView: UIView!
-    @IBOutlet weak var eventNameTextField: UITextField!
-    @IBOutlet weak var eventSearchButton: UIButton!
-    @IBOutlet weak var logo: UIImageView!
     @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var createNewEventButton: UIButton!
-    @IBOutlet weak var dividingLineView: UIImageView!
-    @IBOutlet weak var heightConstraint: NSLayoutConstraint!
-    var eventArray: [Event]?
+    @IBOutlet weak var searchEventTextField: UITextField!
+    @IBOutlet weak var retrySearchTextField: UITextField!
     
     override func viewDidLoad() {
-        logo.image = UIImage(named: "logo")
-        dividingLineView.image = UIImage(named: "orBarImage")
-        let sharpIcon = UIImage(named: "hashtag")
-        createNewEventButton.frame = CGRectMake(18, 15, 28, 25)
-        createNewEventButton.setImage(sharpIcon, forState: .Normal)
-        eventSearchButton.frame = CGRectMake(18, 15, 28, 25)
-        eventSearchButton.setImage(sharpIcon, forState: .Normal)
+        searchView.hidden = false
+        scrollView.hidden = true
+        
+        let gestureRecognizer = UITapGestureRecognizer()
+        gestureRecognizer.addTarget(self, action: "resignKeyboard")
+        gestureRecognizer.delegate = self
+        view.addGestureRecognizer(gestureRecognizer)
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide",
+                                                         name: UIKeyboardDidHideNotification, object: nil)
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        if (segue.identifier == "SearchResults") {
+        if segue.identifier == "SearchResults" {
             let svc = segue.destinationViewController as! SearchEventResultsViewController;
-            svc.eventArray = eventArray
+            svc.eventArray = sender as? [Event]
         }
     }
     
     // MARK: - User Actions
-    @IBAction func searchEventButtonPressed(sender: AnyObject) {
-        if eventNameTextField.text == "" || eventNameTextField.text == nil {
+    
+    @IBAction func searchEventButtonPressed(sender: AnyObject? = nil) {
+        guard let searchText = searchEventTextField.text where searchText != "" else {
             showAlert("Invalid event name", message: "Event name can't be empty!")
             return
-        } else {
-            self.queryForSpecificEvents(eventNameTextField.text!)
         }
+        
+        queryForSpecificEvents(searchText)
+    }
+    
+    @IBAction func retrySearchEventButtonPressed(sender: AnyObject? = nil) {
+        guard let searchText = retrySearchTextField.text where searchText != "" else {
+            showAlert("Invalid event name", message: "Event name can't be empty!")
+            return
+        }
+        
+        queryForSpecificEvents(searchText)
     }
     
     @IBAction func createNewEventButtonPressed(sender: AnyObject) {
-        self.performSegueWithIdentifier("NewEvent", sender: nil)
+        performSegueWithIdentifier("NewEvent", sender: nil)
     }
     
-    // MARK: - Private
+    // MARK: - Helpers
     
-    private func queryForSpecificEvents(event: String) {
-        guard let query = Event.queryEventsWithSubstring(event) else {
+    private func queryForSpecificEvents(searchText: String) {
+        resignKeyboard()
+        guard let query = Event.queryEventsWithSubstring(searchText) else {
             return
         }
 
         query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
-                // TODO:
+                // TODO: Find better error solution
+                self?.showAlert("Error", message: error.localizedDescription)
                 print("Error: \(error) \(error.userInfo)")
                 return
             }
-            self?.eventArray = objects as? [Event]
+            
             print("Event query success. Number events: \(objects?.count)")
-            if objects?.count != 0 {
-                self?.performSegueWithIdentifier("SearchResults", sender: nil)
-                self?.promptLabel.text = "Search for event keywords"
+            if let events = objects as? [Event] where events.count > 0 {
+                self?.performSegueWithIdentifier("SearchResults", sender: events)
             } else {
-                self?.eventNameLabel.text = self?.eventNameTextField.text
-                self?.promptLabel.text = "Try again with different keywords."
+                self?.eventNameLabel.text = searchText
+                self?.retrySearchTextField.text = nil
+                self?.searchView.hidden = true
+                self?.scrollView.hidden = false
             }
-            self?.eventNameTextField.text = nil
         }
+    }
+    
+    func resignKeyboard() {
+        searchEventTextField.resignFirstResponder()
+        retrySearchTextField.resignFirstResponder()
+    }
+    
+    // MARK: Notification
+    
+    func keyboardDidHide() {
+        scrollView.setContentOffset(CGPointZero, animated: true)
+    }
+    
+}
+
+// MARK: - UITextFieldDelegate
+
+extension SearchEventViewController: UITextFieldDelegate {
+    
+    func textFieldShouldReturn(textField: UITextField) -> Bool {
+        if textField == searchEventTextField {
+            searchEventTextField.resignFirstResponder()
+            searchEventButtonPressed()
+        } else if textField == retrySearchTextField {
+            retrySearchTextField.resignFirstResponder()
+            retrySearchEventButtonPressed()
+        }
+        return true
+    }
+    
+    func textFieldDidBeginEditing(textField: UITextField) {
+        if textField == retrySearchTextField {
+            UIView.animateWithDuration(0.25) {
+                self.scrollView.setContentOffset(CGPoint(x: 0, y: 150), animated: false)
+            }
+        }
+    }
+    
+}
+
+// MARK: - UIGestureRecognizerDelegate
+
+extension SearchEventViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if let view = touch.view where view is UIControl {
+            return false
+        }
+        return true
     }
     
 }
