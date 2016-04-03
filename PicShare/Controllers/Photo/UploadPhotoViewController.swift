@@ -168,7 +168,6 @@ class UploadPhotoViewController: UIViewController {
     
     func keyboardDidHide() {
         scrollView.setContentOffset(CGPointZero, animated: true)
-        resignKeyboard()
     }
 }
 
@@ -203,9 +202,12 @@ extension UploadPhotoViewController: UITextFieldDelegate {
 // MARK: - UIGestureRecognizerDelegate
 
 extension UploadPhotoViewController: UIGestureRecognizerDelegate {
-    
+
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
-        return !(touch.view is UIControl)
+        if let view = touch.view where view is UIControl {
+            return false
+        }
+        return true
     }
     
 }

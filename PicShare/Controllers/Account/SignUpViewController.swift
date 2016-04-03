@@ -145,7 +145,6 @@ class SignUpViewController: UIViewController {
     
     func keyboardDidHide() {
         scrollView.setContentOffset(CGPointZero, animated: true)
-        resignKeyboard()
     }
 }
 
@@ -177,4 +176,13 @@ extension SignUpViewController: UITextFieldDelegate {
 
 // MARK: - UIGestureRecognizerDelegate
 
-extension SignUpViewController: UIGestureRecognizerDelegate {}
+extension SignUpViewController: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        if let view = touch.view where view is UIControl {
+            return false
+        }
+        return true
+    }
+    
+}
