@@ -194,7 +194,7 @@
                                     <constraint firstItem="aRF-qf-07D" firstAttribute="centerY" secondItem="Twl-Kb-nWO" secondAttribute="centerY" id="NZP-G7-FJw"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="380" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fHK-8M-ZEB">
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="380" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fHK-8M-ZEB">
                                 <rect key="frame" x="0.0" y="124" width="375" height="543"/>
                                 <color key="backgroundColor" red="0.85098039219999999" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <prototypes>
@@ -352,9 +352,15 @@
                             <constraint firstItem="fHK-8M-ZEB" firstAttribute="leading" secondItem="xJO-gZ-8S4" secondAttribute="leading" id="woV-gh-RGB"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Nearby" image="nearbyIconSelected" id="FsI-pV-8EM" userLabel="Nearby"/>
+                    <tabBarItem key="tabBarItem" title="Nearby" image="nearbyIconSelected" id="XT5-Mk-rC9" userLabel="Nearby">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.0" green="0.68235294117647061" blue="0.83921568627450982" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="checkmarkButton" destination="2qn-Hz-Da8" id="jWg-UX-YXX"/>
@@ -644,6 +650,11 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Search" image="searchEventsIconSelected" id="hKS-5M-rbp">
                         <offsetWrapper key="titlePositionAdjustment" horizontal="0.0" vertical="0.0"/>
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.9137254901960784" green="0.22745098039215686" blue="0.094117647058823528" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
                     </tabBarItem>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
@@ -2308,8 +2319,8 @@
                                     <constraint firstItem="lCy-9a-pox" firstAttribute="leading" secondItem="oYe-5z-k6y" secondAttribute="trailing" id="zuM-u5-3Jy"/>
                                 </constraints>
                             </view>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uNC-8U-PbK">
-                                <rect key="frame" x="0.0" y="63" width="375" height="540"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="uNC-8U-PbK">
+                                <rect key="frame" x="0.0" y="63" width="375" height="555"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <connections>
                                     <outlet property="dataSource" destination="b7N-KC-Kmb" id="G1v-eK-YTs"/>
@@ -2331,10 +2342,16 @@
                             <constraint firstAttribute="trailing" secondItem="Uc2-nl-97o" secondAttribute="trailing" id="vnw-Xv-8Vz"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Events" image="myEventsIconSelected" id="gM3-VY-Sf5"/>
+                    <tabBarItem key="tabBarItem" title="Events" image="myEventsIconSelected" selectedImage="myEventsIconSelected" id="d8Z-MM-ucg">
+                        <userDefinedRuntimeAttributes>
+                            <userDefinedRuntimeAttribute type="color" keyPath="tintColor">
+                                <color key="value" red="0.47450980392156861" green="0.83529411764705885" blue="0.066666666666666666" alpha="1" colorSpace="calibratedRGB"/>
+                            </userDefinedRuntimeAttribute>
+                        </userDefinedRuntimeAttributes>
+                    </tabBarItem>
                     <nil key="simulatedStatusBarMetrics"/>
                     <nil key="simulatedTopBarMetrics"/>
-                    <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedTabBarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
                         <outlet property="tableView" destination="uNC-8U-PbK" id="HdF-Qc-GXy"/>
                         <segue destination="395-qI-wdV" kind="show" identifier="ShowEventPreview" id="fQA-vj-Zxz"/>
@@ -2342,7 +2359,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CBt-ep-ufT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-650" y="-100"/>
+            <point key="canvasLocation" x="-650.5" y="-100.5"/>
         </scene>
         <!--Create Event View Controller-->
         <scene sceneID="Ivi-gi-Fox">
@@ -2903,16 +2920,16 @@
         <image name="filterIcon" width="14" height="14"/>
         <image name="hashtag" width="15" height="14"/>
         <image name="logo" width="119" height="32"/>
-        <image name="myEventsIconSelected" width="45" height="45"/>
+        <image name="myEventsIconSelected" width="25" height="25"/>
         <image name="nearbyIcon" width="11" height="11"/>
-        <image name="nearbyIconSelected" width="45" height="45"/>
+        <image name="nearbyIconSelected" width="25" height="25"/>
         <image name="orBarImage" width="172" height="11"/>
         <image name="popupClose" width="25" height="25"/>
         <image name="privateIcon" width="14" height="21"/>
-        <image name="profileIconSelected" width="37" height="37"/>
+        <image name="profileIconSelected" width="25" height="25"/>
         <image name="profilePlaceholder" width="650" height="650"/>
         <image name="publicIcon" width="18" height="21"/>
-        <image name="searchEventsIconSelected" width="45" height="45"/>
+        <image name="searchEventsIconSelected" width="25" height="25"/>
         <image name="takePhotoIcon" width="17" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
