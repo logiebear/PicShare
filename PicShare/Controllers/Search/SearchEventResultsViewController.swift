@@ -196,6 +196,3 @@ extension SearchEventResultsViewController: SearchEventTableViewCellDelegate {
     }
     
 }
-
-// MARK: - UITableViewDelegate
-
