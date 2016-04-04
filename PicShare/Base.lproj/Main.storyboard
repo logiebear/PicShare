@@ -980,6 +980,7 @@
                         <outlet property="popupView" destination="kWw-RU-3GA" id="VUz-MX-uO0"/>
                         <outlet property="quitEnterPasswordButton" destination="Y3Z-gJ-iyU" id="kUu-Vr-Ban"/>
                         <outlet property="resultTableView" destination="vHr-bW-X7k" id="hhv-2w-gFD"/>
+                        <segue destination="395-qI-wdV" kind="show" identifier="SpecificEventPreview" id="N9z-Sa-Xcs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhv-ll-KyL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2970,8 +2971,9 @@
         <image name="takePhotoIcon" width="17" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Xbf-fA-QIi"/>
+        <segue reference="SR9-up-W5U"/>
         <segue reference="OG7-Bd-fLq"/>
-        <segue reference="Cra-CO-7HR"/>
+        <segue reference="N9z-Sa-Xcs"/>
+        <segue reference="Xbf-fA-QIi"/>
     </inferredMetricsTieBreakers>
 </document>
