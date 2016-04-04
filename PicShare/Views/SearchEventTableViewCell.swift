@@ -8,10 +8,27 @@
 
 import UIKit
 
+protocol SearchEventTableViewCellDelegate: class {
+    func joinEvent(event: Event)
+}
+
 class SearchEventTableViewCell: UITableViewCell {
 
     @IBOutlet weak var eventLabel: UILabel!
     @IBOutlet weak var sublabel: UILabel!
     @IBOutlet weak var joinButton: UIButton!
+    @IBOutlet weak var checkmarkImageView: UIImageView!
+    var event: Event?
+    weak var delegate: SearchEventTableViewCellDelegate?
+    
+    @IBAction func joinButtonPressed(sender: AnyObject) {
+        if let event = event {
+            UIView.animateWithDuration(0.5, animations: { 
+                self.joinButton.alpha = 0.0
+                self.checkmarkImageView.alpha = 1.0
+            })
+            delegate?.joinEvent(event)
+        }
+    }
 
 }

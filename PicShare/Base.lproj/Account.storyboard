@@ -424,7 +424,7 @@
                                     </mask>
                                 </variation>
                             </view>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVC-hM-nIy">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVC-hM-nIy">
                                 <rect key="frame" x="180" y="89" width="240" height="240"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="240" id="10w-g2-4QY"/>
