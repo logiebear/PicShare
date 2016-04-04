@@ -12,12 +12,8 @@ class AddPhotoViewController: UIViewController {
 
     // MARK: - Properties
     @IBOutlet weak var congratsLabel: UILabel!
-    @IBOutlet weak var firstHalfTextField: UITextView!
     @IBOutlet weak var takePhotoButton: UIButton!
-    @IBOutlet weak var cameraRollButton: UIButton!
     @IBOutlet weak var eventNameLabel: UILabel!
-    @IBOutlet weak var secondHalfTextField: UITextView!
-    
     var hashtag: String?
     var event: Event?
     

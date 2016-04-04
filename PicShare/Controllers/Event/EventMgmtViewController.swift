@@ -61,7 +61,10 @@ class EventMgmtViewController: UIViewController {
     }
 }
 
+// MARK: - UITableViewDataSource
+
 extension EventMgmtViewController: UITableViewDataSource {
+    
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {
         return 1
     }
@@ -75,7 +78,10 @@ extension EventMgmtViewController: UITableViewDataSource {
         cell.textLabel?.text = eventArray[indexPath.row].hashtag
         return cell
     }
+    
 }
+
+// MARK: - UITableViewDelegate
 
 extension EventMgmtViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
