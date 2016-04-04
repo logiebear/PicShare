@@ -28,7 +28,7 @@ class PhotoHomeViewController: UIViewController {
         if segue.identifier == "UploadPhoto" {
             if let image = sender as? UIImage,
                 vc = segue.destinationViewController as? UploadPhotoViewController {
-                vc.image = image
+                vc.image = image.cropToSquare()
             }
         }
     }

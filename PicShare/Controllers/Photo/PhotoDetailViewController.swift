@@ -25,6 +25,8 @@ class PhotoDetailViewController: UIViewController {
             return
         }
         
+        deleteButton.hidden = photo.owner != PFUser.currentUser()
+        
         pfImageView.contentMode = .ScaleAspectFit
         pfImageView.file = photo.image
         

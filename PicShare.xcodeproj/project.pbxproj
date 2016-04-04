@@ -14,6 +14,7 @@
 		0A31F5671CA2168F000EB388 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5611CA2168F000EB388 /* Lato-Light.ttf */; };
 		0A31F5681CA2168F000EB388 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5621CA2168F000EB388 /* Lato-Medium.ttf */; };
 		0A31F5691CA2168F000EB388 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5631CA2168F000EB388 /* Lato-Regular.ttf */; };
+		0A5E608B1CB319D000D13974 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E608A1CB319D000D13974 /* UIImageExtension.swift */; };
 		0A79F9091C8D03A60051AB9D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79F9081C8D03A60051AB9D /* UIViewControllerExtension.swift */; };
 		0A79F90C1C8D07B60051AB9D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79F90B1C8D07B60051AB9D /* Utilities.swift */; };
 		0ABADAE11BF909BB001CB962 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0ABADAE01BF909BB001CB962 /* AppDelegate.swift */; };
@@ -89,6 +90,7 @@
 		0A31F5611CA2168F000EB388 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		0A31F5621CA2168F000EB388 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		0A31F5631CA2168F000EB388 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		0A5E608A1CB319D000D13974 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		0A79F9081C8D03A60051AB9D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		0A79F90B1C8D07B60051AB9D /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
 		0ABADADD1BF909BB001CB962 /* PicShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PicShare.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -193,6 +195,7 @@
 			isa = PBXGroup;
 			children = (
 				0A79F9081C8D03A60051AB9D /* UIViewControllerExtension.swift */,
+				0A5E608A1CB319D000D13974 /* UIImageExtension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -632,6 +635,7 @@
 				0AC2ABFC1CA4D596000A2230 /* RootViewController.swift in Sources */,
 				0AC2ABFD1CA4D596000A2230 /* SearchEventResultsViewController.swift in Sources */,
 				0AC2AC011CA4D596000A2230 /* EventPhotoCollectionViewCell.swift in Sources */,
+				0A5E608B1CB319D000D13974 /* UIImageExtension.swift in Sources */,
 				0AC2AC031CA4D596000A2230 /* TextField.swift in Sources */,
 				0AC2AC021CA4D596000A2230 /* SearchEventTableViewCell.swift in Sources */,
 				0AC2AC001CA4D596000A2230 /* TabBarViewController.swift in Sources */,

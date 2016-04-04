@@ -174,7 +174,7 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
         dismissViewControllerAnimated(true, completion: nil)
 
-        if let newProfilePhoto = image,
+        if let newProfilePhoto = image?.cropToSquare(),
             fullImage = newProfilePhoto.scaleAndRotateImage(960),
             fullImageData = UIImagePNGRepresentation(fullImage)
         {
