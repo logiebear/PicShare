@@ -976,6 +976,7 @@
                         <outlet property="popupView" destination="kWw-RU-3GA" id="VUz-MX-uO0"/>
                         <outlet property="quitEnterPasswordButton" destination="Y3Z-gJ-iyU" id="kUu-Vr-Ban"/>
                         <outlet property="resultTableView" destination="vHr-bW-X7k" id="hhv-2w-gFD"/>
+                        <segue destination="395-qI-wdV" kind="show" identifier="SpecificEventPreview" id="N9z-Sa-Xcs"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="mhv-ll-KyL" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -2550,7 +2551,6 @@
         <!--Add photos view controller-->
         <scene sceneID="Or0-LY-LE9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KBI-6t-7ar" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="AddPhotoView" id="Cfg-3N-ygj" userLabel="Add photos view controller" customClass="AddPhotoViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4o0-L0-8UF"/>
@@ -2749,6 +2749,7 @@
                         <segue destination="Xaf-Ra-DeP" kind="show" identifier="UploadPhoto" id="xRD-aF-o9R"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KBI-6t-7ar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="752.5" y="710.5"/>
         </scene>
@@ -2913,8 +2914,9 @@
         <image name="takePhotoIcon" width="17" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Ap3-7I-vfR"/>
-        <segue reference="Qma-si-Utr"/>
-        <segue reference="Cra-CO-7HR"/>
+        <segue reference="OG7-Bd-fLq"/>
+        <segue reference="Xbf-fA-QIi"/>
+        <segue reference="N9z-Sa-Xcs"/>
+        <segue reference="SR9-up-W5U"/>
     </inferredMetricsTieBreakers>
 </document>

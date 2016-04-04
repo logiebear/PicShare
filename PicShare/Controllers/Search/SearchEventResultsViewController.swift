@@ -22,12 +22,22 @@ class SearchEventResultsViewController: UIViewController {
     private var user: User?
     private var userEventArray = [Event]()
     private var selectedPrivateEvent: Event?
+    private var selectedEvent: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         view.bringSubviewToFront(popupView)
         popupView.alpha = 0.0
         queryForAllUserEvents()
+    }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "SpecificEventPreview" {
+            let svc = segue.destinationViewController as! EventPhotoScreenViewController
+            if let event = selectedEvent {
+                svc.event = event
+            }
+        }
     }
     
     // MARK: - User Actions
@@ -155,11 +165,20 @@ extension SearchEventResultsViewController: UITableViewDataSource {
 // MARK: - UITableViewDelegate
 
 extension SearchEventResultsViewController: UITableViewDelegate {
-    
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        // TODO: Enter event
+        resultTableView.deselectRowAtIndexPath(indexPath, animated: true)
+        selectedEvent = eventArray[indexPath.row]
+        guard let selectedEvent = selectedEvent else {
+            return
+        }
+        
+        selectedEvent.owner.fetchIfNeededInBackgroundWithBlock { (object, error) -> Void in
+            if error == nil {
+                self.performSegueWithIdentifier("SpecificEventPreview", sender: self)
+            }
+        }
     }
-    
 }
 
 // MARK: - SearchEventTableViewCellDelegate
@@ -177,3 +196,6 @@ extension SearchEventResultsViewController: SearchEventTableViewCellDelegate {
     }
     
 }
+
+// MARK: - UITableViewDelegate
+
