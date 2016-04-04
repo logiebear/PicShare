@@ -18,9 +18,10 @@ class ProfilePhotoViewController: UIViewController {
     var user: User?
     var currentContentViewController: UIViewController?
     
-    override func viewDidLoad() {
-        self.profilePhotoPreview.layer.cornerRadius = self.profilePhotoPreview.frame.size.width / 2;
-        self.profilePhotoPreview.clipsToBounds = true;
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
+        self.profilePhotoPreview.layer.cornerRadius = self.profilePhotoPreview.frame.size.height / 2
+        self.profilePhotoPreview.clipsToBounds = true
     }
     
     // MARK: - User Actions
@@ -104,8 +105,8 @@ extension ProfilePhotoViewController: UINavigationControllerDelegate, UIImagePic
     
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
         dismissViewControllerAnimated(true, completion: nil)
-        userProfilePhoto = image
-        profilePhotoPreview.image = image
+        userProfilePhoto = image.cropToSquare()
+        profilePhotoPreview.image = image.cropToSquare()
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
