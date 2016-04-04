@@ -18,6 +18,7 @@ class SearchEventViewController: UIViewController {
     @IBOutlet weak var eventNameLabel: UILabel!
     @IBOutlet weak var searchEventTextField: UITextField!
     @IBOutlet weak var retrySearchTextField: UITextField!
+    private var didPerformSearch = false
     
     override func viewDidLoad() {
         searchView.hidden = false
@@ -34,8 +35,8 @@ class SearchEventViewController: UIViewController {
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "SearchResults" {
-            let svc = segue.destinationViewController as! SearchEventResultsViewController;
-            svc.eventArray = sender as? [Event]
+            let svc = segue.destinationViewController as! SearchEventResultsViewController
+            svc.eventArray = sender as! [Event]
         }
     }
     
@@ -66,12 +67,16 @@ class SearchEventViewController: UIViewController {
     // MARK: - Helpers
     
     private func queryForSpecificEvents(searchText: String) {
+        if didPerformSearch { return }
+        didPerformSearch = true
+        
         resignKeyboard()
         guard let query = Event.queryEventsWithSubstring(searchText) else {
             return
         }
 
         query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
+            self?.didPerformSearch = false
             if let error = error {
                 // TODO: Find better error solution
                 self?.showAlert("Error", message: error.localizedDescription)
