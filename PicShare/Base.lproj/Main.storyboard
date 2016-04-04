@@ -1514,7 +1514,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Yao-E5-v18" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="81" y="-759"/>
+            <point key="canvasLocation" x="80.5" y="-715.5"/>
         </scene>
         <!--Photo Detail View Controller-->
         <scene sceneID="Tdm-Ye-DZ4">
@@ -2550,7 +2550,6 @@
         <!--Add photos view controller-->
         <scene sceneID="Or0-LY-LE9">
             <objects>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="KBI-6t-7ar" userLabel="First Responder" sceneMemberID="firstResponder"/>
                 <viewController storyboardIdentifier="AddPhotoView" id="Cfg-3N-ygj" userLabel="Add photos view controller" customClass="AddPhotoViewController" customModule="PicShare" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="4o0-L0-8UF"/>
@@ -2749,6 +2748,7 @@
                         <segue destination="Xaf-Ra-DeP" kind="show" identifier="UploadPhoto" id="xRD-aF-o9R"/>
                     </connections>
                 </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KBI-6t-7ar" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="752.5" y="710.5"/>
         </scene>
