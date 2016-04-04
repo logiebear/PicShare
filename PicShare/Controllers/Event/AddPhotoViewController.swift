@@ -32,8 +32,8 @@ class AddPhotoViewController: UIViewController {
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "UploadPhoto" {
             if let image = sender as? UIImage, vc = segue.destinationViewController as? UploadPhotoToEventViewController {
-                    vc.image = image
-                    vc.event = event
+                vc.image = image.cropToSquare()
+                vc.event = event
             }
         }
     }

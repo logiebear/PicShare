@@ -15,7 +15,6 @@ class UploadPhotoToEventViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    
     var image: UIImage?
     var hashtag: String?
     var event: Event?

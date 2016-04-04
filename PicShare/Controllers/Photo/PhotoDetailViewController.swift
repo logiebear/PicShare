@@ -14,7 +14,6 @@ class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var pfImageView: PFImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var deleteButton: UIButton!
-    
     var photo: Photo?
     private var image: UIImage?
     
@@ -25,6 +24,7 @@ class PhotoDetailViewController: UIViewController {
             return
         }
         
+        deleteButton.hidden = photo.owner != PFUser.currentUser()
         pfImageView.contentMode = .ScaleAspectFit
         pfImageView.file = photo.image
         
