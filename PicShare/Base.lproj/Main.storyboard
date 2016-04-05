@@ -2667,7 +2667,6 @@
                                             <color key="titleColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="backButtonPressed:" destination="ffY-kS-47b" eventType="touchUpInside" id="Xrh-dC-PYl"/>
                                             <action selector="backButtonPressed:" destination="Cfg-3N-ygj" eventType="touchUpInside" id="nSJ-0e-38v"/>
                                         </connections>
                                     </button>

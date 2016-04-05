@@ -103,7 +103,7 @@ class SearchLocationViewController: UIViewController {
     }
     
     private func queryForNearbyPhotos(location location: PFGeoPoint) {
-        guard let query = Photo.queryNearbyPhotosWithRadius(location, radiusInMiles: 1.0) else {
+        guard let query = Photo.queryNearbyPhotosWithRadius(location, radiusInMiles: Double(radiusSlider.value)) else {
             return
         }
         

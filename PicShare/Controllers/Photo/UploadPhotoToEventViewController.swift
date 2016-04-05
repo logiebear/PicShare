@@ -18,6 +18,7 @@ class UploadPhotoToEventViewController: UIViewController {
     var image: UIImage?
     var hashtag: String?
     var event: Event?
+    private var isUploadingPhoto = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -43,7 +44,8 @@ class UploadPhotoToEventViewController: UIViewController {
     }
 
     @IBAction func UploadButtonPressed(sender: AnyObject) {
-        self.uploadPhotoToEvent()
+        if isUploadingPhoto { return }
+        uploadPhotoToEvent()
     }
     
     // MARK: - Private
@@ -65,6 +67,7 @@ class UploadPhotoToEventViewController: UIViewController {
                 return
             }
             
+            isUploadingPhoto = true
             activityIndicatorView.startAnimating()
             imageFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
                 if success {
@@ -72,16 +75,18 @@ class UploadPhotoToEventViewController: UIViewController {
                         if success {
                             self?.proceedToUploadPhoto(imageFile, thumbFile: thumbFile, user: user, text: text)
                         } else {
-                            // TODO: SHOW ERROR MESSAGE
+                            self?.isUploadingPhoto = false
+                            self?.showAlert("Error", message: "Something went wrong while uploading your photo. Please try again")
                         }
-                        }, progressBlock: { (progress) -> Void in
-                            print("thumbnail progress: \(progress)%")
+                    }, progressBlock: { (progress) -> Void in
+                        print("thumbnail progress: \(progress)%")
                     })
                 } else {
-                    // TODO: SHOW ERROR MESSAGE
+                    self?.isUploadingPhoto = false
+                    self?.showAlert("Error", message: "Something went wrong while uploading your photo. Please try again")
                 }
-                }, progressBlock: { (progress) -> Void in
-                    print("image progress: \(progress)%")
+            }, progressBlock: { (progress) -> Void in
+                print("image progress: \(progress)%")
             })
         } else {
             print("Photo saving error")
@@ -97,9 +102,13 @@ class UploadPhotoToEventViewController: UIViewController {
             event: self.event, location: nil, descriptiveText: text)
         
         photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
-            self?.activityIndicatorView.stopAnimating()
-            self?.showAlert("Success", message: "You have uploaded your photo successfully.")
-            self?.navigationController?.popViewControllerAnimated(true)
+            if success {
+                self?.activityIndicatorView.stopAnimating()
+                self?.navigationController?.popViewControllerAnimated(true)
+            } else {
+                self?.showAlert("Error", message: "Something went wrong while uploading your photo. Please try again")
+            }
+            self?.isUploadingPhoto = false
         }
     }
     
