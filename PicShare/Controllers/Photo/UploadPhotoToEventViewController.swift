@@ -59,9 +59,10 @@ class UploadPhotoToEventViewController: UIViewController {
             thumbFile = PFFile(name: "thumbnail.png", data: thumbImageData),
             user = PFUser.currentUser()
         {
-            var text = ""
-            if let commentText = commentTextField.text {
-                text = commentText
+            let whiteSpaceSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+            guard let text = commentTextField.text where text.stringByTrimmingCharactersInSet(whiteSpaceSet) != "" else {
+                showAlert("Comment Missing", message: "Please Enter a valid Comment")
+                return
             }
             
             activityIndicatorView.startAnimating()
@@ -97,6 +98,7 @@ class UploadPhotoToEventViewController: UIViewController {
         
         photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
             self?.activityIndicatorView.stopAnimating()
+            self?.showAlert("Success", message: "You have uploaded your photo successfully.")
             self?.navigationController?.popViewControllerAnimated(true)
         }
     }
