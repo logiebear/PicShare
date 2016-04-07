@@ -38,6 +38,10 @@ class PhotoDetailViewController: UIViewController {
         }
     }
     
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+    }
+    
     // MARK: - User Actions
     
     @IBAction func closeButtonPressed(sender: AnyObject) {
