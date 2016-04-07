@@ -18,6 +18,8 @@ class UploadPhotoToEventViewController: UIViewController {
     var image: UIImage?
     var hashtag: String?
     var event: Event?
+    var progressView: UIProgressView?
+    var progressLabel: UILabel?
     private var isUploadingPhoto = false
     
     override func viewDidLoad() {
@@ -26,7 +28,7 @@ class UploadPhotoToEventViewController: UIViewController {
         // Do any additional setup after loading the view.
         imageView.contentMode = .ScaleAspectFit
         imageView.image = image
-        print(event)
+        addControls()
         
         let gestureRecognizer = UITapGestureRecognizer()
         gestureRecognizer.addTarget(self, action: "resignKeyboard")
@@ -87,6 +89,8 @@ class UploadPhotoToEventViewController: UIViewController {
                 }
             }, progressBlock: { (progress) -> Void in
                 print("image progress: \(progress)%")
+                self.progressView?.progress = Float(progress)
+                self.progressLabel?.text = "\(progress) %"
             })
         } else {
             print("Photo saving error")
@@ -124,11 +128,25 @@ class UploadPhotoToEventViewController: UIViewController {
         commentTextField.resignFirstResponder()
     }
     
-    // MARK: Notification
+    // MARK: - Notification
     
     func keyboardDidHide() {
         scrollView.setContentOffset(CGPointZero, animated: true)
     }
+    
+    func addControls() {
+        // Create Progress View Control
+        progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.Default)
+        progressView?.center = self.view.center
+        view.addSubview(progressView!)
+        
+        // Add Label
+        progressLabel = UILabel()
+        let frame = CGRectMake(view.center.x - 25, view.center.y - 100, 100, 50)
+        progressLabel?.frame = frame
+        view.addSubview(progressLabel!)
+    }
+    
 }
 
 // MARK: - UITextFieldDelegate

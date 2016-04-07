@@ -11,10 +11,13 @@ import Parse
 
 class SelectUploadEventViewController: UIViewController {
 
+    // MARK: - Properties
     @IBOutlet weak var tableView: UITableView!
-    
+    @IBOutlet weak var progressView: UIProgressView!
+    @IBOutlet weak var progressLabel: UILabel!
     var eventArray: [Event] = []
     var photo: Photo?
+    var image: UIImage?
     var selectedEventIndex: Int?
     var selectedEvent: Event? {
         didSet {
@@ -50,7 +53,7 @@ class SelectUploadEventViewController: UIViewController {
         }
     }
     
-    //MARK: - User Actions
+    // MARK: - User Actions
     
     @IBAction func backButtonPressed(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
@@ -69,25 +72,44 @@ class SelectUploadEventViewController: UIViewController {
             return
         }
         photo.event = selectedEvent
-        photo.saveInBackgroundWithBlock { [weak self](success: Bool, error: NSError?) in
-            if let error = error {
-                let alertView = UIAlertController(title: "Error",
-                    message: error.localizedDescription, preferredStyle: .Alert)
-                let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
-                alertView.addAction(OKAction)
-                self?.presentViewController(alertView, animated: true, completion: nil)
-                return
+        photo.image.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
+            if success {
+                photo.thumbnail.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
+                    if success {
+                        photo.saveInBackgroundWithBlock { [weak self](success: Bool, error: NSError?) in
+                            if let error = error {
+                                let alertView = UIAlertController(title: "Error",
+                                    message: error.localizedDescription, preferredStyle: .Alert)
+                                let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+                                alertView.addAction(OKAction)
+                                self?.presentViewController(alertView, animated: true, completion: nil)
+                                return
+                            }
+                            let alertView = UIAlertController(title: "Message",
+                                message: "Upload Success", preferredStyle: .Alert)
+                            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+                                self?.navigationController?.popToRootViewControllerAnimated(true)
+                            })
+                            alertView.addAction(OKAction)
+                            self?.presentViewController(alertView, animated: true, completion: nil)
+                        }
+                    } else {
+                        // TODO: SHOW ERROR MESSAGE
+                    }
+                    }, progressBlock: { (progress) -> Void in
+                        print("thumbnail progress: \(progress)%")
+                })
+            } else {
+                // TODO: SHOW ERROR MESSAGE
             }
-            let alertView = UIAlertController(title: "Message",
-                message: "Upload Success", preferredStyle: .Alert)
-            let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
-                self?.navigationController?.popToRootViewControllerAnimated(true)
+            },progressBlock: { (progress) -> Void in
+                print("image progress: \(progress)%")
+                self.progressView?.setProgress(Float(progress), animated: true)
+                self.progressLabel?.text = "\(progress) %"
             })
-            alertView.addAction(OKAction)
-            self?.presentViewController(alertView, animated: true, completion: nil)
         }
-    }
 }
+// Table view extension
 
 extension SelectUploadEventViewController: UITableViewDataSource {
     func numberOfSectionsInTableView(tableView: UITableView) -> Int {

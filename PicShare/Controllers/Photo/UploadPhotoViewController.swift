@@ -63,7 +63,6 @@ class UploadPhotoViewController: UIViewController {
                 showAlert("Comment Missing", message: "Please Enter a valid Comment")
                 return
             }
-            
             photo = Photo(image: imageFile, thumbnail: thumbFile, owner: user, event: nil, location: nil, descriptiveText: text)
             self.performSegueWithIdentifier("showSelectEventScreen", sender: self)
         }
