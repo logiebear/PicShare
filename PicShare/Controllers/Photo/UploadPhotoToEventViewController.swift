@@ -100,7 +100,7 @@ class UploadPhotoToEventViewController: UIViewController {
             thumbnail: thumbFile,
             owner: user,
             event: self.event, location: nil, descriptiveText: text)
-        
+        print("photo owner is  \(photo.owner)")
         photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
             if success {
                 self?.activityIndicatorView.stopAnimating()

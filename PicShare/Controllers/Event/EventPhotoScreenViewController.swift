@@ -115,7 +115,7 @@ extension EventPhotoScreenViewController: UICollectionViewDelegate {
         }
         else {
             let alertView = UIAlertController(title: "Delete Photo",
-                message: "Are you sure to delete this photo?", preferredStyle: .Alert)
+                message: "Delete this photo?", preferredStyle: .Alert)
             let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
                 let query = PFQuery(className: "Photo")
                 query.getObjectInBackgroundWithId(self.photoIDArray[indexPath.item]) { (object, error) -> Void in
