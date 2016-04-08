@@ -45,7 +45,7 @@ class Event: PFObject {
     
     class func queryEventsWithSubstring(event: String) -> PFQuery? {
         let query = PFQuery(className: Event.parseClassName())
-        query.whereKey("hashtag", containsString: event)
+        query.whereKey("hashtag", matchesRegex: event, modifiers: "i")
         query.orderByDescending("createdAt")
         return query
     }
