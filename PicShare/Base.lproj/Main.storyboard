@@ -2970,9 +2970,9 @@
         <image name="takePhotoIcon" width="17" height="15"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="SR9-up-W5U"/>
         <segue reference="OG7-Bd-fLq"/>
-        <segue reference="N9z-Sa-Xcs"/>
         <segue reference="Xbf-fA-QIi"/>
+        <segue reference="N9z-Sa-Xcs"/>
+        <segue reference="Cra-CO-7HR"/>
     </inferredMetricsTieBreakers>
 </document>

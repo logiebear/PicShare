@@ -36,6 +36,8 @@ class SearchEventResultsViewController: UIViewController {
             let svc = segue.destinationViewController as! EventPhotoScreenViewController
             if let event = selectedEvent {
                 svc.event = event
+                svc.userEventArray = userEventArray
+                svc.user = user
             }
         }
     }
@@ -172,10 +174,16 @@ extension SearchEventResultsViewController: UITableViewDelegate {
         guard let selectedEvent = selectedEvent else {
             return
         }
-        
-        selectedEvent.owner.fetchIfNeededInBackgroundWithBlock { (object, error) -> Void in
-            if error == nil {
-                self.performSegueWithIdentifier("SpecificEventPreview", sender: self)
+        if !selectedEvent.isPublic && !userEventArray.contains(selectedEvent) &&
+        !(selectedEvent.owner.objectId == user?.objectId){
+            popUpEventName.text = selectedEvent.hashtag
+            selectedPrivateEvent = selectedEvent
+            showPasswordPopup()
+        } else {
+            selectedEvent.owner.fetchIfNeededInBackgroundWithBlock { (object, error) -> Void in
+                if error == nil {
+                    self.performSegueWithIdentifier("SpecificEventPreview", sender: self)
+                }
             }
         }
     }
