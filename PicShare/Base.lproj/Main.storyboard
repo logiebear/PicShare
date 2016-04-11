@@ -41,6 +41,7 @@
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
         </mutableArray>
         <mutableArray key="Lato-Heavy.ttf">
             <string>Lato-Heavy</string>
@@ -1251,7 +1252,7 @@
                                     <constraint firstItem="4G8-F2-6m8" firstAttribute="centerX" secondItem="CgD-aE-dN8" secondAttribute="centerX" id="x7X-vj-jbz"/>
                                 </constraints>
                             </scrollView>
-                            <view alpha="0.69999999999999996" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iw8-FU-ZCs" userLabel="View - Progress">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Iw8-FU-ZCs" userLabel="View - Progress">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="tMu-Xk-OkH" userLabel="View - Popup">
@@ -1270,7 +1271,7 @@
                                         <color key="backgroundColor" red="0.85098039219999999" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="0.90008081896551728" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1287,6 +1288,9 @@
                         <outlet property="activityIndicatorView" destination="cyP-pT-M3w" id="Mii-VD-FaU"/>
                         <outlet property="descriptionTextField" destination="b9s-ds-Kwt" id="2Sv-wB-4ba"/>
                         <outlet property="imageView" destination="PYJ-or-0Yi" id="LDa-gS-pYF"/>
+                        <outlet property="popupView" destination="Iw8-FU-ZCs" id="ysr-EH-82s"/>
+                        <outlet property="progressLabel" destination="efu-2i-et0" id="18t-Ky-APx"/>
+                        <outlet property="progressView" destination="SOW-Tf-vRZ" id="gZX-lv-CAn"/>
                         <outlet property="scrollView" destination="CgD-aE-dN8" id="BR6-43-PKZ"/>
                         <segue destination="pTd-Vp-14w" kind="show" identifier="showSelectEventScreen" id="eHv-uP-Ofa"/>
                     </connections>
@@ -1375,7 +1379,7 @@
                                     <outlet property="delegate" destination="pTd-Vp-14w" id="ysn-09-KXz"/>
                                 </connections>
                             </tableView>
-                            <view alpha="0.69999998807907104" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZsG-iM-fKR" userLabel="View - Progress">
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ZsG-iM-fKR" userLabel="View - Progress">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rer-nF-Gis" userLabel="View - Popup">
@@ -1394,7 +1398,7 @@
                                         <color key="backgroundColor" red="0.85098039219999999" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                     </view>
                                 </subviews>
-                                <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="0.90008081900000003" colorSpace="calibratedRGB"/>
                             </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1411,6 +1415,9 @@
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="popupView" destination="ZsG-iM-fKR" id="12b-ur-aT8"/>
+                        <outlet property="progressLabel" destination="pln-mD-YbJ" id="4Mk-UY-NCS"/>
+                        <outlet property="progressView" destination="7Gd-dL-700" id="uMd-hg-yuf"/>
                         <outlet property="tableView" destination="qZa-KM-Zzc" id="AVP-fJ-F7V"/>
                     </connections>
                 </viewController>
@@ -2925,6 +2932,27 @@
                                     <constraint firstItem="4xz-qH-Lzz" firstAttribute="centerY" secondItem="tGh-fR-BJ1" secondAttribute="centerY" id="v1C-fe-7v3"/>
                                 </constraints>
                             </scrollView>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7xO-sj-KAf" userLabel="View - Progress">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="qxP-Ww-UwL" userLabel="View - Popup">
+                                        <rect key="frame" x="20" y="234" width="335" height="200"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Progress text goes here" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="W2m-hH-Ab7">
+                                                <rect key="frame" x="8" y="58" width="319" height="44"/>
+                                                <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="17"/>
+                                                <color key="textColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <progressView opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" verticalHuggingPriority="750" fixedFrame="YES" progressViewStyle="bar" progress="0.40000000596046448" translatesAutoresizingMaskIntoConstraints="NO" id="BYv-a3-sbb">
+                                                <rect key="frame" x="0.0" y="190" width="335" height="3"/>
+                                            </progressView>
+                                        </subviews>
+                                        <color key="backgroundColor" red="0.85098039219999999" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
+                                    </view>
+                                </subviews>
+                                <color key="backgroundColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="0.90008081900000003" colorSpace="calibratedRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -2940,6 +2968,9 @@
                         <outlet property="activityIndicatorView" destination="gkM-Xz-kIv" id="hOp-bN-waC"/>
                         <outlet property="commentTextField" destination="ie4-d3-bIc" id="YyA-sc-VQz"/>
                         <outlet property="imageView" destination="OIT-TN-0Kn" id="7GY-gD-qya"/>
+                        <outlet property="popupView" destination="7xO-sj-KAf" id="eXM-cB-F0s"/>
+                        <outlet property="progressLabel" destination="W2m-hH-Ab7" id="T04-wl-CZY"/>
+                        <outlet property="progressView" destination="BYv-a3-sbb" id="Kcp-OI-hev"/>
                         <outlet property="scrollView" destination="tGh-fR-BJ1" id="9ht-12-SU9"/>
                     </connections>
                 </viewController>

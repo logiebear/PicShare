@@ -15,6 +15,8 @@ class SelectUploadEventViewController: UIViewController {
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var progressView: UIProgressView!
     @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var popupView: UIView!
+    
     var eventArray: [Event] = []
     var photo: Photo?
     var image: UIImage?
@@ -30,6 +32,7 @@ class SelectUploadEventViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "EventCell")
+        popupView.alpha = 0.0
         
         let eventQuery = PFQuery(className: "Event");
         let userEventQuery = User.allEventsForCurrentUserQuery()
@@ -54,7 +57,6 @@ class SelectUploadEventViewController: UIViewController {
     }
     
     // MARK: - User Actions
-    
     @IBAction func backButtonPressed(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
@@ -71,6 +73,7 @@ class SelectUploadEventViewController: UIViewController {
         guard let photo = photo else {
             return
         }
+        showProgressIndicatorPopup()
         photo.event = selectedEvent
         photo.image.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
             if success {
@@ -85,6 +88,7 @@ class SelectUploadEventViewController: UIViewController {
                                 self?.presentViewController(alertView, animated: true, completion: nil)
                                 return
                             }
+                            self?.hideProgressIndicatorPopup()
                             let alertView = UIAlertController(title: "Message",
                                 message: "Upload Success", preferredStyle: .Alert)
                             let OKAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
@@ -98,16 +102,32 @@ class SelectUploadEventViewController: UIViewController {
                     }
                     }, progressBlock: { (progress) -> Void in
                         print("thumbnail progress: \(progress)%")
+                        self?.progressView?.setProgress(Float(progress) / 200.0 + 0.5, animated: true)
+                        self?.progressLabel?.text = "\(progress / 2 + 50) %"
                 })
             } else {
                 // TODO: SHOW ERROR MESSAGE
             }
             },progressBlock: { (progress) -> Void in
                 print("image progress: \(progress)%")
-                self.progressView?.setProgress(Float(progress), animated: true)
-                self.progressLabel?.text = "\(progress) %"
+                self.progressView?.setProgress(Float(progress) / 200.0, animated: true)
+                self.progressLabel?.text = "\(progress / 2) %"
             })
         }
+    
+    // MARK: - Private
+    private func showProgressIndicatorPopup() {
+        progressView.progress = 0.0
+        UIView.animateWithDuration(0.5) {
+            self.popupView.alpha = 1.0
+        }
+    }
+    
+    private func hideProgressIndicatorPopup() {
+        UIView.animateWithDuration(0.5) {
+            self.popupView.alpha = 0.0
+        }
+    }
 }
 // Table view extension
 

@@ -15,6 +15,11 @@ class UploadPhotoViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionTextField: UITextField!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var progressView: UIProgressView!
+    
     var image: UIImage?
     var photo: Photo?
     let locationManager = CLLocationManager()
@@ -22,6 +27,8 @@ class UploadPhotoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        popupView.alpha = 0.0
+
 
         // Do any additional setup after loading the view.
         imageView.contentMode = .ScaleAspectFit
@@ -87,7 +94,7 @@ class UploadPhotoViewController: UIViewController {
                     print("Error: \(error)")
                     return
                 }
-                
+                self?.showProgressIndicatorPopup()
                 if let geoPoint = geoPoint {
                     self?.uploadPhotoWithGeoPoint(geoPoint)
                 }
@@ -96,7 +103,19 @@ class UploadPhotoViewController: UIViewController {
     }
     
     // MARK: - Private
+
+    private func showProgressIndicatorPopup() {
+        progressView.progress = 0.0
+        UIView.animateWithDuration(0.5) {
+            self.popupView.alpha = 1.0
+        }
+    }
     
+    private func hideProgressIndicatorPopup() {
+        UIView.animateWithDuration(0.5) {
+            self.popupView.alpha = 0.0
+        }
+    }
     private func uploadPhotoWithGeoPoint(geoPoint: PFGeoPoint) {
         if let image = image,
             fullImage = image.scaleAndRotateImage(960), // Magic number
@@ -127,6 +146,8 @@ class UploadPhotoViewController: UIViewController {
                         }
                     }, progressBlock: { (progress) -> Void in
                         print("thumbnail progress: \(progress)%")
+                        self?.progressView?.setProgress(Float(progress) / 200.0 + 0.5, animated: true)
+                        self?.progressLabel?.text = "\(progress / 2 + 50) %"
                     })
                 } else {
                     // TODO: SHOW ERROR MESSAGE
@@ -134,6 +155,8 @@ class UploadPhotoViewController: UIViewController {
             },
             progressBlock: { (progress) -> Void in
                 print("image progress: \(progress)%")
+                self.progressView?.setProgress(Float(progress) / 200.0, animated: true)
+                self.progressLabel?.text = "\(progress / 2) %"
             })
         } else {
             print("Photo saving error")
@@ -149,6 +172,7 @@ class UploadPhotoViewController: UIViewController {
             event: nil, location: geoPoint, descriptiveText: text)
         
         photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
+            self?.hideProgressIndicatorPopup()
             self?.activityIndicatorView.stopAnimating()
             self?.navigationController?.popViewControllerAnimated(true)
         }

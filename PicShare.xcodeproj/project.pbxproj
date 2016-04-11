@@ -486,6 +486,7 @@
 				TargetAttributes = {
 					0ABADADC1BF909BB001CB962 = {
 						CreatedOnToolsVersion = 7.1;
+						DevelopmentTeam = 3U6VDB58RQ;
 					};
 					0ABADAF01BF909BC001CB962 = {
 						CreatedOnToolsVersion = 7.1;
@@ -816,7 +817,7 @@
 				INFOPLIST_FILE = PicShare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cs577.PicShare;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cs577.PicShare-js";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicShare/PicShare-Bridging-Header.h";
@@ -833,7 +834,7 @@
 				INFOPLIST_FILE = PicShare/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.cs577.PicShare;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.cs577.PicShare-js";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "PicShare/PicShare-Bridging-Header.h";

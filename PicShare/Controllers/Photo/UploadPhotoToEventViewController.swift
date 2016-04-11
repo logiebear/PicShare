@@ -15,20 +15,23 @@ class UploadPhotoToEventViewController: UIViewController {
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var commentTextField: UITextField!
     @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
+    
+    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var progressLabel: UILabel!
+    @IBOutlet weak var progressView: UIProgressView!
+    
     var image: UIImage?
     var hashtag: String?
     var event: Event?
-    var progressView: UIProgressView?
-    var progressLabel: UILabel?
     private var isUploadingPhoto = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        popupView.alpha = 0.0
 
         // Do any additional setup after loading the view.
         imageView.contentMode = .ScaleAspectFit
         imageView.image = image
-        addControls()
         
         let gestureRecognizer = UITapGestureRecognizer()
         gestureRecognizer.addTarget(self, action: "resignKeyboard")
@@ -52,6 +55,19 @@ class UploadPhotoToEventViewController: UIViewController {
     
     // MARK: - Private
     
+    private func showProgressIndicatorPopup() {
+        progressView.progress = 0.0
+        UIView.animateWithDuration(0.5) {
+            self.popupView.alpha = 1.0
+        }
+    }
+    
+    private func hideProgressIndicatorPopup() {
+        UIView.animateWithDuration(0.5) {
+            self.popupView.alpha = 0.0
+        }
+    }
+    
     //refer to UploadPhotoViewController.swift
     private func uploadPhotoToEvent() {
         if let image = image,
@@ -71,6 +87,7 @@ class UploadPhotoToEventViewController: UIViewController {
             
             isUploadingPhoto = true
             activityIndicatorView.startAnimating()
+            showProgressIndicatorPopup()
             imageFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
                 if success {
                     thumbFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
@@ -82,6 +99,8 @@ class UploadPhotoToEventViewController: UIViewController {
                         }
                     }, progressBlock: { (progress) -> Void in
                         print("thumbnail progress: \(progress)%")
+                        self?.progressView?.setProgress(Float(progress) / 200.0 + 0.5, animated: true)
+                        self?.progressLabel?.text = "\(progress / 2 + 50) %"
                     })
                 } else {
                     self?.isUploadingPhoto = false
@@ -89,8 +108,8 @@ class UploadPhotoToEventViewController: UIViewController {
                 }
             }, progressBlock: { (progress) -> Void in
                 print("image progress: \(progress)%")
-                self.progressView?.progress = Float(progress)
-                self.progressLabel?.text = "\(progress) %"
+                self.progressView?.setProgress(Float(progress) / 200.0, animated: true)
+                self.progressLabel?.text = "\(progress / 2) %"
             })
         } else {
             print("Photo saving error")
@@ -108,6 +127,7 @@ class UploadPhotoToEventViewController: UIViewController {
         photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
             if success {
                 self?.activityIndicatorView.stopAnimating()
+                self?.hideProgressIndicatorPopup()
                 self?.navigationController?.popViewControllerAnimated(true)
             } else {
                 self?.showAlert("Error", message: "Something went wrong while uploading your photo. Please try again")
@@ -132,19 +152,6 @@ class UploadPhotoToEventViewController: UIViewController {
     
     func keyboardDidHide() {
         scrollView.setContentOffset(CGPointZero, animated: true)
-    }
-    
-    func addControls() {
-        // Create Progress View Control
-        progressView = UIProgressView(progressViewStyle: UIProgressViewStyle.Default)
-        progressView?.center = self.view.center
-        view.addSubview(progressView!)
-        
-        // Add Label
-        progressLabel = UILabel()
-        let frame = CGRectMake(view.center.x - 25, view.center.y - 100, 100, 50)
-        progressLabel?.frame = frame
-        view.addSubview(progressLabel!)
     }
     
 }
