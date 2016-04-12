@@ -1,0 +1,182 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+    </dependencies>
+    <customFonts key="customFonts">
+        <mutableArray key="Lato-Bold.ttf">
+            <string>Lato-Bold</string>
+        </mutableArray>
+    </customFonts>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="PhotoHomeViewController" customModule="PicShare" customModuleProvider="target">
+            <connections>
+                <outlet property="cameraOverlayView" destination="iN0-l3-epB" id="w9w-JJ-BIR"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="0KX-3T-33h" userLabel="View - Header">
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="60"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="gl6-kJ-7ND" userLabel="Button - Close">
+                            <rect key="frame" x="8" y="8" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="44" id="cLq-d9-0eO"/>
+                                <constraint firstAttribute="width" constant="44" id="ohb-OC-lbJ"/>
+                            </constraints>
+                            <state key="normal" image="closeWhite"/>
+                            <connections>
+                                <action selector="close:" destination="-1" eventType="touchUpInside" id="5TA-qy-kJa"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="3uP-9K-eBU" userLabel="Button - Flash">
+                            <rect key="frame" x="165" y="8" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="Hs1-ux-F7f"/>
+                                <constraint firstAttribute="height" constant="44" id="kbu-5G-NaS"/>
+                            </constraints>
+                            <state key="normal" image="flash"/>
+                            <connections>
+                                <action selector="toggleFlash:" destination="-1" eventType="touchUpInside" id="PfH-eR-dYm"/>
+                            </connections>
+                        </button>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="cLj-BQ-mBm" userLabel="Button - Retake">
+                            <rect key="frame" x="323" y="8" width="44" height="44"/>
+                            <constraints>
+                                <constraint firstAttribute="width" constant="44" id="0J2-Rq-lTJ"/>
+                                <constraint firstAttribute="height" constant="44" id="FgF-ER-nG2"/>
+                            </constraints>
+                            <state key="normal" image="rotateCamera"/>
+                            <connections>
+                                <action selector="rotateCamera:" destination="-1" eventType="touchUpInside" id="lqb-Bh-Pqy"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="gl6-kJ-7ND" firstAttribute="top" secondItem="0KX-3T-33h" secondAttribute="top" constant="8" id="56n-5D-WpY"/>
+                        <constraint firstAttribute="trailing" secondItem="cLj-BQ-mBm" secondAttribute="trailing" constant="8" id="8jD-yp-6ub"/>
+                        <constraint firstItem="3uP-9K-eBU" firstAttribute="centerX" secondItem="0KX-3T-33h" secondAttribute="centerX" id="EWh-N7-9Hv"/>
+                        <constraint firstItem="cLj-BQ-mBm" firstAttribute="top" secondItem="0KX-3T-33h" secondAttribute="top" constant="8" id="IZO-00-Wu9"/>
+                        <constraint firstItem="gl6-kJ-7ND" firstAttribute="leading" secondItem="0KX-3T-33h" secondAttribute="leading" constant="8" id="L78-RU-y04"/>
+                        <constraint firstItem="3uP-9K-eBU" firstAttribute="centerY" secondItem="0KX-3T-33h" secondAttribute="centerY" id="Yir-We-eMe"/>
+                        <constraint firstAttribute="height" constant="60" id="beU-2k-rDA"/>
+                    </constraints>
+                </view>
+                <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MPo-BS-9vh" userLabel="View - Footer">
+                    <rect key="frame" x="0.0" y="547" width="375" height="120"/>
+                    <subviews>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tns-ge-Ctc" userLabel="Button - TakePhoto">
+                            <rect key="frame" x="148" y="21" width="78" height="78"/>
+                            <constraints>
+                                <constraint firstAttribute="height" constant="78" id="QAw-Rb-wf3"/>
+                                <constraint firstAttribute="width" constant="78" id="W4M-ia-jmI"/>
+                            </constraints>
+                            <state key="normal" image="takePhotoCamera"/>
+                            <connections>
+                                <action selector="takePhoto:" destination="-1" eventType="touchUpInside" id="YyF-Lb-81i"/>
+                            </connections>
+                        </button>
+                        <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="31C-Sr-Soa" userLabel="View - CameraRoll">
+                            <rect key="frame" x="26" y="32" width="96" height="88"/>
+                            <subviews>
+                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="greenSpeecnBubble" translatesAutoresizingMaskIntoConstraints="NO" id="fCg-qW-h0R">
+                                    <rect key="frame" x="0.0" y="0.0" width="96" height="30"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="fCg-qW-h0R" secondAttribute="height" multiplier="16:5" id="nXX-NM-JTc"/>
+                                    </constraints>
+                                </imageView>
+                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="CAMERA ROLL" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="70" translatesAutoresizingMaskIntoConstraints="NO" id="MeL-av-u8C">
+                                    <rect key="frame" x="0.0" y="0.0" width="96" height="22"/>
+                                    <constraints>
+                                        <constraint firstAttribute="width" secondItem="MeL-av-u8C" secondAttribute="height" multiplier="48:11" id="H9q-E3-7Ec"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="10"/>
+                                    <color key="textColor" red="0.094117647058823528" green="0.3411764705882353" blue="0.011764705882352941" alpha="1" colorSpace="calibratedRGB"/>
+                                    <nil key="highlightedColor"/>
+                                </label>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="I24-iB-FEb" userLabel="Button - CameraRoll">
+                                    <rect key="frame" x="0.0" y="0.0" width="96" height="88"/>
+                                    <state key="normal" image="cameraRoll"/>
+                                    <connections>
+                                        <action selector="showCameraRoll:" destination="-1" eventType="touchUpInside" id="QW9-hy-YSe"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="fCg-qW-h0R" secondAttribute="trailing" id="04e-X7-qbx"/>
+                                <constraint firstItem="MeL-av-u8C" firstAttribute="top" secondItem="31C-Sr-Soa" secondAttribute="top" id="83B-Dd-ruY"/>
+                                <constraint firstItem="I24-iB-FEb" firstAttribute="top" secondItem="31C-Sr-Soa" secondAttribute="top" id="AHB-w0-uhQ"/>
+                                <constraint firstItem="I24-iB-FEb" firstAttribute="leading" secondItem="31C-Sr-Soa" secondAttribute="leading" id="VQf-3X-tUj"/>
+                                <constraint firstAttribute="trailing" secondItem="MeL-av-u8C" secondAttribute="trailing" id="a11-bd-6zR"/>
+                                <constraint firstItem="fCg-qW-h0R" firstAttribute="leading" secondItem="31C-Sr-Soa" secondAttribute="leading" id="axU-9j-irs"/>
+                                <constraint firstAttribute="trailing" secondItem="I24-iB-FEb" secondAttribute="trailing" id="baY-sv-Op1"/>
+                                <constraint firstAttribute="height" constant="88" id="cPf-LB-3rL"/>
+                                <constraint firstItem="fCg-qW-h0R" firstAttribute="top" secondItem="31C-Sr-Soa" secondAttribute="top" id="f6O-69-7sU"/>
+                                <constraint firstAttribute="bottom" secondItem="I24-iB-FEb" secondAttribute="bottom" id="gR7-X5-XKB"/>
+                                <constraint firstItem="MeL-av-u8C" firstAttribute="leading" secondItem="31C-Sr-Soa" secondAttribute="leading" id="hXo-8k-CRu"/>
+                            </constraints>
+                        </view>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="tns-ge-Ctc" firstAttribute="leading" secondItem="31C-Sr-Soa" secondAttribute="trailing" multiplier="138/113" id="4na-I5-LbI"/>
+                        <constraint firstAttribute="bottom" secondItem="31C-Sr-Soa" secondAttribute="bottom" id="7k1-WP-IT4"/>
+                        <constraint firstItem="tns-ge-Ctc" firstAttribute="centerX" secondItem="MPo-BS-9vh" secondAttribute="centerX" id="AwR-P8-TIu"/>
+                        <constraint firstItem="tns-ge-Ctc" firstAttribute="centerY" secondItem="MPo-BS-9vh" secondAttribute="centerY" id="fvv-Ys-yDn"/>
+                        <constraint firstItem="31C-Sr-Soa" firstAttribute="width" secondItem="MPo-BS-9vh" secondAttribute="width" multiplier="96/375" id="mLD-tk-aoe"/>
+                        <constraint firstAttribute="height" constant="120" id="vw5-Zc-c4F"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lG7-3k-0Y5">
+                    <rect key="frame" x="0.0" y="60" width="375" height="375"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="width" secondItem="lG7-3k-0Y5" secondAttribute="height" multiplier="1:1" id="LVJ-2A-yVD"/>
+                    </constraints>
+                </view>
+                <view alpha="0.69999999999999996" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="REC-mZ-z7b">
+                    <rect key="frame" x="0.0" y="435" width="375" height="112"/>
+                    <color key="backgroundColor" white="0.0" alpha="1" colorSpace="calibratedWhite"/>
+                </view>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+            <constraints>
+                <constraint firstAttribute="bottom" secondItem="MPo-BS-9vh" secondAttribute="bottom" id="5BM-e8-t9C"/>
+                <constraint firstAttribute="trailing" secondItem="MPo-BS-9vh" secondAttribute="trailing" id="8CA-ay-sZ5"/>
+                <constraint firstAttribute="trailing" secondItem="REC-mZ-z7b" secondAttribute="trailing" id="8VK-Cw-48q"/>
+                <constraint firstAttribute="trailing" secondItem="0KX-3T-33h" secondAttribute="trailing" id="AjP-vs-ihm"/>
+                <constraint firstItem="lG7-3k-0Y5" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="F7P-Kd-SEV"/>
+                <constraint firstItem="REC-mZ-z7b" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Hxk-RH-fnH"/>
+                <constraint firstItem="0KX-3T-33h" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="MI9-Bo-AMe"/>
+                <constraint firstItem="REC-mZ-z7b" firstAttribute="top" secondItem="lG7-3k-0Y5" secondAttribute="bottom" id="RSn-fb-5Ec"/>
+                <constraint firstItem="0KX-3T-33h" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="Twu-EU-Rge"/>
+                <constraint firstItem="MPo-BS-9vh" firstAttribute="top" secondItem="REC-mZ-z7b" secondAttribute="bottom" id="VWF-WI-VLs"/>
+                <constraint firstItem="lG7-3k-0Y5" firstAttribute="top" secondItem="0KX-3T-33h" secondAttribute="bottom" id="XC8-Gr-S5f"/>
+                <constraint firstAttribute="trailing" secondItem="lG7-3k-0Y5" secondAttribute="trailing" id="Xfc-qp-TXo"/>
+                <constraint firstItem="MPo-BS-9vh" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="lcn-LN-6Ew"/>
+            </constraints>
+            <nil key="simulatedStatusBarMetrics"/>
+            <nil key="simulatedTopBarMetrics"/>
+            <nil key="simulatedBottomBarMetrics"/>
+            <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
+            <point key="canvasLocation" x="117.5" y="400.5"/>
+        </view>
+    </objects>
+    <resources>
+        <image name="cameraRoll" width="18" height="18"/>
+        <image name="closeWhite" width="18" height="18"/>
+        <image name="flash" width="11" height="23"/>
+        <image name="greenSpeecnBubble" width="96" height="30"/>
+        <image name="rotateCamera" width="26" height="21"/>
+        <image name="takePhotoCamera" width="78" height="78"/>
+    </resources>
+</document>

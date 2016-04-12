@@ -27,7 +27,9 @@ class RootViewController: UIViewController {
     func displayCorrectHomeViewController() {
         let vc: UIViewController
         if let user = PFUser.currentUser() where user.authenticated {
-            vc = storyboard?.instantiateViewControllerWithIdentifier("tabBarViewController") as! TabBarViewController
+            let tabBarViewController = storyboard?.instantiateViewControllerWithIdentifier("tabBarViewController") as! TabBarViewController
+            tabBarViewController.delegate = self
+            vc = tabBarViewController
         } else {
             let accountStoryboard = UIStoryboard(name: "Account", bundle: nil)
             vc = accountStoryboard.instantiateInitialViewController() as! LoginViewController
@@ -48,4 +50,17 @@ class RootViewController: UIViewController {
         viewController.didMoveToParentViewController(self)
         currentContentViewController = viewController
     }
+}
+
+extension RootViewController: UITabBarControllerDelegate {
+    
+    func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
+        if viewController is PhotoTempViewController {
+            let vc = storyboard?.instantiateViewControllerWithIdentifier("photoHomeViewController") as! PhotoHomeViewController
+            navigationController?.pushViewController(vc, animated: false)
+            return false
+        }
+        return true
+    }
+    
 }

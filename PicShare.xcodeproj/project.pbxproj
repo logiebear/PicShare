@@ -14,6 +14,7 @@
 		0A31F5671CA2168F000EB388 /* Lato-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5611CA2168F000EB388 /* Lato-Light.ttf */; };
 		0A31F5681CA2168F000EB388 /* Lato-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5621CA2168F000EB388 /* Lato-Medium.ttf */; };
 		0A31F5691CA2168F000EB388 /* Lato-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 0A31F5631CA2168F000EB388 /* Lato-Regular.ttf */; };
+		0A57D0F41CBAF42B0032F0AD /* CameraOverlayView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0A57D0F21CBAF42B0032F0AD /* CameraOverlayView.xib */; };
 		0A5E608B1CB319D000D13974 /* UIImageExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A5E608A1CB319D000D13974 /* UIImageExtension.swift */; };
 		0A79F9091C8D03A60051AB9D /* UIViewControllerExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79F9081C8D03A60051AB9D /* UIViewControllerExtension.swift */; };
 		0A79F90C1C8D07B60051AB9D /* Utilities.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0A79F90B1C8D07B60051AB9D /* Utilities.swift */; };
@@ -90,6 +91,7 @@
 		0A31F5611CA2168F000EB388 /* Lato-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Light.ttf"; sourceTree = "<group>"; };
 		0A31F5621CA2168F000EB388 /* Lato-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Medium.ttf"; sourceTree = "<group>"; };
 		0A31F5631CA2168F000EB388 /* Lato-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Lato-Regular.ttf"; sourceTree = "<group>"; };
+		0A57D0F31CBAF42B0032F0AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/CameraOverlayView.xib; sourceTree = "<group>"; };
 		0A5E608A1CB319D000D13974 /* UIImageExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIImageExtension.swift; sourceTree = "<group>"; };
 		0A79F9081C8D03A60051AB9D /* UIViewControllerExtension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UIViewControllerExtension.swift; sourceTree = "<group>"; };
 		0A79F90B1C8D07B60051AB9D /* Utilities.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Utilities.swift; sourceTree = "<group>"; };
@@ -188,7 +190,8 @@
 				0A31F5621CA2168F000EB388 /* Lato-Medium.ttf */,
 				0A31F5631CA2168F000EB388 /* Lato-Regular.ttf */,
 			);
-			path = Fonts;
+			name = Fonts;
+			path = ../Fonts;
 			sourceTree = "<group>";
 		};
 		0A79F9071C8D03A60051AB9D /* Extensions */ = {
@@ -196,6 +199,7 @@
 			children = (
 				0A79F9081C8D03A60051AB9D /* UIViewControllerExtension.swift */,
 				0A5E608A1CB319D000D13974 /* UIImageExtension.swift */,
+				0A31F55D1CA2168F000EB388 /* Fonts */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -245,7 +249,6 @@
 				0ADB4BA11BFEBA6E00EA51F2 /* Categories */,
 				0A79F9071C8D03A60051AB9D /* Extensions */,
 				0A79F90A1C8D079F0051AB9D /* Utilities */,
-				0A31F55D1CA2168F000EB388 /* Fonts */,
 				0ABADAEC1BF909BC001CB962 /* Info.plist */,
 			);
 			path = PicShare;
@@ -358,6 +361,7 @@
 				0ABADAE91BF909BB001CB962 /* LaunchScreen.storyboard */,
 				E4FD1B931C5B354D001A4795 /* Account.storyboard */,
 				0ABADAE41BF909BB001CB962 /* Main.storyboard */,
+				0A57D0F21CBAF42B0032F0AD /* CameraOverlayView.xib */,
 			);
 			name = "User Interface";
 			sourceTree = "<group>";
@@ -536,6 +540,7 @@
 				0A14D8891C8673B1005069E2 /* Assets.xcassets in Resources */,
 				E4FD1B951C5B354D001A4795 /* Account.storyboard in Resources */,
 				0A31F5691CA2168F000EB388 /* Lato-Regular.ttf in Resources */,
+				0A57D0F41CBAF42B0032F0AD /* CameraOverlayView.xib in Resources */,
 				0A31F5651CA2168F000EB388 /* Lato-Bold.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -698,6 +703,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		0A57D0F21CBAF42B0032F0AD /* CameraOverlayView.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				0A57D0F31CBAF42B0032F0AD /* Base */,
+			);
+			name = CameraOverlayView.xib;
+			sourceTree = "<group>";
+		};
 		0ABADAE41BF909BB001CB962 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
