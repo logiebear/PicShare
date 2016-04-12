@@ -47,15 +47,11 @@ class PhotoDetailViewController: UIViewController {
     }
     
     @IBAction func downloadButtonPressed(sender: AnyObject) {
-        guard let image = image, event = event else {
+        guard let image = image else {
             showAlert("Download Error", message: "Unable to download image.")
             return
         }
-
-        
-        
         UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
-
     }
     
     @IBAction func deleteButtonPressed(sender: AnyObject) {
@@ -83,13 +79,12 @@ class PhotoDetailViewController: UIViewController {
             showAlert("Download Error", message: error.localizedDescription)
         } else {
             if let event = event {
-                if !userEventArray.contains(event){
+                if !userEventArray.contains(event) {
                     print("join event automatically")
                     addEventToUserEvents(event)
                 }
-
             }
-                        showAlert("Success!", message: "You have downloaded the image successfully!")
+            showAlert("Success!", message: "You have downloaded the image successfully!")
         }
     }
     
