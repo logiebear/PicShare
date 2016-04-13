@@ -15,7 +15,10 @@ class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var deleteButton: UIButton!
     var photo: Photo?
-    private var image: UIImage?
+    var user: User?
+    var userEventArray = [Event]()
+    var image: UIImage?
+    var event: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,7 +30,6 @@ class PhotoDetailViewController: UIViewController {
         deleteButton.hidden = photo.owner?.objectId != PFUser.currentUser()?.objectId
         pfImageView.contentMode = .ScaleAspectFit
         pfImageView.file = photo.image
-        
         activityIndicator.startAnimating()
         pfImageView.loadInBackground { [weak self](image, error) -> Void in
             self?.activityIndicator.stopAnimating()
@@ -36,6 +38,10 @@ class PhotoDetailViewController: UIViewController {
                 print("Error: \(error)")
             }
         }
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
     }
     
     // MARK: - User Actions
@@ -49,12 +55,25 @@ class PhotoDetailViewController: UIViewController {
             showAlert("Download Error", message: "Unable to download image.")
             return
         }
-        
         UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
     }
     
     @IBAction func deleteButtonPressed(sender: AnyObject) {
         self.showConfirmView("", msg: "Do you want to delete this photo?")
+    }
+    
+    // MARK: - Private
+    
+    private func addEventToUserEvents(event: Event) {
+        guard let user = self.user else  {
+            print("Error no user")
+            return
+        }
+        if user.events == nil {
+            user.events = [Event]()
+        }
+        user.events?.append(event)
+        user.saveInBackground()
     }
     
     // MARK: - Helpers
@@ -63,6 +82,12 @@ class PhotoDetailViewController: UIViewController {
         if let error = error {
             showAlert("Download Error", message: error.localizedDescription)
         } else {
+            if let event = event {
+                if !userEventArray.contains(event) {
+                    print("join event automatically")
+                    addEventToUserEvents(event)
+                }
+            }
             showAlert("Success!", message: "You have downloaded the image successfully!")
         }
     }

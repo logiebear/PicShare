@@ -9,7 +9,7 @@
 import UIKit
 
 protocol SearchEventTableViewCellDelegate: class {
-    func joinEvent(event: Event)
+    func joinEvent(cell: SearchEventTableViewCell, event: Event)
 }
 
 class SearchEventTableViewCell: UITableViewCell {
@@ -23,11 +23,17 @@ class SearchEventTableViewCell: UITableViewCell {
     
     @IBAction func joinButtonPressed(sender: AnyObject) {
         if let event = event {
-            UIView.animateWithDuration(0.5, animations: { 
-                self.joinButton.alpha = 0.0
-                self.checkmarkImageView.alpha = 1.0
-            })
-            delegate?.joinEvent(event)
+            if event.isPublic {
+                showJoinAnimation()
+            }
+            delegate?.joinEvent(self, event: event)
+        }
+    }
+    
+    func showJoinAnimation() {
+        UIView.animateWithDuration(0.5) {
+            self.joinButton.alpha = 0.0
+            self.checkmarkImageView.alpha = 1.0
         }
     }
 

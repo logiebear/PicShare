@@ -16,10 +16,11 @@ class EventPhotoScreenViewController: UIViewController {
     var photoIDArray = [String]()
     var eventPhotos: [Photo]?
     var event: Event?
+    var userEventArray = [Event]()
+    var user: User?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         editEventBtn.setTitle("Edit", forState: .Normal)
         editEventBtn.setTitle("Done", forState: .Selected)
         //Check whether current user owns this event
@@ -110,6 +111,9 @@ extension EventPhotoScreenViewController: UICollectionViewDelegate {
             if let eventPhotos = eventPhotos {
                 let photo = eventPhotos[indexPath.item]
                 vc.photo = photo
+                vc.userEventArray = userEventArray
+                vc.user = user
+                vc.event = event
                 navigationController?.pushViewController(vc, animated: true)
             }
         }
