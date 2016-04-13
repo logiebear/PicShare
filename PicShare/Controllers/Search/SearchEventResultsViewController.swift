@@ -21,8 +21,8 @@ class SearchEventResultsViewController: UIViewController {
     var eventArray = [Event]()
     private var user: User?
     private var userEventArray = [Event]()
-    private var selectedPrivateEvent: Event?
     private var selectedEvent: Event?
+    private var selectedPrivateEventCell: SearchEventTableViewCell?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -36,6 +36,8 @@ class SearchEventResultsViewController: UIViewController {
             let svc = segue.destinationViewController as! EventPhotoScreenViewController
             if let event = selectedEvent {
                 svc.event = event
+                svc.userEventArray = userEventArray
+                svc.user = user
             }
         }
     }
@@ -43,18 +45,24 @@ class SearchEventResultsViewController: UIViewController {
     // MARK: - User Actions
     
     @IBAction func closePopup(sender: AnyObject) {
+        passwordTextField.resignFirstResponder()
         hidePasswordPopup()
     }
     
     @IBAction func enterPrivateEvent(sender: AnyObject) {
-        guard let event = selectedPrivateEvent else {
+        guard let event = selectedEvent else {
             return
         }
         
         if passwordTextField.text == event.password {
             addEventToUserEvents(event)
-            resultTableView.reloadData()
+            selectedPrivateEventCell?.showJoinAnimation()
             hidePasswordPopup()
+            event.owner.fetchIfNeededInBackgroundWithBlock { (object, error) -> Void in
+                if error == nil {
+                    self.performSegueWithIdentifier("SpecificEventPreview", sender: self)
+                }
+            }
         } else {
             showAlert("Incorrect Password", message: "Please try again.")
         }
@@ -172,10 +180,14 @@ extension SearchEventResultsViewController: UITableViewDelegate {
         guard let selectedEvent = selectedEvent else {
             return
         }
-        
-        selectedEvent.owner.fetchIfNeededInBackgroundWithBlock { (object, error) -> Void in
-            if error == nil {
-                self.performSegueWithIdentifier("SpecificEventPreview", sender: self)
+        if !selectedEvent.isPublic && !userEventArray.contains(selectedEvent) && selectedEvent.owner.objectId != user?.objectId {
+            popUpEventName.text = selectedEvent.hashtag
+            showPasswordPopup()
+        } else {
+            selectedEvent.owner.fetchIfNeededInBackgroundWithBlock { (object, error) -> Void in
+                if error == nil {
+                    self.performSegueWithIdentifier("SpecificEventPreview", sender: self)
+                }
             }
         }
     }
@@ -185,12 +197,13 @@ extension SearchEventResultsViewController: UITableViewDelegate {
 
 extension SearchEventResultsViewController: SearchEventTableViewCellDelegate {
     
-    func joinEvent(event: Event) {
+    func joinEvent(cell: SearchEventTableViewCell, event: Event) {
         if event.isPublic {
             addEventToUserEvents(event)
         } else {
             popUpEventName.text = event.hashtag
-            selectedPrivateEvent = event
+            selectedEvent = event
+            selectedPrivateEventCell = cell
             showPasswordPopup()
         }
     }
