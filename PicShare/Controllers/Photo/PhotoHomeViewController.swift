@@ -44,7 +44,8 @@ class PhotoHomeViewController: UIViewController {
             let translate = CGAffineTransformMakeTranslation(0.0, 60.0) // Shifted down by height of header bar
             cameraPickerController.cameraViewTransform = translate
             cameraPickerController.cameraOverlayView = cameraOverlayView
-            
+            cameraPickerController.cameraFlashMode = .On
+
             if !cameraAvailable() {
                 showAlert("Trouble With Camera", message: "Please enable your camera in your device settings to take a photo.")
                 return
@@ -83,8 +84,13 @@ class PhotoHomeViewController: UIViewController {
     
     @IBAction func toggleFlash(sender: AnyObject) {
         if let button = sender as? UIButton {
-            button.alpha = button.alpha == 1.0 ? 0.5 : 1.0
-            cameraPickerController.cameraFlashMode = cameraPickerController.cameraFlashMode == .On ? .Off : .On
+            if cameraPickerController.cameraFlashMode == .On {
+                cameraPickerController.cameraFlashMode = .Off
+                button.alpha = 0.5
+            } else {
+                cameraPickerController.cameraFlashMode = .On
+                button.alpha = 1.0
+            }
         }
     }
     
@@ -114,15 +120,20 @@ class PhotoHomeViewController: UIViewController {
 extension PhotoHomeViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
-        if let image = info[UIImagePickerControllerOriginalImage] where picker == cameraPickerController {
-            performSegueWithIdentifier("UploadPhoto", sender: image)
-        } else if let image = info[UIImagePickerControllerEditedImage] {
-            dismissViewControllerAnimated(true) { () -> Void in
-                self.performSegueWithIdentifier("UploadPhoto", sender: image)
-            }
+        var imageToUpload: UIImage?
+        if let image = info[UIImagePickerControllerOriginalImage] as? UIImage where picker == cameraPickerController {
+            imageToUpload = image.cropToSquare()
+        } else if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
+            imageToUpload = image
+            dismissViewControllerAnimated(true, completion: nil)
         } else {
             showAlert("Error", message: "Something went wrong with your photo.")
+            return
         }
+        
+        let vc = self.storyboard?.instantiateViewControllerWithIdentifier("uploadPhotoViewController") as! UploadPhotoViewController
+        vc.image = imageToUpload
+        self.navigationController?.pushViewController(vc, animated: true)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
