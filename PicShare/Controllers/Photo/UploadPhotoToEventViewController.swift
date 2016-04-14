@@ -100,7 +100,7 @@ class UploadPhotoToEventViewController: UIViewController {
                     }, progressBlock: { (progress) -> Void in
                         print("thumbnail progress: \(progress)%")
                         self?.progressView?.setProgress(Float(progress) / 200.0 + 0.5, animated: true)
-                        self?.progressLabel?.text = "\(progress / 2 + 50) %"
+                        self?.progressLabel?.text = "Uploading photo... \(progress / 2 + 50) %"
                     })
                 } else {
                     self?.isUploadingPhoto = false
@@ -109,7 +109,7 @@ class UploadPhotoToEventViewController: UIViewController {
             }, progressBlock: { (progress) -> Void in
                 print("image progress: \(progress)%")
                 self.progressView?.setProgress(Float(progress) / 200.0, animated: true)
-                self.progressLabel?.text = "\(progress / 2) %"
+                self.progressLabel?.text = "Uploading photo... \(progress / 2) %"
             })
         } else {
             print("Photo saving error")
