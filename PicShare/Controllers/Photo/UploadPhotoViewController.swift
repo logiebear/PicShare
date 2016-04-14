@@ -14,12 +14,11 @@ class UploadPhotoViewController: UIViewController {
     @IBOutlet weak var scrollView: UIScrollView!
     @IBOutlet weak var imageView: UIImageView!
     @IBOutlet weak var descriptionTextField: UITextField!
-    @IBOutlet weak var activityIndicatorView: UIActivityIndicatorView!
-    
+    @IBOutlet weak var uploadSelectionPopupView: UIView!
+    // Progress Popup
     @IBOutlet weak var progressLabel: UILabel!
-    @IBOutlet weak var popupView: UIView!
+    @IBOutlet weak var progressPopupView: UIView!
     @IBOutlet weak var progressView: UIProgressView!
-    
     var image: UIImage?
     var photo: Photo?
     let locationManager = CLLocationManager()
@@ -27,8 +26,10 @@ class UploadPhotoViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        popupView.alpha = 0.0
-
+        view.bringSubviewToFront(progressPopupView)
+        view.bringSubviewToFront(uploadSelectionPopupView)
+        progressPopupView.alpha = 0.0
+        uploadSelectionPopupView.alpha = 0.0
 
         // Do any additional setup after loading the view.
         imageView.contentMode = .ScaleAspectFit
@@ -41,12 +42,36 @@ class UploadPhotoViewController: UIViewController {
         NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide",
                                                          name: UIKeyboardDidHideNotification, object: nil)
     }
+    
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
+        if segue.identifier == "SelectEvent" {
+            let svc = segue.destinationViewController as! SelectUploadEventViewController
+            svc.photo = photo
+        }
+    }
+    
+    override func prefersStatusBarHidden() -> Bool {
+        return true
+    }
 
     // MARK: - User Actions
     
-    @IBAction func backButtonPressed(sender: AnyObject) {
+    @IBAction func retakekButtonPressed(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
+    
+    @IBAction func usePhotoButtonPressed(sender: AnyObject) {
+        let whiteSpaceSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
+        guard let text = descriptionTextField.text
+            where text.stringByTrimmingCharactersInSet(whiteSpaceSet) != ""
+        else {
+            showAlert("Comment Missing", message: "Please Enter a valid Comment")
+            return
+        }
+        showPopupView(uploadSelectionPopupView)
+    }
+    
+    // MARK: - Upload Selection Popup
     
     @IBAction func uploadToEvent(sender: AnyObject) {
         if !networkReachable() {
@@ -61,17 +86,12 @@ class UploadPhotoViewController: UIViewController {
             thumbImageData = UIImagePNGRepresentation(thumbImage),
             imageFile = PFFile(name: "image.png", data: fullImageData),
             thumbFile = PFFile(name: "thumbnail.png", data: thumbImageData),
+            text = descriptionTextField.text,
             user = PFUser.currentUser()
         {
-            let whiteSpaceSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
-            guard let text = descriptionTextField.text
-                where text.stringByTrimmingCharactersInSet(whiteSpaceSet) != ""
-            else {
-                showAlert("Comment Missing", message: "Please Enter a valid Comment")
-                return
-            }
             photo = Photo(image: imageFile, thumbnail: thumbFile, owner: user, event: nil, location: nil, descriptiveText: text)
-            self.performSegueWithIdentifier("showSelectEventScreen", sender: self)
+            hidePopupView(uploadSelectionPopupView)
+            self.performSegueWithIdentifier("SelectEvent", sender: self)
         }
     }
     
@@ -94,28 +114,38 @@ class UploadPhotoViewController: UIViewController {
                     print("Error: \(error)")
                     return
                 }
-                self?.showProgressIndicatorPopup()
                 if let geoPoint = geoPoint {
+                    if let uploadSelectionPopupView = self?.uploadSelectionPopupView {
+                        self?.hidePopupView(uploadSelectionPopupView)
+                    }
+                    if let progressPopupView = self?.progressPopupView {
+                        self?.progressView.progress = 0.0
+                        self?.showPopupView(progressPopupView)
+                    }
                     self?.uploadPhotoWithGeoPoint(geoPoint)
                 }
             }
         }
     }
     
+    @IBAction func closeUploadPopupButtonPressed(sender: AnyObject) {
+        hidePopupView(uploadSelectionPopupView)
+    }
+    
     // MARK: - Private
 
-    private func showProgressIndicatorPopup() {
-        progressView.progress = 0.0
+    private func showPopupView(popupView: UIView) {
         UIView.animateWithDuration(0.5) {
-            self.popupView.alpha = 1.0
+            popupView.alpha = 1.0
         }
     }
     
-    private func hideProgressIndicatorPopup() {
+    private func hidePopupView(popupView: UIView) {
         UIView.animateWithDuration(0.5) {
-            self.popupView.alpha = 0.0
+            popupView.alpha = 0.0
         }
     }
+    
     private func uploadPhotoWithGeoPoint(geoPoint: PFGeoPoint) {
         if let image = image,
             fullImage = image.scaleAndRotateImage(960), // Magic number
@@ -124,37 +154,34 @@ class UploadPhotoViewController: UIViewController {
             thumbImageData = UIImagePNGRepresentation(thumbImage),
             imageFile = PFFile(name: "image.png", data: fullImageData),
             thumbFile = PFFile(name: "thumbnail.png", data: thumbImageData),
+            text = descriptionTextField.text,
             user = PFUser.currentUser()
         {
-            let whiteSpaceSet = NSCharacterSet.whitespaceAndNewlineCharacterSet()
-            guard let text = descriptionTextField.text
-                where text.stringByTrimmingCharactersInSet(whiteSpaceSet) != ""
-            else {
-                showAlert("Comment Missing", message: "Please Enter a valid Comment")
-                return
-            }
-            
-            activityIndicatorView.startAnimating()
+            // Upload main image
             imageFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
-                if success {
+                if success && error == nil {
+                    // Upload thumbnail image
                     thumbFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
-                        if success {
+                        if success && error == nil {
                             self?.proceedToUploadPhoto(imageFile, thumbFile: thumbFile,
                                 user: user, geoPoint: geoPoint, text: text)
                         } else {
-                            // TODO: SHOW ERROR MESSAGE
+                            self?.showAlert("Error", message: "There was an error uploading your photo. Please try again.")
+                            print("Thumb upload error: \(error)")
                         }
-                    }, progressBlock: { (progress) -> Void in
-                        print("thumbnail progress: \(progress)%")
+                    },
+                    progressBlock: { (progress) -> Void in
+                        print("thumbnail upload progress: \(progress)%")
                         self?.progressView?.setProgress(Float(progress) / 200.0 + 0.5, animated: true)
                         self?.progressLabel?.text = "\(progress / 2 + 50) %"
                     })
                 } else {
-                    // TODO: SHOW ERROR MESSAGE
+                    self?.showAlert("Error", message: "There was an error uploading your photo. Please try again.")
+                    print("Image upload error: \(error)")
                 }
             },
             progressBlock: { (progress) -> Void in
-                print("image progress: \(progress)%")
+                print("image upload progress: \(progress)%")
                 self.progressView?.setProgress(Float(progress) / 200.0, animated: true)
                 self.progressLabel?.text = "\(progress / 2) %"
             })
@@ -172,19 +199,15 @@ class UploadPhotoViewController: UIViewController {
             event: nil, location: geoPoint, descriptiveText: text)
         
         photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
-            self?.hideProgressIndicatorPopup()
-            self?.activityIndicatorView.stopAnimating()
+            if let progressPopupView = self?.progressPopupView {
+                self?.hidePopupView(progressPopupView)
+            }
             self?.navigationController?.popViewControllerAnimated(true)
         }
     }
     
     func resignKeyboard() {
         descriptionTextField.resignFirstResponder()
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
-        let svc = segue.destinationViewController as! SelectUploadEventViewController
-        svc.photo = photo
     }
     
     // MARK: Notification
@@ -194,7 +217,10 @@ class UploadPhotoViewController: UIViewController {
     }
 }
 
+// MARK: - CLLocationManagerDelegate
+
 extension UploadPhotoViewController: CLLocationManagerDelegate {
+    
     func locationManager(manager: CLLocationManager, didChangeAuthorizationStatus status: CLAuthorizationStatus) {
         if status == .AuthorizedWhenInUse || status == .AuthorizedAlways {
             manager.startUpdatingLocation()
@@ -203,6 +229,7 @@ extension UploadPhotoViewController: CLLocationManagerDelegate {
             }
         }
     }
+    
 }
 
 // MARK: - UITextFieldDelegate
@@ -216,7 +243,7 @@ extension UploadPhotoViewController: UITextFieldDelegate {
     
     func textFieldDidBeginEditing(textField: UITextField) {
         UIView.animateWithDuration(0.25) {
-            self.scrollView.setContentOffset(CGPoint(x: 0, y: 40), animated: false)
+            self.scrollView.setContentOffset(CGPoint(x: 0, y: 100), animated: false)
         }
     }
     

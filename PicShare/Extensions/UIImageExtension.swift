@@ -23,13 +23,13 @@ extension UIImage {
         
         // Check to see which length is the longest and create the offset based on that length, then set the width and height of our rect
         if contextSize.width > contextSize.height {
-            posX = ((contextSize.width - contextSize.height) / 2)
+            posX = 0
             posY = 0
             width = contextSize.height
             height = contextSize.height
         } else {
             posX = 0
-            posY = ((contextSize.height - contextSize.width) / 2)
+            posY = 0
             width = contextSize.width
             height = contextSize.width
         }
