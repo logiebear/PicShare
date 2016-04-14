@@ -164,6 +164,7 @@ extension SearchLocationViewController: UITableViewDataSource {
 
 extension SearchLocationViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
         if let photoArray = photoArray {
             let photo = photoArray[indexPath.item]

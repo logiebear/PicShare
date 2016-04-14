@@ -118,10 +118,6 @@ class UploadPhotoViewController: UIViewController {
                     if let uploadSelectionPopupView = self?.uploadSelectionPopupView {
                         self?.hidePopupView(uploadSelectionPopupView)
                     }
-                    if let progressPopupView = self?.progressPopupView {
-                        self?.progressView.progress = 0.0
-                        self?.showPopupView(progressPopupView)
-                    }
                     self?.uploadPhotoWithGeoPoint(geoPoint)
                 }
             }
@@ -157,33 +153,35 @@ class UploadPhotoViewController: UIViewController {
             text = descriptionTextField.text,
             user = PFUser.currentUser()
         {
+            progressView.progress = 0.0
+            showPopupView(progressPopupView)
             // Upload main image
             imageFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
-                if success && error == nil {
-                    // Upload thumbnail image
-                    thumbFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
-                        if success && error == nil {
-                            self?.proceedToUploadPhoto(imageFile, thumbFile: thumbFile,
-                                user: user, geoPoint: geoPoint, text: text)
-                        } else {
-                            self?.showAlert("Error", message: "There was an error uploading your photo. Please try again.")
-                            print("Thumb upload error: \(error)")
-                        }
-                    },
-                    progressBlock: { (progress) -> Void in
-                        print("thumbnail upload progress: \(progress)%")
-                        self?.progressView?.setProgress(Float(progress) / 200.0 + 0.5, animated: true)
-                        self?.progressLabel?.text = "\(progress / 2 + 50) %"
-                    })
-                } else {
+                if !success {
                     self?.showAlert("Error", message: "There was an error uploading your photo. Please try again.")
                     print("Image upload error: \(error)")
+                    return
                 }
+                // Upload thumbnail image
+                thumbFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
+                    if !success {
+                        self?.showAlert("Error", message: "There was an error uploading your photo. Please try again.")
+                        print("Thumb upload error: \(error)")
+                        return
+                    }
+                    self?.proceedToUploadPhoto(imageFile, thumbFile: thumbFile,
+                        user: user, geoPoint: geoPoint, text: text)
+                },
+                progressBlock: { (progress) -> Void in
+                    print("thumbnail upload progress: \(progress)%")
+                    self?.progressView?.setProgress(Float(progress) / 200.0 + 0.5, animated: true)
+                    self?.progressLabel?.text = "Uploading photo... \(progress / 2 + 50) %"
+                })
             },
             progressBlock: { (progress) -> Void in
                 print("image upload progress: \(progress)%")
                 self.progressView?.setProgress(Float(progress) / 200.0, animated: true)
-                self.progressLabel?.text = "\(progress / 2) %"
+                self.progressLabel?.text = "Uploading photo... \(progress / 2) %"
             })
         } else {
             print("Photo saving error")
@@ -202,7 +200,18 @@ class UploadPhotoViewController: UIViewController {
             if let progressPopupView = self?.progressPopupView {
                 self?.hidePopupView(progressPopupView)
             }
-            self?.navigationController?.popViewControllerAnimated(true)
+            self?.showAlert("Upload Success", message: "You have successfully uploaded your photo.") {
+                // Look for camera VC and pop to correct one
+                if let viewControllers = self?.navigationController?.viewControllers {
+                    for viewController in viewControllers {
+                        if viewController is PhotoHomeViewController {
+                            self?.navigationController?.popToViewController(viewController, animated: true)
+                            return
+                        }
+                    }
+                }
+                self?.navigationController?.popToRootViewControllerAnimated(true)
+            }
         }
     }
     

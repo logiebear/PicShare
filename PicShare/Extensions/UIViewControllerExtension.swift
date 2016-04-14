@@ -12,7 +12,9 @@ extension UIViewController {
 
     func showAlert(title: String, message: String, completion: (() -> ())? = nil) {
         let alertView = UIAlertController(title: title, message: message, preferredStyle: .Alert)
-        let okAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
+        let okAction = UIAlertAction(title: "OK", style: .Default, handler: { (action: UIAlertAction) in
+            completion?()
+        })
         alertView.addAction(okAction)
         presentViewController(alertView, animated: true, completion: completion)
     }
