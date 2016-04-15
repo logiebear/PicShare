@@ -127,6 +127,11 @@ class ProfileViewController: UIViewController {
         
         presentViewController(logoutAlert, animated: true, completion: nil)
     }
+    
+    @IBAction func myPhotosButtonPressed(sender: AnyObject) {
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("myPhotosViewController") as! MyPhotosViewController
+        navigationController?.pushViewController(vc, animated: true)
+    }
    
     @IBAction func profilePhotoTapped(sender: UITapGestureRecognizer) {
         if (modifyButtonsVisible) {

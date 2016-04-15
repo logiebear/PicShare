@@ -14,10 +14,6 @@ class MyPhotosViewController: UIViewController {
 
     @IBOutlet weak var collectionView: UICollectionView!
     var photoArray: [Photo]?
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-    }
     
     override func viewWillAppear(animated: Bool) {
         queryForAllUserPhotos()
