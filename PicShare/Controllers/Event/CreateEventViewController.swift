@@ -46,10 +46,16 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         
         for scalar in eventName.unicodeScalars {
             let value = scalar.value
-            if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57)) {
+            if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57) || (value == 95)) {
                 showErrorView("Invalid event name", msg: "Event name can only include alphanumeric characters.")
                 return
             }
+        }
+        
+        let index = eventName.startIndex
+        if eventName[index] == "_" {
+            showAlert("Invalid event name", message: "Event name can't start with underscore!")
+            return
         }
         
         validateHashtag { [weak self](success) -> () in
@@ -69,12 +75,17 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         
         for scalar in eventName.unicodeScalars {
             let value = scalar.value
-            if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57)) {
+            if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57) || (value == 95)) {
                 showErrorView("Invalid event name", msg: "Event name can only include alphanumeric characters.")
                 return
             }
         }
         
+        let index = eventName.startIndex
+        if eventName[index] == "_" {
+            showAlert("Invalid event name", message: "Event name can't start with underscore!")
+            return
+        }
         
         validateHashtag { (success) -> () in
             if success {
