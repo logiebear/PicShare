@@ -28,8 +28,7 @@
 		0AC2ABEE1CA4D596000A2230 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD21CA4D596000A2230 /* AddPhotoViewController.swift */; };
 		0AC2ABEF1CA4D596000A2230 /* CreateEventPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD31CA4D596000A2230 /* CreateEventPasswordViewController.swift */; };
 		0AC2ABF01CA4D596000A2230 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD41CA4D596000A2230 /* CreateEventViewController.swift */; };
-		0AC2ABF11CA4D596000A2230 /* EventHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD51CA4D596000A2230 /* EventHomeViewController.swift */; };
-		0AC2ABF21CA4D596000A2230 /* EventMgmtViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD61CA4D596000A2230 /* EventMgmtViewController.swift */; };
+		0AC2ABF21CA4D596000A2230 /* EventHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD61CA4D596000A2230 /* EventHomeViewController.swift */; };
 		0AC2ABF31CA4D596000A2230 /* EventPhotoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD71CA4D596000A2230 /* EventPhotoScreenViewController.swift */; };
 		0AC2ABF41CA4D596000A2230 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD81CA4D596000A2230 /* HomeViewController.swift */; };
 		0AC2ABF51CA4D596000A2230 /* MyPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDA1CA4D596000A2230 /* MyPhotosViewController.swift */; };
@@ -112,8 +111,7 @@
 		0AC2ABD21CA4D596000A2230 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		0AC2ABD31CA4D596000A2230 /* CreateEventPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventPasswordViewController.swift; sourceTree = "<group>"; };
 		0AC2ABD41CA4D596000A2230 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
-		0AC2ABD51CA4D596000A2230 /* EventHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHomeViewController.swift; sourceTree = "<group>"; };
-		0AC2ABD61CA4D596000A2230 /* EventMgmtViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventMgmtViewController.swift; sourceTree = "<group>"; };
+		0AC2ABD61CA4D596000A2230 /* EventHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHomeViewController.swift; sourceTree = "<group>"; };
 		0AC2ABD71CA4D596000A2230 /* EventPhotoScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPhotoScreenViewController.swift; sourceTree = "<group>"; };
 		0AC2ABD81CA4D596000A2230 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0AC2ABDA1CA4D596000A2230 /* MyPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPhotosViewController.swift; sourceTree = "<group>"; };
@@ -304,8 +302,7 @@
 				0AC2ABD21CA4D596000A2230 /* AddPhotoViewController.swift */,
 				0AC2ABD31CA4D596000A2230 /* CreateEventPasswordViewController.swift */,
 				0AC2ABD41CA4D596000A2230 /* CreateEventViewController.swift */,
-				0AC2ABD51CA4D596000A2230 /* EventHomeViewController.swift */,
-				0AC2ABD61CA4D596000A2230 /* EventMgmtViewController.swift */,
+				0AC2ABD61CA4D596000A2230 /* EventHomeViewController.swift */,
 				0AC2ABD71CA4D596000A2230 /* EventPhotoScreenViewController.swift */,
 			);
 			path = Event;
@@ -624,14 +621,13 @@
 				0AC2ABEC1CA4D596000A2230 /* ProfilePhotoViewController.swift in Sources */,
 				0AC2ABF61CA4D596000A2230 /* PhotoDetailViewController.swift in Sources */,
 				0AC2ABF51CA4D596000A2230 /* MyPhotosViewController.swift in Sources */,
-				0AC2ABF21CA4D596000A2230 /* EventMgmtViewController.swift in Sources */,
+				0AC2ABF21CA4D596000A2230 /* EventHomeViewController.swift in Sources */,
 				0ADAE6AD1C09649500E8BADE /* Photo.swift in Sources */,
 				0AC2ABF41CA4D596000A2230 /* HomeViewController.swift in Sources */,
 				0AC2ABFB1CA4D596000A2230 /* ProfileViewController.swift in Sources */,
 				0AC2ABFF1CA4D596000A2230 /* SearchLocationViewController.swift in Sources */,
 				0AC2ABEF1CA4D596000A2230 /* CreateEventPasswordViewController.swift in Sources */,
 				0A79F90C1C8D07B60051AB9D /* Utilities.swift in Sources */,
-				0AC2ABF11CA4D596000A2230 /* EventHomeViewController.swift in Sources */,
 				0ADB4BA71BFEBDB400EA51F2 /* UIImage+EXIF.m in Sources */,
 				0AC2ABF71CA4D596000A2230 /* PhotoHomeViewController.swift in Sources */,
 				0AC2ABED1CA4D596000A2230 /* SignUpViewController.swift in Sources */,
