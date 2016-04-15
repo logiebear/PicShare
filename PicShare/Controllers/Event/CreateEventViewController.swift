@@ -39,6 +39,10 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     // Mark: - User Actions
     
     @IBAction func createPublicEvent(sender: AnyObject) {
+        if !networkReachable() {
+            showAlert("No Internet Connection", message: "Please check your internet connection and try again.")
+            return
+        }
         guard let eventName = eventNameTextField.text where eventName != "" else {
             showErrorView("Invalid event name", msg: "Event name can't be empty!")
             return
