@@ -40,7 +40,8 @@ class SearchLocationViewController: UIViewController {
         filterView.alpha = 0.0
         closeButton.alpha = 0.0
         checkmarkButton.alpha = 0.0
-        
+    }
+    override func viewWillAppear(animated: Bool) {
         updateCurrentLocation()
     }
     
