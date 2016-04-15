@@ -15,8 +15,6 @@ class Event: PFObject {
     @NSManaged var hashtag: String
     @NSManaged var isPublic: Bool
     @NSManaged var password: String?
-    //@NSManaged var expirationDate: Datetime
-    //@NSManaged var photos: [Photo]
     
     override class func initialize() {
         var onceToken: dispatch_once_t = 0
@@ -31,8 +29,6 @@ class Event: PFObject {
         self.hashtag = hashtag
         self.isPublic = isPublic
         self.password = password
-        //self.expirationDate =
-        //self.photos =
     }
     
     override func isEqual(object: AnyObject?) -> Bool {

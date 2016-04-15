@@ -21,6 +21,7 @@ class UploadPhotoViewController: UIViewController {
     @IBOutlet weak var progressView: UIProgressView!
     var image: UIImage?
     var photo: Photo?
+    var event: Event?
     let locationManager = CLLocationManager()
     var didRequestLocation = false
 
@@ -68,7 +69,12 @@ class UploadPhotoViewController: UIViewController {
             showAlert("Comment Missing", message: "Please Enter a valid Comment")
             return
         }
-        showPopupView(uploadSelectionPopupView)
+        
+        if let event = event {
+            uploadPhotoImageFilesWithGeoPointOrEvent(event: event)
+        } else {
+            showPopupView(uploadSelectionPopupView)
+        }
     }
     
     // MARK: - Upload Selection Popup
@@ -89,7 +95,7 @@ class UploadPhotoViewController: UIViewController {
             text = descriptionTextField.text,
             user = PFUser.currentUser()
         {
-            photo = Photo(image: imageFile, thumbnail: thumbFile, owner: user, event: nil, location: nil, descriptiveText: text)
+            photo = Photo(image: imageFile, thumbnail: thumbFile, owner: user, descriptiveText: text)
             hidePopupView(uploadSelectionPopupView)
             self.performSegueWithIdentifier("SelectEvent", sender: self)
         }
@@ -118,7 +124,7 @@ class UploadPhotoViewController: UIViewController {
                     if let uploadSelectionPopupView = self?.uploadSelectionPopupView {
                         self?.hidePopupView(uploadSelectionPopupView)
                     }
-                    self?.uploadPhotoWithGeoPoint(geoPoint)
+                    self?.uploadPhotoImageFilesWithGeoPointOrEvent(geoPoint: geoPoint)
                 }
             }
         }
@@ -142,7 +148,7 @@ class UploadPhotoViewController: UIViewController {
         }
     }
     
-    private func uploadPhotoWithGeoPoint(geoPoint: PFGeoPoint) {
+    private func uploadPhotoImageFilesWithGeoPointOrEvent(geoPoint geoPoint: PFGeoPoint? = nil, event: Event? = nil) {
         if let image = image,
             fullImage = image.scaleAndRotateImage(960), // Magic number
             thumbImage = image.scaleAndRotateImage(480), // Magic number
@@ -169,8 +175,26 @@ class UploadPhotoViewController: UIViewController {
                         print("Thumb upload error: \(error)")
                         return
                     }
-                    self?.proceedToUploadPhoto(imageFile, thumbFile: thumbFile,
-                        user: user, geoPoint: geoPoint, text: text)
+                    let photo = Photo(image: imageFile, thumbnail: thumbFile, owner: user, descriptiveText: text)
+                    if let event = event {
+                        let query = PFQuery(className: "Event")
+                        guard let eventId = event.objectId else {
+                            return
+                        }
+                        query.getObjectInBackgroundWithId(eventId) { [weak self](object, error) -> Void in
+                            if let error = error {
+                                print("Error: \(error)")
+                                return
+                            }
+                            if let event = object as? Event {
+                                photo.event = event
+                                self?.proceedToUploadPhoto(photo)
+                            }
+                        }
+                    } else {
+                        photo.location = geoPoint
+                        self?.proceedToUploadPhoto(photo)
+                    }
                 },
                 progressBlock: { (progress) -> Void in
                     print("thumbnail upload progress: \(progress)%")
@@ -190,26 +214,30 @@ class UploadPhotoViewController: UIViewController {
     
     // MARK: - Helpers
     
-    func proceedToUploadPhoto(imageFile: PFFile, thumbFile: PFFile, user: PFUser, geoPoint: PFGeoPoint, text: String) {
-        let photo = Photo(image: imageFile,
-            thumbnail: thumbFile,
-            owner: user,
-            event: nil, location: geoPoint, descriptiveText: text)
-        
+    func proceedToUploadPhoto(photo: Photo) {
         photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
             if let progressPopupView = self?.progressPopupView {
                 self?.hidePopupView(progressPopupView)
             }
             self?.showAlert("Upload Success", message: "You have successfully uploaded your photo.") {
-                // Look for camera VC and pop to correct one
                 if let viewControllers = self?.navigationController?.viewControllers {
                     for viewController in viewControllers {
-                        if viewController is PhotoHomeViewController {
-                            self?.navigationController?.popToViewController(viewController, animated: true)
-                            return
+                        if self?.event != nil {
+                            // If an event was set, pop back to event screen controller
+                            if viewController is EventPhotoScreenViewController {
+                                self?.navigationController?.popToViewController(viewController, animated: true)
+                                return
+                            }                            
+                        } else {
+                            // Otherwise Look for camera VC and pop to correct one
+                            if viewController is PhotoHomeViewController {
+                                self?.navigationController?.popToViewController(viewController, animated: true)
+                                return
+                            }
                         }
                     }
                 }
+                // Default pop to root
                 self?.navigationController?.popToRootViewControllerAnimated(true)
             }
         }

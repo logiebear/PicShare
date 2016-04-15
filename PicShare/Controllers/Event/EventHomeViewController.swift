@@ -48,7 +48,7 @@ class EventHomeViewController: UIViewController {
         }
         
         eventQuery.whereKey("owner", equalTo: user)
-        eventQuery .orderByDescending("createdAt")
+        eventQuery.orderByDescending("createdAt")
         eventQuery.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) in
             let ownedEvents = objects as? [Event] ?? []
             self?.eventArray = ownedEvents

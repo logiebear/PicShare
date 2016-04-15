@@ -25,7 +25,6 @@
 		0AC2ABEB1CA4D596000A2230 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABCE1CA4D596000A2230 /* LoginViewController.swift */; };
 		0AC2ABEC1CA4D596000A2230 /* ProfilePhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABCF1CA4D596000A2230 /* ProfilePhotoViewController.swift */; };
 		0AC2ABED1CA4D596000A2230 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD01CA4D596000A2230 /* SignUpViewController.swift */; };
-		0AC2ABEE1CA4D596000A2230 /* AddPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD21CA4D596000A2230 /* AddPhotoViewController.swift */; };
 		0AC2ABEF1CA4D596000A2230 /* CreateEventPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD31CA4D596000A2230 /* CreateEventPasswordViewController.swift */; };
 		0AC2ABF01CA4D596000A2230 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD41CA4D596000A2230 /* CreateEventViewController.swift */; };
 		0AC2ABF21CA4D596000A2230 /* EventHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD61CA4D596000A2230 /* EventHomeViewController.swift */; };
@@ -35,7 +34,6 @@
 		0AC2ABF61CA4D596000A2230 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDB1CA4D596000A2230 /* PhotoDetailViewController.swift */; };
 		0AC2ABF71CA4D596000A2230 /* PhotoHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDC1CA4D596000A2230 /* PhotoHomeViewController.swift */; };
 		0AC2ABF81CA4D596000A2230 /* SelectUploadEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDD1CA4D596000A2230 /* SelectUploadEventViewController.swift */; };
-		0AC2ABF91CA4D596000A2230 /* UploadPhotoToEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDE1CA4D596000A2230 /* UploadPhotoToEventViewController.swift */; };
 		0AC2ABFA1CA4D596000A2230 /* UploadPhotoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDF1CA4D596000A2230 /* UploadPhotoViewController.swift */; };
 		0AC2ABFB1CA4D596000A2230 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABE01CA4D596000A2230 /* ProfileViewController.swift */; };
 		0AC2ABFC1CA4D596000A2230 /* RootViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABE11CA4D596000A2230 /* RootViewController.swift */; };
@@ -108,7 +106,6 @@
 		0AC2ABCE1CA4D596000A2230 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		0AC2ABCF1CA4D596000A2230 /* ProfilePhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfilePhotoViewController.swift; sourceTree = "<group>"; };
 		0AC2ABD01CA4D596000A2230 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
-		0AC2ABD21CA4D596000A2230 /* AddPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AddPhotoViewController.swift; sourceTree = "<group>"; };
 		0AC2ABD31CA4D596000A2230 /* CreateEventPasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventPasswordViewController.swift; sourceTree = "<group>"; };
 		0AC2ABD41CA4D596000A2230 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		0AC2ABD61CA4D596000A2230 /* EventHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHomeViewController.swift; sourceTree = "<group>"; };
@@ -118,7 +115,6 @@
 		0AC2ABDB1CA4D596000A2230 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		0AC2ABDC1CA4D596000A2230 /* PhotoHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHomeViewController.swift; sourceTree = "<group>"; };
 		0AC2ABDD1CA4D596000A2230 /* SelectUploadEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SelectUploadEventViewController.swift; sourceTree = "<group>"; };
-		0AC2ABDE1CA4D596000A2230 /* UploadPhotoToEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoToEventViewController.swift; sourceTree = "<group>"; };
 		0AC2ABDF1CA4D596000A2230 /* UploadPhotoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UploadPhotoViewController.swift; sourceTree = "<group>"; };
 		0AC2ABE01CA4D596000A2230 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		0AC2ABE11CA4D596000A2230 /* RootViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RootViewController.swift; sourceTree = "<group>"; };
@@ -299,7 +295,6 @@
 		0AC2ABD11CA4D596000A2230 /* Event */ = {
 			isa = PBXGroup;
 			children = (
-				0AC2ABD21CA4D596000A2230 /* AddPhotoViewController.swift */,
 				0AC2ABD31CA4D596000A2230 /* CreateEventPasswordViewController.swift */,
 				0AC2ABD41CA4D596000A2230 /* CreateEventViewController.swift */,
 				0AC2ABD61CA4D596000A2230 /* EventHomeViewController.swift */,
@@ -316,7 +311,6 @@
 				0AC2ABDC1CA4D596000A2230 /* PhotoHomeViewController.swift */,
 				0AC2ABDD1CA4D596000A2230 /* SelectUploadEventViewController.swift */,
 				0AC2ABDF1CA4D596000A2230 /* UploadPhotoViewController.swift */,
-				0AC2ABDE1CA4D596000A2230 /* UploadPhotoToEventViewController.swift */,
 			);
 			path = Photo;
 			sourceTree = "<group>";
@@ -642,10 +636,8 @@
 				0AC2AC001CA4D596000A2230 /* TabBarViewController.swift in Sources */,
 				0AF9D8911CA4E4E3007DAA47 /* SearchLocationTableViewCell.swift in Sources */,
 				0AC2ABF31CA4D596000A2230 /* EventPhotoScreenViewController.swift in Sources */,
-				0AC2ABEE1CA4D596000A2230 /* AddPhotoViewController.swift in Sources */,
 				0AC2ABFE1CA4D596000A2230 /* SearchEventViewController.swift in Sources */,
 				0AC2ABFA1CA4D596000A2230 /* UploadPhotoViewController.swift in Sources */,
-				0AC2ABF91CA4D596000A2230 /* UploadPhotoToEventViewController.swift in Sources */,
 				0AC2ABEB1CA4D596000A2230 /* LoginViewController.swift in Sources */,
 				0AC2ABF81CA4D596000A2230 /* SelectUploadEventViewController.swift in Sources */,
 				0A79F9091C8D03A60051AB9D /* UIViewControllerExtension.swift in Sources */,

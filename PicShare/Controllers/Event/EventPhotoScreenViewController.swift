@@ -60,7 +60,9 @@ class EventPhotoScreenViewController: UIViewController {
     }
     
     @IBAction func takePhoto(sender: AnyObject) {
-        // TODO: Add camera view
+        let vc = storyboard?.instantiateViewControllerWithIdentifier("photoHomeViewController") as! PhotoHomeViewController
+        vc.event = event
+        navigationController?.pushViewController(vc, animated: false)
     }
     
     func reloadCollectionViewData() {

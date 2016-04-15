@@ -55,7 +55,7 @@ class Photo: PFObject {
     }
     
     init(image: PFFile, thumbnail: PFFile, owner: PFUser,
-        event: Event?, location: PFGeoPoint?, descriptiveText: String?) {
+        event: Event? = nil, location: PFGeoPoint? = nil, descriptiveText: String?) {
         super.init()
         
         self.image = image
