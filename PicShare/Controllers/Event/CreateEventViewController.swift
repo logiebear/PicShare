@@ -26,13 +26,13 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         }
 
         if segue.identifier == "SetPassword" {
-            let destViewController: CreateEventPasswordViewController = segue.destinationViewController as! CreateEventPasswordViewController
+            let destViewController = segue.destinationViewController as! CreateEventPasswordViewController
             destViewController.hashtag = eventName
         }
-        if segue.identifier == "AddPhoto" {
-            let destViewController: AddPhotoViewController = segue.destinationViewController as! AddPhotoViewController
-            destViewController.hashtag = eventName
+        if segue.identifier == "EventScreen" {
+            let destViewController = segue.destinationViewController as! EventPhotoScreenViewController
             destViewController.event = event
+            destViewController.sourceController = self
         }
     }
     
@@ -98,7 +98,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         self.event = Event(owner: user, hashtag: eventName,
             isPublic: isPublic, password: password)
         self.event?.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
-            self?.performSegueWithIdentifier("AddPhoto", sender: nil)
+            self?.performSegueWithIdentifier("EventScreen", sender: nil)
         }
     }
 

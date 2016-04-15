@@ -7,8 +7,22 @@
 //
 
 import UIKit
-import Parse
+import ParseUI
+
+protocol EventPhotoCollectionViewCellDelegate: class {
+    func deletePhoto(photo: Photo, indexPath: NSIndexPath)
+}
 
 class EventPhotoCollectionViewCell: UICollectionViewCell {
-    @IBOutlet weak var cellImage: UIImageView!
+    @IBOutlet weak var imageView: PFImageView!
+    @IBOutlet weak var deleteButton: UIButton!
+    weak var delegate: EventPhotoCollectionViewCellDelegate?
+    var photo: Photo?
+    var indexPath: NSIndexPath?
+    
+    @IBAction func deleteButtonPressed(sender: AnyObject) {
+        if let photo = photo, indexPath = indexPath {
+            delegate?.deletePhoto(photo, indexPath: indexPath)
+        }
+    }
 }

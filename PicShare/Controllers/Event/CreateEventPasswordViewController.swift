@@ -28,10 +28,10 @@ class CreateEventPasswordViewController: UIViewController{
     }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "AddPhoto" {
-            let destViewController = segue.destinationViewController as! AddPhotoViewController
-            destViewController.hashtag = hashtag
+        if segue.identifier == "EventScreen" {
+            let destViewController = segue.destinationViewController as! EventPhotoScreenViewController
             destViewController.event = event
+            destViewController.sourceController = self
         }
     }
     
@@ -71,7 +71,7 @@ class CreateEventPasswordViewController: UIViewController{
         self.event = Event(owner: user, hashtag: hashtag,
             isPublic: isPublic, password: eventPasswordText)
         self.event?.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
-            self?.performSegueWithIdentifier("AddPhoto", sender: nil)
+            self?.performSegueWithIdentifier("EventScreen", sender: nil)
         }
     }
     

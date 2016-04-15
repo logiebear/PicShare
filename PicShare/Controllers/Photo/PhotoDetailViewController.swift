@@ -15,10 +15,10 @@ class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var deleteButton: UIButton!
     var photo: Photo?
-    var user: User?
-    var userEventArray = [Event]()
     var image: UIImage?
-    var event: Event?
+//    var user: User?
+//    var userEventArray = [Event]()
+//    var event: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -64,17 +64,17 @@ class PhotoDetailViewController: UIViewController {
     
     // MARK: - Private
     
-    private func addEventToUserEvents(event: Event) {
-        guard let user = self.user else  {
-            print("Error no user")
-            return
-        }
-        if user.events == nil {
-            user.events = [Event]()
-        }
-        user.events?.append(event)
-        user.saveInBackground()
-    }
+//    private func addEventToUserEvents(event: Event) {
+//        guard let user = self.user else  {
+//            print("Error no user")
+//            return
+//        }
+//        if user.events == nil {
+//            user.events = [Event]()
+//        }
+//        user.events?.append(event)
+//        user.saveInBackground()
+//    }
     
     // MARK: - Helpers
     
@@ -82,12 +82,12 @@ class PhotoDetailViewController: UIViewController {
         if let error = error {
             showAlert("Download Error", message: error.localizedDescription)
         } else {
-            if let event = event {
-                if !userEventArray.contains(event) {
-                    print("join event automatically")
-                    addEventToUserEvents(event)
-                }
-            }
+//            if let event = event {
+//                if !userEventArray.contains(event) {
+//                    print("join event automatically")
+//                    addEventToUserEvents(event)
+//                }
+//            }
             showAlert("Success!", message: "You have downloaded the image successfully!")
         }
     }

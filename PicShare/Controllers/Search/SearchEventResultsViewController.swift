@@ -36,8 +36,6 @@ class SearchEventResultsViewController: UIViewController {
             let svc = segue.destinationViewController as! EventPhotoScreenViewController
             if let event = selectedEvent {
                 svc.event = event
-                svc.userEventArray = userEventArray
-                svc.user = user
             }
         }
     }
