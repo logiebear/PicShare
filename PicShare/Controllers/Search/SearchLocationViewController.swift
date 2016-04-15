@@ -43,6 +43,7 @@ class SearchLocationViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         updateCurrentLocation()
     }
     
