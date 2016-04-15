@@ -14,12 +14,12 @@ class CreateEventPasswordViewController: UIViewController{
     // Mark: - Properties
     
     @IBOutlet weak var eventPasswordTextField: UITextField!
-    
     var hashtag: String?
     var user: PFUser? = PFUser.currentUser()
     var isPublic: Bool = false
     var password: String? = nil
     var event: Event?
+    var syncInProgress = false
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -68,9 +68,15 @@ class CreateEventPasswordViewController: UIViewController{
         guard let user = user, eventPasswordText = eventPasswordTextField.text, hashtag = self.hashtag else {
             return
         }
+        if syncInProgress {
+            return
+        }
+        
+        syncInProgress = true
         self.event = Event(owner: user, hashtag: hashtag,
             isPublic: isPublic, password: eventPasswordText)
         self.event?.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
+            self?.syncInProgress = false
             self?.performSegueWithIdentifier("EventScreen", sender: nil)
         }
     }

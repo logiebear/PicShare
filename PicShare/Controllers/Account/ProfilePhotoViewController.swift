@@ -17,6 +17,7 @@ class ProfilePhotoViewController: UIViewController {
     var userProfilePhoto: UIImage?
     var user: User?
     var currentContentViewController: UIViewController?
+    var uploadInProgress = false
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
@@ -34,6 +35,7 @@ class ProfilePhotoViewController: UIViewController {
         let selector = UIImagePickerController()
         selector.delegate = self
         selector.sourceType = .PhotoLibrary
+        selector.allowsEditing = true
         presentViewController(selector, animated: true, completion: nil)
     }
     
@@ -46,6 +48,7 @@ class ProfilePhotoViewController: UIViewController {
         let selector = UIImagePickerController()
         selector.delegate = self
         selector.sourceType = .Camera
+        selector.allowsEditing = true
         presentViewController(selector, animated: true, completion: nil)
     }
     
@@ -58,12 +61,15 @@ class ProfilePhotoViewController: UIViewController {
         if !networkReachable() {
             showAlert("No Internet Connection", message: "Please check your internet connection and try again.")
         }
-        
         // Signup user to parse
         guard let user = user else {
             print("User doesn't exist!")
             return
         }
+        if uploadInProgress {
+            return
+        }
+        uploadInProgress = true
 
         // Add profile photo
         if let userProfilePhoto = userProfilePhoto,
@@ -75,6 +81,7 @@ class ProfilePhotoViewController: UIViewController {
         }
         
         user.signUpInBackgroundWithBlock { [weak self](success: Bool, error: NSError?) in
+            self?.uploadInProgress = false
             if success {
                 NSLog("Account creation successful!")
                 //Show home view

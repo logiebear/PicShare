@@ -14,11 +14,11 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
     // Mark: - Properties
     
     @IBOutlet weak var eventNameTextField: UITextField!
-    
     var hashtag: String?
     var password: String?
     var isPublic = true
     var event: Event?
+    var syncInProgress = false
 
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         guard let eventName = eventNameTextField.text else {
@@ -106,9 +106,14 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         guard let user = PFUser.currentUser(), eventName = eventNameTextField.text else {
             return
         }
+        if syncInProgress {
+            return
+        }
+        syncInProgress = true
         self.event = Event(owner: user, hashtag: eventName,
             isPublic: isPublic, password: password)
         self.event?.saveInBackgroundWithBlock() { [weak self](success, error) -> Void in
+            self?.syncInProgress = false
             self?.performSegueWithIdentifier("EventScreen", sender: nil)
         }
     }
