@@ -41,7 +41,9 @@ class SearchLocationViewController: UIViewController {
         closeButton.alpha = 0.0
         checkmarkButton.alpha = 0.0
     }
+    
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         updateCurrentLocation()
     }
     
