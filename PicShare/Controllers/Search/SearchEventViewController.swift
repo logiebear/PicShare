@@ -43,12 +43,30 @@ class SearchEventViewController: UIViewController {
     // MARK: - User Actions
     
     @IBAction func searchEventButtonPressed(sender: AnyObject? = nil) {
-        guard let searchText = searchEventTextField.text where searchText != "" else {
+        if searchEventTextField.text == "" || searchEventTextField.text == nil {
             showAlert("Invalid event name", message: "Event name can't be empty!")
             return
         }
         
-        queryForSpecificEvents(searchText)
+        guard let searchEventTextField = searchEventTextField.text else {
+            return
+        }
+        
+        for scalar in searchEventTextField.unicodeScalars {
+            let value = scalar.value
+            if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57) || (value == 95)) {
+                showAlert("Invalid event name", message: "Invalid name can only include alphanumerics and underscores!")
+                return
+            }
+        }
+        
+        let index = searchEventTextField.startIndex
+        if searchEventTextField[index] == "_" {
+             showAlert("Invalid event name", message: "Event name can't start with underscore!")
+            return
+        }
+        
+        queryForSpecificEvents(searchEventTextField)
     }
     
     @IBAction func retrySearchEventButtonPressed(sender: AnyObject? = nil) {
