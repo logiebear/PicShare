@@ -20,6 +20,7 @@ class PhotoHomeViewController: UIViewController {
     @IBOutlet weak var containerView: UIView!
     @IBOutlet weak var cameraOverlayView: UIView!
     var cameraPickerController = UIImagePickerController()
+    var event: Event?
     let deviceHasCamera = UIImagePickerController.isSourceTypeAvailable(.Camera)
     
     // Used for simulator only
@@ -58,15 +59,6 @@ class PhotoHomeViewController: UIViewController {
 
     override func prefersStatusBarHidden() -> Bool {
         return true
-    }
-    
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        if segue.identifier == "UploadPhoto" {
-            if let image = sender as? UIImage,
-                vc = segue.destinationViewController as? UploadPhotoViewController {
-                vc.image = image.cropToSquare()
-            }
-        }
     }
     
     func displayViewController(viewController: UIViewController) {
@@ -110,9 +102,6 @@ class PhotoHomeViewController: UIViewController {
         presentViewController(picker, animated: true, completion: nil)
     }
     
-    @IBAction func myPhotosButtonPressed(sender: AnyObject) {
-        self.performSegueWithIdentifier("MyPhotos", sender: nil)
-    }
 }
 
 // MARK: - UIImagePickerControllerDelegate
@@ -132,6 +121,7 @@ extension PhotoHomeViewController: UIImagePickerControllerDelegate, UINavigation
         }
         
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("uploadPhotoViewController") as! UploadPhotoViewController
+        vc.event = event
         vc.image = imageToUpload
         self.navigationController?.pushViewController(vc, animated: true)
     }
