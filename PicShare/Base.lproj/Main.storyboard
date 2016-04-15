@@ -70,6 +70,8 @@
             <string>Lato-Medium</string>
             <string>Lato-Medium</string>
             <string>Lato-Medium</string>
+            <string>Lato-Medium</string>
+            <string>Lato-Medium</string>
         </mutableArray>
         <mutableArray key="Lato-Regular.ttf">
             <string>Lato-Regular</string>
@@ -1530,16 +1532,16 @@
                         <subviews>
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="2fK-iE-2A8">
                                 <rect key="frame" x="0.0" y="80" width="375" height="587"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" red="0.85098039219999999" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="DOC-YJ-2nS">
                                     <size key="itemSize" width="100" height="100"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
                                     <size key="footerReferenceSize" width="0.0" height="0.0"/>
-                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                    <inset key="sectionInset" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                 </collectionViewFlowLayout>
                                 <cells>
                                     <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="Cell" id="yFG-d5-HSu">
-                                        <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
+                                        <rect key="frame" x="20" y="0.0" width="100" height="100"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="100"/>
@@ -1568,7 +1570,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="My Photos" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="128" translatesAutoresizingMaskIntoConstraints="NO" id="CP2-4L-P77">
-                                        <rect key="frame" x="144" y="37" width="86" height="20"/>
+                                        <rect key="frame" x="144.5" y="37" width="86" height="20"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="86" id="Q1h-A9-yMh"/>
                                             <constraint firstAttribute="height" constant="20" id="uct-A7-ipd"/>
@@ -1614,7 +1616,7 @@
                                             <color key="titleColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
                                         </state>
                                         <connections>
-                                            <action selector="backButtonPressed:" destination="tLx-Nn-95y" eventType="touchUpInside" id="ncx-Ce-AeK"/>
+                                            <action selector="backButtonPressed:" destination="CkF-ot-gHk" eventType="touchUpInside" id="nPA-Om-Mdt"/>
                                         </connections>
                                     </button>
                                 </subviews>
@@ -1631,7 +1633,7 @@
                                 </constraints>
                             </view>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85098039219999999" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="lMH-dl-oP6" firstAttribute="top" secondItem="2fK-iE-2A8" secondAttribute="bottom" id="44H-Ug-bnH"/>
                             <constraint firstItem="2fK-iE-2A8" firstAttribute="top" secondItem="ehI-Uj-xvP" secondAttribute="bottom" id="7gQ-et-fxV"/>
@@ -1644,6 +1646,7 @@
                     </view>
                     <nil key="simulatedTopBarMetrics"/>
                     <nil key="simulatedBottomBarMetrics"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="collectionView" destination="2fK-iE-2A8" id="zQg-Fg-djz"/>
                     </connections>
@@ -1778,7 +1781,6 @@
                         <outlet property="activityIndicator" destination="UM7-zn-lbf" id="fZO-Da-ieZ"/>
                         <outlet property="deleteButton" destination="BM8-Ni-GVm" id="33O-IF-LMX"/>
                         <outlet property="pfImageView" destination="HbX-y6-D5G" id="POW-KJ-rxc"/>
-                        <segue destination="CkF-ot-gHk" kind="show" identifier="MyPhotos" id="Cra-CO-7HR"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="S0T-2S-sSf" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1877,20 +1879,6 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="nLB-fg-Cyv" userLabel="View - Header">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="80"/>
                                 <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjh-ZN-v4o">
-                                        <rect key="frame" x="289" y="30" width="70" height="34"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="34" id="4Le-fe-k1N"/>
-                                            <constraint firstAttribute="width" constant="70" id="vEA-6E-U0X"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                                        <state key="normal" title="Log Out">
-                                            <color key="titleColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                        </state>
-                                        <connections>
-                                            <action selector="showLogoutAlert:" destination="eU6-Aj-CwX" eventType="touchUpInside" id="tji-g2-m1g"/>
-                                        </connections>
-                                    </button>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Profile" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="158" translatesAutoresizingMaskIntoConstraints="NO" id="LaP-Wj-ja4">
                                         <rect key="frame" x="162" y="37" width="52" height="20"/>
                                         <constraints>
@@ -1904,20 +1892,20 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="onr-Na-fdh" userLabel="View - Prism">
                                         <rect key="frame" x="0.0" y="77" width="375" height="3"/>
                                         <subviews>
-                                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="lMY-4l-G8b" userLabel="View - Blue">
-                                                <rect key="frame" x="0.0" y="0.0" width="94" height="3"/>
+                                            <view contentMode="scaleToFill" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="lMY-4l-G8b" userLabel="View - Blue">
+                                                <rect key="frame" x="-1" y="0.0" width="95" height="3"/>
                                                 <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="NTf-cJ-J5x" userLabel="View - Red">
-                                                <rect key="frame" x="94" y="0.0" width="94" height="3"/>
+                                                <rect key="frame" x="94" y="0.0" width="93.5" height="3"/>
                                                 <color key="backgroundColor" red="0.91372549020000005" green="0.2274509804" blue="0.094117647060000004" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="y4w-fR-1uM" userLabel="View - Green">
-                                                <rect key="frame" x="187" y="0.0" width="94" height="3"/>
+                                                <rect key="frame" x="187.5" y="0.0" width="93.5" height="3"/>
                                                 <color key="backgroundColor" red="0.20784313730000001" green="0.87843137250000003" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="YpF-Ms-ZCe" userLabel="View - Yellow">
-                                                <rect key="frame" x="281" y="0.0" width="94" height="3"/>
+                                                <rect key="frame" x="281.5" y="0.0" width="93.5" height="3"/>
                                                 <color key="backgroundColor" red="0.98039215690000003" green="0.85882352939999995" blue="0.1764705882" alpha="1" colorSpace="calibratedRGB"/>
                                             </view>
                                         </subviews>
@@ -1943,16 +1931,49 @@
                                             <constraint firstItem="NTf-cJ-J5x" firstAttribute="top" secondItem="onr-Na-fdh" secondAttribute="top" id="rod-mc-3FG"/>
                                         </constraints>
                                     </view>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bPP-bL-P72">
+                                        <rect key="frame" x="301" y="37" width="58" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="8s3-8O-viN"/>
+                                            <constraint firstAttribute="width" constant="58" id="eXb-cR-Eme"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="15"/>
+                                        <inset key="imageEdgeInsets" minX="0.0" minY="2" maxX="0.0" maxY="0.0"/>
+                                        <state key="normal" title="Logout">
+                                            <color key="titleColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="showLogoutAlert:" destination="eU6-Aj-CwX" eventType="touchUpInside" id="maS-9l-kR2"/>
+                                            <action selector="uploadPhoto:" destination="pTd-Vp-14w" eventType="touchUpInside" id="6cB-3g-jkr"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fxn-vW-Y5G">
+                                        <rect key="frame" x="16" y="39" width="80" height="18"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="80" id="ahD-6R-Odu"/>
+                                            <constraint firstAttribute="height" constant="18" id="m6d-U8-30R"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Medium" family="Lato" pointSize="15"/>
+                                        <state key="normal" title="My Photos">
+                                            <color key="titleColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="myPhotosButtonPressed:" destination="eU6-Aj-CwX" eventType="touchUpInside" id="x5z-CX-MxA"/>
+                                            <action selector="uploadPhoto:" destination="pTd-Vp-14w" eventType="touchUpInside" id="dWc-KN-aeA"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstItem="onr-Na-fdh" firstAttribute="top" secondItem="Mjh-ZN-v4o" secondAttribute="bottom" constant="13" id="BSP-Yi-qcI"/>
-                                    <constraint firstAttribute="trailing" secondItem="Mjh-ZN-v4o" secondAttribute="trailing" constant="16" id="CP1-wm-LL9"/>
+                                    <constraint firstAttribute="trailing" secondItem="bPP-bL-P72" secondAttribute="trailing" constant="16" id="AO7-Jm-FIM"/>
                                     <constraint firstAttribute="trailing" secondItem="onr-Na-fdh" secondAttribute="trailing" id="DIl-fq-SB4"/>
+                                    <constraint firstItem="onr-Na-fdh" firstAttribute="top" secondItem="bPP-bL-P72" secondAttribute="bottom" constant="20" id="PjT-Ha-gOq"/>
                                     <constraint firstItem="onr-Na-fdh" firstAttribute="leading" secondItem="nLB-fg-Cyv" secondAttribute="leading" id="U8u-qO-cEF"/>
+                                    <constraint firstItem="onr-Na-fdh" firstAttribute="top" secondItem="fxn-vW-Y5G" secondAttribute="bottom" constant="20" id="XhY-JM-Y2g"/>
                                     <constraint firstItem="LaP-Wj-ja4" firstAttribute="centerX" secondItem="nLB-fg-Cyv" secondAttribute="centerX" id="d6E-xY-DNO"/>
                                     <constraint firstAttribute="height" constant="80" id="dna-aJ-9VM"/>
+                                    <constraint firstItem="fxn-vW-Y5G" firstAttribute="leading" secondItem="nLB-fg-Cyv" secondAttribute="leading" constant="16" id="nrq-bp-9Mm"/>
                                     <constraint firstItem="onr-Na-fdh" firstAttribute="top" secondItem="LaP-Wj-ja4" secondAttribute="bottom" constant="20" id="uQZ-vl-UZA"/>
                                     <constraint firstAttribute="bottom" secondItem="onr-Na-fdh" secondAttribute="bottom" id="xW0-na-VAY"/>
                                 </constraints>
