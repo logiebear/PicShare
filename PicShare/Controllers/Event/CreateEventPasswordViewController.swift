@@ -42,6 +42,10 @@ class CreateEventPasswordViewController: UIViewController{
     }
     
     @IBAction func finishedButtonPressed(sender: AnyObject) {
+        if !networkReachable() {
+            showAlert("No Internet Connection", message: "Please check your internet connection and try again.")
+            return
+        }
         if eventPasswordTextField.text == "" ||  eventPasswordTextField.text == nil {
             showErrorView("Invalid password", msg: "Password can't be empty!")
             return

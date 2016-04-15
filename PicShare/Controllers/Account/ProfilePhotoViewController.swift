@@ -60,6 +60,7 @@ class ProfilePhotoViewController: UIViewController {
     @IBAction func useProfilePhoto(sender: AnyObject) {
         if !networkReachable() {
             showAlert("No Internet Connection", message: "Please check your internet connection and try again.")
+            return
         }
         // Signup user to parse
         guard let user = user else {
