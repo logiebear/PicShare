@@ -14,6 +14,7 @@ class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var pfImageView: PFImageView!
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var deleteButton: UIButton!
+    @IBOutlet weak var commentLabel: UILabel!
     var photo: Photo?
     var image: UIImage?
 //    var user: User?
@@ -26,7 +27,7 @@ class PhotoDetailViewController: UIViewController {
             // TODO: SHOW PHOTO ERROR MESSAGE
             return
         }
-        
+        commentLabel.text = photo.descriptiveText
         deleteButton.hidden = photo.owner?.objectId != PFUser.currentUser()?.objectId
         pfImageView.contentMode = .ScaleAspectFit
         pfImageView.file = photo.image

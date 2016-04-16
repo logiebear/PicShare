@@ -163,6 +163,7 @@ class ProfileViewController: UIViewController {
         let selector = UIImagePickerController()
         selector.delegate = self
         selector.sourceType = .Camera
+        selector.allowsEditing = true
         presentViewController(selector, animated: true, completion: nil)
     }
     
@@ -170,6 +171,7 @@ class ProfileViewController: UIViewController {
         let selector = UIImagePickerController()
         selector.delegate = self
         selector.sourceType = .PhotoLibrary
+        selector.allowsEditing = true
         presentViewController(selector, animated: true, completion: nil)
     }
 }

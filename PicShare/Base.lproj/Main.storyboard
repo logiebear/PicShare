@@ -44,6 +44,7 @@
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
             <string>Lato-Bold</string>
+            <string>Lato-Bold</string>
         </mutableArray>
         <mutableArray key="Lato-Heavy.ttf">
             <string>Lato-Heavy</string>
@@ -1714,11 +1715,27 @@
                                             <action selector="closeButtonPressed:" destination="MUh-FL-oeF" eventType="touchUpInside" id="BKt-9h-Zr0"/>
                                         </connections>
                                     </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BM8-Ni-GVm">
+                                        <rect key="frame" x="259" y="37" width="100" height="20"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="20" id="VFl-1g-RYz"/>
+                                            <constraint firstAttribute="width" constant="100" id="dYM-zG-4E4"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
+                                        <state key="normal" title="Delete Photo">
+                                            <color key="titleColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="deleteButtonPressed:" destination="MUh-FL-oeF" eventType="touchUpInside" id="taq-kX-u9y"/>
+                                        </connections>
+                                    </button>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <constraints>
                                     <constraint firstAttribute="bottom" secondItem="5q7-sk-atr" secondAttribute="bottom" id="0aS-lk-esn"/>
+                                    <constraint firstAttribute="trailing" secondItem="BM8-Ni-GVm" secondAttribute="trailing" constant="16" id="24K-p2-P66"/>
                                     <constraint firstItem="fAs-Bc-xno" firstAttribute="leading" secondItem="9Jr-i2-xXU" secondAttribute="leading" constant="16" id="9as-rq-kTR"/>
+                                    <constraint firstItem="5q7-sk-atr" firstAttribute="top" secondItem="BM8-Ni-GVm" secondAttribute="bottom" constant="20" id="Ehb-YI-BAf"/>
                                     <constraint firstItem="5q7-sk-atr" firstAttribute="top" secondItem="fAs-Bc-xno" secondAttribute="bottom" constant="20" id="F8j-92-F3R"/>
                                     <constraint firstItem="5q7-sk-atr" firstAttribute="leading" secondItem="9Jr-i2-xXU" secondAttribute="leading" id="P1S-TN-Iuf"/>
                                     <constraint firstAttribute="trailing" secondItem="5q7-sk-atr" secondAttribute="trailing" id="eR2-fZ-F1K"/>
@@ -1732,53 +1749,51 @@
                                 </constraints>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n6w-tT-Mlt">
-                                <rect key="frame" x="285" y="471" width="70" height="30"/>
+                                <rect key="frame" x="20" y="521" width="335" height="44"/>
+                                <color key="backgroundColor" red="0.0" green="0.68235294120000001" blue="0.83921568629999999" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="pGa-L2-smE"/>
-                                    <constraint firstAttribute="width" constant="70" id="uuE-hX-gqj"/>
+                                    <constraint firstAttribute="height" constant="44" id="Y7f-ET-TEk"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
-                                <state key="normal" title="Download">
-                                    <color key="titleColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <state key="normal" title="Download Photo">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <action selector="downloadButtonPressed:" destination="MUh-FL-oeF" eventType="touchUpInside" id="5H7-au-KSA"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BM8-Ni-GVm">
-                                <rect key="frame" x="20" y="471" width="45" height="30"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Comment" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" preferredMaxLayoutWidth="335" translatesAutoresizingMaskIntoConstraints="NO" id="wPE-QV-MAr">
+                                <rect key="frame" x="20" y="463" width="335" height="50"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="30" id="VFl-1g-RYz"/>
-                                    <constraint firstAttribute="width" constant="45" id="dYM-zG-4E4"/>
+                                    <constraint firstAttribute="height" constant="50" id="Ts6-2E-k07"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" name="Lato-Bold" family="Lato" pointSize="15"/>
-                                <state key="normal" title="Delete">
-                                    <color key="titleColor" red="0.31764705879999999" green="0.33333333329999998" blue="0.36470588240000001" alpha="1" colorSpace="calibratedRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="deleteButtonPressed:" destination="MUh-FL-oeF" eventType="touchUpInside" id="taq-kX-u9y"/>
-                                </connections>
-                            </button>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <color key="backgroundColor" red="0.85098039219999999" green="0.85882352939999995" blue="0.86274509799999999" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="UM7-zn-lbf" firstAttribute="centerY" secondItem="nQE-51-I1k" secondAttribute="centerY" id="2yr-7V-u6q"/>
-                            <constraint firstItem="n6w-tT-Mlt" firstAttribute="top" secondItem="HbX-y6-D5G" secondAttribute="bottom" constant="16" id="3ou-QP-gzp"/>
                             <constraint firstItem="9Jr-i2-xXU" firstAttribute="top" secondItem="nQE-51-I1k" secondAttribute="top" id="3tt-Oa-cnU"/>
                             <constraint firstItem="HbX-y6-D5G" firstAttribute="top" secondItem="9Jr-i2-xXU" secondAttribute="bottom" id="8VQ-Yy-d3Z"/>
-                            <constraint firstItem="BM8-Ni-GVm" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leading" constant="20" id="C12-JG-hEs"/>
-                            <constraint firstAttribute="trailing" secondItem="n6w-tT-Mlt" secondAttribute="trailing" constant="20" id="KR1-Ne-k6w"/>
-                            <constraint firstItem="BM8-Ni-GVm" firstAttribute="top" secondItem="HbX-y6-D5G" secondAttribute="bottom" constant="16" id="KxH-2f-zmJ"/>
+                            <constraint firstAttribute="trailing" secondItem="wPE-QV-MAr" secondAttribute="trailing" constant="20" id="BVr-Sj-RMU"/>
                             <constraint firstItem="UM7-zn-lbf" firstAttribute="centerX" secondItem="nQE-51-I1k" secondAttribute="centerX" id="UNJ-q3-Am9"/>
+                            <constraint firstItem="n6w-tT-Mlt" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leading" constant="20" id="n11-OD-5P5"/>
+                            <constraint firstAttribute="trailing" secondItem="n6w-tT-Mlt" secondAttribute="trailing" constant="20" id="nUM-Hj-JUN"/>
+                            <constraint firstItem="wPE-QV-MAr" firstAttribute="top" secondItem="HbX-y6-D5G" secondAttribute="bottom" constant="8" id="oX9-br-nd3"/>
                             <constraint firstItem="9Jr-i2-xXU" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leading" id="oum-CO-syl"/>
                             <constraint firstAttribute="trailing" secondItem="9Jr-i2-xXU" secondAttribute="trailing" id="ssv-Kf-k2h"/>
+                            <constraint firstItem="n6w-tT-Mlt" firstAttribute="top" secondItem="wPE-QV-MAr" secondAttribute="bottom" constant="8" id="tN4-gL-xH7"/>
                             <constraint firstAttribute="trailing" secondItem="HbX-y6-D5G" secondAttribute="trailing" id="tVs-Vw-Udc"/>
                             <constraint firstItem="HbX-y6-D5G" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leading" id="uCR-VZ-H4Q"/>
+                            <constraint firstItem="wPE-QV-MAr" firstAttribute="leading" secondItem="nQE-51-I1k" secondAttribute="leading" constant="20" id="z0J-Fz-O5j"/>
                         </constraints>
                     </view>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                     <connections>
                         <outlet property="activityIndicator" destination="UM7-zn-lbf" id="fZO-Da-ieZ"/>
+                        <outlet property="commentLabel" destination="wPE-QV-MAr" id="JS9-e8-A7F"/>
                         <outlet property="deleteButton" destination="BM8-Ni-GVm" id="33O-IF-LMX"/>
                         <outlet property="pfImageView" destination="HbX-y6-D5G" id="POW-KJ-rxc"/>
                     </connections>
