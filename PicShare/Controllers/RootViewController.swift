@@ -56,8 +56,12 @@ extension RootViewController: UITabBarControllerDelegate {
     
     func tabBarController(tabBarController: UITabBarController, shouldSelectViewController viewController: UIViewController) -> Bool {
         if viewController is PhotoTempViewController {
-            let vc = storyboard?.instantiateViewControllerWithIdentifier("photoHomeViewController") as! PhotoHomeViewController
-            navigationController?.pushViewController(vc, animated: false)
+            if UIImagePickerController.isSourceTypeAvailable(.Camera) && !cameraAvailable() {
+                showAlert("Trouble With Camera", message: "Please enable your camera in your device settings to take a photo.")
+            } else {
+                let vc = storyboard?.instantiateViewControllerWithIdentifier("photoHomeViewController") as! PhotoHomeViewController
+                navigationController?.pushViewController(vc, animated: false)
+            }
             return false
         }
         return true
