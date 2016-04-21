@@ -117,6 +117,7 @@ class SearchLocationViewController: UIViewController {
         query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
                 print("Error: \(error) \(error.userInfo)")
+                self?.showAlert("Error", message: "There was an error retrieving your photos please try again.")
                 return
             }
 
