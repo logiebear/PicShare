@@ -165,6 +165,9 @@ class UploadPhotoViewController: UIViewController {
             imageFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
                 if !success {
                     self?.showAlert("Error", message: "There was an error uploading your photo. Please try again.")
+                    if let progressPopupView = self?.progressPopupView {
+                        self?.hidePopupView(progressPopupView)
+                    }
                     print("Image upload error: \(error)")
                     return
                 }
@@ -172,6 +175,9 @@ class UploadPhotoViewController: UIViewController {
                 thumbFile.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
                     if !success {
                         self?.showAlert("Error", message: "There was an error uploading your photo. Please try again.")
+                        if let progressPopupView = self?.progressPopupView {
+                            self?.hidePopupView(progressPopupView)
+                        }
                         print("Thumb upload error: \(error)")
                         return
                     }
@@ -218,6 +224,11 @@ class UploadPhotoViewController: UIViewController {
         photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
             if let progressPopupView = self?.progressPopupView {
                 self?.hidePopupView(progressPopupView)
+            }
+            if !success {
+                self?.showAlert("Error", message: "There was an error uploading your photo. Please try again.")
+                print("Thumb upload error: \(error)")
+                return
             }
             self?.showAlert("Upload Success", message: "You have successfully uploaded your photo.") {
                 if let viewControllers = self?.navigationController?.viewControllers {

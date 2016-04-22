@@ -97,6 +97,10 @@ class SearchLocationViewController: UIViewController {
             locationManager.requestWhenInUseAuthorization()
             didRequestLocation = true
         } else {
+            if !networkReachable() {
+                showAlert("No Internet Connection", message: "Unable to refresh photos. Please check your internet connection and try again.")
+                return
+            }
             PFGeoPoint.geoPointForCurrentLocationInBackground { [weak self](geoPoint: PFGeoPoint?, error: NSError?) -> Void in
                 if let geoPoint = geoPoint {
                     self?.queryForNearbyPhotos(location: geoPoint)
@@ -113,6 +117,7 @@ class SearchLocationViewController: UIViewController {
         query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
             if let error = error {
                 print("Error: \(error) \(error.userInfo)")
+                self?.showAlert("Error", message: "There was an error retrieving your photos please try again.")
                 return
             }
 

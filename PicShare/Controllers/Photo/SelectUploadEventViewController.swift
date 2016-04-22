@@ -78,6 +78,7 @@ class SelectUploadEventViewController: UIViewController {
         photo.image.saveInBackgroundWithBlock({ [weak self](success, error) -> Void in
             if !success {
                 self?.showAlert("Error", message: "There was an error uploading your photo. Please try again.")
+                self?.hideProgressIndicatorPopup()
                 print("Image upload error: \(error)")
                 return
             }            
@@ -86,6 +87,7 @@ class SelectUploadEventViewController: UIViewController {
                 if !success {
                     self?.showAlert("Error", message: "There was an error uploading your photo. Please try again.")
                     print("Image upload error: \(error)")
+                    self?.hideProgressIndicatorPopup()
                     return
                 }
                 self?.proceedToUploadPhoto(photo)
@@ -108,6 +110,13 @@ class SelectUploadEventViewController: UIViewController {
     func proceedToUploadPhoto(photo: Photo) {
         photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
             self?.hideProgressIndicatorPopup()
+            
+            if !success {
+                self?.showAlert("Error", message: "There was an error uploading your photo. Please try again.")
+                print("Image upload error: \(error)")
+                return
+            }
+            
             self?.showAlert("Upload Success", message: "You have successfully uploaded your photo.") {
                 // Look for camera VC and pop to correct one
                 if let viewControllers = self?.navigationController?.viewControllers {
