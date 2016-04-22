@@ -28,15 +28,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Parse.enableLocalDatastore()
         
         // Initialize Parse.
-//        Parse.setApplicationId(parseAppId, clientKey: parseClientKey)
+        Parse.setApplicationId(parseAppId, clientKey: parseClientKey)
         
         // NOTE: UNCOMMENT THIS TO USE CUSTOM PARSE BACKEND SERVER
-        let config = ParseClientConfiguration(block: { ParseMutableClientConfiguration -> Void in
-            ParseMutableClientConfiguration.applicationId = customBackendParseAppId;
-            ParseMutableClientConfiguration.clientKey = customBackendParseClientKey;
-            ParseMutableClientConfiguration.server = customBackendParseEndPoint;
-        })
-        Parse.initializeWithConfiguration(config)
+//        let config = ParseClientConfiguration(block: { ParseMutableClientConfiguration -> Void in
+//            ParseMutableClientConfiguration.applicationId = customBackendParseAppId;
+//            ParseMutableClientConfiguration.clientKey = customBackendParseClientKey;
+//            ParseMutableClientConfiguration.server = customBackendParseEndPoint;
+//        })
+//        Parse.initializeWithConfiguration(config)
         
         // [Optional] Track statistics around application opens.
         // PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)

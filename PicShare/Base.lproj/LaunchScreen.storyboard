@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10116" systemVersion="15E65" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" initialViewController="01J-lp-oVM">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
@@ -14,14 +14,39 @@
                         <viewControllerLayoutGuide type="bottom" id="xb3-aO-Qok"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signupBg" translatesAutoresizingMaskIntoConstraints="NO" id="xWn-tg-9H4">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="signupLogo" translatesAutoresizingMaskIntoConstraints="NO" id="wcM-Cc-Afb">
+                                <rect key="frame" x="137" y="60" width="100" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="100" id="KTo-7c-LR0"/>
+                                    <constraint firstAttribute="height" constant="128" id="yp4-Ce-7cu"/>
+                                </constraints>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="xWn-tg-9H4" firstAttribute="leading" secondItem="Ze5-6b-2t3" secondAttribute="leading" id="6pV-5D-OhM"/>
+                            <constraint firstItem="xWn-tg-9H4" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="CRM-KO-sCS"/>
+                            <constraint firstItem="wcM-Cc-Afb" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" constant="60" id="J7h-8g-yUf"/>
+                            <constraint firstItem="wcM-Cc-Afb" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="JXl-lN-S7C"/>
+                            <constraint firstAttribute="trailing" secondItem="xWn-tg-9H4" secondAttribute="trailing" id="Kbe-qg-U3c"/>
+                            <constraint firstItem="xb3-aO-Qok" firstAttribute="top" secondItem="xWn-tg-9H4" secondAttribute="bottom" id="yCR-es-FbB"/>
+                        </constraints>
                     </view>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina47"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="53" y="375"/>
+            <point key="canvasLocation" x="52.5" y="374.5"/>
         </scene>
     </scenes>
+    <resources>
+        <image name="signupBg" width="375" height="667"/>
+        <image name="signupLogo" width="116" height="150"/>
+    </resources>
 </document>
