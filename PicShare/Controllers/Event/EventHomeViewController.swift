@@ -57,9 +57,23 @@ class EventHomeViewController: UIViewController {
                 if let user = object as? User {
                     let joinedEvents = user.events ?? []
                     self?.eventArray.appendContentsOf(joinedEvents)
-                    self?.tableView.reloadData()
-                    self?.tableView.userInteractionEnabled = true
                 }
+                
+                // Filter out expired events
+                let sevenDays: NSTimeInterval = -7 * 60 * 60 * 24
+                let sevenDaysAgoDate = NSDate().dateByAddingTimeInterval(sevenDays)
+                var filteredEventArray = [Event]()
+                if let eventArray = self?.eventArray {
+                    for event in eventArray {
+                        if let createdAt = event.createdAt where sevenDaysAgoDate.compare(createdAt) == NSComparisonResult.OrderedDescending {
+                            continue
+                        }
+                        filteredEventArray.append(event)
+                    }
+                }
+                self?.eventArray = filteredEventArray
+                self?.tableView.reloadData()
+                self?.tableView.userInteractionEnabled = true
             }
         }
     }
@@ -88,6 +102,9 @@ extension EventHomeViewController: UITableViewDataSource {
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("EventCell", forIndexPath: indexPath) as! SearchEventTableViewCell
+        if indexPath.row >= eventArray.count {
+            return cell
+        }
         let event = eventArray[indexPath.row]
         cell.eventLabel.text = event.hashtag
         var dayLeft = ""

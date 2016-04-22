@@ -45,8 +45,23 @@ class SelectUploadEventViewController: UIViewController {
                     if let user = object as? User {
                         let joinedEvents = user.events ?? []
                         self?.eventArray.appendContentsOf(joinedEvents)
-                        self?.tableView.reloadData()
                     }
+                    
+                    // Filter out expired events
+                    let sevenDays: NSTimeInterval = -7 * 60 * 60 * 24
+                    let sevenDaysAgoDate = NSDate().dateByAddingTimeInterval(sevenDays)
+                    var filteredEventArray = [Event]()
+                    if let eventArray = self?.eventArray {
+                        for event in eventArray {
+                            if let createdAt = event.createdAt where sevenDaysAgoDate.compare(createdAt) == NSComparisonResult.OrderedDescending {
+                                continue
+                            }
+                            filteredEventArray.append(event)
+                        }
+                    }
+                    self?.eventArray = filteredEventArray
+                    self?.tableView.reloadData()
+                    self?.tableView.userInteractionEnabled = true
                 }
             }
         }

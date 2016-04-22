@@ -104,7 +104,16 @@ class SearchEventViewController: UIViewController {
             
             print("Event query success. Number events: \(objects?.count)")
             if let events = objects as? [Event] where events.count > 0 {
-                self?.performSegueWithIdentifier("SearchResults", sender: events)
+                let sevenDays: NSTimeInterval = -7 * 60 * 60 * 24
+                let sevenDaysAgoDate = NSDate().dateByAddingTimeInterval(sevenDays)
+                var filteredEventArray = [Event]()
+                for event in events {
+                    if let createdAt = event.createdAt where sevenDaysAgoDate.compare(createdAt) == NSComparisonResult.OrderedDescending {
+                        continue
+                    }
+                    filteredEventArray.append(event)
+                }
+                self?.performSegueWithIdentifier("SearchResults", sender: filteredEventArray)
             } else {
                 self?.eventNameLabel.text = searchText
                 self?.retrySearchTextField.text = nil
