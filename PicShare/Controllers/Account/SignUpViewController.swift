@@ -25,6 +25,7 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        userNameTextField.delegate = self
         let gestureRecognizer = UITapGestureRecognizer()
         gestureRecognizer.addTarget(self, action: "resignKeyboard")
         gestureRecognizer.delegate = self
@@ -45,15 +46,15 @@ class SignUpViewController: UIViewController {
         if emailTextField.text == "" || userNameTextField.text == "" || passwordTextField.text == "" || passwordConfirmTextField.text == "" {
             error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Please fill out all the fields!"
-            ])
+                ])
         } else if passwordTextField.text! != passwordConfirmTextField.text! {
             error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Two passwords are different!"
-            ])
+                ])
         } else if !isValidEmail(emailTextField.text!) {
             error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Invalid email address!"
-            ])
+                ])
         }
         if let error = error {
             self.showErrorView(error)
@@ -120,7 +121,7 @@ class SignUpViewController: UIViewController {
     
     func showErrorView(error: NSError) {
         let alertView = UIAlertController(title: "Error",
-            message: error.localizedDescription, preferredStyle: .Alert)
+                                          message: error.localizedDescription, preferredStyle: .Alert)
         let OKAction = UIAlertAction(title: "OK", style: .Default, handler: nil)
         alertView.addAction(OKAction)
         self.presentViewController(alertView, animated: true, completion: nil)
@@ -170,6 +171,28 @@ extension SignUpViewController: UITextFieldDelegate {
         UIView.animateWithDuration(0.25) {
             self.scrollView.setContentOffset(CGPoint(x: 0, y: 40), animated: false)
         }
+    }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string:
+        String) -> Bool {
+        
+        if textField == userNameTextField {
+            // Create an `NSCharacterSet` set which includes everything *but* the digits
+            let inverseSet = NSCharacterSet(charactersInString:"0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ").invertedSet
+            
+            // At every character in this "inverseSet" contained in the string,
+            // split the string up into components which exclude the characters
+            // in this inverse set
+            let components = string.componentsSeparatedByCharactersInSet(inverseSet)
+            
+            // Rejoin these components
+            let filtered = components.joinWithSeparator("")
+            // If the original string is equal to the filtered string, i.e. if no
+            // inverse characters were present to be eliminated, the input is valid
+            // and the statement returns true; else it returns false
+            return string == filtered
+        }
+        return true
     }
     
 }
