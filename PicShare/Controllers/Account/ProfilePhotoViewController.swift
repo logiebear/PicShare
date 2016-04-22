@@ -81,18 +81,22 @@ class ProfilePhotoViewController: UIViewController {
             user.profilePhoto = userPhoto
         }
         
+        let progressAlert = UIAlertController(title: "Loading", message: "Creating account...", preferredStyle: .Alert)
+        presentViewController(progressAlert, animated: true, completion: nil)
         user.signUpInBackgroundWithBlock { [weak self](success: Bool, error: NSError?) in
             self?.uploadInProgress = false
-            if success {
-                NSLog("Account creation successful!")
-                //Show home view
-                let homeView: UIViewController
-                let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
-                homeView = mainStoryboard.instantiateViewControllerWithIdentifier("RootView")
-                self!.showViewController(homeView, sender: sender)
-            } else if let error = error {
-                // Something bad has occurred
-                self?.showErrorView(error)
+            progressAlert.dismissViewControllerAnimated(true) {
+                if success {
+                    NSLog("Account creation successful!")
+                    //Show home view
+                    let homeView: UIViewController
+                    let mainStoryboard = UIStoryboard(name: "Main", bundle: nil)
+                    homeView = mainStoryboard.instantiateViewControllerWithIdentifier("RootView")
+                    self!.showViewController(homeView, sender: sender)
+                } else if let error = error {
+                    // Something bad has occurred
+                    self?.showErrorView(error)
+                }
             }
         }
     }

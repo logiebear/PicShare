@@ -144,9 +144,10 @@ class ProfileViewController: UIViewController {
     @IBAction func removePhotoButtonTapped(sender: UIButton) {
         if let user = self.user {
             user.profilePhoto = nil
+            profileImageView.image = UIImage(named: "profilePlaceholder")
             user.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
                 if success {
-                    self?.profileImageView.image = nil
+                    self?.profileImageView.image = UIImage(named: "profilePlaceholder")
                 } else {
                     // TODO: SHOW ERROR MESSAGE
                 }
@@ -187,6 +188,7 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
         {
             let userPhoto = PFFile(name: "ProfilePhoto.png", data: fullImageData)
             if let user = self.user {
+                profileImageView.image = newProfilePhoto
                 user.profilePhoto = userPhoto
                 user.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
                     if success {

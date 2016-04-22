@@ -48,8 +48,14 @@ class EventPhotoScreenViewController: UIViewController {
     
     @IBAction func backButtonPressed(sender: AnyObject) {
         if sourceController is CreateEventViewController || sourceController is CreateEventPasswordViewController {
-            navigationController?.popToRootViewControllerAnimated(true)
-            return
+            if let viewControllers = navigationController?.viewControllers {
+                for viewController in viewControllers {
+                    if viewController is RootViewController {
+                        navigationController?.popToViewController(viewController, animated: true)
+                        return
+                    }
+                }
+            }
         }
         navigationController?.popViewControllerAnimated(true)
     }
