@@ -60,9 +60,13 @@ class EventPhotoScreenViewController: UIViewController {
     }
     
     @IBAction func takePhoto(sender: AnyObject) {
-        let vc = storyboard?.instantiateViewControllerWithIdentifier("photoHomeViewController") as! PhotoHomeViewController
-        vc.event = event
-        navigationController?.pushViewController(vc, animated: false)
+        if UIImagePickerController.isSourceTypeAvailable(.Camera) && !cameraAvailable() {
+            showAlert("Trouble With Camera", message: "Please enable your camera in your device settings to take a photo.")
+        } else {
+            let vc = storyboard?.instantiateViewControllerWithIdentifier("photoHomeViewController") as! PhotoHomeViewController
+            vc.event = event
+            navigationController?.pushViewController(vc, animated: false)
+        }
     }
     
     func reloadCollectionViewData() {
