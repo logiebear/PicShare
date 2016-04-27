@@ -46,6 +46,7 @@ class CreateEventPasswordViewController: UIViewController{
             showAlert("No Internet Connection", message: "Please check your internet connection and try again.")
             return
         }
+        // Check empty text
         if eventPasswordTextField.text == "" ||  eventPasswordTextField.text == nil {
             showErrorView("Invalid password", msg: "Password can't be empty!")
             return
@@ -55,6 +56,7 @@ class CreateEventPasswordViewController: UIViewController{
             return
         }
         
+        // Check validation of text
         for scalar in eventPasswordTextField.unicodeScalars {
             let value = scalar.value
             if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57)) {
