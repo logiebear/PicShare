@@ -10,6 +10,7 @@ import UIKit
 import Parse
 import AVFoundation
 
+///Profile photo screen allowing user to set profile photo for new created account
 class ProfilePhotoViewController: UIViewController {
 
     @IBOutlet var containerView: UIView!
@@ -27,10 +28,22 @@ class ProfilePhotoViewController: UIViewController {
     
     // MARK: - User Actions
     
+    /**
+        Redirect user back to sign up screen
+    
+        -Parameters:
+            -sender: The sender of the function
+    */
     @IBAction func backButtonPressed(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
     
+    /**
+        Redirect user back to sign up screen
+     
+        -Parameters:
+            -sender: The sender of the function
+     */
     @IBAction func selectProfilePhoto(sender: UIButton) {
         let selector = UIImagePickerController()
         selector.delegate = self
@@ -39,6 +52,12 @@ class ProfilePhotoViewController: UIViewController {
         presentViewController(selector, animated: true, completion: nil)
     }
     
+    /**
+        Allow user to pick a photo from gallery or take one from camera
+     
+        -Parameters:
+            -sender: The sender of the function
+     */
     @IBAction func takeProfilePhoto(sender: AnyObject) {
         if !cameraAvailable() {
             showAlert("Trouble With Camera", message: "Please enable your camera in your device settings to take a photo.")
@@ -57,6 +76,12 @@ class ProfilePhotoViewController: UIViewController {
         profilePhotoPreview.image = nil
     }
     
+    /**
+        Sign up user's new account with selected profile photo
+     
+        -Parameters:
+            -sender: The sender of the function
+     */
     @IBAction func useProfilePhoto(sender: AnyObject) {
         if !networkReachable() {
             showAlert("No Internet Connection", message: "Please check your internet connection and try again.")
@@ -103,6 +128,12 @@ class ProfilePhotoViewController: UIViewController {
     
     // MARK: - Helper
     
+    /**
+    Show error with a pop window.
+    
+    -Parameters:
+    -error: The error to be shown
+    */
     func showErrorView(error: NSError) {
         let alertView = UIAlertController(title: "Error",
             message: error.localizedDescription, preferredStyle: .Alert)
