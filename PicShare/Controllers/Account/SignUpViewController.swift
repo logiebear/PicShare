@@ -13,6 +13,7 @@ let photoClassName = "Photo"
 let photoFileKey = "fullSizeFile"
 let thumbFileKey = "thumbSizeFile"
 
+///Sign up screen allowing users to sign up new accounts
 class SignUpViewController: UIViewController {
     
     @IBOutlet weak var scrollView: UIScrollView!
@@ -36,13 +37,26 @@ class SignUpViewController: UIViewController {
     }
     
     // MARK: - User Actions
+    
+    /**
+        Redirect user back to login screen
+    
+        -Parameters:
+            -sender: The sender of the function
+    */
     @IBAction func LoginButton(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
     
+    /**
+        Sign up a new account and redirect user to setting profile photo screen
+     
+        -Parameters:
+            -sender: The sender of the function
+     */
     @IBAction func goButton(sender: UIButton) {
         var error: NSError?
-        //Check empty field or inconsistent passwords
+        ///Check empty field or inconsistent passwords
         if emailTextField.text == "" || userNameTextField.text == "" || passwordTextField.text == "" || passwordConfirmTextField.text == "" {
             error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                 NSLocalizedDescriptionKey: "Please fill out all the fields!"
@@ -61,7 +75,7 @@ class SignUpViewController: UIViewController {
             return
         }
         
-        //Check whether email or username is taken
+        ///Check whether email or username is taken
         User.registerSubclass()
         let query = PFUser.query()
         if let emailTextField = emailTextField.text {
@@ -70,6 +84,7 @@ class SignUpViewController: UIViewController {
                 query.findObjectsInBackgroundWithBlock {
                     (objects: [PFObject]?, error: NSError?) in
                     if error == nil {
+                        //Email has been taken
                         if (objects!.count > 0){
                             let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                                 NSLocalizedDescriptionKey: "Email address has been taken!"])
@@ -83,6 +98,7 @@ class SignUpViewController: UIViewController {
                                     query1.findObjectsInBackgroundWithBlock {
                                         (objects: [PFObject]?, error: NSError?) in
                                         if error == nil {
+                                            //Username has been taken
                                             if (objects!.count > 0){
                                                 let error = NSError(domain: "SuperSpecialDomain", code: -99, userInfo: [
                                                     NSLocalizedDescriptionKey: "Username has been taken!"
@@ -119,6 +135,12 @@ class SignUpViewController: UIViewController {
     
     // MARK: Helper
     
+    /**
+        Show error with a pop window.
+    
+        -Parameters:
+            -error: The error to be shown
+    */
     func showErrorView(error: NSError) {
         let alertView = UIAlertController(title: "Error",
                                           message: error.localizedDescription, preferredStyle: .Alert)
@@ -127,7 +149,14 @@ class SignUpViewController: UIViewController {
         self.presentViewController(alertView, animated: true, completion: nil)
     }
     
-    //email validation function
+    /**
+        Valid email address format
+     
+        -Parameters:
+            -testStr: The input email address
+     
+        -Returns: bool result whether email address format is valid
+    */
     func isValidEmail(testStr:String) -> Bool {
         let emailRegEx = "[A-Z0-9a-z._%+-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,64}"
         let range = testStr.rangeOfString(emailRegEx, options:.RegularExpressionSearch)
@@ -135,6 +164,9 @@ class SignUpViewController: UIViewController {
         return result
     }
     
+    /**
+        Resign keyboard
+    */
     func resignKeyboard() {
         emailTextField.resignFirstResponder()
         userNameTextField.resignFirstResponder()
@@ -143,7 +175,9 @@ class SignUpViewController: UIViewController {
     }
     
     // MARK: Notification
-    
+    /**
+        Adjust scroll view
+    */
     func keyboardDidHide() {
         scrollView.setContentOffset(CGPointZero, animated: true)
     }
