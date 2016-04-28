@@ -42,7 +42,13 @@ class SearchEventViewController: UIViewController {
     
     // MARK: - User Actions
     
+    /**
+        User action while hitting the event-search button
+     */
     @IBAction func searchEventButtonPressed(sender: AnyObject? = nil) {
+        /**
+            Handle with invalid event name
+         */
         if searchEventTextField.text == "" || searchEventTextField.text == nil {
             showAlert("Invalid event name", message: "Event name can't be empty!")
             return
@@ -65,7 +71,9 @@ class SearchEventViewController: UIViewController {
              showAlert("Invalid event name", message: "Event name can't start with underscore!")
             return
         }
-        
+        /**
+            Query the specific events with valid event name
+         */
         queryForSpecificEvents(searchEventTextField)
     }
     
@@ -84,6 +92,12 @@ class SearchEventViewController: UIViewController {
     
     // MARK: - Helpers
     
+    /**
+        Query all related events from server containing user's input event name
+     
+        -Parameter:
+            - searchText: user's input event name
+     */
     private func queryForSpecificEvents(searchText: String) {
         if didPerformSearch { return }
         didPerformSearch = true
@@ -103,6 +117,9 @@ class SearchEventViewController: UIViewController {
             }
             
             print("Event query success. Number events: \(objects?.count)")
+            /**
+                filter events with 7 days and store them.
+            */
             if let events = objects as? [Event] where events.count > 0 {
                 let sevenDays: NSTimeInterval = -7 * 60 * 60 * 24
                 let sevenDaysAgoDate = NSDate().dateByAddingTimeInterval(sevenDays)
@@ -123,13 +140,18 @@ class SearchEventViewController: UIViewController {
         }
     }
     
+    /**
+        Resign keyboard
+    */
     func resignKeyboard() {
         searchEventTextField.resignFirstResponder()
         retrySearchTextField.resignFirstResponder()
     }
     
     // MARK: Notification
-    
+    /**
+        Adjust scroll view
+     */
     func keyboardDidHide() {
         scrollView.setContentOffset(CGPointZero, animated: true)
     }

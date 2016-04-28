@@ -31,6 +31,9 @@ class SearchEventResultsViewController: UIViewController {
         queryForAllUserEvents()
     }
     
+    /**
+        Prepare for segue to creating new events page
+     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "SpecificEventPreview" {
             let svc = segue.destinationViewController as! EventPhotoScreenViewController
@@ -71,7 +74,9 @@ class SearchEventResultsViewController: UIViewController {
     }
     
     // MARK: - Private
-    
+    /**
+        Query for all current user's joined events
+     */
     private func queryForAllUserEvents() {
         guard let query = User.allEventsForCurrentUserQuery() else {
             return
@@ -92,6 +97,9 @@ class SearchEventResultsViewController: UIViewController {
         }
     }
     
+    /**
+        Pop up private event password panel
+     */
     private func showPasswordPopup() {
         passwordTextField.text = nil
         UIView.animateWithDuration(0.5) { 
@@ -99,12 +107,21 @@ class SearchEventResultsViewController: UIViewController {
         }
     }
     
+    /**
+        Hide private event password panel
+     */
     private func hidePasswordPopup() {
         UIView.animateWithDuration(0.5) {
             self.popupView.alpha = 0.0
         }
     }
     
+    /**
+        Add event into user's joined event list
+     
+        -Parameter:
+            - event: the event user wants to join
+     */
     private func addEventToUserEvents(event: Event) {
         guard let user = self.user else  {
             print("Error no user")
@@ -118,6 +135,16 @@ class SearchEventResultsViewController: UIViewController {
         userEventArray.append(event)
     }
     
+    /**
+        Calculate event's left days
+     
+        -Parameter:
+            -start: event's created date
+            -end: current system date
+     
+        -Return:
+            -day: the day left before event expires.
+     */
     private func calculateDays(start: NSDate, end: NSDate) -> Int {
         let calendar: NSCalendar = NSCalendar.currentCalendar()
         let date1 = calendar.startOfDayForDate(start)
@@ -142,6 +169,9 @@ extension SearchEventResultsViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        /**
+            Set cell for each event, including event name, whether private, remaining days and join button
+         */
         let cell = tableView.dequeueReusableCellWithIdentifier("TextCell", forIndexPath: indexPath) as! SearchEventTableViewCell
         let event = eventArray[indexPath.row]
         cell.eventLabel.text = event.hashtag
@@ -178,6 +208,9 @@ extension SearchEventResultsViewController: UITableViewDelegate {
         guard let selectedEvent = selectedEvent else {
             return
         }
+        /**
+            Pop up the password panel while clicking on the unjoined private event to join it, or viewing all photos of clicked public event
+         */
         if !selectedEvent.isPublic && !userEventArray.contains(selectedEvent) && selectedEvent.owner.objectId != user?.objectId {
             popUpEventName.text = selectedEvent.hashtag
             showPasswordPopup()
@@ -194,7 +227,13 @@ extension SearchEventResultsViewController: UITableViewDelegate {
 // MARK: - SearchEventTableViewCellDelegate
 
 extension SearchEventResultsViewController: SearchEventTableViewCellDelegate {
-    
+    /**
+        Prepare for user's joining the public event or private event.
+        
+        -Parameter:
+            - cell: current event cell
+            - event: the event user wants to join
+     */
     func joinEvent(cell: SearchEventTableViewCell, event: Event) {
         if event.isPublic {
             addEventToUserEvents(event)
