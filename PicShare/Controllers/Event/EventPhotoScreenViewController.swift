@@ -26,6 +26,7 @@ class EventPhotoScreenViewController: UIViewController {
         view.bringSubviewToFront(noPhotosView)
         noPhotosView.hidden = true
         
+        // Update labels
         headerEventNameLabel.text = ""
         noPhotosEventNameLabel.text = ""
         if let event = event {
@@ -41,12 +42,14 @@ class EventPhotoScreenViewController: UIViewController {
     }
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         reloadCollectionViewData()
     }
     
     // MARK: - User Actions
     
     @IBAction func backButtonPressed(sender: AnyObject) {
+        // If the source controller is a creation view, return to the main event list view in the Root View Controller
         if sourceController is CreateEventViewController || sourceController is CreateEventPasswordViewController {
             if let viewControllers = navigationController?.viewControllers {
                 for viewController in viewControllers {
@@ -69,6 +72,7 @@ class EventPhotoScreenViewController: UIViewController {
         if UIImagePickerController.isSourceTypeAvailable(.Camera) && !cameraAvailable() {
             showAlert("Trouble With Camera", message: "Please enable your camera in your device settings to take a photo.")
         } else {
+            // Load camera in event list view
             let vc = storyboard?.instantiateViewControllerWithIdentifier("photoHomeViewController") as! PhotoHomeViewController
             vc.event = event
             navigationController?.pushViewController(vc, animated: false)
@@ -86,6 +90,7 @@ class EventPhotoScreenViewController: UIViewController {
         }
         syncInProgress = true
         
+        // Fetch all the photos of current event
         let query = PFQuery(className: "Photo")
         query.whereKey("event", equalTo: event)
         query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
@@ -100,6 +105,9 @@ class EventPhotoScreenViewController: UIViewController {
         }
     }
     
+    /**
+        Display no photos view if no photos in the event
+     */
     private func showNoPhotosViewIfEmpty() {
         if let event = event where !eventPhotos.isEmpty {
             eventPhotoCollectionView.hidden = false
@@ -156,6 +164,7 @@ extension EventPhotoScreenViewController: UICollectionViewDelegate {
 
 extension EventPhotoScreenViewController: EventPhotoCollectionViewCellDelegate {
     
+    // Delete photo
     func deletePhoto(photo: Photo, indexPath: NSIndexPath) {
         let alertView = UIAlertController(title: "Delete Photo",
                                           message: "Delete this photo?", preferredStyle: .Alert)

@@ -36,11 +36,13 @@ class UploadPhotoViewController: UIViewController {
         imageView.contentMode = .ScaleAspectFit
         imageView.image = image
         
-        let gestureRecognizer = UITapGestureRecognizer(target: self, action: "resignKeyboard")
+        // Added functionality to hide keyboard if tapped on screen
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(UploadPhotoViewController.resignKeyboard))
         gestureRecognizer.delegate = self
         view.addGestureRecognizer(gestureRecognizer)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide",
+        // Adds function that is called after keyboard is hidden notification is fired
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(UploadPhotoViewController.keyboardDidHide),
                                                          name: UIKeyboardDidHideNotification, object: nil)
     }
     
@@ -71,8 +73,10 @@ class UploadPhotoViewController: UIViewController {
         }
         
         if let event = event {
+            // If event is set, upload photo to event
             uploadPhotoImageFilesWithGeoPointOrEvent(event: event)
         } else {
+            // Otherwise upload selection popup view
             showPopupView(uploadSelectionPopupView)
         }
     }
@@ -95,7 +99,9 @@ class UploadPhotoViewController: UIViewController {
             text = descriptionTextField.text,
             user = PFUser.currentUser()
         {
+            // Create new photo object to be uploaded
             photo = Photo(image: imageFile, thumbnail: thumbFile, owner: user, descriptiveText: text)
+            // Hide popup view after selection
             hidePopupView(uploadSelectionPopupView)
             self.performSegueWithIdentifier("SelectEvent", sender: self)
         }
@@ -109,12 +115,15 @@ class UploadPhotoViewController: UIViewController {
         
         let status = CLLocationManager.authorizationStatus()
         if status == .Denied || status == .Restricted {
+            // Location services are not enabled
             showAlert("Location Services Disabled", message: "Please go to your device settings to enable location services.")
         } else if status == .NotDetermined {
+            // Attempt to request location services
             locationManager.delegate = self
             locationManager.requestWhenInUseAuthorization()
             didRequestLocation = true
         } else {
+            // Attempt to fetch current location
             PFGeoPoint.geoPointForCurrentLocationInBackground { [weak self](geoPoint, error) -> Void in
                 if let error = error {
                     print("Error: \(error)")
@@ -124,6 +133,7 @@ class UploadPhotoViewController: UIViewController {
                     if let uploadSelectionPopupView = self?.uploadSelectionPopupView {
                         self?.hidePopupView(uploadSelectionPopupView)
                     }
+                    // Proceed to upload photo to current location
                     self?.uploadPhotoImageFilesWithGeoPointOrEvent(geoPoint: geoPoint)
                 }
             }
@@ -147,7 +157,12 @@ class UploadPhotoViewController: UIViewController {
             popupView.alpha = 0.0
         }
     }
-    
+    /**
+        Function to handle uploading photos current location or event
+        -Parameters
+            -geoPoint: current location to be uploaded to if set
+            -event: event to be uploaded to if set
+     */
     private func uploadPhotoImageFilesWithGeoPointOrEvent(geoPoint geoPoint: PFGeoPoint? = nil, event: Event? = nil) {
         if let image = image,
             fullImage = image.scaleAndRotateImage(960), // Magic number
@@ -187,6 +202,7 @@ class UploadPhotoViewController: UIViewController {
                         guard let eventId = event.objectId else {
                             return
                         }
+                        // Need to fetch event from server to upload to it
                         query.getObjectInBackgroundWithId(eventId) { [weak self](object, error) -> Void in
                             if let error = error {
                                 print("Error: \(error)")
@@ -220,6 +236,12 @@ class UploadPhotoViewController: UIViewController {
     
     // MARK: - Helpers
     
+    /**
+         Uploads the photo object to the server
+         
+         -Parameters
+             -photo: photo to be uploaded
+     */
     func proceedToUploadPhoto(photo: Photo) {
         photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
             if let progressPopupView = self?.progressPopupView {
@@ -254,6 +276,9 @@ class UploadPhotoViewController: UIViewController {
         }
     }
     
+    /**
+        Hides keyboard
+     */
     func resignKeyboard() {
         descriptionTextField.resignFirstResponder()
     }
@@ -302,6 +327,7 @@ extension UploadPhotoViewController: UITextFieldDelegate {
 extension UploadPhotoViewController: UIGestureRecognizerDelegate {
 
     func gestureRecognizer(gestureRecognizer: UIGestureRecognizer, shouldReceiveTouch touch: UITouch) -> Bool {
+        // If view is UIControl do not receive touch
         if let view = touch.view where view is UIControl {
             return false
         }

@@ -9,7 +9,11 @@
 #import "UIImage+EXIF.h"
 
 @implementation UIImage (EXIF)
-
+/**
+    Scales and rotate image to the max resolution size
+    -Parameters
+        -maxRes: the maximum resultion size
+ */
 - (UIImage *)scaleAndRotateImage:(NSInteger)maxRes {    
     CGImageRef imgRef = self.CGImage;
     

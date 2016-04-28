@@ -30,7 +30,10 @@ class EventHomeViewController: UIViewController {
     }
     
     // MARK: Helpers
-    
+    /** 
+        Reloads current event list
+     
+     */
     private func reloadEventList() {
         if syncInProgress {
             return
@@ -49,13 +52,16 @@ class EventHomeViewController: UIViewController {
         
         eventQuery.whereKey("owner", equalTo: user)
         eventQuery.orderByDescending("createdAt")
+        // Fetches all events owned by user
         eventQuery.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) in
             let ownedEvents = objects as? [Event] ?? []
             self?.eventArray = ownedEvents
+            // Fetches all events joined by user
             userEventQuery?.getFirstObjectInBackgroundWithBlock{ (object, error) -> Void in
                 self?.syncInProgress = false
                 if let user = object as? User {
                     let joinedEvents = user.events ?? []
+                    // Combine the two event arrays
                     self?.eventArray.appendContentsOf(joinedEvents)
                 }
                 
@@ -78,6 +84,13 @@ class EventHomeViewController: UIViewController {
         }
     }
     
+    /**
+        Computes the number of days between two dates
+     
+        -Parameters
+            -start: startDate
+            -end: endDate
+     */
     private func calculateDays(start: NSDate, end: NSDate) -> Int {
         let calendar: NSCalendar = NSCalendar.currentCalendar()
         let date1 = calendar.startOfDayForDate(start)
@@ -128,8 +141,10 @@ extension EventHomeViewController: UITableViewDelegate {
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         tableView.deselectRowAtIndexPath(indexPath, animated: true)
         let event = eventArray[indexPath.row]
+        
         event.owner.fetchIfNeededInBackgroundWithBlock { (object, error) -> Void in
             if error == nil {
+                // Selecting the event enters the event preview
                 self.performSegueWithIdentifier("EventScreen", sender: event)
             }
         }

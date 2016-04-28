@@ -9,6 +9,9 @@
 import AVFoundation
 import Reachability
 
+/**
+     Determines whether the camera permissions are available
+ */
 func cameraAvailable() -> Bool {
     var available = true
     let status = AVCaptureDevice.authorizationStatusForMediaType(AVMediaTypeVideo)
@@ -24,6 +27,9 @@ func cameraAvailable() -> Bool {
     return available
 }
 
+/**
+     Determines whether the network is available
+ */
 func networkReachable() -> Bool {
     return Reachability.reachabilityForInternetConnection().currentReachabilityStatus() != .NotReachable
 }

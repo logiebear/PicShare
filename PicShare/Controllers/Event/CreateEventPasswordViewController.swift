@@ -20,12 +20,6 @@ class CreateEventPasswordViewController: UIViewController{
     var password: String? = nil
     var event: Event?
     var syncInProgress = false
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        // Do any additional setup after loading the view.
-    }
     
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
         if segue.identifier == "EventScreen" {
@@ -37,10 +31,22 @@ class CreateEventPasswordViewController: UIViewController{
     
     // MARK: - User Actions
     
+    /**
+        Dismisses screen
+     
+        -Parameters:
+            -sender: The sender of the dismiss
+     */
     @IBAction func backButtonPressed(sender: AnyObject) {
         navigationController?.popViewControllerAnimated(true)
     }
     
+    /**
+         Creates private event
+     
+         -Parameters:
+             -sender: The sender of the creation
+     */
     @IBAction func finishedButtonPressed(sender: AnyObject) {
         if !networkReachable() {
             showAlert("No Internet Connection", message: "Please check your internet connection and try again.")
@@ -70,6 +76,10 @@ class CreateEventPasswordViewController: UIViewController{
     
     // Mark: - Private
     
+    /**
+        Creates private event
+     
+     */
     private func createEventObject() {
         guard let user = user, eventPasswordText = eventPasswordTextField.text, hashtag = self.hashtag else {
             return
@@ -89,6 +99,13 @@ class CreateEventPasswordViewController: UIViewController{
     
     // Mark: - Helper
     
+    /**
+         Shows error with title and message
+     
+         -Parameters
+            -title: title
+            -message: message
+     */
     func showErrorView(title: String, msg: String) {
         let alertView = UIAlertController(title: title,
             message: msg, preferredStyle: .Alert)

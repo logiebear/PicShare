@@ -16,6 +16,8 @@ let customBackendParseEndPoint = "http://picshare-parse.herokuapp.com/parse"
 let parseAppId = "kTUGnKfb8P2iWFLsrAKebZN9NU3DOcea0wYD3jlG"
 let parseClientKey = "rkcMIpTeYqSAvlruQHfdmlvfsbTrwUYFTbRnmGW7"
 
+let useCustomParseBackend = true
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -28,15 +30,16 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Parse.enableLocalDatastore()
         
         // Initialize Parse.
-        Parse.setApplicationId(parseAppId, clientKey: parseClientKey)
-        
-        // NOTE: UNCOMMENT THIS TO USE CUSTOM PARSE BACKEND SERVER
-//        let config = ParseClientConfiguration(block: { ParseMutableClientConfiguration -> Void in
-//            ParseMutableClientConfiguration.applicationId = customBackendParseAppId;
-//            ParseMutableClientConfiguration.clientKey = customBackendParseClientKey;
-//            ParseMutableClientConfiguration.server = customBackendParseEndPoint;
-//        })
-//        Parse.initializeWithConfiguration(config)
+        if useCustomParseBackend {
+            Parse.setApplicationId(parseAppId, clientKey: parseClientKey)
+        } else {
+            let config = ParseClientConfiguration(block: { ParseMutableClientConfiguration -> Void in
+                ParseMutableClientConfiguration.applicationId = customBackendParseAppId;
+                ParseMutableClientConfiguration.clientKey = customBackendParseClientKey;
+                ParseMutableClientConfiguration.server = customBackendParseEndPoint;
+            })
+            Parse.initializeWithConfiguration(config)
+        }
         
         // [Optional] Track statistics around application opens.
         // PFAnalytics.trackAppOpenedWithLaunchOptions(launchOptions)
