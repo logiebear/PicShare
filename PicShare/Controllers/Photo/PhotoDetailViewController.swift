@@ -17,20 +17,18 @@ class PhotoDetailViewController: UIViewController {
     @IBOutlet weak var commentLabel: UILabel!
     var photo: Photo?
     var image: UIImage?
-//    var user: User?
-//    var userEventArray = [Event]()
-//    var event: Event?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         guard let photo = photo else {
-            // TODO: SHOW PHOTO ERROR MESSAGE
             return
         }
         commentLabel.text = photo.descriptiveText
         deleteButton.hidden = photo.owner?.objectId != PFUser.currentUser()?.objectId
         pfImageView.contentMode = .ScaleAspectFit
         pfImageView.file = photo.image
+        
+        // Loads full image in asynchonously
         activityIndicator.startAnimating()
         pfImageView.loadInBackground { [weak self](image, error) -> Void in
             self?.activityIndicator.stopAnimating()
@@ -56,26 +54,14 @@ class PhotoDetailViewController: UIViewController {
             showAlert("Download Error", message: "Unable to download image.")
             return
         }
+        
+        // Download photo image file to device photo library
         UIImageWriteToSavedPhotosAlbum(image, self, "image:didFinishSavingWithError:contextInfo:", nil)
     }
     
     @IBAction func deleteButtonPressed(sender: AnyObject) {
-        self.showConfirmView("", msg: "Do you want to delete this photo?")
+        showConfirmView("", msg: "Do you want to delete this photo?")
     }
-    
-    // MARK: - Private
-    
-//    private func addEventToUserEvents(event: Event) {
-//        guard let user = self.user else  {
-//            print("Error no user")
-//            return
-//        }
-//        if user.events == nil {
-//            user.events = [Event]()
-//        }
-//        user.events?.append(event)
-//        user.saveInBackground()
-//    }
     
     // MARK: - Helpers
     
@@ -83,16 +69,13 @@ class PhotoDetailViewController: UIViewController {
         if let error = error {
             showAlert("Download Error", message: error.localizedDescription)
         } else {
-//            if let event = event {
-//                if !userEventArray.contains(event) {
-//                    print("join event automatically")
-//                    addEventToUserEvents(event)
-//                }
-//            }
             showAlert("Success!", message: "You have downloaded the image successfully!")
         }
     }
     
+    /**
+        Show confirmation dialog for photo deletion
+     */
     func showConfirmView(title: String, msg: String) {
         let alertView = UIAlertController(title: title,
             message: msg, preferredStyle: .Alert)

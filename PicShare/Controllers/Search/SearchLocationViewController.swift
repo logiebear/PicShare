@@ -35,6 +35,7 @@ class SearchLocationViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Update knob image
         let sliderKnobImage = UIImage(named: "sliderKnob")
         radiusSlider.setThumbImage(sliderKnobImage, forState: .Normal)
         filterView.alpha = 0.0
@@ -66,6 +67,7 @@ class SearchLocationViewController: UIViewController {
             self?.checkmarkButton.alpha = 0.0
             self?.filterButton.alpha = 1.0
         }
+        // Detect new location and filter for new photos
         updateCurrentLocation()
     }
     
@@ -76,6 +78,7 @@ class SearchLocationViewController: UIViewController {
             self?.checkmarkButton.alpha = 0.0
             self?.filterButton.alpha = 1.0
         }
+        // Reset to former radius if canceled
         radiusSlider.value = Float(formerRadius)
         let radius = Int(radiusSlider.value)
         radiusLabel.text = "\(radius) Miles"
@@ -87,7 +90,9 @@ class SearchLocationViewController: UIViewController {
     }
 
     // MARK: Location Methods
-    
+    /**
+        Updates the user's current location
+     */
     private func updateCurrentLocation() {
         let status = CLLocationManager.authorizationStatus()
         if status == .Denied || status == .Restricted {
@@ -109,6 +114,11 @@ class SearchLocationViewController: UIViewController {
         }
     }
     
+    /**
+        Fetches photos around current location
+        -Parameters
+            -location: current location
+     */
     private func queryForNearbyPhotos(location location: PFGeoPoint) {
         guard let query = Photo.queryNearbyPhotosWithRadius(location, radiusInMiles: Double(radiusSlider.value)) else {
             return

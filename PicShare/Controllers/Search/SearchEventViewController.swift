@@ -24,12 +24,13 @@ class SearchEventViewController: UIViewController {
         searchView.hidden = false
         scrollView.hidden = true
         
+        // Added functionality to hide keyboard if tapped on screen
         let gestureRecognizer = UITapGestureRecognizer()
-        gestureRecognizer.addTarget(self, action: "resignKeyboard")
+        gestureRecognizer.addTarget(self, action: #selector(SearchEventViewController.resignKeyboard))
         gestureRecognizer.delegate = self
         view.addGestureRecognizer(gestureRecognizer)
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: "keyboardDidHide",
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SearchEventViewController.keyboardDidHide),
                                                          name: UIKeyboardDidHideNotification, object: nil)
     }
     
@@ -52,6 +53,7 @@ class SearchEventViewController: UIViewController {
             return
         }
         
+        // Validate search event field characters
         for scalar in searchEventTextField.unicodeScalars {
             let value = scalar.value
             if !((value >= 65 && value <= 90) || (value >= 97 && value <= 122) || (value >= 48 && value <= 57) || (value == 95)) {
@@ -60,6 +62,7 @@ class SearchEventViewController: UIViewController {
             }
         }
         
+        // Validate search event first character
         let index = searchEventTextField.startIndex
         if searchEventTextField[index] == "_" {
              showAlert("Invalid event name", message: "Event name can't start with underscore!")
@@ -84,6 +87,11 @@ class SearchEventViewController: UIViewController {
     
     // MARK: - Helpers
     
+    /**
+        Fetches events with the name containing search text
+        -Parameters
+            -searchText: search term by user
+    */
     private func queryForSpecificEvents(searchText: String) {
         if didPerformSearch { return }
         didPerformSearch = true
@@ -96,7 +104,6 @@ class SearchEventViewController: UIViewController {
         query.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) -> Void in
             self?.didPerformSearch = false
             if let error = error {
-                // TODO: Find better error solution
                 self?.showAlert("Error", message: error.localizedDescription)
                 print("Error: \(error) \(error.userInfo)")
                 return
@@ -104,6 +111,7 @@ class SearchEventViewController: UIViewController {
             
             print("Event query success. Number events: \(objects?.count)")
             if let events = objects as? [Event] where events.count > 0 {
+                // Filter out exipred events
                 let sevenDays: NSTimeInterval = -7 * 60 * 60 * 24
                 let sevenDaysAgoDate = NSDate().dateByAddingTimeInterval(sevenDays)
                 var filteredEventArray = [Event]()
@@ -113,8 +121,10 @@ class SearchEventViewController: UIViewController {
                     }
                     filteredEventArray.append(event)
                 }
+                // Show search result screen
                 self?.performSegueWithIdentifier("SearchResults", sender: filteredEventArray)
             } else {
+                // No results view shown
                 self?.eventNameLabel.text = searchText
                 self?.retrySearchTextField.text = nil
                 self?.searchView.hidden = true
@@ -123,6 +133,9 @@ class SearchEventViewController: UIViewController {
         }
     }
     
+    /**
+        Hide keyboard
+     */
     func resignKeyboard() {
         searchEventTextField.resignFirstResponder()
         retrySearchTextField.resignFirstResponder()

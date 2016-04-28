@@ -10,6 +10,14 @@ import UIKit
 import ParseUI
 
 protocol EventPhotoCollectionViewCellDelegate: class {
+    /**
+        Delegate function for handling photo deletion
+     
+        -Parameters:
+            -photo: photo to be deleted
+            -indexPath: indexPath of the cell
+     
+     */
     func deletePhoto(photo: Photo, indexPath: NSIndexPath)
 }
 
@@ -20,6 +28,12 @@ class EventPhotoCollectionViewCell: UICollectionViewCell {
     var photo: Photo?
     var indexPath: NSIndexPath?
     
+    /**
+         Delete photo button
+     
+         -Parameters:
+             -sender: The sender of the deletion
+     */
     @IBAction func deleteButtonPressed(sender: AnyObject) {
         if let photo = photo, indexPath = indexPath {
             delegate?.deletePhoto(photo, indexPath: indexPath)

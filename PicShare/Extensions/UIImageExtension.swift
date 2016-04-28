@@ -10,6 +10,9 @@ import Foundation
 
 extension UIImage {
     
+    /**
+        Crops the image to a square based on the larger dimension
+     */
     func cropToSquare() -> UIImage {
         // Create a copy of the image without the imageOrientation property so it is in its native orientation (landscape)
         let contextImage = UIImage(CGImage: self.CGImage!)

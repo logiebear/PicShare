@@ -29,6 +29,7 @@ class ProfileViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Fetch the current user information
         let query = PFQuery(className: User.parseClassName())
         query.whereKey("username", equalTo: (PFUser.currentUser()?.username)!)
         query.getFirstObjectInBackgroundWithBlock { [weak self](object: PFObject?, error: NSError?) -> Void in
@@ -41,6 +42,7 @@ class ProfileViewController: UIViewController {
                 return
             }
             
+            // Update user information and load profile photo in background
             self?.user = user
             self?.profileImageView.file = user.profilePhoto
             self?.profileImageView.loadInBackground()
@@ -63,12 +65,16 @@ class ProfileViewController: UIViewController {
         }
     }
     
+    /**
+        Hides profile photo editing buttons
+     */
     private func hideButtons() {
         self.userInfoImageViewHeight.constant = 391
         self.profileImageViewHeight.constant = 300
         self.profileImageViewWidth.constant = 300
         self.usernameLabelTopSpacing.constant = 20
        
+        // Animation for hiding buttons
         let radiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
         radiusAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         radiusAnimation.fromValue = self.profileImageView.layer.cornerRadius
@@ -88,12 +94,16 @@ class ProfileViewController: UIViewController {
         modifyButtonsVisible = false
     }
     
+    /**
+         Shows profile photo editing buttons
+     */
     private func showButtons() {
         self.userInfoImageViewHeight.constant = 150
         self.profileImageViewHeight.constant = 100
         self.profileImageViewWidth.constant = 100
         self.usernameLabelTopSpacing.constant = 0
         
+        // Animation for showing buttons
         let radiusAnimation = CABasicAnimation(keyPath: "cornerRadius")
         radiusAnimation.timingFunction = CAMediaTimingFunction(name: kCAMediaTimingFunctionEaseInEaseOut)
         radiusAnimation.fromValue = self.profileImageView.layer.cornerRadius
@@ -114,14 +124,13 @@ class ProfileViewController: UIViewController {
     }
 
     @IBAction func showLogoutAlert(sender: UIButton) {
+        // Show logout confirm popup
         let logoutAlert = UIAlertController(title: nil, message: "Are you sure you want to log out?", preferredStyle: .Alert)
-        
         let noAction = UIAlertAction(title: "No", style: .Cancel, handler: nil)
         let yesAction = UIAlertAction(title: "Yes", style: .Default, handler: { (logoutAlert) -> Void in
             PFUser.logOut()
             NSNotificationCenter.defaultCenter().postNotificationName(accountStatusChangedNotification, object: nil)
         })
-        
         logoutAlert.addAction(noAction)
         logoutAlert.addAction(yesAction)
         
@@ -129,6 +138,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func myPhotosButtonPressed(sender: AnyObject) {
+        // Load My Photos screen
         let vc = storyboard?.instantiateViewControllerWithIdentifier("myPhotosViewController") as! MyPhotosViewController
         navigationController?.pushViewController(vc, animated: true)
     }
@@ -143,13 +153,13 @@ class ProfileViewController: UIViewController {
     
     @IBAction func removePhotoButtonTapped(sender: UIButton) {
         if let user = self.user {
-            user.profilePhoto = nil
+            // Update to default photo
             profileImageView.image = UIImage(named: "profilePlaceholder")
+            // Delete local profile photo and safe to server
+            user.profilePhoto = nil
             user.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
                 if success {
                     self?.profileImageView.image = UIImage(named: "profilePlaceholder")
-                } else {
-                    // TODO: SHOW ERROR MESSAGE
                 }
             }
         }
@@ -161,6 +171,7 @@ class ProfileViewController: UIViewController {
             return
         }
         
+        // Show device camera
         let selector = UIImagePickerController()
         selector.delegate = self
         selector.sourceType = .Camera
@@ -169,6 +180,7 @@ class ProfileViewController: UIViewController {
     }
     
     @IBAction func cameraRollButtonTapped(sender: UIButton) {
+        // Show device photo library
         let selector = UIImagePickerController()
         selector.delegate = self
         selector.sourceType = .PhotoLibrary
@@ -182,19 +194,18 @@ extension ProfileViewController: UINavigationControllerDelegate, UIImagePickerCo
     func imagePickerController(picker: UIImagePickerController!, didFinishPickingImage image: UIImage!, editingInfo: NSDictionary!) {
         dismissViewControllerAnimated(true, completion: nil)
 
-        if let newProfilePhoto = image?.cropToSquare(),
-            fullImage = newProfilePhoto.scaleAndRotateImage(960),
+        if let newProfilePhoto = image?.cropToSquare(), // Crop to square
+            fullImage = newProfilePhoto.scaleAndRotateImage(960), // Scale image to size
             fullImageData = UIImagePNGRepresentation(fullImage)
         {
             let userPhoto = PFFile(name: "ProfilePhoto.png", data: fullImageData)
             if let user = self.user {
                 profileImageView.image = newProfilePhoto
+                // Save new user profile photo
                 user.profilePhoto = userPhoto
                 user.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
                     if success {
                         self?.profileImageView.image = newProfilePhoto
-                    } else {
-                        // TODO: SHOW ERROR MESSAGE
                     }
                 }
             }
