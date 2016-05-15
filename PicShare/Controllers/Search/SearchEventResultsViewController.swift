@@ -31,6 +31,9 @@ class SearchEventResultsViewController: UIViewController {
         queryForAllUserEvents()
     }
     
+    /**
+        Prepare for segue to creating new events page
+     */
     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject!) {
         if segue.identifier == "SpecificEventPreview" {
             let svc = segue.destinationViewController as! EventPhotoScreenViewController
@@ -71,9 +74,8 @@ class SearchEventResultsViewController: UIViewController {
     }
     
     // MARK: - Private
-    
     /**
-        Fetches all users events to compare search results against.
+        Query for all current user's joined events
      */
     private func queryForAllUserEvents() {
         guard let query = User.allEventsForCurrentUserQuery() else {
@@ -95,6 +97,9 @@ class SearchEventResultsViewController: UIViewController {
         }
     }
     
+    /**
+        Pop up private event password panel
+     */
     private func showPasswordPopup() {
         passwordTextField.text = nil
         UIView.animateWithDuration(0.5) { 
@@ -102,6 +107,9 @@ class SearchEventResultsViewController: UIViewController {
         }
     }
     
+    /**
+        Hide private event password panel
+     */
     private func hidePasswordPopup() {
         UIView.animateWithDuration(0.5) {
             self.popupView.alpha = 0.0
@@ -109,10 +117,10 @@ class SearchEventResultsViewController: UIViewController {
     }
     
     /**
-         Adds event to current user events
+        Add event into user's joined event list
      
-         -Parameters
-            -event: event to add
+        -Parameter:
+            - event: the event user wants to join
      */
     private func addEventToUserEvents(event: Event) {
         guard let user = self.user else  {
@@ -128,11 +136,14 @@ class SearchEventResultsViewController: UIViewController {
     }
     
     /**
-         Computes the number of days between two dates
+        Calculate event's left days
      
-         -Parameters
-             -start: startDate
-             -end: endDate
+        -Parameter:
+            -start: event's created date
+            -end: current system date
+     
+        -Return:
+            -day: the day left before event expires.
      */
     private func calculateDays(start: NSDate, end: NSDate) -> Int {
         let calendar: NSCalendar = NSCalendar.currentCalendar()
@@ -158,6 +169,9 @@ extension SearchEventResultsViewController: UITableViewDataSource {
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        /**
+            Set cell for each event, including event name, whether private, remaining days and join button
+         */
         let cell = tableView.dequeueReusableCellWithIdentifier("TextCell", forIndexPath: indexPath) as! SearchEventTableViewCell
         let event = eventArray[indexPath.row]
         cell.eventLabel.text = event.hashtag
@@ -196,8 +210,9 @@ extension SearchEventResultsViewController: UITableViewDelegate {
         guard let selectedEvent = selectedEvent else {
             return
         }
-        
-        // If event is private, not owned, and not joined, show password popup
+        /**
+            Pop up the password panel while clicking on the unjoined private event to join it, or viewing all photos of clicked public event
+         */
         if !selectedEvent.isPublic && !userEventArray.contains(selectedEvent) && selectedEvent.owner.objectId != user?.objectId {
             popUpEventName.text = selectedEvent.hashtag
             showPasswordPopup()
@@ -215,7 +230,13 @@ extension SearchEventResultsViewController: UITableViewDelegate {
 // MARK: - SearchEventTableViewCellDelegate
 
 extension SearchEventResultsViewController: SearchEventTableViewCellDelegate {
-    
+    /**
+        Prepare for user's joining the public event or private event.
+        
+        -Parameter:
+            - cell: current event cell
+            - event: the event user wants to join
+     */
     func joinEvent(cell: SearchEventTableViewCell, event: Event) {
         if event.isPublic {
             // If event is public add to user events

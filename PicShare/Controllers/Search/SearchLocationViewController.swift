@@ -1,12 +1,6 @@
 //
 //  SearchLocationViewController.swift
 //  PicShare
-//
-//  how-to
-//  1. get current location
-//  2. get photo array
-//  3. get photos around current location
-//  4. display them
 //  Created by Yuan on 11/28/15.
 //  Copyright © 2015 USC. All rights reserved.
 //
@@ -90,9 +84,11 @@ class SearchLocationViewController: UIViewController {
     }
 
     // MARK: Location Methods
+    
     /**
-        Updates the user's current location
-     */
+        Re-get Photos from the server while goePoint is updated
+     
+    */
     private func updateCurrentLocation() {
         let status = CLLocationManager.authorizationStatus()
         if status == .Denied || status == .Restricted {
@@ -115,9 +111,11 @@ class SearchLocationViewController: UIViewController {
     }
     
     /**
-        Fetches photos around current location
-        -Parameters
-            -location: current location
+        Query all photos near the current location with specific radius
+     
+        - Parameter:
+            -location: user's current location
+ 
      */
     private func queryForNearbyPhotos(location location: PFGeoPoint) {
         guard let query = Photo.queryNearbyPhotosWithRadius(location, radiusInMiles: Double(radiusSlider.value)) else {
@@ -164,7 +162,6 @@ extension SearchLocationViewController: UITableViewDataSource {
         guard let photoArray = photoArray else {
             return cell
         }
-        
         let photo = photoArray[indexPath.item]
         cell.photoImageView.contentMode = .ScaleAspectFit
         cell.photoImageView.file = photo.thumbnail
