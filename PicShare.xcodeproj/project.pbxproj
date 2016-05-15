@@ -29,7 +29,6 @@
 		0AC2ABF01CA4D596000A2230 /* CreateEventViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD41CA4D596000A2230 /* CreateEventViewController.swift */; };
 		0AC2ABF21CA4D596000A2230 /* EventHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD61CA4D596000A2230 /* EventHomeViewController.swift */; };
 		0AC2ABF31CA4D596000A2230 /* EventPhotoScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD71CA4D596000A2230 /* EventPhotoScreenViewController.swift */; };
-		0AC2ABF41CA4D596000A2230 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABD81CA4D596000A2230 /* HomeViewController.swift */; };
 		0AC2ABF51CA4D596000A2230 /* MyPhotosViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDA1CA4D596000A2230 /* MyPhotosViewController.swift */; };
 		0AC2ABF61CA4D596000A2230 /* PhotoDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDB1CA4D596000A2230 /* PhotoDetailViewController.swift */; };
 		0AC2ABF71CA4D596000A2230 /* PhotoHomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0AC2ABDC1CA4D596000A2230 /* PhotoHomeViewController.swift */; };
@@ -110,7 +109,6 @@
 		0AC2ABD41CA4D596000A2230 /* CreateEventViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CreateEventViewController.swift; sourceTree = "<group>"; };
 		0AC2ABD61CA4D596000A2230 /* EventHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventHomeViewController.swift; sourceTree = "<group>"; };
 		0AC2ABD71CA4D596000A2230 /* EventPhotoScreenViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EventPhotoScreenViewController.swift; sourceTree = "<group>"; };
-		0AC2ABD81CA4D596000A2230 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
 		0AC2ABDA1CA4D596000A2230 /* MyPhotosViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyPhotosViewController.swift; sourceTree = "<group>"; };
 		0AC2ABDB1CA4D596000A2230 /* PhotoDetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoDetailViewController.swift; sourceTree = "<group>"; };
 		0AC2ABDC1CA4D596000A2230 /* PhotoHomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PhotoHomeViewController.swift; sourceTree = "<group>"; };
@@ -274,7 +272,6 @@
 				0AC2ABD11CA4D596000A2230 /* Event */,
 				0AC2ABD91CA4D596000A2230 /* Photo */,
 				0AC2ABE21CA4D596000A2230 /* Search */,
-				0AC2ABD81CA4D596000A2230 /* HomeViewController.swift */,
 				0AC2ABE01CA4D596000A2230 /* ProfileViewController.swift */,
 				0AC2ABE11CA4D596000A2230 /* RootViewController.swift */,
 				0AC2ABE61CA4D596000A2230 /* TabBarViewController.swift */,
@@ -330,8 +327,8 @@
 			children = (
 				0AC2ABE81CA4D596000A2230 /* EventPhotoCollectionViewCell.swift */,
 				0AC2ABE91CA4D596000A2230 /* SearchEventTableViewCell.swift */,
-				0AC2ABEA1CA4D596000A2230 /* TextField.swift */,
 				0AF9D8901CA4E4E3007DAA47 /* SearchLocationTableViewCell.swift */,
+				0AC2ABEA1CA4D596000A2230 /* TextField.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -617,7 +614,6 @@
 				0AC2ABF51CA4D596000A2230 /* MyPhotosViewController.swift in Sources */,
 				0AC2ABF21CA4D596000A2230 /* EventHomeViewController.swift in Sources */,
 				0ADAE6AD1C09649500E8BADE /* Photo.swift in Sources */,
-				0AC2ABF41CA4D596000A2230 /* HomeViewController.swift in Sources */,
 				0AC2ABFB1CA4D596000A2230 /* ProfileViewController.swift in Sources */,
 				0AC2ABFF1CA4D596000A2230 /* SearchLocationViewController.swift in Sources */,
 				0AC2ABEF1CA4D596000A2230 /* CreateEventPasswordViewController.swift in Sources */,

@@ -16,11 +16,15 @@ class MyPhotosViewController: UIViewController {
     var photoArray: [Photo]?
     
     override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
         queryForAllUserPhotos()
     }
     
     // MARK: - Private
     
+    /**
+        Loads all the photos for the current user
+     */
     private func queryForAllUserPhotos() {
         guard let query = Photo.allPhotosForCurrentUserQuery() else {
             return
@@ -77,7 +81,9 @@ extension MyPhotosViewController: UICollectionViewDataSource {
 // MARK: - UICollectionViewDelegate
 
 extension MyPhotosViewController: UICollectionViewDelegate {
+    
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        // Show photo detail view for selected photo
         let vc = storyboard?.instantiateViewControllerWithIdentifier("photoDetailViewController") as! PhotoDetailViewController
         if let photoArray = photoArray {
             let photo = photoArray[indexPath.item]
@@ -85,4 +91,5 @@ extension MyPhotosViewController: UICollectionViewDelegate {
             navigationController?.pushViewController(vc, animated: true)
         }
     }
+    
 }

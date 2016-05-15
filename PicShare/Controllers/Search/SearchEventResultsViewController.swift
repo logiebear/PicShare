@@ -177,10 +177,12 @@ extension SearchEventResultsViewController: UITableViewDataSource {
         cell.eventLabel.text = event.hashtag
         cell.event = event
         cell.delegate = self
+        // Show checkmark if event is owned or joined by user
         if userEventArray.contains(event) || event.owner.objectId == user?.objectId {
             cell.joinButton.alpha = 0.0
             cell.checkmarkImageView.alpha = 1.0
         } else {
+            // Otherwise show join button
             cell.joinButton.alpha = 1.0
             cell.checkmarkImageView.alpha = 0.0
         }
@@ -215,6 +217,7 @@ extension SearchEventResultsViewController: UITableViewDelegate {
             popUpEventName.text = selectedEvent.hashtag
             showPasswordPopup()
         } else {
+            // Otherwise fetch event and display it
             selectedEvent.owner.fetchIfNeededInBackgroundWithBlock { (object, error) -> Void in
                 if error == nil {
                     self.performSegueWithIdentifier("SpecificEventPreview", sender: self)
@@ -236,8 +239,10 @@ extension SearchEventResultsViewController: SearchEventTableViewCellDelegate {
      */
     func joinEvent(cell: SearchEventTableViewCell, event: Event) {
         if event.isPublic {
+            // If event is public add to user events
             addEventToUserEvents(event)
         } else {
+            // If event is private show password popup
             popUpEventName.text = event.hashtag
             selectedEvent = event
             selectedPrivateEventCell = cell

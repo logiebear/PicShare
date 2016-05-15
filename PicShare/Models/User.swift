@@ -21,6 +21,18 @@ class User: PFUser {
         }
     }
     
+    /**
+     Initializes a new custom User subclass of PFUser
+     
+     - Parameters:
+        - email: email of user
+        - username: username of user
+        - password: password for user
+        - profilePhoto: photo uploaded by user
+        - events: events of user
+     
+        - Returns: User
+     */
     init(email: String, username: String, password: String, profilePhoto: PFFile?, events: [Event]?) {
         super.init()
         
@@ -31,6 +43,14 @@ class User: PFUser {
         self.events = events
     }
     
+    override init() {
+        super.init()
+    }
+    
+    /**
+        Query for all events of current user
+     
+     */
     class func allEventsForCurrentUserQuery() -> PFQuery? {
         guard let currentUser = PFUser.currentUser(),
             username = currentUser.username
@@ -42,8 +62,5 @@ class User: PFUser {
         query?.includeKey("events")
         return query
     }
-    
-    override init() {
-        super.init()
-    }
+
 }

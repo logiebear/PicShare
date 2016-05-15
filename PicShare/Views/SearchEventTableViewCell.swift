@@ -9,6 +9,14 @@
 import UIKit
 
 protocol SearchEventTableViewCellDelegate: class {
+    /**
+     Delegate function for joining event
+     
+     -Parameters:
+         -cell: Search Event Table View cell
+         -event: event to join
+     
+     */
     func joinEvent(cell: SearchEventTableViewCell, event: Event)
 }
 
@@ -21,6 +29,12 @@ class SearchEventTableViewCell: UITableViewCell {
     var event: Event?
     weak var delegate: SearchEventTableViewCellDelegate?
     
+    /**
+         Join event button
+         
+         -Parameters:
+             -sender: The sender of the join
+     */
     @IBAction func joinButtonPressed(sender: AnyObject) {
         if let event = event {
             if event.isPublic {
@@ -30,6 +44,10 @@ class SearchEventTableViewCell: UITableViewCell {
         }
     }
     
+    /**
+         Animates join button
+
+     */
     func showJoinAnimation() {
         UIView.animateWithDuration(0.5) {
             self.joinButton.alpha = 0.0

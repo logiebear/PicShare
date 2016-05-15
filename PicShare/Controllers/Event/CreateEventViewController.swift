@@ -63,6 +63,7 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
             return
         }
         
+        // Validates hashtag is not taken
         validateHashtag { [weak self](success) -> () in
             if success {
                 self?.createEventObject()
@@ -92,6 +93,8 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
             showAlert("Invalid event name", message: "Event name can't start with underscore!")
             return
         }
+        
+        // Validates hashtag is not taken
         
         validateHashtag { (success) -> () in
             if success {
@@ -126,6 +129,12 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
 
     // Mark: - Helper
     
+    /**
+        Validates hashtag is not taken
+     
+        -Parameters
+            -completion: completion block after validation is complete
+     */
     func validateHashtag(completion: (Bool) -> ()) {
         guard let query = Event.query(), eventName = eventNameTextField.text else {
             return
@@ -140,6 +149,13 @@ class CreateEventViewController: UIViewController, UITextFieldDelegate{
         }
     }
     
+    /**
+     Shows error with title and message
+     
+     -Parameters
+         -title: title
+         -message: message
+     */
     func showErrorView(title: String, msg: String) {
         let alertView = UIAlertController(title: title,
             message: msg, preferredStyle: .Alert)

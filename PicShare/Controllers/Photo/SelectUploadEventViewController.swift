@@ -23,6 +23,7 @@ class SelectUploadEventViewController: UIViewController {
     var selectedEventIndex: Int?
     var selectedEvent: Event? {
         didSet {
+            // Post setter functionality to set the selectedEventIndex after setting the event
             if let selectedEvent = selectedEvent, index = eventArray.indexOf(selectedEvent) {
                 selectedEventIndex = index
             }
@@ -31,6 +32,7 @@ class SelectUploadEventViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Brings popupview to front
         view.bringSubviewToFront(popupView)
         popupView.alpha = 0.0
         
@@ -38,12 +40,16 @@ class SelectUploadEventViewController: UIViewController {
         let userEventQuery = User.allEventsForCurrentUserQuery()
         if let user = User.currentUser() {
             eventQuery.whereKey("owner", equalTo: user)
+            // Fetches all events owned by user
             eventQuery.findObjectsInBackgroundWithBlock { [weak self](objects: [PFObject]?, error: NSError?) in
                 let ownedEvents = objects as? [Event] ?? []
                 self?.eventArray = ownedEvents
+                // Fetches all events joined by user
+
                 userEventQuery?.getFirstObjectInBackgroundWithBlock{ (object, error) -> Void in
                     if let user = object as? User {
                         let joinedEvents = user.events ?? []
+                        // Combine the two event arrays
                         self?.eventArray.appendContentsOf(joinedEvents)
                     }
                     
@@ -121,7 +127,12 @@ class SelectUploadEventViewController: UIViewController {
     }
     
     // MARK: Helpers
-    
+    /**
+        Uploads the photo object to the server
+        
+        -Parameters
+            -photo: photo to be uploaded
+     */
     func proceedToUploadPhoto(photo: Photo) {
         photo.saveInBackgroundWithBlock { [weak self](success, error) -> Void in
             self?.hideProgressIndicatorPopup()
@@ -150,6 +161,7 @@ class SelectUploadEventViewController: UIViewController {
     // MARK: Private
     
     private func showProgressIndicatorPopup() {
+        // Animates progress indicator to visible
         progressView.progress = 0.0
         UIView.animateWithDuration(0.5) {
             self.popupView.alpha = 1.0
@@ -157,11 +169,18 @@ class SelectUploadEventViewController: UIViewController {
     }
     
     private func hideProgressIndicatorPopup() {
+        // Animates progress indicator to hidden
         UIView.animateWithDuration(0.5) {
             self.popupView.alpha = 0.0
         }
     }
-    
+    /**
+         Computes the number of days between two dates
+         
+         -Parameters
+             -start: startDate
+             -end: endDate
+     */
     private func calculateDays(start: NSDate, end: NSDate) -> Int {
         let calendar: NSCalendar = NSCalendar.currentCalendar()
         let date1 = calendar.startOfDayForDate(start)

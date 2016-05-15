@@ -10,10 +10,10 @@ import UIKit
 import Parse
 import AVFoundation
 
+// Temp View Controller used to help the tab bar nav bar to load the custom camera view
 class PhotoTempViewController: UIViewController {
     
 }
-
 
 class PhotoHomeViewController: UIViewController {
     
@@ -35,7 +35,9 @@ class PhotoHomeViewController: UIViewController {
         cameraPickerController.delegate = self
         if deviceHasCamera {
             cameraPickerController.sourceType = .Camera
+            // Hide camera controls to enable custom view
             cameraPickerController.showsCameraControls = false
+            // Load custom camera view from nib
             NSBundle.mainBundle().loadNibNamed("CameraOverlayView", owner: self, options: nil)
             if let overlayView = cameraPickerController.cameraOverlayView {
                 cameraOverlayView.frame = overlayView.frame
@@ -51,6 +53,7 @@ class PhotoHomeViewController: UIViewController {
                 showAlert("Trouble With Camera", message: "Please enable your camera in your device settings to take a photo.")
                 return
             }
+            // Displays camera picker in container view
             displayViewController(cameraPickerController)
         } else {
             showCameraRoll(cameraRollButton)
@@ -61,6 +64,9 @@ class PhotoHomeViewController: UIViewController {
         return true
     }
     
+    /**
+        Adds viewController to containerView
+     */
     func displayViewController(viewController: UIViewController) {
         addChildViewController(viewController)
         viewController.view.frame = CGRect(x: 0, y: 0, width: containerView.bounds.size.width, height: containerView.bounds.size.height)
@@ -71,6 +77,7 @@ class PhotoHomeViewController: UIViewController {
     // MARK: - Custom Camera Actions
     
     @IBAction func close(sender: AnyObject) {
+        // If close pressed, simply pop the view controller
         navigationController?.popViewControllerAnimated(false)
     }
     
@@ -95,10 +102,12 @@ class PhotoHomeViewController: UIViewController {
     }
     
     @IBAction func showCameraRoll(sender: AnyObject) {
+        // Loads device photo library
         let picker = UIImagePickerController()
         picker.delegate = self
-        picker.sourceType = .PhotoLibrary
-        picker.allowsEditing = true
+        picker.sourceType = .PhotoLibrary // Device Library
+        picker.allowsEditing = true // Allows editing makes the photo into a square
+        // Loads another picker over the custom camera view
         presentViewController(picker, animated: true, completion: nil)
     }
     
@@ -110,10 +119,14 @@ extension PhotoHomeViewController: UIImagePickerControllerDelegate, UINavigation
     
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         var imageToUpload: UIImage?
+        // If the picker is the custom camera view, we want the original image
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage where picker == cameraPickerController {
+            // Crop the image to a square
             imageToUpload = image.cropToSquare()
+        // Otherwise the image is coming from the camera roll, so we want the edited image as the camera roll will crop to square for us
         } else if let image = info[UIImagePickerControllerEditedImage] as? UIImage {
             imageToUpload = image
+            // Dismiss the camera roll
             dismissViewControllerAnimated(true, completion: nil)
         } else {
             showAlert("Error", message: "Something went wrong with your photo.")
@@ -123,10 +136,11 @@ extension PhotoHomeViewController: UIImagePickerControllerDelegate, UINavigation
         let vc = self.storyboard?.instantiateViewControllerWithIdentifier("uploadPhotoViewController") as! UploadPhotoViewController
         vc.event = event
         vc.image = imageToUpload
-        self.navigationController?.pushViewController(vc, animated: true)
+        navigationController?.pushViewController(vc, animated: true)
     }
     
     func imagePickerControllerDidCancel(picker: UIImagePickerController) {
+        // Dismiss picker view if cancel button pressed
         dismissViewControllerAnimated(true, completion: nil)
     }
 }
