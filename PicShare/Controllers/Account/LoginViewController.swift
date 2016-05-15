@@ -9,6 +9,7 @@
 import UIKit
 import Parse
 
+///Login screen allowing user to login
 class LoginViewController: UIViewController {
 
     @IBOutlet weak var scrollView: UIScrollView!
@@ -19,6 +20,8 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        
+        //Deal with keyboard
         let gestureRecognizer = UITapGestureRecognizer()
         gestureRecognizer.addTarget(self, action: "resignKeyboard")
         gestureRecognizer.delegate = self
@@ -30,6 +33,12 @@ class LoginViewController: UIViewController {
     
     //MARK: - User Actions
     
+    /** 
+        Login button action.
+    
+        -Parameters: 
+            -sender: The sender of the login
+    */
     @IBAction func loginSubmitButton(sender: UIButton) {
         //Check username or password empty
         var error: NSError?
@@ -52,6 +61,7 @@ class LoginViewController: UIViewController {
             return
         }
         
+        //login user with input username and password. If any error occurs, show error.
         PFUser.logInWithUsernameInBackground(loginUserNameInput.text!, password: loginPasswordInput.text!) { user, error in
             if user != nil {
                 NSNotificationCenter.defaultCenter().postNotificationName(accountStatusChangedNotification, object: nil)
@@ -63,6 +73,12 @@ class LoginViewController: UIViewController {
     
     // MARK: - Helper
     
+    /**
+        Show error with a pop window.
+    
+        -Parameters: 
+            -error: The error to be shown
+    */
     func showErrorView(error: NSError) {
         let alertView = UIAlertController(title: "Error",
             message: error.localizedDescription, preferredStyle: .Alert)
@@ -71,6 +87,9 @@ class LoginViewController: UIViewController {
         self.presentViewController(alertView, animated: true, completion: nil)
     }
     
+    /**
+        Resign keyboard
+    */
     func resignKeyboard() {
         loginUserNameInput.resignFirstResponder()
         loginPasswordInput.resignFirstResponder()
@@ -78,6 +97,9 @@ class LoginViewController: UIViewController {
     
     // MARK: Notification
     
+    /**
+        Adjust the scroll view.
+    */
     func keyboardDidHide() {
         scrollView.setContentOffset(CGPointZero, animated: true)
     }
